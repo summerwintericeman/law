@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8" />
 	<title></title>
@@ -85,7 +84,14 @@
 <script type="text/javascript" src="plugin/circle/js/circle.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script>
-	$('#header').load('components/common/header.html');
+	$('#header').load('components/common/header.html',function(){
+			$('.logo').attr('src','img/index/logo.png');
+			$('.index').attr('href','index.html');
+			$('.people').attr('href','components/people.html');
+        	$('.knowledge').attr('href','components/knowledge.html');
+       	 	$('.login').attr('href','components/login.html');
+        	$('.register').attr('href','components/register.html');
+	});
 	$("#footer").load('components/common/footer.html');
 </script>
 

@@ -18,8 +18,6 @@ $(document).ready(function(){
             if(name){
                 lawyerMatch(caseDescription,name,1);
             }else{
-            	
-            	
                 lawyerList(caseDescription,city,1);
             }
 
@@ -31,17 +29,14 @@ $(document).ready(function(){
                 $('#lawyer .errorTip').html('*请输入案件描述或律师名称');
             }
         };
+
+
+
     });
 
     $('#lawyer .caseDescription,#lawyer .name').focus(function(){
         $('#lawyer .errorTip').html('');
     });
-
-
-
-
-
-
 
     function lawyerList(caseDes,city,page_num){
         //案由+city(*)

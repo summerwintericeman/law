@@ -15,30 +15,8 @@
 
 	<body>
 		<div id="people" class="all_center">
-			<!--<div id="header"></div>-->
-			<!--<div id="footer"></div>-->
-			<div class="top_nav">
-				<span class="compony_logo floatL">
-					<img src="../img/index/logo.png" alt="专宝贝"  class="floatL" />
-					<p class="floatR">专宝贝</p>
-				</span>
-				<ul class="nav nav-tabs floatL mainNav">
-					<li role="presentation" >
-						<a href="../index.html">主页</a>
-					</li>
-					<li role="presentation" class="active">
-						<a href="../components/people.html" >找代理人</a>
-					</li>
-					<li role="presentation">
-						<a href="../components/knowledge.html" >知识产权</a>
-					</li>
-				</ul>
-					<span class="user floatR">
-				<i>logo</i>
-				<a>登录</a>
-				<a href="">注册</a>
-			</span>
-			</div>
+			<div id="header"></div>
+
 		
 			<!--代理人的界面选择-->
 			<div class="peopleMain">
@@ -96,9 +74,9 @@
 
 			</div>
 
-		
-		
-		
+
+
+			<div id="footer"></div>
 		
 		</div>
 	</body>
@@ -109,4 +87,10 @@
 	<script src="../plugin/cityPicker/js/city-picker.js"></script>
 	<script type="text/javascript" src="../js/index.js"></script>
 	<script type="text/javascript" src="../js/people.js"></script>
+	<script>
+        $('#header').load('common/header.html',function () {
+			$('.mainNav li').removeClass('active').eq(1).addClass('active');
+        });
+        $("#footer").load('common/footer.html');
+	</script>
 </html>
