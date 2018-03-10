@@ -8,20 +8,46 @@
     <link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
     <link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/lawyerList.css" />
     <title>律师</title>
 </head>
-<body>
-律师列表
+<body id="lawyerListBody">
+<div id="header"></div>
+<div class="mainWrap">
+    <ul>
+        <li>
+            <p class="name"><span class="pull-left">李小明</span><i>男</i></p>
+            <p class="location"><i class="glyphicon glyphicon-map-marker"></i>北京市京师律师事务所</p>
+            <p class="info">
+                <span>代理案件：<i>123</i> <i>起</i></span>
+                <span>学历：<i>硕士</i></span>
+            </p>
+        </li>
+        <li>
+            <p class="name"><span class="pull-left">李小明</span><i>男</i></p>
+            <p class="location"><i class="glyphicon glyphicon-map-marker"></i>北京市京师律师事务所</p>
+            <p class="info">
+                <span>代理案件：<i>123</i> <i>起</i></span>
+                <span>学历：<i>硕士</i></span>
+            </p>
+        </li>
+    </ul>
+</div>
+<div id="footer"></div>
 </body>
-</html>
+
+
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.data.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
-<!--<script>-->
-    <!--$("#header").load('common/header.html', function (data, status, xhr) {-->
-        <!--debugger;-->
+<script type="text/javascript" src="../js/lawyerList.js"></script>
+<script>
+    $('#header').load('common/header.html',function () {
+        $('.mainNav li').removeClass('active').eq(1).addClass('active');
+    });
+    $("#footer").load('common/footer.html');
+</script>
 
-    <!--})-->
-<!--</script>-->
+</html>
