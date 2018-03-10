@@ -98,7 +98,7 @@ body {
 }
 
 p {
-	color: white;
+	/*color: white;*/
 }
 
 .button {
@@ -119,7 +119,7 @@ p {
 
 .all_center {
 	width: 100%;
-	background-color: #f9f9f9;
+	/*background-color: #f9f9f9;*/
 }
 
 #index {
@@ -220,7 +220,6 @@ p {
 .choice {
 	width: 100%;
 	padding: 0 10%;
-	background-color: rgba(0,0,0, 0.3)
 }
 
 .choice li {
