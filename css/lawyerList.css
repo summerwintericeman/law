@@ -1,0 +1,58 @@
+#lawyerListBody .mainWrap{
+    margin-top: .42rem;
+    background: #fff;
+    padding: .25rem 10%;
+}
+#lawyerListBody .mainWrap ul{
+    width: 7rem;
+    margin: 0 auto;
+}
+#lawyerListBody .mainWrap ul li{
+    padding: .1rem .2rem;
+    border-bottom: 1px solid #ccc;
+}
+#lawyerListBody .mainWrap ul li:hover{
+    box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
+}
+#lawyerListBody .mainWrap ul li p{
+    color:#000;
+    font-size: 16px;
+}
+#lawyerListBody .mainWrap ul li p.name{
+    height: .45rem;
+    line-height: .45rem;
+}
+#lawyerListBody .mainWrap ul li p.name span{
+    font-size: .2rem;
+    font-weight: bold;
+}
+#lawyerListBody .mainWrap ul li p.name i{
+    display: inline-block;
+    border-left: 2px solid #151414b8;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+#lawyerListBody .mainWrap ul li p.location{
+    height: 35px;
+    line-height: 35px;
+    color:#5068a9;
+}
+#lawyerListBody .mainWrap ul li p.location i{
+    padding-right: 5px;
+    color: rgba(0,0,0,.5);
+}
+#lawyerListBody .mainWrap ul li p.info span {
+    display:block;
+    height: 30px;
+    line-height: 30px;
+}
+#lawyerListBody .mainWrap ul li p.info span:nth-child(1) i:nth-child(1){
+    font-size: 18px;
+    color: #be0707;
+}
+#lawyerListBody .mainWrap ul li p.info span:nth-child(1) i:nth-child(2){
+    font-size: 14px;
+    color: #858585;
+}

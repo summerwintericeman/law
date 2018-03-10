@@ -88,9 +88,12 @@ html {
 html,
 body {
 	width: 100%;
+	height:100%;
+	overflow: auto;
 }
 
 body {
+	font-family:'Arial','Helvetica','Times New Roman','PingFang SC','Microsoft YaHei', 'SimSun','Helvetica Neue','STHeitiSC-Light','sans-serif';
 	font-size: 0.14rem;
 	cursor: default;
 	min-width: 9rem;
@@ -133,16 +136,18 @@ p {
 .floatR {
 	float: right;
 }
-
+#header{
+	position: fixed;
+	width: 100%;
+	top:0;
+	z-index: 10;
+}
 .top_nav {
 	padding: 0 10%;
 	height: 0.42rem;
 	width: 100%;
 	background-color: #5068a9d1;
 	color: #fff;
-	position: fixed;
-	top: 0;
-	z-index: 10;
 	min-width: 9rem;
 }
 .top_nav:hover{
