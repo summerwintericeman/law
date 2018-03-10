@@ -12,3 +12,8 @@
 #caseDetail .mainWrap .path i{
     padding: 0 5px;
 }
+#caseDetail .mainWrap .content>div>p{
+    text-indent: 25px;
+    font-size: 16px;
+    line-height: 30px;
+}

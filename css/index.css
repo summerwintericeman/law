@@ -122,6 +122,12 @@ a:focus{
 	outline: none;
 	text-decoration: none;
 }
+.font-16{
+	font-size: 16px;
+}
+.font-18{
+	font-size: 18px;
+}
 .text-strong{
 	font-weight: bold;
 }
