@@ -103,7 +103,9 @@ body {
 p {
 	color: white;
 }
-
+.mainWrap{
+	min-height: 1000px;
+}
 .button {
 	display: block;
 	text-align: center;
@@ -116,7 +118,13 @@ p {
 	height: 0.4rem;
 	line-height: 0.4rem;
 }
-
+a:focus{
+	outline: none;
+	text-decoration: none;
+}
+.text-strong{
+	font-weight: bold;
+}
 
 /*大小的单位统一采取rem*/
 

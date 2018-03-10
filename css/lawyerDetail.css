@@ -1,0 +1,14 @@
+#lawyerDetail .mainWrap{
+    margin-top: .42rem;
+    background: #fff;
+    padding: .25rem 10%;
+}
+#lawyerDetail .mainWrap .path{
+    padding-bottom: 20px;
+}
+#lawyerDetail .mainWrap .path a.active{
+    color: #5068a9;
+}
+#lawyerDetail .mainWrap .path i{
+    padding: 0 5px;
+}
