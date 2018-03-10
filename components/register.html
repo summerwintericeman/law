@@ -1,14 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>注册页面</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" /
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../css/register.css" />
 	</head>
-	<body>
-		
-		
-		
-		
-		注册页面
+
+	<body id="register">
+		<div class="top_nav">
+			<span class="compony_logo floatL">
+				<img src="../img/index/logo.png" class="logo" alt="专宝贝"  class="floatL" />
+				<p class="floatR">专宝贝</p>
+			</span>
+			<span class="registerMess">一切用数据说话</span>
+		</div>
+
+		<div class="regDeatil">
+			<div class="left pull-left">
+				<label class="labelBox">
+					<i>姓名</i>
+					<input type="text" placeholder="请输入姓名"  class="name"/>
+				</label>
+				<label class="labelBox">
+					<i>账户名</i>
+					<input type="text" placeholder="请输入账户名"  class="account"/>
+				</label>
+				<label class="labelBox">
+					<i>密码</i>
+					<input type="text" placeholder="请输入密码"  class="password"/>
+				</label>
+				<label class="labelBox">
+					<i>重复密码</i>
+					<input type="text" placeholder="请输入密码"  class="passwordRep"/>
+				</label>
+				<label class="labelBox">
+					<i>邮箱</i>
+					<input type="text" placeholder="请输入邮箱"  class="email"/>
+				</label>	
+			
+				<button	id="agree">同意协议并注册</button>
+				
+				<div class="agreeDetail">
+					<input type="checkbox" />
+					我已阅读并同意
+					<a href="#">《专宝贝服务协议》</a>
+				</div>
+				
+					
+			</div>
+			<div class="right pull-right">
+				<span class="login">
+					已经注册过？
+				</span>
+				<p>
+					请点击  <a href="./login.html">直接登录</a>
+				</p>
+				<p>
+					我是律师，  <a>我要注册</a>
+				</p>
+				<p>
+					我是当事人，  <a>我要注册</a>
+				</p>
+			</div>
+		</div>
 	</body>
+
 </html>

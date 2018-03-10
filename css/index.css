@@ -167,7 +167,6 @@ p {
 }
 
 .top_nav .compony_logo p {
-	width: 70%;
 	line-height: 0.42rem;
 	color: white;
 	font-size: 0.25rem;
@@ -202,8 +201,20 @@ p {
 }
 
 .circle {
+	height: 400px;
 	width: 100%;
 }
+
+.circle .item{
+	height: 100%;
+}
+
+#indexBody .circle img{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
 
 .user {
 	height: 100%;

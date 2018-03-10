@@ -1,0 +1,75 @@
+.registerMess{
+	line-height: 42px;
+	font-size: 20px;
+}
+#register .top_nav{
+	margin-bottom: 40px;
+}
+.regDeatil{
+	height: 600px;
+	width: 1000px;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 65px 100px;
+	background-color: #fcfcfc;
+}
+.regDeatil .left{
+	width: 70%;
+	height: 100%;
+}
+.regDeatil .right{
+	width: 30%;
+	box-sizing: border-box;
+	border-left:1px solid #ccc ;
+	padding: 0 40px;
+}
+.labelBox{
+    display: inline-block;
+    height: .5rem;
+    line-height: .5rem;
+    font-weight: bold;
+    width:4.5rem;
+    margin-bottom: 10px;
+}
+.labelBox>i{
+    font-size: .16rem;
+    display: inline-block;
+    width: .9rem;
+}
+.labelBox>input{
+	width: 340px;
+    height:.4rem;
+    border: .01rem solid #ccc;
+    border-radius: .03rem;
+    padding-left:.1rem;
+}
+
+.regDeatil .right>p{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.regDeatil .right>p>a{
+	color: red;
+}
+#agree{
+	margin-left: 92px;
+	height: 46px;
+	width: 340px;
+	background-color: red;
+	border-radius:5px ;
+	text-align: center;
+	border: none;
+	font-size: 18px;
+	color: white;
+	font-weight: 900;
+}
+.agreeDetail{
+	margin-top: 15px;
+	padding-left: 135px;
+}
+.agreeDetail>a{
+	margin-top: 20px;
+	color: gray;
+	text-decoration: underline;
+}
