@@ -3,13 +3,23 @@
     background: #fff;
     padding: .25rem 10%;
 }
+#lawyerListBody .mainWrap .path{
+    padding-bottom: 20px;
+}
+#lawyerListBody .mainWrap .path a.active{
+    color: #5068a9;
+}
+#lawyerListBody .mainWrap .path i{
+    padding: 0 5px;
+}
 #lawyerListBody .mainWrap ul{
     width: 7rem;
-    margin: 0 auto;
 }
 #lawyerListBody .mainWrap ul li{
     padding: .1rem .2rem;
     border-bottom: 1px solid #ccc;
+    position: relative;
+    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 }
 #lawyerListBody .mainWrap ul li:hover{
     box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
@@ -55,4 +65,18 @@
 #lawyerListBody .mainWrap ul li p.info span:nth-child(1) i:nth-child(2){
     font-size: 14px;
     color: #858585;
+}
+#lawyerListBody .mainWrap ul li a.details{
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    background: #5068a9;
+    color: #fff;
+    width: 110px;
+}
+#lawyerListBody .mainWrap ul li a.details:hover{
+    background: #40599b;
+}
+#lawyerListBody .mainWrap ul li a.details:focus{
+    outline: none;
 }

@@ -2,6 +2,22 @@
  * Created by sphwjj on 2018/2/28.
  */
 $(document).ready(function() {
+	//判断当前显示找律师 还是显示查案件
+	(function(){
+		var pageActive = getUrlParam('page');
+		if(pageActive && pageActive == 'case'){
+            // $('#case').addClass('').removeClass('fade');
+            // $('#lawyer').addClass('').addClass('fade');
+			// $('#searchTabs .case').addClass('active');
+			// $('#searchTabs .lawyer').removeClass('active');
+		}
+	})();
+
+
+
+
+
+
 	var lawyerBtn = $('#lawyer .searchBtn'),
 		caseBtn = $('#case .searchBtn');
 

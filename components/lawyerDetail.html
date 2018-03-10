@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
+    <link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/lawyerDetail.css" />
+    <title>专宝贝</title>
+</head>
+<body id="lawyerDetail">
+<div id="header"></div>
+<div class="mainWrap">
+    <div class="path">
+        <a href="people.html">找律师</a><i>&gt;</i>
+        <a href="lawyerList.html">律师列表</a><i>&gt;</i>
+        <a class="active">律师信息</a>
+    </div>
+</div>
+<div id="footer"></div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
+<script src="../plugin/cityPicker/js/city-picker.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript" src="../js/lawyerDetail.js"></script>
+<script>
+    $('#header').load('common/header.html',function () {
+        $('.mainNav li').removeClass('active').eq(1).addClass('active');
+    });
+    $("#footer").load('common/footer.html');
+</script>
+
+
+</html>
