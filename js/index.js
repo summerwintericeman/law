@@ -33,7 +33,8 @@ function errorModal(tip){
 
     });
 };
-
+$.cookie('searchLawyer', '');//找律师
+$.cookie('searchCase', '');//查案件
 
 
 

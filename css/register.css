@@ -4,7 +4,13 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-
+.top_nav .compony_logo>a {
+	line-height: 0.42rem;
+	color: white;
+	font-size: 0.25rem;
+	font-weight: 900;
+	padding: 0 0.15rem;
+}
 .registerMess {
 	line-height: 42px;
 	font-size: 20px;
