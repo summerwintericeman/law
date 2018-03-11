@@ -90,15 +90,6 @@ $(document).ready(function() {
 			'page_num': page_num
 		});
 
-//		param = JSON.stringify({
-//			'page_count': 12,
-//			'reason': {
-//				'reason_2': '侵权责任纠纷',
-//				'reason_3': '侵权责任纠纷'
-//			},
-//			'page_num': 1
-//		})
-
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.92.38.167:8889/static_query/lawyer_list', // http://47.92.38.167:8888/  http://47.92.38.167:8889
