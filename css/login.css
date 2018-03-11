@@ -1,5 +1,11 @@
 
-
+.top_nav .compony_logo>a {
+	line-height: 0.42rem;
+	color: white;
+	font-size: 0.25rem;
+	font-weight: 900;
+	padding: 0 0.15rem;
+}
 .lgContain{
 	height: 343px;
 	width: 1000px;
