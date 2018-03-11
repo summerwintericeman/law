@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a33361f-d516-4f2a-84d3-6822c05006e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery.cookie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/lawyerList.html" afterPath="$PROJECT_DIR$/components/lawyerList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/login.html" afterPath="$PROJECT_DIR$/components/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/people.html" afterPath="$PROJECT_DIR$/components/people.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/register.html" afterPath="$PROJECT_DIR$/components/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/login.css" afterPath="$PROJECT_DIR$/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/register.css" afterPath="$PROJECT_DIR$/css/register.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/index.js" afterPath="$PROJECT_DIR$/js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/lawyerList.js" afterPath="$PROJECT_DIR$/js/lawyerList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/people.js" afterPath="$PROJECT_DIR$/js/people.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/cityPicker/js/city-picker.data.js" afterPath="$PROJECT_DIR$/plugin/cityPicker/js/city-picker.data.js" />
-    </list>
+    <list default="true" id="3a33361f-d516-4f2a-84d3-6822c05006e1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -373,12 +360,12 @@
       <updated>1520175335125</updated>
       <workItem from="1520175336865" duration="298000" />
       <workItem from="1520661889720" duration="28659000" />
-      <workItem from="1520747186736" duration="22353000" />
+      <workItem from="1520747186736" duration="22445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51310000" />
+    <option name="totallyTimeSpent" value="51402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="161" y="18" width="1762" height="938" extended-state="0" />
