@@ -212,7 +212,7 @@ body::-webkit-scrollbar-thumb:hover{
 }
 .top_nav .nav>li>a{
     display: inline-block;
-    width: .9rem;
+    width: 120px;
     text-align: center;
     color: #fff;	
     border: none;
@@ -258,7 +258,9 @@ body::-webkit-scrollbar-thumb:hover{
 	float: right;
 	margin-right: 0.20rem;
 }
-
+.user a:hover{
+	color: red;
+}
 .area {
 	margin: 0 auto !important;
 }
