@@ -12,3 +12,61 @@
 #lawyerDetail .mainWrap .path i{
     padding: 0 5px;
 }
+#lawyerDetail .content h3{
+    height:40px;
+}
+#lawyerDetail .content h3 span:nth-child(2){
+    font-size: 14px;
+    font-weight: normal;
+}
+#lawyerDetail .content .caseType>p i{
+    display: inline-block;
+    float: left;
+    width: 3px;
+    height: 15px;
+    background: #5068a9;
+    margin: 5px 6px 0 0;
+}
+#lawyerDetail .content .caseType dl{
+    margin: 15px 0;
+}
+#lawyerDetail .content .caseType dl dt{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom:10px;
+}
+#lawyerDetail .content .caseType dl dt>i{
+    color: #e83591bf;
+    margin-right: 10px;
+}
+#lawyerDetail .content .caseType dl dt span{
+    font-weight: normal;
+}
+#lawyerDetail .content .caseType dl dt span>span+span{
+    padding:0 15px;
+}
+#lawyerDetail .content .caseType dl dt span>span+span>i{
+    color: #be0707;
+
+}
+#lawyerDetail .content .caseType dl dd{
+position: relative;
+}
+#lawyerDetail .content .caseType dl dd:before{
+    display: block;
+    content: '';
+    height:5px;
+    width:5px;
+    background: #ccc;
+    position: absolute;
+    top: 6px;
+    border-radius: 2px;
+}
+#lawyerDetail .content .caseType dl dd>a{
+    display: block;
+    margin: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
