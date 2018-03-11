@@ -42,7 +42,7 @@
 							</div>
 						</div>
 						<span class="errorTip"></span>
-						<button type="button" class="btn btn-primary searchBtn">找律师</button>
+						<button type="button" class="btn btn-primary searchBtn">搜索</button>
 					</div>
 
 					<div role="tabpanel" class="tab-pane fade" id="case" aria-labelledby="case-tab">
@@ -82,15 +82,16 @@
 	</body>
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script>
+        $('#header').load('common/header.html',function () {
+            $('.mainNav li').removeClass('active').eq(1).addClass('active');
+        });
+        $("#footer").load('common/footer.html');
+	</script>
 	<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
 	<script src="../plugin/cityPicker/js/city-picker.js"></script>
 	<script type="text/javascript" src="../js/index.js"></script>
 	<script type="text/javascript" src="../js/people.js"></script>
-	<script>
-        $('#header').load('common/header.html',function () {
-			$('.mainNav li').removeClass('active').eq(1).addClass('active');
-        });
-        $("#footer").load('common/footer.html');
-	</script>
+
 </html>

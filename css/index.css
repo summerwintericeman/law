@@ -96,7 +96,7 @@ body {
 	font-family:'Arial','Helvetica','Times New Roman','PingFang SC','Microsoft YaHei', 'SimSun','Helvetica Neue','STHeitiSC-Light','sans-serif';
 	font-size: 0.14rem;
 	cursor: default;
-	min-width: 9rem;
+	min-width: 9.6rem;
 	overflow: auto;
 }
 
@@ -178,7 +178,7 @@ body::-webkit-scrollbar-thumb:hover{
 	width: 100%;
 	background-color: #5068a9d1;
 	color: #fff;
-	min-width: 9rem;
+	min-width: 9.6rem;
 }
 .top_nav:hover{
 	background-color: #455c9bf2;
@@ -265,25 +265,43 @@ body::-webkit-scrollbar-thumb:hover{
 	margin: 0 auto !important;
 }
 
-.choice {
+#index .choice {
 	width: 100%;
 	padding: 0 10%;
-	margin-top: 40px;
+	margin-top: 100px;
 }
-.choice li p {
+#index .choice li{
+	border: 1px solid #ccc;
+	padding:15px;
+	position: relative;
+	background: #fff;
+	border-radius: 2px;
+}
+#index .choice li:hover{
+	box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
+}
+#index .choice li p {
 	margin-bottom: 0.15rem;
 	line-height: 30px;
 	height: 90px;
 }
 
-.choice li p:nth-child(1) {
-	height: 0.4rem;
-	line-height: 0.4rem;
+#index .choice li p:nth-child(1) {
 	font-size: 0.25rem;
 	font-weight: 900;
+	position: absolute;
+	left: 94px;
+	top: -60px;
+	background: #ddd;
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
+	line-height: 65px;
+	z-index: -1;
+	box-shadow: 10px -2px 20px rgba(104, 111, 133, 0.5);
 }
 
-.choice li p:nth-child(2) {
+#index .choice li p:nth-child(2) {
 	height: 0.4rem;
 	line-height: 0.4rem;
 	font-size: 0.25rem;
@@ -327,14 +345,26 @@ body::-webkit-scrollbar-thumb:hover{
 
 /*模态框样式*/
 #errorModal .modal-dialog{
-	width: 400px;
-	height: 250px;
+	width: 450px;
+	height: 160px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -125px -200px;
+	margin: -80px -200px;
 }
 #errorModal .modal-dialog .modal-content{
 	width:100%;
 	height:100%;;
+}
+#errorModal .modal-dialog .modal-content .modal-header{
+	padding: 10px 15px;
+}
+#errorModal .modal-dialog .modal-content .modal-body{
+	font-size: 14px;
+	padding: 20px 15px;
+}
+#errorModal .modal-dialog .modal-content .modal-footer{
+	border: none;
+	font-size: 14px;
+	padding: 10px 15px
 }

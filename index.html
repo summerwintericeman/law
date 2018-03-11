@@ -55,8 +55,8 @@
 				</div>
 				<!--选择的初始-->
 
-				<ul class="choice row center-block">
-					<li class="col-xs-6 col-sm-6 col-md-6 text-center">
+				<ul class="choice row center-block clearfix">
+					<li class="col-xs-5 col-sm-5 col-md-5 text-center pull-left">
 						<p>找律师</p>
 						<p>我们会为您推荐:</p>
 						<p>
@@ -64,7 +64,7 @@
 						</p>
 						<a class="button  center-block" href="components/people.html">普通民事案件</a>
 					</li>
-					<li class="col-xs-6 col-sm-6 col-md-6 text-center">
+					<li class="col-xs-5 col-sm-5 col-md-5 text-center pull-right">
 						<p>查专利</p>
 						<p>快速找到对应专利:</p>
 						<p>
@@ -80,18 +80,19 @@
 		</div>
 	</body>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script>
+        $('#header').load('components/common/header.html', function() {
+            $('.logo').attr('src', 'img/index/logo.png');
+            $('.index').attr('href', 'index.html');
+            $('.people').attr('href', 'components/people.html');
+            $('.knowledge').attr('href', 'components/propery.html');
+            $('.login').attr('href', 'components/login.html');
+            $('.register').attr('href', 'components/register.html');
+        });
+        $("#footer").load('components/common/footer.html');
+	</script>
 	<script type="text/javascript" src="plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
-	<script>
-		$('#header').load('components/common/header.html', function() {
-			$('.logo').attr('src', 'img/index/logo.png');
-			$('.index').attr('href', 'index.html');
-			$('.people').attr('href', 'components/people.html');
-			$('.knowledge').attr('href', 'components/propery.html');
-			$('.login').attr('href', 'components/login.html');
-			$('.register').attr('href', 'components/register.html');
-		});
-		$("#footer").load('components/common/footer.html');
-	</script>
+
 
 </html>
