@@ -253,11 +253,6 @@ a:focus{
 	padding: 0 10%;
 	margin-top: 40px;
 }
-
-.choice li:nth-child(1) {
-	height: 2.5rem;
-}
-
 .choice li p {
 	margin-bottom: 0.15rem;
 	line-height: 30px;
@@ -288,11 +283,15 @@ a:focus{
 	width: 100%;
 	border-top:0.01rem solid #cbc8c2;
 	padding: 0 10%;
+	color: #fff;
 }
 .footer p{
 	width: 100%;
 	text-align: center;
 	line-height: 0.3rem;
+}
+.footer p a{
+	color: #fff;
 }
 
 
