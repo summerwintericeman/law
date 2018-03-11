@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
+	<link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/index.css" />
+	<link rel="stylesheet" type="text/css" href="../css/propery.css" />
+	<title>专宝贝</title>
+</head>
+<body id="property">
+	<div id="header"></div>
+	<div class="mainWrap">
+		<ul id="searchTabs" class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">律师</a></li>
+			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">案件</a></li>
+			<li role="presentation" class="agencyPeopel"><a href="#lawyer" id="agencyPeopel-tab" role="tab" data-toggle="tab" aria-controls="agencyPeopel" aria-expanded="true">代理人</a></li>
+			<li role="presentation" class="agency"><a href="#case" role="tab" id="agency-tab" data-toggle="tab" aria-controls="agency" aria-expanded="false">代理机构</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content">
+			<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
+				<label class="labelBox textarea">
+					<i>案件描述</i><br/>
+					<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
+				</label>
+				<br/>
+				<label class="labelBox">
+					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称或名称关键字">
+				</label>
+				<br/>
+				<div class="labelBox text-left">
+					<i>所在城市</i>
+					<div id="cityPicker">
+						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+					</div>
+				</div>
+				<span class="errorTip"></span>
+				<button type="button" class="btn btn-primary searchBtn">找律师</button>
+			</div>
+
+			<div role="tabpanel" class="tab-pane fade" id="case" aria-labelledby="case-tab">
+				<label class="labelBox textarea">
+					<i>案件描述</i><br/>
+					<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
+				</label>
+				<br/>
+				<!--<label class="labelBox">
+					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称">
+				</label>
+				<br/>
+				<label class="labelBox">
+					<i>事务所</i><input type="text" class="type corporation" placeholder="请输入律师所在事务所">
+				</label>
+				<br/>-->
+				<div class="labelBox text-left">
+					<i>地区选择</i><br/>
+					<div id="cityPicker1">
+						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+					</div>
+				</div>
+				<span class="errorTip"></span>
+				<button type="button" class="btn btn-primary searchBtn">搜索</button>
+			</div>
+			<div role="tabpanel" class="tab-pane fade active in search" id="agencyPeopel" aria-labelledby="agencyPeopel-tab">
+				<label class="labelBox textarea">
+					<i>案件描述</i><br/>
+					<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
+				</label>
+				<br/>
+				<label class="labelBox">
+					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称或名称关键字">
+				</label>
+				<br/>
+				<div class="labelBox text-left">
+					<i>所在城市</i>
+					<div id="cityPicker">
+						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+					</div>
+				</div>
+				<span class="errorTip"></span>
+				<button type="button" class="btn btn-primary searchBtn">找律师</button>
+			</div>
+
+			<div role="tabpanel" class="tab-pane fade" id="agency" aria-labelledby="agency-tab">
+				<label class="labelBox textarea">
+					<i>案件描述</i><br/>
+					<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
+				</label>
+				<br/>
+				<!--<label class="labelBox">
+					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称">
+				</label>
+				<br/>
+				<label class="labelBox">
+					<i>事务所</i><input type="text" class="type corporation" placeholder="请输入律师所在事务所">
+				</label>
+				<br/>-->
+				<div class="labelBox text-left">
+					<i>地区选择</i><br/>
+					<div id="cityPicker1">
+						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+					</div>
+				</div>
+				<span class="errorTip"></span>
+				<button type="button" class="btn btn-primary searchBtn">搜索</button>
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
+<script src="../plugin/cityPicker/js/city-picker.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript" src="../js/property.js"></script>
+<script>
+    $('#header').load('common/header.html',function () {
+        $('.mainNav li').removeClass('active').eq(2).addClass('active');
+    });
+    $("#footer").load('common/footer.html');
+</script>
+
+
+</html>
