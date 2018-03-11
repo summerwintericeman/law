@@ -1,10 +1,88 @@
 
 
 .lgContain{
-	border: 1px solid red;
-	height: 350px;
+	height: 343px;
+	width: 1000px;
+	margin: 20px auto;
 }
 .registerMess {
+	
 	line-height: 42px;
 	font-size: 20px;
+}
+.lgContain>img{
+	margin-left: 40px;
+}
+.lgDetail{
+	width: 350px;
+	height: 343px;
+	border: 1px solid #ccc;
+	padding: 40px;
+}
+.lgDetail>h3{
+	margin-bottom: 10px;
+}
+.lglabel{
+	padding: 3px 0;
+	height: 46px;
+	width: 260px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+.lglabel:hover{
+	box-shadow: 0 0 5px #5068a9;
+	border-color: #46B8DA;
+}
+.lglabel>label{
+	height: 100%;
+	width: 100%;
+}
+.lglabel>label>input{
+	border: none;
+	height: 100%;
+	width: 200px;
+	float: right;
+}
+
+.lglabel>label>i{
+	margin-left:10px ;
+	display: block;
+	float: left;
+	height: 100%;
+	width:36px;
+}
+.lguser{
+	background-image: url(../img/login/user.png);
+	background-repeat: no-repeat;
+}
+.lgpassword{
+	background-image: url(../img/login/password.png);
+	background-repeat: no-repeat;
+}
+#agreeLg {
+	margin: 15px 0;
+	height: 46px;
+	width: 260px;
+	background-color: red;
+	border-radius: 5px;
+	text-align: center;
+	border: none;
+	font-size: 18px;
+	color: white;
+	font-weight: 900;
+}
+#agreeLg:focus{
+	box-shadow: 0 0 5px #5068a9;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	outline: none;
+}
+.lgDetail>span{
+	display: flex;
+}
+.lgDetail>span>a{
+	flex: 1;
+	text-align: center;
+	color: red;
 }
