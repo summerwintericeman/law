@@ -11,7 +11,7 @@ $(document).ready(function() {
 		});
 
 
-    // errorModal('11111');
+     //errorModal('11111');
 
 });
 
@@ -24,7 +24,7 @@ function getUrlParam(name){
 
 //错误模态框
 function errorModal(tip){
-	var template = '<div class="modal fade bs-example-modal-sm" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><p>请求失败</p></div></div></div>';
+	var template = '<div class="modal fade bs-example-modal-sm in" tabindex="-1" id="errorModal" role="dialog" aria-labelledby="mySmallModalLabel" style="display: block; padding-right: 16px;"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="mySmallModalLabel">消息提示</h4></div><div class="modal-body"><span></span></div></div></div></div>';
 	if($('#errorModal').length==0){
         $('html').append(template);
 	};
