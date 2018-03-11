@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>登录页面</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" /
-		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" / <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<link rel="stylesheet" type="text/css" href="../css/login.css" />
 	</head>
+
 	<body id="login">
 		<div class="top_nav">
 			<span class="compony_logo floatL">
@@ -18,10 +19,33 @@
 			<span class="registerMess">一切用数据说话</span>
 		</div>
 		<div class="lgContain">
-			
+			<img src="../img/login/login.png" />
+			<div class="lgDetail pull-right">
+				<h3>登录</h3>
+				<div class="lglabel">
+					<label>
+					<i class="lguser"></i>
+					<input type="text" placeholder="请输入用户名"  class="userNameLg"/>
+				</label>
+				</div>
+				<div class="lglabel">
+					<label>
+					<i class="lgpassword"></i>
+					<input type="text" placeholder="请输入密码"  class="passWordLg"/>
+				</label>
+				</div>
+
+				<button id="agreeLg">登录</button>
+				<span>
+					<a href="./register.html">注册</a>
+					<a href="#">忘记密码</a>
+				</span>
+			</div>
 		</div>
-		
+		<!--footer-->
+
 	</body>
+
 </html>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/login.js"></script>
