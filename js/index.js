@@ -11,7 +11,7 @@ $(document).ready(function() {
 		});
 
 
-    errorModal('11111');
+    // errorModal('11111');
 
 });
 
@@ -24,9 +24,12 @@ function getUrlParam(name){
 
 //错误模态框
 function errorModal(tip){
+	var template = '<div class="modal fade bs-example-modal-sm" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><p>请求失败</p></div></div></div>';
+	if($('#errorModal').length==0){
+        $('html').append(template);
+	};
     $('#errorModal').modal('show');
     $('#errorModal').on('shown.bs.modal', function (e) {
-    	alert(tip);
 
     });
 };
