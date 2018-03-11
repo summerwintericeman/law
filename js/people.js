@@ -6,16 +6,9 @@ $(document).ready(function() {
 	(function(){
 		var pageActive = getUrlParam('page');
 		if(pageActive && pageActive == 'case'){
-            // $('#case').addClass('').removeClass('fade');
-            // $('#lawyer').addClass('').addClass('fade');
-			// $('#searchTabs .case').addClass('active');
-			// $('#searchTabs .lawyer').removeClass('active');
+			$('#profile-tab').tab('show');	
 		}
 	})();
-
-
-
-
 
 
 	var lawyerBtn = $('#lawyer .searchBtn'),
