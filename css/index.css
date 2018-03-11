@@ -118,6 +118,7 @@ p {
 	height: 0.4rem;
 	line-height: 0.4rem;
 }
+
 a:focus{
 	outline: none;
 	text-decoration: none;
@@ -250,10 +251,7 @@ a:focus{
 .choice {
 	width: 100%;
 	padding: 0 10%;
-}
-
-.choice li {
-	height: 2.5rem;
+	margin-top: 40px;
 }
 
 .choice li:nth-child(1) {
@@ -262,6 +260,8 @@ a:focus{
 
 .choice li p {
 	margin-bottom: 0.15rem;
+	line-height: 30px;
+	height: 90px;
 }
 
 .choice li p:nth-child(1) {
@@ -277,6 +277,10 @@ a:focus{
 	font-size: 0.25rem;
 	font-weight: 900;
 	color: #5068a9;
+}
+#indexBody .choice .button:hover{
+	color: #fff;
+	background-color: #415792;
 }
 .footer{
 	background-color: rgba(0,0,0,0.7);
