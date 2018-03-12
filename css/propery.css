@@ -15,12 +15,12 @@
     line-height: .5rem;
     position: relative;
     font-weight: bold;
-    width:4.5rem;
+    width:5rem;
 }
 #property .labelBox>i{
     font-size: .16rem;
     display: inline-block;
-    width: .9rem;
+    width: 1.2rem;
 }
 #property .labelBox>input{
     height:.4rem;
@@ -87,16 +87,16 @@
 #cityPicker,#cityPicker1{
     position: absolute;
     top: 0;
-    left: .9rem;
+    left:1.2rem;
 }
 
 /*bootstarp*/
-#property .nav-tabs>li.active>a,#property  .nav-tabs>li.active>a:focus,#property  .nav-tabs>li.active>a:hover{
+#property .mainWrap .nav-tabs>li.active>a,#property .mainWrap  .nav-tabs>li.active>a:focus,#property .mainWrap  .nav-tabs>li.active>a:hover{
     color:#5068a9;
     border: .01rem solid #5068a9;
     border-bottom-color: transparent;
 }
-#property .nav-tabs>li>a:hover{
+#property .mainWrap .nav-tabs>li>a:hover{
     background:#5068a9 ;
     color:#fff!important;
 }
