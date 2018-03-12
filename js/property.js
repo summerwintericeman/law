@@ -21,8 +21,8 @@ $(document).ready(function() {
 
     var lawyerBtn = $('#lawyer .searchBtn'),
         caseBtn = $('#case .searchBtn'),
-        agencyPeopleBtn = $('#agencyPeople .searchBtn'),
-        agencyBtn = $('#agency .searchBtn');
+        agentsBtn = $('#agents .searchBtn'),
+        agenciesBtn = $('#agencies .searchBtn');
 
     //找律师
     lawyerBtn.on('click', function() {
@@ -44,15 +44,11 @@ $(document).ready(function() {
         if(!caseDescription && !name) {
             $('#lawyer .errorTip').html('*请输入案件描述或律师名称');
         } else {
-            $.cookie('searchLawyer',obj);
+            $.cookie('searchLawyer',obj,{path:'/'});
             window.location.href = 'lawyerList.html';
         };
 
     });
-
-    // $('#lawyer .caseDescription,#lawyer .name').focus(function() {
-    //     $('#lawyer .errorTip').html('');
-    // });
 
     // function caseFoud(caseDes, callback) {
     //     console.log(caseDes);
@@ -155,11 +151,34 @@ $(document).ready(function() {
             // caseFoud(caseDescription, function(res){
             //     caseList(res, 1, city);
             // });
-            $.cookie('searchCase', obj);//查案件
+            $.cookie('searchCase', obj,{path:'/'});//查案件
         }
     });
 
-    $('tab-pane .caseDescription,tab-pane .name,tab-pane .corporation,tab-pane .agency,tab-pane .propery').focus(function() {
+    //查代理人
+    agentsBtn.on('click',function () {
+        var agents = $('#agents .name').val(),
+            agencies = $('#agents .agency').val();
+        if(agents || agencies){
+            var obj = JSON.stringify({
+                per:agents,//代理人名称
+                com:agencies//代理机构名称
+            });
+            $.cookie('agents',obj,{path:'/'});
+            window.location.href = 'agents.html';
+        }else{
+            $('#agents .errorTip').html('　*请输入代理人名称或代理机构名称');
+        }
+    });
+
+    //查代理机构
+    agenciesBtn.on('click',function(){
+
+    });
+
+
+
+    $('tab-pane .caseDescription,tab-pane .name,tab-pane .corporation,tab-pane .agency,tab-pane .property').focus(function() {
         $('span.errorTip').html('');
     });
 

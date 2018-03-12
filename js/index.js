@@ -29,8 +29,8 @@ function errorModal(tip){
 			$('#modalText').html(tip);
     });
 };
-$.cookie('searchLawyer', '');//找律师
-$.cookie('searchCase', '');//查案件
+// $.cookie('searchLawyer', '');//找律师
+// $.cookie('searchCase', '');//查案件
 
 
 

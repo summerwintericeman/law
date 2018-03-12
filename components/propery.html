@@ -16,8 +16,8 @@
 		<ul id="searchTabs" class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">律师</a></li>
 			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">案件</a></li>
-			<li role="presentation" class="agencyPeople"><a href="#agencyPeople" id="agencyPeople-tab" role="tab" data-toggle="tab" aria-controls="agencyPeople" aria-expanded="false">代理人</a></li>
-			<li role="presentation" class="agency"><a href="#agency" role="tab" id="agency-tab" data-toggle="tab" aria-controls="agency" aria-expanded="false">代理机构</a></li>
+			<li role="presentation" class="agents"><a href="#agents" id="agents-tab" role="tab" data-toggle="tab" aria-controls="agents" aria-expanded="false">代理人</a></li>
+			<li role="presentation" class="agencies"><a href="#agencies" role="tab" id="agencies-tab" data-toggle="tab" aria-controls="agencies" aria-expanded="false">代理机构</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
@@ -64,9 +64,9 @@
 				<button type="button" class="btn btn-primary searchBtn">搜索</button>
 			</div>
 
-			<div role="tabpanel" class="tab-pane fade" id="agencyPeople" aria-labelledby="agencyPeople-tab">
+			<div role="tabpanel" class="tab-pane fade" id="agents" aria-labelledby="agencyPeople-tab">
 				<label class="labelBox">
-					<i>律师名称</i><input type="text" class="type name" placeholder="请输入代理人名称">
+					<i>代理人名称</i><input type="text" class="type name" placeholder="请输入代理人名称">
 				</label>
 				<br>
 				<label class="labelBox">
@@ -76,7 +76,7 @@
 				<button type="button" class="btn btn-primary searchBtn">搜索</button>
 			</div>
 
-			<div role="tabpanel" class="tab-pane fade" id="agency" aria-labelledby="agency-tab">
+			<div role="tabpanel" class="tab-pane fade" id="agencies" aria-labelledby="agency-tab">
 				<label class="labelBox textarea">
 					<i>专利描述</i><br/>
 					<textarea placeholder="请输入专利描述"  class="propery"></textarea>
@@ -96,6 +96,7 @@
     });
     $("#footer").load('common/footer.html');
 </script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.data.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.js"></script>
