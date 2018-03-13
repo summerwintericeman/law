@@ -2,7 +2,60 @@
  * Created by sphwjj on 2018/3/10.
  */
 $(function() {
-	
+	var listflag = true;
+	var all = {
+		listTotal: 0,
+		listnum: 1,
+		reasonObj: null,
+		allCookie: null
+	}
+	var tempCookie = $.cookie('all');
+	console.log(tempCookie)
+	if(tempCookie) {
+		all = JSON.parse(tempCookie);
+		
+	}
+
+	function cookieMess(page_num) {
+		var num = page_num;
+		var cookie = $.cookie('searchLawyer');
+		if(!cookie) {
+			return;
+		} else {
+			if(all.allCookie != cookie) {
+				//判断新页面的信息和旧业面信息是否一致，一致则换分页的页数不一致则从新开始
+				all.allCookie = cookie;
+				num = 1;
+			}
+			var cookieM = JSON.parse(cookie),
+				name = cookieM.name || '',
+				des = cookieM.des || '',
+				city = cookieM.city || '';
+			all.reasonObj = cookieM;
+			getPreMessage(name, des, city, num);
+		}
+
+	};
+
+	function getPreMessage(name, des, city, page_num) {
+		console.log(name);
+		console.log(des);
+		console.log(city);
+		console.log(page_num);
+		
+		if(name) {
+			caseFoud(des, function(res) {
+				lawyerMatch(res, name, page_num);
+			});
+		} else {
+			caseFoud(des, function(res) {
+				//console.log(res);
+				lawyerList(res, city, page_num);
+			});
+		}
+
+	}
+
 	function lawyerList(obj, city, page_num) {
 		var temp = null;
 		var param = JSON.stringify({
@@ -11,7 +64,7 @@ $(function() {
 			'page_count': 12,
 			'page_num': page_num
 		});
-		console.log(param);
+		//console.log(param);
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.92.38.167:8889/static_query/lawyer_list', // http://47.92.38.167:8888/  http://47.92.38.167:8889
@@ -19,11 +72,17 @@ $(function() {
 			data: param,
 			success: function(res) {
 				if(res.code == 0) {
-					console.log(res);
+					//console.log(res);
 					console.log(res.max_page_num);
-					//creatPageList(res.max_page_num, page_num, 12)
-					creatPage(res.max_page_num, page_num);
-					for(var i = 0; i < res.data.length; i++ ) {
+					//获得总页数
+					all.listTotal = res.max_page_num;
+					var tempCoo = JSON.stringify(all);
+					$.cookie('all', tempCoo);
+					if(listflag) {
+						creatPage(res.max_page_num, page_num);
+						listflag = false;
+					}
+					for(var i = 0; i < res.data.length; i++) {
 						createLawList(res.data[i]);
 					}
 				}
@@ -33,9 +92,7 @@ $(function() {
 				console.error('/static_query/lawyer_list', arguments);
 			}
 		});
-		
 
-		
 	};
 
 	function lawyerMatch(caseDes, name, page_num) {
@@ -53,7 +110,7 @@ $(function() {
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(data) {
-				console.log(data);
+
 			},
 			error: function() {
 				console.error('/static_query/lawyer_list', arguments);
@@ -78,91 +135,38 @@ $(function() {
         </li>`;
 		ulNote = $(".center-block").append(noteNew);
 	}
-	
-	
-//	function creatPageList(max_page_num, page_num, page_count){
-//		 $('#callBackPager').extendPagination({
-//
-//          totalCount: max_page_num*page_count,
-//
-//          showCount: page_num,
-//
-//          limit: page_count,
-//
-//          callback: function (cur, page_num) {
-//          	console.log(cur)
-//
-////              creatPage(max_page_num, page_num);
-//
-//          }
-//
-//      });
-//	}
-	
-	
-	
-	
-	
-	
-	function creatPage(num, page_num){
+
+	function creatPage(num, page_num) {
 		var liNote = $(".before");
-		for(var i = 1; i <= num; i++ ){
+		for(var i = 1; i <= num; i++) {
 			var noteNew = `<li class="changePage">
 					<a href="#">${i}</a>
 				</li>`;
-				if(i == page_num){
-					noteNew = `<li class="changePage active">
+			if(i == page_num) {
+				noteNew = `<li class="changePage active">
 					<a href="#">${i}</a>
 				</li>`;
-				}
+			}
 			liNote.before(noteNew);
 		}
-		
 	}
-	
-	
-    
-	function getPreMessage(name, des, city, page_num){
-		console.log(name);
-		console.log(des);
-		console.log(city);	
-		console.log(page_num);
-		
-		if(name) {
-			caseFoud(des, function(res) {
-				lawyerMatch(res, name, page_num);
-			});
-		} else {
-			caseFoud(des, function(res) {
-				console.log(res);
-				lawyerList(res, city, page_num);
-			});
-		}
-		
-	}
-	
-	function cookieMess(page_num) {
-		var num = page_num || 1;
-		var cookie = $.cookie('searchLawyer');
-		if(!cookie) {
-			return;
-		}
-		var cookieM = JSON.parse(cookie),
-			name = cookieM.name || '',
-			des = cookieM.des || '',
-			city = cookieM.city || '';
-			getPreMessage(name, des, city, num);
-			return cookieM;
-		
-	};
-	
-	$(".pagination").on("click",".changePage",function(event){
-			
-			console.log(event.target.innerHTML);
-			var page_num = event.target.innerHTML;
-			var temp = cookieMess(page_num);
-			getPreMessage(temp.name, temp.des, temp.city, page_num);
-            
-    });
-    cookieMess();
+
+	$(".pagination").on("click", ".changePage", function(event) {
+
+		console.log(event.target.innerHTML);
+		var page_num = event.target.innerHTML;
+
+		//点击增加active 效果去除其他的active效果
+
+		//获得页数
+		all.listnum = page_num;
+		var tempCoo = JSON.stringify(all);
+		$.cookie('all', tempCoo);
+		//获取对应页数的页面信息
+		console.log(all);
+		//通过all 来进行参数的给予
+		getPreMessage(all.reasonObj.name, all.reasonObj.des, all.reasonObj.city, page_num)
+
+	});
+	cookieMess(1);
 });
