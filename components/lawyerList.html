@@ -50,13 +50,22 @@
 
 
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <script>
     $('#header').load('common/header.html',function () {
+        //律师列表、案件列表页面是从民事案件跳转过来的，还是从知识产权案跳转过来的    people    propery
+        var fromPage = $.cookie('fromPage');
+        if(fromPage && fromPage=='propery'){
+            $('.path a').eq(0).attr('href','propery.html');
+            $('.mainNav li').removeClass('active').eq(2).addClass('active');
+            return;
+        }
         $('.mainNav li').removeClass('active').eq(1).addClass('active');
+
     });
     $("#footer").load('common/footer.html');
 </script>
-<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+
 <script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.data.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.js"></script>

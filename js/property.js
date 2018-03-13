@@ -5,14 +5,15 @@
  * Created by sphwjj on 2018/2/28.
  */
 $(document).ready(function() {
+
     //判断当前显示teb页
     (function(){
         var pageActive = getUrlParam('page');
         if(pageActive){
             switch(pageActive){
-                case 'case':$('#profile-tab').tab('show');break;
-                case 'agencyPeople':$('#agencyPeople-tab').tab('show');break;
-                case 'agency':$('#agency-tab').tab('show');break;
+                case 'case':$('#case-tab').tab('show');break;
+                case 'agents':$('#agents-tab').tab('show');break;
+                case 'agencies':$('#agencies-tab').tab('show');break;
             }
 
         }
@@ -152,6 +153,7 @@ $(document).ready(function() {
             //     caseList(res, 1, city);
             // });
             $.cookie('searchCase', obj,{path:'/'});//查案件
+            window.location.href = 'caseList.html';
         }
     });
 
@@ -165,7 +167,7 @@ $(document).ready(function() {
                 com:agencies//代理机构名称
             });
             $.cookie('agents',obj,{path:'/'});
-            window.location.href = 'agents.html';
+            window.location.href = 'agentsList.html';
         }else{
             $('#agents .errorTip').html('　*请输入代理人名称或代理机构名称');
         }
@@ -173,6 +175,24 @@ $(document).ready(function() {
 
     //查代理机构
     agenciesBtn.on('click',function(){
+        var zhuanLi = $('#agencies .propery').val(),
+            cityNode = $('#agencies .title span'),
+            city = '';
+        if(cityNode[1]) {
+            city = cityNode.eq(1).html();
+        } else if(cityNode[0]) {
+            city = cityNode.eq(0).html();
+        };
+        var obj = JSON.stringify({
+            des:zhuanLi,
+            city:city
+        });
+        if(zhuanLi){
+            $.cookie('agencies',obj,{path:'/'});
+            window.location.href = 'agenciesList.html';
+        }else{
+            $('#agencies .errorTip').html('　*请输入专利描述');
+        }
 
     });
 
@@ -205,5 +225,8 @@ $(document).ready(function() {
     //         }
     //     });
     // };
+
+    //保存cookie
+    $.cookie('fromPage','propery',{path:'/'});
 
 });

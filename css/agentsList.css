@@ -1,0 +1,130 @@
+#agentsList .mainWrap{
+    margin-top: .42rem;
+    background: #fff;
+    padding: .25rem 10%;
+}
+#agentsList .mainWrap .path{
+    padding-bottom: 20px;
+}
+#agentsList .mainWrap .path a.active{
+    color: #5068a9;
+}
+#agentsList .mainWrap .path i{
+    padding: 0 5px;
+}
+#agentsList .mainWrap>ul{
+    width: 7rem;
+}
+#agentsList .mainWrap>ul li{
+    padding: .1rem .2rem;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+    padding-bottom: 35px;
+}
+#agentsList .mainWrap>ul li:hover{
+    box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
+}
+#agentsList .mainWrap>ul li p{
+    color:#000;
+    font-size: 16px;
+}
+#agentsList .mainWrap>ul li p.name{
+    height: .45rem;
+    line-height: .45rem;
+}
+#agentsList .mainWrap>ul li p.name span{
+    font-size: .2rem;
+    font-weight: bold;
+}
+#agentsList .mainWrap>ul li p.name i{
+    display: inline-block;
+    border-left: 2px solid #151414b8;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+#agentsList .mainWrap>ul li p.location{
+    height: 35px;
+    line-height: 35px;
+    color:#5068a9;
+}
+#agentsList .mainWrap>ul li p.location i{
+    padding-right: 5px;
+    color: rgba(0,0,0,.5);
+}
+#agentsList .mainWrap>ul li p.info span {
+    display:inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+#agentsList .mainWrap>ul li p.info span:nth-child(odd){
+    width: 380px;
+}
+#agentsList .mainWrap>ul li p.info span>i{
+    font-weight: normal;
+}
+/*#agentsList .mainWrap>ul li p.info span:nth-child(1) i:nth-child(1){*/
+    /*font-size: 18px;*/
+    /*color: #be0707;*/
+/*}*/
+#agentsList .mainWrap>ul li p.info span:nth-child(1) i:nth-child(2){
+    font-size: 14px;
+    color: #858585;
+}
+#agentsList .mainWrap>ul li p.des{
+    margin: 20px 0;
+    overflow: hidden;
+    height: 110px;
+}
+#agentsList .mainWrap>ul li p.des>i{
+    display: block;
+    position: relative;
+    padding-left: 10px;
+    height: 30px;
+ }
+#agentsList .mainWrap>ul li p.des>i:before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 3px;
+    height: 15px;
+    background: red;
+    left: 2px;
+    top: 3px;
+}
+#agentsList .mainWrap>ul li p.des>span{
+    line-height: 25px;
+    width: 100%;
+    max-height: 75px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+#agentsList .mainWrap>ul li p.des>span:after{
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 5px;
+    width: 27px;
+    height: 24px;
+    color: #000;
+    background-color: #fff;
+    line-height: 14px;
+}
+#agentsList .mainWrap>ul li a.details{
+    position: absolute;
+    bottom: 10px;
+    left: 265px;
+    background: #5068a9;
+    color: #fff;
+    width: 110px;
+}
+#agentsList .mainWrap>ul li a.details:hover{
+    background: #40599b;
+}
+#agentsList .mainWrap>ul li a.details:focus{
+    outline: none;
+}

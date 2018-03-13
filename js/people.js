@@ -2,6 +2,8 @@
  * Created by sphwjj on 2018/2/28.
  */
 $(document).ready(function() {
+
+
 	//判断当前显示找律师 还是显示查案件
 	(function() {
 		var pageActive = getUrlParam('page');
@@ -129,5 +131,9 @@ $(document).ready(function() {
 			}
 		});
 	};
+
+	//保存cookie
+	$.cookie('fromPage','people',{path:'/'});
+
 
 });
