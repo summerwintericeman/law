@@ -1,4 +1,17 @@
 $(document).ready(function() {
+//	var login = $.cookie("login");
+//	if(login){
+//		console.log(JSON.parse(login));
+//	}else{
+//		console.log(login)
+//	}
+	
+	
+	
+	
+	
+	
+	
 	//轮播图
 	$(".area").hover(function() {
 
@@ -19,7 +32,7 @@ function getUrlParam(name){
 };
 
 //错误模态框
-function errorModal(tip){
+function errorModal(tip,callback){
 	var template = '<div class="modal fade bs-example-modal-sm in" tabindex="-1" id="errorModal" role="dialog" aria-labelledby="mySmallModalLabel" style="display: block; padding-right: 16px;"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="mySmallModalLabel">消息提示</h4></div><div class="modal-body"><span id="modalText"></span></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">确定</button></div></div></div></div>';
 	if($('#errorModal').length==0){
         $('html').append(template);
@@ -28,7 +41,12 @@ function errorModal(tip){
     $('#errorModal').on('shown.bs.modal', function (e) {
 			$('#modalText').html(tip);
     });
+    $('#errorModal').on('hidden.bs.modal', function (e) {
+			if(callback)
+				callback();
+    });
 };
+
 
 function caseFoud(caseDes, callback) {
 	var Data = JSON.stringify({
