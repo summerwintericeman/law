@@ -176,12 +176,12 @@ body::-webkit-scrollbar-thumb:hover{
 	padding: 0 10%;
 	height: 0.42rem;
 	width: 100%;
-	background-color: #5068a9d1;
+	background-color: #7083B9;
 	color: #fff;
 	min-width: 9.6rem;
 }
 .top_nav:hover{
-	background-color: #455c9bf2;
+	background-color: #4E64A0;
 }
 
 .top_nav .compony_logo {
@@ -290,7 +290,7 @@ body::-webkit-scrollbar-thumb:hover{
 	font-size: 0.25rem;
 	font-weight: 900;
 	position: absolute;
-	left: 94px;
+	left: 50%;
 	top: -60px;
 	background: #ddd;
 	width: 120px;
@@ -299,6 +299,7 @@ body::-webkit-scrollbar-thumb:hover{
 	line-height: 65px;
 	z-index: -1;
 	box-shadow: 10px -2px 20px rgba(104, 111, 133, 0.5);
+	margin-left: -60px;
 }
 
 #index .choice li p:nth-child(2) {

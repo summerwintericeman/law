@@ -1,76 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
-    <link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    <link rel="stylesheet" type="text/css" href="../css/lawyerList.css" />
-    <title>律师</title>
-</head>
-<body id="lawyerListBody">
-<div id="header"></div>
-<div class="mainWrap">
-    <div class="path">
-        <a href="people.html">找律师</a><i>&gt;</i>
-        <a class="active">律师列表</a>
-    </div>
-    <ul class="center-block">
-        <li>
-            <a href="lawyerDetail.html?id=0"  class="contant">
-                <p class="name"><span class="pull-left">李小明</span><i>男</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>北京市京师律师事务所</p>
-                <p class="info">
-                    <span>代理案件：<i>123</i> <i>起</i></span>
-                    <span>学历：<i>硕士</i></span>
-                </p>
 
-            </a>
-            <a class="details btn" href="lawyerDetail.html?id=0">查看详情</a>
-        </li>
-        <li>
-            <a href="lawyerDetail.html?id=1" class="contant">
-                <p class="name"><span class="pull-left">李小明</span><i>男</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>北京市京师律师事务所</p>
-                <p class="info">
-                    <span>代理案件：<i>123</i> <i>起</i></span>
-                    <span>学历：<i>硕士</i></span>
-                </p>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
+		<link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lawyerList.css" />
+		<title>律师</title>
+	</head>
 
-            </a>
-            <a class="details btn" href="lawyerDetail.html?id=1">查看详情</a>
-        </li>
-    </ul>
-</div>
-<div id="footer"></div>
-</body>
+	<body id="lawyerListBody">
+		<div id="header"></div>
+		<div class="mainWrap">
+			<div class="path">
+				<a href="people.html">找律师</a><i>&gt;</i>
+				<a class="active">律师列表</a>
+			</div>
 
+			<ul class="center-block parentUl">
+				
+			</ul>
+		</div>
+		<nav aria-label="Page navigation" class="text-center">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				
+				<li class="before">
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="footer"></div>
+	</body>
 
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.cookie.js"></script>
-<script>
-    $('#header').load('common/header.html',function () {
-        //律师列表、案件列表页面是从民事案件跳转过来的，还是从知识产权案跳转过来的    people    propery
-        var fromPage = $.cookie('fromPage');
-        if(fromPage && fromPage=='propery'){
-            $('.path a').eq(0).attr('href','propery.html');
-            $('.mainNav li').removeClass('active').eq(2).addClass('active');
-            return;
-        }
-        $('.mainNav li').removeClass('active').eq(1).addClass('active');
-
-    });
-    $("#footer").load('common/footer.html');
-</script>
-
-<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
-<script src="../plugin/cityPicker/js/city-picker.js"></script>
-<script type="text/javascript" src="../js/index.js"></script>
-<script type="text/javascript" src="../js/lawyerList.js"></script>
-
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script>
+		$('#header').load('common/header.html', function() {
+			$('.mainNav li').removeClass('active').eq(1).addClass('active');
+		});
+		$("#footer").load('common/footer.html');
+	</script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
+	<script src="../plugin/cityPicker/js/city-picker.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/lawyerList.js"></script>
+	<script type="text/javascript" src="../plugin/page/extendPagination.js"></script>
 
 </html>

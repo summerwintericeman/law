@@ -36,6 +36,7 @@ $(document).ready(function() {
 		} else { 
 			$.cookie('searchLawyer', template,{path:'/'}); //找律师存储cookie
 			console.log($.cookie('searchLawyer'));
+			$.cookie('all','',{ expires: -1 });
 			window.location.href = 'lawyerList.html';	
 		};
 	});
@@ -48,31 +49,7 @@ $(document).ready(function() {
 
 	
 
-	function lawyerMatch(caseDes, name, page_num) {
-		var param = {
-			'page_count': 12,
-			'reason': {
-				'reason_2': '侵权责任纠纷' || ''
-			},
-			'lawyer_name': name,
-			'page_num': page_num
-		};
-		$.ajax({
-			dataType: 'json',
-			url: 'http://47.92.38.167:8889/static_query/lawyer_match', //http://47.92.38.167:9091
-			type: 'post',
-			data: JSON.stringify(param),
-			success: function(data) {
-				debugger;
-				console.log(data);
-				//window.location.href = 'lawyerList.html';
-			},
-			error: function() {
-				console.error('/static_query/lawyer_list', arguments);
-			}
-		});
-
-	};
+	
 
 	//查案件
 	caseBtn.on('click', function() {
@@ -94,13 +71,10 @@ $(document).ready(function() {
 				city: city
 			});
 
-			$.cookie('searchCase', template); //找律师存储cookie
+			$.cookie('searchCase', template,{path:'/'}); //找律师存储cookie
 			console.log($.cookie('searchCase'));
 			window.location.href = 'caseList.html';
 
-			//			caseFoud(caseDescription, function(res){
-			//				caseList(res, 1, city);
-			//			});
 		}
 	});
 
@@ -108,29 +82,7 @@ $(document).ready(function() {
 		$('#case .errorTip').html('');
 	});
 
-	function caseList(reason_2, page_num, region) {
-		var param = {
-			'reason': {
-				'reason_2': reason_2
-			},
-			"page_count": 12,
-			"page_num": page_num,
-			"region": region
-		};
-		$.ajax({
-			dataType: 'json',
-			url: 'http://47.92.38.167:8889//static_query/case_list',
-			type: 'post',
-			data: JSON.stringify(param),
-			success: function(res) {
-				console.log(res);
-
-			},
-			error: function() {
-				console.error('/static_query/lawyer_detail', arguments);
-			}
-		});
-	};
+	
 
 	//保存cookie
 	$.cookie('fromPage','people',{path:'/'});
