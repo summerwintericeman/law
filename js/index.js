@@ -47,13 +47,11 @@ function caseFoud(caseDes, callback) {
 			if(res.code == 0 && res.data) { //表示请求成功
 				var reason = res.data[0].reason,
 					num = "reason_" + res.data[0].sub_reason_class;
-				var obj = {
-					"reason2": res.data[0].second_reason
-				}
+				var obj = {};
 				obj[num] = reason;
 
 				if(callback) {
-					callback(JSON.stringify(obj));
+					callback(obj);
 				}
 			} else {
 				errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);

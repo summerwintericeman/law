@@ -35,8 +35,7 @@ $(document).ready(function() {
 			$('#lawyer .errorTip').html('*请输入案件描述或律师名称');
 		} else { 
 			$.cookie('searchLawyer', template,{path:'/'}); //找律师存储cookie
-			console.log($.cookie('searchLawyer'));
-			$.cookie('all','',{ expires: -1 });
+			 $.cookie('all','',{ expires: -1 ,path:'/'});
 			window.location.href = 'lawyerList.html';	
 		};
 	});
