@@ -25,10 +25,10 @@ $(document).ready(function() {
 });
 
 //获取url地址栏参数
-function getUrlParam(name){
+function getUrlParam(name,pare){
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
-	if (r != null) return unescape(r[2]); return null; //返回参数值
+	if (r != null) return pare?decodeURIComponent(r[2]):unescape(r[2]); return null; //返回参数值
 };
 
 //错误模态框
@@ -70,7 +70,7 @@ function caseFoud(caseDes, callback) {
 					callback(JSON.stringify(obj));
 				}
 			} else {
-				alert("查询失败，错误代码：code=" + res.code + res.msg);
+				errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);
 			}
 		},
 		error: function() {
@@ -78,6 +78,9 @@ function caseFoud(caseDes, callback) {
 		}
 	});
 }
+
+
+
 
 
 

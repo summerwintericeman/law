@@ -13,7 +13,7 @@ $(function() {
 	console.log(tempCookie)
 	if(tempCookie) {
 		all = JSON.parse(tempCookie);
-		
+
 	}
 
 	function cookieMess(page_num) {
@@ -22,7 +22,7 @@ $(function() {
 		if(!cookie) {
 			return;
 		} else {
-			if(all.allCookie != cookie) {
+			if(all.allCookie && (all.allCookie != cookie)) {
 				//判断新页面的信息和旧业面信息是否一致，一致则换分页的页数不一致则从新开始
 				all.allCookie = cookie;
 				num = 1;
@@ -55,6 +55,20 @@ $(function() {
 		}
 
 	}
+	
+//	var i=0;
+//	var timer = setInterval(function(){
+//		if(i==5){
+//			clearInterval(timer);
+//		}
+//		var obj = JSON.stringify({reason:{reason2:"与公司、证券、保险、票据等有关的民事纠纷",reason_3:"保险纠纷"}});
+//		lawyerList(obj,'',i);
+//		i++;
+//		
+//	},5000);
+
+	
+	
 
 	function lawyerList(obj, city, page_num) {
 		var temp = null;
@@ -64,13 +78,14 @@ $(function() {
 			'page_count': 12,
 			'page_num': page_num
 		});
-		//console.log(param);
+		console.log(param);
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.92.38.167:8889/static_query/lawyer_list', // http://47.92.38.167:8888/  http://47.92.38.167:8889
 			type: 'post',
 			data: param,
 			success: function(res) {
+				console.log(res);
 				if(res.code == 0) {
 					//console.log(res);
 					console.log(res.max_page_num);
@@ -85,10 +100,13 @@ $(function() {
 					for(var i = 0; i < res.data.length; i++) {
 						createLawList(res.data[i]);
 					}
+				}else{
+					errorModal(res.msg);
 				}
 
 			},
 			error: function() {
+				errorModal('请求律师列表失败！');
 				console.error('/static_query/lawyer_list', arguments);
 			}
 		});
@@ -122,8 +140,10 @@ $(function() {
 	function createLawList(obj) {
 		var ulNote = $(".center-block");
 		ulNote.innerHTML = '';
+		var lawyer_name = encodeURIComponent(obj.name);
+		var lawyer_location = encodeURIComponent(obj.location);
 		var noteNew = `<li class="lipad">
-            <a href="lawyerDetail.html?lawyer_name=${obj.name}&lawyer_location=${obj.location}"  class="contant">
+            <a href="lawyerDetail.html?lawyer_name=${lawyer_name}&lawyer_location=${lawyer_location}"  class="contant">
                 <p class="name"><span class="pull-left">${obj.name}</span><i>${obj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${obj.location}</p>
                 <p class="info">

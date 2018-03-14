@@ -84,7 +84,7 @@
     border-bottom-color:#5068a9;
 }
 /*地区插件样式*/
-#cityPicker,#cityPicker1{
+#cityPicker,#cityPicker1,#cityPicker2{
     position: absolute;
     top: 0;
     left:1.2rem;

@@ -24,7 +24,7 @@ $(function() {
 		};
 		$.ajax({
 			dataType: 'json',
-			url: 'http://47.92.38.167:8889//static_query/case_list',
+			url: 'http://47.92.38.167:8889/static_query/case_list',
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(res) {

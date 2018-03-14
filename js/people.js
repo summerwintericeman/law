@@ -2,6 +2,8 @@
  * Created by sphwjj on 2018/2/28.
  */
 $(document).ready(function() {
+
+
 	//判断当前显示找律师 还是显示查案件
 	(function() {
 		var pageActive = getUrlParam('page');
@@ -34,6 +36,7 @@ $(document).ready(function() {
 		} else { 
 			$.cookie('searchLawyer', template,{path:'/'}); //找律师存储cookie
 			console.log($.cookie('searchLawyer'));
+			$.cookie('all','',{ expires: -1 });
 			window.location.href = 'lawyerList.html';	
 		};
 	});
@@ -80,5 +83,9 @@ $(document).ready(function() {
 	});
 
 	
+
+	//保存cookie
+	$.cookie('fromPage','people',{path:'/'});
+
 
 });
