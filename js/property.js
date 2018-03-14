@@ -46,6 +46,7 @@ $(document).ready(function() {
             $('#lawyer .errorTip').html('*请输入案件描述或律师名称');
         } else {
             $.cookie('searchLawyer',obj,{path:'/'});
+           
             window.location.href = 'lawyerList.html';
         };
 

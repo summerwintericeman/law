@@ -2,9 +2,13 @@
  * Created by sphwjj on 2018/3/10.
  */
 $(function() {
-
+debugger;
 	(function cookieMess() {
-		var cookieMess = JSON.parse($.cookie('searchLawyer')),
+		var getCookie = $.cookie('searchCase');
+		if(!getCookie)
+			return;
+
+		var cookieMess = JSON.parse(getCookie),
 			des = cookieMess.des,
 			city = cookieMess.city;
 
@@ -13,11 +17,9 @@ $(function() {
 		});
 	})();
 
-	function caseList(reason_2, page_num, region) {
+	function caseList(reason, page_num, region) {
 		var param = {
-			'reason': {
-				'reason_2': reason_2
-			},
+			'reason': reason,
 			"page_count": 12,
 			"page_num": page_num,
 			"region": region
