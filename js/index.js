@@ -1,17 +1,18 @@
 $(document).ready(function() {
-//	var login = $.cookie("login");
-//	if(login){
-//		console.log(JSON.parse(login));
-//	}else{
-//		console.log(login)
-//	}
-	
-	
-	
-	
-	
-	
-	
+	var temp = $.cookie("userMess");
+//	console.log(temp)
+//	if(!temp) {
+////		errorModal("请先登录");
+////		console.log(window.location.href)
+////		var str = window.location.href;
+////		var strRE = str.split("index.html");
+////		console.log(str)
+////		console.log(strRE)
+////		var a = strRE[0] + "components/login.html";
+////		console.log(a)
+////		window.open(a);
+//	} 
+
 	//轮播图
 	$(".area").hover(function() {
 
@@ -25,28 +26,28 @@ $(document).ready(function() {
 });
 
 //获取url地址栏参数
-function getUrlParam(name,pare){
+function getUrlParam(name, pare) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
-	if (r != null) return pare?decodeURIComponent(r[2]):unescape(r[2]); return null; //返回参数值
+	if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
+	return null; //返回参数值
 };
 
 //错误模态框
-function errorModal(tip,callback){
+function errorModal(tip, callback) {
 	var template = '<div class="modal fade bs-example-modal-sm in" tabindex="-1" id="errorModal" role="dialog" aria-labelledby="mySmallModalLabel" style="display: block; padding-right: 16px;"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="mySmallModalLabel">消息提示</h4></div><div class="modal-body"><span id="modalText"></span></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">确定</button></div></div></div></div>';
-	if($('#errorModal').length==0){
-        $('html').append(template);
+	if($('#errorModal').length == 0) {
+		$('html').append(template);
 	};
-    $('#errorModal').modal('show');
-    $('#errorModal').on('shown.bs.modal', function (e) {
-			$('#modalText').html(tip);
-    });
-    $('#errorModal').on('hidden.bs.modal', function (e) {
-			if(callback)
-				callback();
-    });
+	$('#errorModal').modal('show');
+	$('#errorModal').on('shown.bs.modal', function(e) {
+		$('#modalText').html(tip);
+	});
+	$('#errorModal').on('hidden.bs.modal', function(e) {
+		if(callback)
+			callback();
+	});
 };
-
 
 function caseFoud(caseDes, callback) {
 	var Data = JSON.stringify({
@@ -76,9 +77,14 @@ function caseFoud(caseDes, callback) {
 		}
 	});
 }
-
-
-
-
-
-
+//跳转登录的函数
+function loginCheck() {
+	var temp = $.cookie("userMess");
+	console.log(temp)
+	if(temp) {
+		window.location.href = "../index.html"
+	} else {
+		errorModal("请先登录");
+		//window.location.href = "./login.html"
+	}
+}
