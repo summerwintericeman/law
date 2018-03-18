@@ -12,45 +12,48 @@
 #caseListBody .mainWrap .path i{
     padding: 0 5px;
 }
-#caseListBody .mainWrap ul{
+#caseListBody .mainWrap>ul{
     width: 7rem;
 }
-#caseListBody .mainWrap ul li{
+#caseListBody .mainWrap>ul li{
     padding: .1rem .2rem;
     border-bottom: 1px solid #ccc;
     position: relative;
     box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 }
-#caseListBody .mainWrap ul li:hover{
+#caseListBody .mainWrap>ul li:hover{
     box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
 }
-#caseListBody .mainWrap ul li p{
+#caseListBody .mainWrap>ul li p{
     color:#000;
     font-size: 16px;
 
 }
-#caseListBody .mainWrap ul li p.title{
+#caseListBody .mainWrap>ul li p.title{
     height: .45rem;
     line-height: .45rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
-#caseListBody .mainWrap ul li p.court{
+#caseListBody .mainWrap>ul li p.court{
     height: 35px;
     line-height: 35px;
 }
-#caseListBody .mainWrap ul li p.info span{
+#caseListBody .mainWrap>ul li p.info span{
     display: inline-block;
     height: 30px;
     line-height:30px;
 }
-#caseListBody .mainWrap ul li p.info span:nth-child(1){
+#caseListBody .mainWrap>ul li p.info span:nth-child(1){
     display: block;
 }
-#caseListBody .mainWrap ul li p.info span:nth-child(2){
-    padding-right:20px;
+#caseListBody .mainWrap>ul li p.info span:nth-child(2){
+    display: block;
 }
 
 
-#caseListBody .mainWrap ul li a.details{
+#caseListBody .mainWrap>ul li a.details{
     position: absolute;
     bottom: 10px;
     right: 50px;
@@ -58,9 +61,16 @@
     color: #fff;
     width: 110px;
 }
-#caseListBody .mainWrap ul li a.details:hover{
+#caseListBody .mainWrap>ul li a.details:hover{
     background: #40599b;
 }
-#caseListBody .mainWrap ul li a.details:focus{
+#caseListBody .mainWrap>ul li a.details:focus{
     outline: none;
+}
+
+#caseListBody .pagination{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }

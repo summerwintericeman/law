@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css">
     <link rel="stylesheet" href="../plugin/cityPicker/css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    <link rel="stylesheet" type="text/css" href="../css/lawyerDetail.css" />
+    <link rel="stylesheet" type="text/css" href="../css/agentsDetail.css" />
     <title>专宝贝</title>
 </head>
-<body id="lawyerDetail">
+<body id="agentsDetail">
 <div id="header"></div>
 <div class="mainWrap">
     <div class="path">
-        <a href="people.html">找律师</a><i>&gt;</i>
-        <a href="lawyerList.html">律师列表</a><i>&gt;</i>
-        <a class="active">律师信息</a>
+        <a href="propery.html?page=agents">找代理人</a><i>&gt;</i>
+        <a href="agentsList.html">代理人列表</a><i>&gt;</i>
+        <a class="active">代理人信息</a>
     </div>
     <div class="content">
-
+        
     </div>
 </div>
 <div id="footer"></div>
@@ -30,7 +30,7 @@
     $('#header').load('common/header.html',function () {
         var fromPage = $.cookie('fromPage');
         if(fromPage && fromPage=='propery'){
-            $('.path a').eq(0).attr('href','propery.html');
+            $('.path a').eq(0).attr('href','propery.html?page=agents');
             $('.mainNav li').removeClass('active').eq(2).addClass('active');
             return;
         }
@@ -42,7 +42,7 @@
 <script src="../plugin/cityPicker/js/city-picker.data.js"></script>
 <script src="../plugin/cityPicker/js/city-picker.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
-<script type="text/javascript" src="../js/lawyerDetail.js"></script>
+<script type="text/javascript" src="../js/agentsDetail.js"></script>
 
 
 

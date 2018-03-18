@@ -55,28 +55,44 @@ a {
 a:hover {
 	text-decoration: none;
 }
-i{
+
+i {
 	font-style: normal;
 }
+
+.mouseHand {
+	cursor: default;
+}
+
 input {
 	border: none;
 	outline: none;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	color: #ccc; opacity:1;
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #ccc;
+	opacity: 1;
 }
 
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color: #ccc;opacity:1;
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #ccc;
+	opacity: 1;
 }
 
-input:-ms-input-placeholder,textarea:-ms-input-placeholder{
-	color: #ccc;opacity:1;
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #ccc;
+	opacity: 1;
 }
 
-input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
-	color: #ccc;opacity:1;
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #ccc;
+	opacity: 1;
 }
+
 img {
 	border: none
 }
@@ -88,12 +104,12 @@ html {
 html,
 body {
 	width: 100%;
-	height:100%;
+	height: 100%;
 	overflow: auto;
 }
 
 body {
-	font-family:'Arial','Helvetica','Times New Roman','PingFang SC','Microsoft YaHei', 'SimSun','Helvetica Neue','STHeitiSC-Light','sans-serif';
+	font-family: 'Arial', 'Helvetica', 'Times New Roman', 'PingFang SC', 'Microsoft YaHei', 'SimSun', 'Helvetica Neue', 'STHeitiSC-Light', 'sans-serif';
 	font-size: 0.14rem;
 	cursor: default;
 	min-width: 9.6rem;
@@ -103,9 +119,11 @@ body {
 p {
 	/*color: white;*/
 }
-.mainWrap{
+
+.mainWrap {
 	min-height: 1000px;
 }
+
 .button {
 	display: block;
 	text-align: center;
@@ -119,33 +137,37 @@ p {
 	line-height: 0.4rem;
 }
 
-a:focus{
+a:focus {
 	outline: none;
 	text-decoration: none;
 }
-.font-16{
+
+.font-16 {
 	font-size: 16px;
 }
-.font-18{
+
+.font-18 {
 	font-size: 18px;
 }
-.text-strong{
+
+.text-strong {
 	font-weight: bold;
 }
 
 body::-webkit-scrollbar {
-	width:.10rem;
+	width: .10rem;
 	height: .15rem;
 }
+
 body::-webkit-scrollbar-thumb {
 	background-color: rgba(93, 93, 93, 0.41);
 	border-radius: .15rem;
 	/*-webkit-box-shadow: inset .01rem 0 .01rem rgba(0,0,0,0.2), inset -0.01rem 0 .01rem rgba(0,0,0,0.2);*/
 }
-body::-webkit-scrollbar-thumb:hover{
+
+body::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(93, 93, 93, 0.41);
 }
-
 
 
 /*大小的单位统一采取rem*/
@@ -166,12 +188,14 @@ body::-webkit-scrollbar-thumb:hover{
 .floatR {
 	float: right;
 }
-#header{
+
+#header {
 	position: fixed;
 	width: 100%;
-	top:0;
+	top: 0;
 	z-index: 10;
 }
+
 .top_nav {
 	padding: 0 10%;
 	height: 0.42rem;
@@ -180,7 +204,8 @@ body::-webkit-scrollbar-thumb:hover{
 	color: #fff;
 	min-width: 9.6rem;
 }
-.top_nav:hover{
+
+.top_nav:hover {
 	background-color: #4E64A0;
 }
 
@@ -204,23 +229,27 @@ body::-webkit-scrollbar-thumb:hover{
 	padding: 0 0.15rem;
 }
 
-.top_nav .mainNav{
+.top_nav .mainNav {
 	border-bottom: none!important;
 }
-.top_nav .nav>li{
+
+.top_nav .nav>li {
 	margin: 0;
 }
-.top_nav .nav>li>a{
-    display: inline-block;
-    width: 120px;
-    text-align: center;
-    color: #fff;	
-    border: none;
-    border-radius: 0;
-    height: .42rem;
+
+.top_nav .nav>li>a {
+	display: inline-block;
+	width: 120px;
+	text-align: center;
+	color: #fff;
+	border: none;
+	border-radius: 0;
+	height: .42rem;
 }
-.top_nav .nav>li>a:hover,.top_nav .nav>li.active>a{
-	color:#000;
+
+.top_nav .nav>li>a:hover,
+.top_nav .nav>li.active>a {
+	color: #000;
 	background-color: #fff;
 	border: none;
 	border-radius: 0;
@@ -235,16 +264,21 @@ body::-webkit-scrollbar-thumb:hover{
 	width: 100%;
 }
 
-.circle .item{
+@media only screen and (max-width: 1024px) {
+	.circle {
+		height: 300px;
+	}
+}
+
+.circle .item {
 	height: 100%;
 }
 
-#indexBody .circle img{
+#indexBody .circle img {
 	display: block;
 	height: 100%;
 	width: 100%;
 }
-
 
 .user {
 	height: 100%;
@@ -258,9 +292,11 @@ body::-webkit-scrollbar-thumb:hover{
 	float: right;
 	margin-right: 0.20rem;
 }
-.user a:hover{
+
+.user a:hover {
 	color: red;
 }
+
 .area {
 	margin: 0 auto !important;
 }
@@ -270,16 +306,19 @@ body::-webkit-scrollbar-thumb:hover{
 	padding: 0 10%;
 	margin-top: 100px;
 }
-#index .choice li{
+
+#index .choice li {
 	border: 1px solid #ccc;
-	padding:15px;
+	padding: 15px;
 	position: relative;
 	background: #fff;
 	border-radius: 2px;
 }
-#index .choice li:hover{
-	box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
+
+#index .choice li:hover {
+	box-shadow: .02rem .02rem .1rem rgba(0, 0, 0, .2), -0.02rem -0.02rem .1rem rgba(0, 0, 0, .2);
 }
+
 #index .choice li p {
 	margin-bottom: 0.15rem;
 	line-height: 30px;
@@ -309,43 +348,57 @@ body::-webkit-scrollbar-thumb:hover{
 	font-weight: 900;
 	color: #5068a9;
 }
-#indexBody .choice .button:hover{
+
+#indexBody .choice .button:hover {
 	color: #fff;
 	background-color: #415792;
 }
-.footer{
-	background-color: rgba(0,0,0,0.7);
+
+.footer {
+	background-color: rgba(0, 0, 0, 0.7);
 	height: 1.35rem;
 	width: 100%;
-	border-top:0.01rem solid #cbc8c2;
+	border-top: 0.01rem solid #cbc8c2;
 	padding: 0 10%;
 	color: #fff;
 }
-.footer p{
+
+.footer p {
 	width: 100%;
 	text-align: center;
 	line-height: 0.3rem;
 }
-.footer p a{
+
+.footer p a {
 	color: #fff;
 }
 
 
 /*轮播*/
-.jsNav a:hover,.jsNav .imgSelected{
+
+.jsNav a:hover,
+.jsNav .imgSelected {
 	color: #5068a9;
 }
 
+
 /*bootstarp*/
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
-	border:none;
-}
-.top_nav .nav>li>a:focus, .nav>li>a:hover{
-	background-color:#fff;
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+	border: none;
 }
 
+.top_nav .nav>li>a:focus,
+.nav>li>a:hover {
+	background-color: #fff;
+}
+
+
 /*模态框样式*/
-#errorModal .modal-dialog{
+
+#errorModal .modal-dialog {
 	width: 450px;
 	height: 160px;
 	position: absolute;
@@ -353,18 +406,23 @@ body::-webkit-scrollbar-thumb:hover{
 	left: 50%;
 	margin: -80px -200px;
 }
-#errorModal .modal-dialog .modal-content{
-	width:100%;
-	height:100%;;
+
+#errorModal .modal-dialog .modal-content {
+	width: 100%;
+	height: 100%;
+	;
 }
-#errorModal .modal-dialog .modal-content .modal-header{
+
+#errorModal .modal-dialog .modal-content .modal-header {
 	padding: 10px 15px;
 }
-#errorModal .modal-dialog .modal-content .modal-body{
+
+#errorModal .modal-dialog .modal-content .modal-body {
 	font-size: 14px;
 	padding: 20px 15px;
 }
-#errorModal .modal-dialog .modal-content .modal-footer{
+
+#errorModal .modal-dialog .modal-content .modal-footer {
 	border: none;
 	font-size: 14px;
 	padding: 10px 15px

@@ -71,6 +71,7 @@ $(document).ready(function() {
 			});
 
 			$.cookie('searchCase', template,{path:'/'}); //找律师存储cookie
+            $.cookie('caseList','',{ expires: -1 ,path:'/'});
 			console.log($.cookie('searchCase'));
 			window.location.href = 'caseList.html';
 

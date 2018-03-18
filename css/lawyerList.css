@@ -102,3 +102,10 @@
 .lipad{
 	margin-bottom: 5px;
 }
+
+#lawyerListBody ul.pagination{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
