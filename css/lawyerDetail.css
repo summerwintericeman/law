@@ -12,6 +12,9 @@
 #lawyerDetail .mainWrap .path i{
     padding: 0 5px;
 }
+#lawyerDetail .content{
+    min-height: 300px;
+}
 #lawyerDetail .content h3{
     height:40px;
 }

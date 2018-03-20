@@ -121,7 +121,7 @@ p {
 }
 
 .mainWrap {
-	min-height: 1000px;
+	min-height: 814px;
 }
 
 .button {
@@ -400,7 +400,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 #errorModal .modal-dialog {
 	width: 450px;
-	height: 160px;
+	/*height: 160px;*/
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -426,4 +426,27 @@ body::-webkit-scrollbar-thumb:hover {
 	border: none;
 	font-size: 14px;
 	padding: 10px 15px
+}
+.tipsStyle{
+	color: #CCCCCC;
+	font-size: 14px;
+	line-height: 28px;
+}
+textarea{
+	font-size: 13px;
+	font-weight: 200;
+}
+.labelBox>i{
+    font-size: .16rem;
+    line-height: 20px;
+    width: 100%;
+}
+.labelBox>i>a{
+    font-size: 14px;
+ 	color: red;
+}
+.messMap{
+	height: 300px;
+	width: 100%;
+	border: 1px solid red;
 }

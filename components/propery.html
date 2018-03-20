@@ -16,15 +16,15 @@
 	<div id="header"></div>
 	<div class="mainWrap">
 		<ul id="searchTabs" class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">律师</a></li>
-			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">案件</a></li>
+			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">知识产权律师</a></li>
+			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">知识产权案件</a></li>
 			<li role="presentation" class="agents"><a href="#agents" id="agents-tab" role="tab" data-toggle="tab" aria-controls="agents" aria-expanded="false">代理人</a></li>
-			<!--<li role="presentation" class="agencies"><a href="#agencies" role="tab" id="agencies-tab" data-toggle="tab" aria-controls="agencies" aria-expanded="false">代理机构</a></li>-->
+			<li role="presentation" class="agencies"><a href="#agencies" role="tab" id="agencies-tab" data-toggle="tab" aria-controls="agencies" aria-expanded="false">代理机构</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
 				<label class="labelBox textarea">
-					<i>案件描述</i><br/>
+					<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
 					<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
 				</label>
 				<br/>
@@ -44,7 +44,7 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="case" aria-labelledby="case-tab">
 				<label class="labelBox textarea">
-					<i>案件描述</i><br/>
+					<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
 					<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
 				</label>
 				<br/>
@@ -68,11 +68,11 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="agents" aria-labelledby="agencyPeople-tab">
 				<label class="labelBox">
-					<i>代理人名称</i><input type="text" class="type name" placeholder="请输入代理人名称">
+					<i>代理人名称　　</i><input type="text" class="type name" placeholder="请输入代理人名称">
 				</label>
 				<br>
 				<label class="labelBox">
-					<i>代理机构名称</i><input type="text" class="type agency" placeholder="请输入代理机构名称">
+					<i>代理机构名称　</i><input type="text" class="type agency" placeholder="请输入代理机构名称">
 				</label>
 				<span class="errorTip"></span>
 				<button type="button" class="btn btn-primary searchBtn">搜索</button>
@@ -80,7 +80,7 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="agencies" aria-labelledby="agency-tab">
 				<label class="labelBox textarea">
-					<i>专利描述</i><br/>
+					<i>专利描述<a>(必填项，建议输入30字以上)</a></i><br/>
 					<textarea placeholder="请输入专利描述"  class="propery"></textarea>
 				</label>
 				<br/>

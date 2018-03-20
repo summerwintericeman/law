@@ -17,11 +17,7 @@
     font-weight: bold;
     width:4.5rem;
 }
-.peopleMain .labelBox>i{
-    font-size: .16rem;
-    display: inline-block;
-    width: .9rem;
-}
+
 .peopleMain .labelBox>input{
     height:.4rem;
     border: .01rem solid #ccc;
@@ -100,3 +96,4 @@
     background:#5068a9 ;
     color:#fff!important;
 }
+

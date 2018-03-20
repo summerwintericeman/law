@@ -12,25 +12,28 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<link rel="stylesheet" type="text/css" href="../css/people.css" />
 		<!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">-->
-	<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">
 	</head>
 
 	<body id="peopleBody">
 		<div id="people" class="all_center">
 			<div id="header"></div>
 
-
 			<!--代理人的界面选择-->
 			<div class="peopleMain mainWrap">
 				<ul id="searchTabs" class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active lawyer"><a href="#lawyer" id="home-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">找律师</a></li>
-					<li role="presentation" class="case"><a href="#case" role="tab" id="profile-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">查案件</a></li>
+					<li role="presentation" class="active lawyer">
+						<a href="#lawyer" id="home-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">找律师</a>
+					</li>
+					<li role="presentation" class="case">
+						<a href="#case" role="tab" id="profile-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">查案件</a>
+					</li>
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
 						<label class="labelBox textarea">
-							<i>案件描述</i><br/>
-							<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
+							<i>案件描述 <a>(必填项，建议输入30字以上)</a></i><br/>
+							<textarea style="font-weight:100 ; font-size: 13px;" placeholder="请输入案情描述，请尽量清楚的描述案件事实，--例如：＊和乙方发生交通事故，但乙方肇事后逃逸。＊发布得著作未经允许被他人使用，并利用该作品牟取利益等。" class="caseDescription"></textarea>
 						</label>
 						<br/>
 						<!--<label class="labelBox">
@@ -40,35 +43,44 @@
 						<div class="labelBox text-left">
 							<i>所在城市</i>
 							<div id="cityPicker">
-								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city">
 							</div>
 						</div>
+						<p class="tipsStyle">
+							＊在案件发生地寻找律师可以更方便地与律师沟通
+							<br />
+						            ＊当地律师熟悉当地的政策法规，可以提供更高质量的诉讼服务
+
+						</p>
+
 						<span class="errorTip"></span>
 						<button type="button" class="btn btn-primary searchBtn">搜索</button>
 					</div>
 
 					<div role="tabpanel" class="tab-pane fade" id="case" aria-labelledby="case-tab">
 						<label class="labelBox textarea">
-							<i>案件描述</i><br/>
-							<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
+							<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
+							<textarea placeholder="这里将进行模糊匹配，比如您输入“卡车事故”，会搜索到包含“挂货车”，“牵引车”等要素的案件"  class="caseDescription"></textarea>
 						</label>
 						<br/>
 						<div class="labelBox text-left">
 							<i>地区选择</i><br/>
 							<div id="cityPicker1">
-								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
+								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city">
 							</div>
 						</div>
+						<p class="tipsStyle">
+							＊在案件发生地寻找律师可以更方便地与律师沟通
+							<br />
+						            ＊当地律师熟悉当地的政策法规，可以提供更高质量的诉讼服务
+
+						</p>
 						<span class="errorTip"></span>
 						<button type="button" class="btn btn-primary searchBtn">搜索</button>
 					</div>
 				</div>
 
-
-
 			</div>
-
-
 
 			<div id="footer"></div>
 
@@ -77,10 +89,10 @@
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script>
-        $('#header').load('common/header.html',function () {
-            $('.mainNav li').removeClass('active').eq(1).addClass('active');
-        });
-        $("#footer").load('common/footer.html');
+		$('#header').load('common/header.html', function() {
+			$('.mainNav li').removeClass('active').eq(1).addClass('active');
+		});
+		$("#footer").load('common/footer.html');
 	</script>
 	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
