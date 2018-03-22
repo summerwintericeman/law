@@ -89,10 +89,7 @@ $(document).ready(function() {
             com:agencies//代理机构名称
         });
         $.cookie('agentsList','',{ expires: -1 ,path:'/'});
-        if(agents){
-            var _agents = encodeURIComponent(agents),_agencies = encodeURIComponent(agencies);
-            window.location.href = 'agentsDetail.html?per=' + _agents + '&com=' + _agencies;
-        }else if(!agents && agencies){
+        if(agents || agencies){
             $.cookie('agents',obj,{path:'/'});
             window.location.href = 'agentsList.html';
         }else{
