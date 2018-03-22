@@ -14,7 +14,6 @@ $(function(){
 			lawyer_name: name,
 			lawyer_location: _loction
 		});
-		console.log(param);
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.92.38.167:8889/query/lawyer/lawyer_info', // /query/lawyer/lawyer_info  /static_query/lawyer_infohttp://47.92.38.167:8888/  http://47.92.38.167:8889

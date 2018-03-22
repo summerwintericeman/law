@@ -16,8 +16,6 @@ $(document).ready(function() {
         $.each(pkg.data.agents,function(idx,ele){
             createLawList(ele);
         });
-
-
     });
 
     //添加案件列表子节点
@@ -39,7 +37,7 @@ $(document).ready(function() {
                 </p>
             </a>
             <a class="details btn" href="agentsDetail.html?per=${_cp_name}">查看详情</a>
-        </li>`
+        </li>`;
         ulNote.append(liNode);
     };
 

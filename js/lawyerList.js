@@ -2,6 +2,7 @@
  * Created by sphwjj on 2018/3/10.
  */
 $(document).ready(function() {
+	var fromPage = getUrlParam('fromPage');
 	var listflag = true;
 	var ulNote = $(".parentUl");
 	var all = {
@@ -172,7 +173,7 @@ $(document).ready(function() {
 			gender:obj.gender || '',
 			num:obj.num || '',
 			degree:obj.degree ||''
-		}
+		};
 		var noteNew = `<li class="lipad mouseHand">
             <a href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}"  class="contant">
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
@@ -184,6 +185,19 @@ $(document).ready(function() {
             </a>
             <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
         </li>`;
+		if(fromPage && fromPage=='property'){
+            noteNew = `<li class="lipad mouseHand">
+            <a href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}"  class="contant">
+                <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
+                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
+                <p class="info">
+                    <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>学历：<i>${newObj.degree}</i></span>
+                </p>
+            </a>
+            <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
+        </li>`;
+		}
 		ulNote.append(noteNew);
 	}
 

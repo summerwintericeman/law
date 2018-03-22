@@ -13,7 +13,7 @@ $(document).ready(function() {
             switch(pageActive){
                 case 'case':$('#case-tab').tab('show');break;
                 case 'agents':$('#agents-tab').tab('show');break;
-                case 'agencies':$('#agencies-tab').tab('show');break;
+                case 'patent':$('#patent-tab').tab('show');break;
             }
 
         }
@@ -23,7 +23,7 @@ $(document).ready(function() {
     var lawyerBtn = $('#lawyer .searchBtn'),
         caseBtn = $('#case .searchBtn'),
         agentsBtn = $('#agents .searchBtn'),
-        agenciesBtn = $('#agencies .searchBtn');
+       patentBtn = $('#patent .searchBtn');
 
     //找律师
     lawyerBtn.on('click', function() {
@@ -46,7 +46,7 @@ $(document).ready(function() {
         } else {
             $.cookie('searchLawyer', template,{path:'/'}); //找律师存储cookie
             $.cookie('all','',{ expires: -1 ,path:'/'});
-            window.location.href = 'lawyerList.html';
+            window.location.href = 'lawyerList.html?fromPage=property';
         };
     });
 
@@ -73,8 +73,7 @@ $(document).ready(function() {
 
             $.cookie('searchCase', template,{path:'/'}); //找律师存储cookie
             $.cookie('caseList','',{ expires: -1 ,path:'/'});
-            console.log($.cookie('searchCase'));
-            window.location.href = 'caseList.html';
+            window.location.href = 'caseList.html?fromPage=property';
 
         }
     });
@@ -100,24 +99,36 @@ $(document).ready(function() {
         }
     });
 
-    //查代理机构
-    agenciesBtn.on('click',function(){
-        var zhuanLi = $('#agencies .propery').val(),
-            cityNode = $('#agencies .title span'),
-            city = '';
-        if(cityNode[1]) {
-            city = cityNode.eq(1).html();
-        } else if(cityNode[0]) {
-            city = cityNode.eq(0).html();
-        };
-        var obj = JSON.stringify({
-            des:zhuanLi,
-            city:city
-        });
-        if(zhuanLi){
-            $.cookie('agencies',obj,{path:'/'});
-            $.cookie('agenciesList','',{ expires: -1 ,path:'/'});
-            window.location.href = 'agenciesList.html';
+    //查专利
+   patentBtn.on('click',function(){
+        var patentNum = $('#patent textarea').val();
+
+        //cpquery/doc_url
+        if(patentNum){
+            var obj = JSON.stringify({
+                patent_no:patentNum
+            });
+            $.ajax({
+                dataType: 'json',
+                url: 'http://47.92.38.167:8889/cpquery/doc_url',
+                type: 'post',
+                data: obj,
+                success: function(res) {
+                    console.log(res);
+                    if(res.code==0){
+                        //window.open(res.data);
+                    }else{
+                        errorModal(res.msg);
+                        console.error('查询专利失败:',res);
+                    }
+                },
+                error: function() {
+                    errorModal('查询专利失败!');
+                    console.error('agent_company：', arguments);
+                }
+            });
+
+
         }else{
             $('#agencies .errorTip').html('　*请输入专利描述');
         }
@@ -129,9 +140,5 @@ $(document).ready(function() {
     $('tab-pane .caseDescription,tab-pane .name,tab-pane .corporation,tab-pane .agency,tab-pane .property').focus(function() {
         $('span.errorTip').html('');
     });
-
-
-    //保存cookie
-    $.cookie('fromPage','propery',{path:'/'});
 
 });
