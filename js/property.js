@@ -99,8 +99,11 @@ $(document).ready(function() {
         }
     });
 
+
     //查专利
+    var newWinUrl = '';//新窗口url
    patentBtn.on('click',function(){
+       window.open('https://www.baidu.com');
         var patentNum = $('#patent textarea').val();
 
         //cpquery/doc_url
@@ -116,7 +119,8 @@ $(document).ready(function() {
                 success: function(res) {
                     console.log(res);
                     if(res.code==0){
-                        //window.open(res.data);
+                        newWinUrl = res.data;
+
                     }else{
                         errorModal(res.msg);
                         console.error('查询专利失败:',res);
@@ -133,7 +137,27 @@ $(document).ready(function() {
             $('#agencies .errorTip').html('　*请输入专利描述');
         }
 
+       var timer =  setInterval(function(){
+            if(newWinUrl.length>0){
+                clearInterval(timer);
+                window.open(newWinUrl);
+            }
+
+        },500);
+
     });
+
+    function newWin(url, id) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('id', id);
+        // 防止反复添加
+        if(!document.getElementById(id)) {
+            document.body.appendChild(a);
+        }
+        a.click();
+    }
 
 
 

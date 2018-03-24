@@ -24,7 +24,21 @@ $(function(){
 				if(res.code == 0) {
 
 					var node1 = `
-    <h3><span>${name}</span><span>　　${res.data.degree}</span></h3>
+    <div class="clearfix msgWrap">
+					<div class="pull-left userMsg">
+						<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
+					</div>
+					<div class="pull-left">
+						<h3><span>张正弘　　</span><span>事务所：四川宏成律师事务所</span></h3>
+						<div class="lawyerMsg clearfix">
+							<p><span>执业证号</span><i>15115199410176090</i></p>
+							<p><span>性别</span><i>男</i></p>
+							<p><span>执业年限</span><i>3 年</i></p>
+							<p><span>学历</span><i>暂无</i></p>
+							<p><span>收录案件数量</span><i>9 起</i></p>
+						</div>
+					</div>
+				</div>
     <div class="caseType">
         <p>
         <i></i>
@@ -40,7 +54,7 @@ $(function(){
         <dt>
         <i class="glyphicon glyphicon-hand-right"></i>${ele.reason2}
         <span class="pull-right">
-        <span>代理案件数：${res.data.judge_count}</span>
+        <span>代理案件数：${ele.count}</span>
     <span>胜诉率：<i class="font-16">${rate[0].value}</i></span>
         <span>部分胜率：<i class="font-16">${rate[1].value}</i></span>
         <span>败诉率：<i class="font-16">${rate[2].value}</i></span>
