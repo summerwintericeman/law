@@ -102,3 +102,22 @@ position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+#lawyerDetail .chartWrap{
+    margin: 60px 0;
+}
+#lawyerDetail .chartTitle{
+    position: relative;
+    padding-left: 8px;
+}
+#lawyerDetail .chartTitle:before{
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: #5068a9;
+    left: 0px;
+    top: 2px;
+}
+#lawyerDetail .chartWrap .messMap{
+    padding:20px;
+}
