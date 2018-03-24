@@ -1,90 +1,125 @@
-#agentsDetail .mainWrap{
-    margin-top: .42rem;
-    background: #fff;
-    padding: .25rem 10%;
+#agentsDetail .mainWrap {
+	margin-top: .42rem;
+	background: #fff;
+	padding: .25rem 10%;
 }
-#agentsDetail .mainWrap .path{
-    padding-bottom: 20px;
-}
-#agentsDetail .mainWrap .path a.active{
-    color: #5068a9;
-}
-#agentsDetail .mainWrap .path i{
-    padding: 0 5px;
-}
-#agentsDetail .content h3{
-    height:40px;
-}
-#agentsDetail .content h3 span:nth-child(2){
-    font-size: 14px;
-    font-weight: normal;
-}
-#agentsDetail .content .com{
-    line-height: 30px;
-    padding-bottom: 20px;
-}
-#agentsDetail .content .com span:nth-child(2){
-    padding:0 30px;
-}
-#agentsDetail .content .caseType>p i{
-    display: inline-block;
-    float: left;
-    width: 3px;
-    height: 15px;
-    background: #5068a9;
-    margin: 5px 6px 0 0;
-}
-#agentsDetail .content .caseType dl{
-    margin: 15px 0;
-    border-bottom: 1px dashed #ccc;
-}
-#agentsDetail .content .caseType dl dt{
-    line-height: 30px;
-    margin-bottom:10px;
-    position: relative;
-}
-#agentsDetail .content .caseType dl dt span:nth-child(2) i{
-    font-size: 16px;
-    font-weight: bold;
-}
-#agentsDetail .content .caseType dl dt span:nth-child(3){
-    padding-left: 30px;
-    color: red;
-}
-#agentsDetail .content .caseType dl dt span:nth-child(4){
-    display: block;
-    font-size: 12px;
-    color: #969696;
-    padding-left: 10px;
-}
-#agentsDetail .content .caseType dl dt>i{
-    color: #e83591bf;
-    position: absolute;
-    left: -20px;
-    top: 8px;
-}
-#agentsDetail .content .caseType dl dt span{
-    font-weight: normal;
-}
-#agentsDetail .content .caseType dl dt span>span+span{
-    padding:0 15px;
-}
-#agentsDetail .content .caseType dl dt span>span+span>i{
-    color: #be0707;
 
+#agentsDetail .mainWrap .path {
+	padding-bottom: 20px;
 }
-#agentsDetail .content .caseType dl dd{
-    position: relative;
+
+#agentsDetail .mainWrap .path a.active {
+	color: #5068a9;
 }
-#agentsDetail .content .caseType dl dd>a{
-    display: block;
-    margin: 10px;
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
-    /*white-space: nowrap;*/
+
+#agentsDetail .mainWrap .path i {
+	padding: 0 5px;
 }
+
+#agentsDetail .content h3 {
+	height: 40px;
+}
+
+#agentsDetail .content h3 span:nth-child(2) {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+#agentsDetail .content .com {
+	line-height: 30px;
+	padding-bottom: 20px;
+}
+
+#agentsDetail .content .com span:nth-child(2) {
+	padding: 0 30px;
+}
+
+#agentsDetail .content .caseType>p i {
+	display: inline-block;
+	float: left;
+	width: 3px;
+	height: 15px;
+	background: #5068a9;
+	margin: 5px 6px 0 0;
+}
+
+#agentsDetail .content .caseType dl {
+	margin: 15px 0;
+	border-bottom: 1px dashed #ccc;
+}
+
+#agentsDetail .content .caseType dl dt {
+	line-height: 30px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+#agentsDetail .content .caseType dl dt span:nth-child(2) i {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#agentsDetail .content .caseType dl dt span:nth-child(3) {
+	padding-left: 30px;
+	color: red;
+}
+
+#agentsDetail .content .caseType dl dt span:nth-child(4) {
+	display: block;
+	font-size: 12px;
+	color: #969696;
+	padding-left: 10px;
+}
+
+#agentsDetail .content .caseType dl dt>i {
+	color: #e83591bf;
+	position: absolute;
+	left: -20px;
+	top: 8px;
+}
+
+#agentsDetail .content .caseType dl dt span {
+	font-weight: normal;
+}
+
+#agentsDetail .content .caseType dl dt span>span+span {
+	padding: 0 15px;
+}
+
+#agentsDetail .content .caseType dl dt span>span+span>i {
+	color: #be0707;
+}
+
+#agentsDetail .content .caseType dl dd {
+	position: relative;
+}
+
+#agentsDetail .content .caseType dl dd>a {
+	display: block;
+	margin: 10px;
+	/*overflow: hidden;*/
+	/*text-overflow: ellipsis;*/
+	/*white-space: nowrap;*/
+}
+
 #agentsDetail .content .caseType dl dd>a:hover,
 #agentsDetail .content .caseType dl dd>a:focus,
-#agentsDetail .content .caseType dl dd>a:visited{
-    color: #232323;
+#agentsDetail .content .caseType dl dd>a:visited {
+	color: #232323;
+}
+
+#agentsDetail .LowTitle {
+	color: black;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+#agentsDetail .eachContent {
+	padding: 15px;
+	border-bottom: 1px solid #ccc;
+    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+}
+
+#agentsDetail .eachContent:hover {
+	box-shadow: .02rem .02rem .1rem rgba(0, 0, 0, .2), -0.02rem -0.02rem .1rem rgba(0, 0, 0, .2);
 }

@@ -14,34 +14,46 @@ $(document).ready(function() {
 	}
 	//判断传过来的是人名还是机构名调用不同的函数或者接口
 
-	agentsList(cookieMess, function(pkg) {
-		//console.log(pkg);
-		//获得数据后的遍历添加
+	agentsList(cookieMess, function(res) {
 
-		$.each(pkg.data, function(idx, ele) {
-			createLawList(ele);
-		});
+		if(cookieMess.per) {
+			//表示此时调用的是人名查找获得的数据
+			$.each(res.data, function(idx, ele) {
+				createLawList(ele, cookieMess.per);
+			});
+		} else {
+			//通过机构查找获取的数据
+			$.each(res.data.agents, function(idx, ele) {
+				createLawList(ele);
+			});
+		}
 
 	});
 
 	//添加案件列表子节点
-	function createLawList(data) {
+	function createLawList(data ,name) {
 		$.each(data, function(key, val) {
 			if(!val) {
 				val = '';
 			}
 		});
-		var _cp_name = encodeURIComponent(data.cp_name);
+		var cp_name = data.cp_name,
+		    Location = cookieMess.com;
+		if(name){
+			cp_name = name;
+			Location = data.cp_name;
+		}
+		
 		var liNode = `<li>
-            <a href="agentsDetail.html?per=${_cp_name}"  class="contant">
-                <p class="name"><span class="pull-left">${data.cp_name}</span><i>${data.gender}</i><i>${data.major}</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${cookieMess.com}</p>
+            <a href="agentsDetail.html?per=${cp_name}"  class="contant">
+                <p class="name"><span class="pull-left">${cp_name}</span><i>${data.gender}</i><i>专业: ${data.major}</i></p>
+                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
                 <p class="info text-strong">
-                    <span>certNo：<i>${data.certNo}</i></span>
+                    <span>证书编号：<i>${data.certNo}</i></span>
                     <span>authNo：<i>${data.authNo}</i></span>
                 </p>
             </a>
-            <a class="details btn" href="agentsDetail.html?per=${_cp_name}">查看详情</a>
+            <a class="details btn" href="agentsDetail.html?per=${cp_name}">查看详情</a>
         </li>`
 		ulNote.append(liNode);
 	};
@@ -79,6 +91,5 @@ $(document).ready(function() {
 			}
 		});
 	};
-
 
 })
