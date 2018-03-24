@@ -23,6 +23,24 @@
 				<a class="active">律师信息</a>
 			</div>
 			<div class="content">
+				<!--<div class="clearfix msgWrap">-->
+					<!--<div class="pull-left userMsg">-->
+						<!--<img src="default-big.jpg" onerror="this.src='../img/default-big.jpg'">-->
+					<!--</div>-->
+					<!--<div class="pull-left">-->
+						<!--<h3><span>张正弘　　</span><span>事务所：四川宏成律师事务所</span></h3>-->
+						<!--<div class="lawyerMsg clearfix">-->
+							<!--<p><span>执业证号</span><i>15115199410176090</i></p>-->
+							<!--<p><span>性别</span><i>男</i></p>-->
+							<!--<p><span>执业年限</span><i>3 年</i></p>-->
+							<!--<p><span>学历</span><i>暂无</i></p>-->
+							<!--<p><span>收录案件数量</span><i>9 起</i></p>-->
+
+
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+
 
 			</div>
 			<h4>统计图表</h4>
@@ -37,13 +55,19 @@
 	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 	<script>
 		$('#header').load('common/header.html', function() {
-			var fromPage = $.cookie('fromPage');
-			if(fromPage && fromPage == 'propery') {
-				$('.path a').eq(0).attr('href', 'propery.html');
-				$('.mainNav li').removeClass('active').eq(2).addClass('active');
-				return;
-			}
-			$('.mainNav li').removeClass('active').eq(1).addClass('active');
+            function getUrlParam(name, pare) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg); //匹配目标参数
+                if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
+                return null; //返回参数值
+            };
+            var page = getUrlParam('fromPage');
+            if(page && page=='property'){
+                $('.mainWrap .path a').eq(0).html('知识产权律师').attr('href','propery.html');
+                $('.mainNav li').removeClass('active').eq(2).addClass('active');
+            }else{
+                $('.mainNav li').removeClass('active').eq(1).addClass('active');
+            }
 		});
 		$("#footer").load('common/footer.html');
 	</script>

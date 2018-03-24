@@ -19,7 +19,7 @@
 			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">知识产权律师</a></li>
 			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">知识产权案件</a></li>
 			<li role="presentation" class="agents"><a href="#agents" id="agents-tab" role="tab" data-toggle="tab" aria-controls="agents" aria-expanded="false">代理人</a></li>
-			<li role="presentation" class="agencies"><a href="#agencies" role="tab" id="agencies-tab" data-toggle="tab" aria-controls="agencies" aria-expanded="false">代理机构</a></li>
+			<li role="presentation" class="patent"><a href="#patent" role="tab" id="patent-tab" data-toggle="tab" aria-controls="patent" aria-expanded="false">查专利</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
@@ -48,14 +48,6 @@
 					<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
 				</label>
 				<br/>
-				<!--<label class="labelBox">
-					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称">
-				</label>
-				<br/>
-				<label class="labelBox">
-					<i>事务所</i><input type="text" class="type corporation" placeholder="请输入律师所在事务所">
-				</label>
-				<br/>-->
 				<div class="labelBox text-left">
 					<i>选择地区</i><br/>
 					<div id="cityPicker1">
@@ -78,18 +70,11 @@
 				<button type="button" class="btn btn-primary searchBtn">搜索</button>
 			</div>
 
-			<div role="tabpanel" class="tab-pane fade" id="agencies" aria-labelledby="agency-tab">
+			<div role="tabpanel" class="tab-pane fade" id="patent" aria-labelledby="patent-tab">
 				<label class="labelBox textarea">
-					<i>专利描述<a>(必填项，建议输入30字以上)</a></i><br/>
-					<textarea placeholder="请输入专利描述"  class="propery"></textarea>
+					<i>专利号查询<a>(必填项，请输入专利号)</a></i><br/>
+					<textarea placeholder="请输入专利号"  class="patent"></textarea>
 				</label>
-				<br/>
-				<div class="labelBox text-left">
-					<i>选择地区</i><br/>
-					<div id="cityPicker2">
-						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
-					</div>
-				</div>
 				<span class="errorTip"></span>
 				<button type="button" class="btn btn-primary searchBtn">搜索</button>
 			</div>

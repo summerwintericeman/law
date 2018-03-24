@@ -17,10 +17,39 @@
 }
 #lawyerDetail .content h3{
     height:40px;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 #lawyerDetail .content h3 span:nth-child(2){
     font-size: 14px;
     font-weight: normal;
+}
+#lawyerDetail .msgWrap{
+    margin-bottom: 30px;
+}
+#lawyerDetail .userMsg{
+    width:150px;
+    height:150px;
+    margin-right: 60px;
+}
+#lawyerDetail .userMsg img{
+    width:100%;
+    height:100%;
+}
+#lawyerDetail .lawyerMsg{
+    width: 550px;
+}
+#lawyerDetail .lawyerMsg p{
+    float: left;
+    width: 50%;
+    line-height: 30px;
+}
+#lawyerDetail .lawyerMsg p>span{
+    padding-right: 15px;
+    font-weight: bold;
+}
+#lawyerDetail .lawyerMsg p>i{
+
 }
 #lawyerDetail .content .caseType>p i{
     display: inline-block;
