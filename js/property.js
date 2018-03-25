@@ -112,7 +112,6 @@ $(document).ready(function() {
     //查专利
     var newWinUrl = '';//新窗口url
    patentBtn.on('click',function(){
-       window.open('https://www.baidu.com');
         var patentNum = $('#patent textarea').val();
 
         //cpquery/doc_url
@@ -124,12 +123,12 @@ $(document).ready(function() {
                 dataType: 'json',
                 url: 'http://47.92.38.167:8889/cpquery/doc_url',
                 type: 'post',
+                asasync: false,
                 data: obj,
                 success: function(res) {
                     console.log(res);
                     if(res.code==0){
-                        newWinUrl = res.data;
-
+ 						window.open(res.data);
                     }else{
                         errorModal(res.msg);
                         console.error('查询专利失败:',res);
@@ -146,13 +145,7 @@ $(document).ready(function() {
             $('#agencies .errorTip').html('　*请输入专利描述');
         }
 
-       var timer =  setInterval(function(){
-            if(newWinUrl.length>0){
-                clearInterval(timer);
-                window.open(newWinUrl);
-            }
 
-        },500);
 
     });
 

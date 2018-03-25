@@ -1,29 +1,45 @@
 /**
  * Created by sphwjj on 2018/3/10.
  */
-$(function(){
-       var name = getUrlParam('lawyer_name',true),_loction =  getUrlParam('lawyer_location',true);
-    var resKey = $.cookie('all');
-    resKey = JSON.parse(resKey);
-    resKey = resKey.reasonObj.res;
-    var parentNode = $('.content');
-       
-       //请求律师详情
-       var param = JSON.stringify({
-           reason: resKey,
-			lawyer_name: name,
-			lawyer_location: _loction
+$(function() {
+	var name = getUrlParam('lawyer_name', true),
+		_loction = getUrlParam('lawyer_location', true);
+	var resKey = $.cookie('all');
+	resKey = JSON.parse(resKey);
+	resKey = resKey.reasonObj.res;
+	var parentNode = $('.content');
+	var nameArr = [],
+		suc_rateArr = [],
+		part_suc_rateArr = [];
+	var myChart0,myChart1;
+	var resizeChart = true;
+		
+		//图表重绘
+		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+				myChart1.resize();
+				myChart0.resize();
 		});
-		$.ajax({
-			dataType: 'json',
-			url: 'http://47.92.38.167:8889/query/lawyer/lawyer_info', // /query/lawyer/lawyer_info  /static_query/lawyer_infohttp://47.92.38.167:8888/  http://47.92.38.167:8889
-			type: 'post',
-			data: param,
-			success: function(res) {
-				console.log(res);
-				if(res.code == 0) {
+		window.onresize = function(){
+			myChart1.resize();
+			myChart0.resize();
+		}
 
-					var node1 = `
+	//请求律师详情
+	var param = JSON.stringify({
+		reason: resKey,
+		lawyer_name: name,
+		lawyer_location: _loction
+	});
+	$.ajax({
+		dataType: 'json',
+		url: 'http://47.92.38.167:8889/query/lawyer/lawyer_info', // /query/lawyer/lawyer_info  /static_query/lawyer_infohttp://47.92.38.167:8888/  http://47.92.38.167:8889
+		type: 'post',
+		data: param,
+		success: function(res) {
+			console.log(res);
+			if(res.code == 0) {
+
+				var node1 = `
     <div class="clearfix msgWrap">
 					<div class="pull-left userMsg">
 						<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
@@ -45,10 +61,10 @@ $(function(){
         <span class="text-strong font-16">案例</span>
         </p>
         </div>`;
-                    parentNode.append(node1);
+				parentNode.append(node1);
 
-					$.each(res.data.detail,function(idx,ele){
-							var node2 = `     <dl>
+				$.each(res.data.detail, function(idx, ele) {
+					var node2 = `     <dl>
         <dt>
         <i class="glyphicon glyphicon-hand-right"></i>${ele.reason2}
         <span class="pull-right">
@@ -60,123 +76,226 @@ $(function(){
         </dl>`;
 					$('.caseType').append(node2);
 
-					$.each(ele.doc,function(i,e){
+					$.each(ele.doc, function(i, e) {
 						var node3 = `<dd><a>${e.title}</a></dd>`;
 						$('.caseType dl:last-child').append(node3);
 					});
 
+					nameArr.push(ele.reason2);
+					suc_rateArr.push(ele.suc_rate);
+					part_suc_rateArr.push(ele.part_suc_rate);
 
-					});
+				});
 
-				}else{
+				//绘制图表
+				myChart0 = echarts.init(document.getElementById('rateChart0'));
+				var barwidth = 40;
+				var labelOption = {
+					normal: {
+						show: true,
+						align: 'center',
+		                verticalAlign: 'middle',
+		                position: 'insideBottom',
+		                distance: 15,
+					}
+				};
+				var option = {
+					title: {
+						x: 'center',
+						text: '律师案件胜诉率图表',
+						subtext: '不包含部分胜诉',
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					toolbox: {
+						show: true,
+						orient: 'vertical',
+						left: 'right',
+						top: 'center',
+						feature: {
+							//							saveAsImage: {
+							//								show: true
+							//							}
+						}
+					},
+					calculable: true,
+					xAxis: [{
+						type: 'category',
+						axisTick: {
+							show: false
+						},
+						data: nameArr
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+							type: 'bar',
+							name: '胜诉率',
+							barWidth: barwidth,
+							label: labelOption,
+							data: suc_rateArr
+						},
+						{
+							type: 'bar',
+							name: '部分胜诉率',
+							barWidth: barwidth,
+							label: labelOption,
+							data: part_suc_rateArr
+						}
+					]
+
+				}
+				myChart0.setOption(option);
+
+			} else {
+				errorModal(res.msg);
+			}
+
+		},
+		error: function() {
+			errorModal('请求律师详情失败！');
+			console.error('/query/lawyer/lawyer_info', arguments);
+		}
+	});
+
+	//图表
+	(function() {
+		myChart1 = echarts.init(document.getElementById('rateChart1'));
+
+		judge_rate(resKey, function(res) {
+			// 指定图表的配置项和数据
+			var labelOption = {
+					normal: {
+						show: true,
+						align: 'center',
+		                verticalAlign: 'middle',
+		                position: 'insideBottom',
+		                distance: 15,
+					}
+				};
+			var option = {
+				title: {
+					x: 'center',
+					text: '律师总体案件胜诉率图表',
+					subtext: '包含部分胜诉',
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						//						saveAsImage: {
+						//							show: true
+						//						}
+					}
+				},
+				calculable: true,
+				grid: {
+					borderWidth: 0,
+					y: 80,
+					y2: 60
+				},
+				xAxis: [{
+					type: 'category',
+					show: true,
+					data: ['胜诉率', '败诉率', '部分胜诉率']
+				}, ],
+				yAxis: [{
+					type: 'value',
+					show: true
+				}],
+				series: [{
+					name: '统计',
+					type: 'bar',
+					barWidth: 40,
+					label: labelOption,
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								// build a color map as your need.
+								var colorList = [
+									'#B5C334', '#C1232B', '#FCCE10'
+								];
+								return colorList[params.dataIndex]
+							},
+							//							label: {
+							//								show: true,
+							//								position: 'top',
+							//								formatter: '{b}\n{c}'
+							//							}
+						}
+					},
+					data: [(res.data[0].value) / 100, (res.data[1].value) / 100, (res.data[2].value) / 100],
+					markPoint: {
+						tooltip: {
+							trigger: 'item',
+							backgroundColor: 'rgba(0,0,0,1)',
+							//backgroundColor: 'rgba(0,0,0,0)',
+
+						},
+						data: [{
+								xAxis: 0,
+								y: 350,
+								name: '胜诉率',
+								symbolSize: 0
+
+							},
+							{
+								xAxis: 1,
+								y: 350,
+								name: '败诉',
+								symbolSize: 0
+
+							},
+							{
+								xAxis: 2,
+								y: 350,
+								name: '部分胜诉',
+								symbolSize: 0
+
+							},
+						]
+					}
+				}]
+			};
+			// 使用刚指定的配置项和数据显示图表。
+			myChart1.setOption(option);
+		});
+
+	})();
+
+	function judge_rate(resKey, callback) {
+		var parm = {
+			'reason': resKey
+		}
+		$.ajax({
+			dataType: 'json',
+			url: 'http://47.92.38.167:8889/static_query/judge_rate', // http://47.92.38.167:8888/  http://47.92.38.167:8889
+			type: 'post',
+			data: param,
+			success: function(res) {
+				console.log(res);
+				if(res.code == 0) {
+					if(callback) {
+						callback(res);
+					}
+
+				} else {
 					errorModal(res.msg);
 				}
 
 			},
 			error: function() {
-				errorModal('请求律师详情失败！');
-				console.error('/query/lawyer/lawyer_info', arguments);
+				errorModal('请求律师胜诉率失败！');
+				console.error('/static_query/judge_rate', arguments);
 			}
 		});
-       
-
-    //图表
-    (function(){
-        var myChart = echarts.init(document.getElementById('rateChart'));
-
-        judge_rate(resKey,function(res){
-            // 指定图表的配置项和数据
-            var option = {
-                title: {
-                    show: false
-                },
-                tooltip: {},
-                legend: {
-                    data:['销量']
-                },
-                xAxis: {
-                    axisLabel:{
-                        textStyle:{
-                            fontWeight:'bold'
-                        }
-                    },
-                    axisLine:{
-                        symbol:['none','arrow'],
-                        symbolSize:[8,10],
-                    },
-                    data: [{
-                        value:res.data[0].name,
-                        textStyle:{
-                            color:'#000',
-                            fontWeight:'bold'
-                        }
-                    },
-                        {
-                            value:res.data[1].name,
-                            textStyle:{
-                                color:'rgba(255,0,0,.7)',
-                                fontWeight:'bold'
-                            }
-                        },
-                        {
-                            value:res.data[2].name,
-                            textStyle:{
-                                color:'rgba(255,0,0,.5)',
-                                fontWeight:'bold'
-                            }
-                        }],
-                    axisTick:{
-                        show:false
-                    }
-                },
-                yAxis: {
-                    axisTick:{
-                        show:false
-                    }
-                },
-                series: [{
-                    type: 'bar',
-                    data: [(res.data[0].value)/100, (res.data[1].value)/100, (res.data[2].value)/100]
-                }]
-            };
-
-            // 使用刚指定的配置项和数据显示图表。
-            myChart.setOption(option);
-        });
-
-    })();
-
-
-
-
-       function judge_rate(resKey,callback) {
-       	var parm = {
-            'reason':resKey
-        }
-           $.ajax({
-               dataType: 'json',
-               url: 'http://47.92.38.167:8889/static_query/judge_rate', // http://47.92.38.167:8888/  http://47.92.38.167:8889
-               type: 'post',
-               data: param,
-               success: function(res) {
-                   console.log(res);
-                   if(res.code == 0) {
-                       if(callback){
-                       		callback(res);
-					   }
-
-                   }else{
-                       errorModal(res.msg);
-                   }
-
-               },
-               error: function() {
-                   errorModal('请求律师胜诉率失败！');
-                   console.error('/static_query/judge_rate', arguments);
-               }
-           });
-       };
-
-
+	};
 
 });

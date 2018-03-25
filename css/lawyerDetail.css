@@ -118,6 +118,36 @@ position: relative;
     left: 0px;
     top: 2px;
 }
+#lawyerDetail .chartWrap {
+	display: block;
+}
+#lawyerDetail .chartWrap ul{
+	border-bottom: .01rem solid #5068a9;
+}
+#lawyerDetail .chartWrap ul>li a{
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+#lawyerDetail .chartWrap ul>li a:hover{
+    background: #5068a9;
+    color: #fff!important;
+}
+#lawyerDetail .chartWrap ul>li.active>a,
+#lawyerDetail .chartWrap ul>li.active>a:focus, 
+#lawyerDetail .chartWrap ul>li.active>a:hover{
+    color: #5068a9;
+    border: .01rem solid #5068a9;
+    border-bottom-color: transparent;
+ }
+
+ 
 #lawyerDetail .chartWrap .messMap{
     padding:20px;
+    /*width: 50%;*/
+}
+#lawyerDetail .chartWrap .allMap{
+    padding:20px;
+    /*width: 50%;*/
 }

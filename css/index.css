@@ -112,7 +112,7 @@ body {
 	font-family: 'Arial', 'Helvetica', 'Times New Roman', 'PingFang SC', 'Microsoft YaHei', 'SimSun', 'Helvetica Neue', 'STHeitiSC-Light', 'sans-serif';
 	font-size: 0.14rem;
 	cursor: default;
-	min-width: 9.6rem;
+	min-width: 1000px;
 	overflow: auto;
 }
 
