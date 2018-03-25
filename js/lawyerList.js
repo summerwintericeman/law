@@ -25,14 +25,16 @@ $(document).ready(function() {
 			var cookieM = JSON.parse(cookie),
 				name = cookieM.name || '',
 				des = cookieM.des || '',
-				city = cookieM.city || '';
+                province = cookieM.province || '',
+                city = cookieM.city || '',
+                region = cookieM.region || '';
 			all.reasonObj = cookieM;
-			getPreMessage(name, des, city, num);
+			getPreMessage(name, des, province,city,region, num);
 		}
 
 	};
 
-	function getPreMessage(name, des, city, page_num) {
+	function getPreMessage(name, des, province,city,region, page_num) {
 		if(name) {
 			if(des){
 				caseFoud(des, function(res) {
@@ -48,17 +50,19 @@ $(document).ready(function() {
 		} else {
 			caseFoud(des, function(res) {
 				all.reasonObj.res = res;
-				lawyerList(res, city, page_num);
+				lawyerList(res, province,city,region, page_num);
 			});
 		}
 
 	}
 
-	function lawyerList(obj, city, page_num,callback) {
+	function lawyerList(obj, province,city,region, page_num,callback) {
 		var temp = null;
 		var param = JSON.stringify({
 			'reason': obj,
-			'region': city,
+            'province':province,
+            'city': city,
+            'region':region,
 			'page_count': 12,
 			'page_num': page_num
 		});
@@ -323,11 +327,9 @@ $(document).ready(function() {
 			}
 			
 		} else {
-			lawyerList(all.reasonObj.res, all.reasonObj.city, page_num);
+			lawyerList(all.reasonObj.res, all.reasonObj.province ,all.reasonObj.city , all.reasonObj.region , page_num);
 		}
-		
-		
-		
+
 
 	});
 	cookieMess();

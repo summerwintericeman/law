@@ -22,12 +22,14 @@ $(document).ready(function() {
 	if(getCookie){
 		var cookieMess = JSON.parse(getCookie),
 			des = cookieMess.des,
-			city = cookieMess.city || '';
+            province = cookieMess.province || '',
+            city = cookieMess.city || '',
+            region = cookieMess.region || '';
         caseListCookie.reasonObj = cookieMess;
 		caseFoud(des, function(res) {
             caseListCookie.reasonObj.des = res;
 			var curPage = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
-			caseList(res, curPage, city,function(pkg){
+			caseList(res, curPage,  province,city,region,function(pkg){
 
 				$.each(pkg.data,function(idx,ele){
 					createLawList(res,ele);
@@ -198,7 +200,7 @@ $(document).ready(function() {
         var tempCoo = JSON.stringify(caseListCookie);
         $.cookie('caseList', tempCoo,{path:'/'});
         //通过caseListCookie 来进行参数的给予
-        caseList(caseListCookie.reasonObj.des, page_num, city,function(pkg){
+        caseList(caseListCookie.reasonObj.des, page_num, province,city,region,function(pkg){
             ulNote.empty();
             $.each(pkg.data,function(idx,ele){
                 createLawList(caseListCookie.reasonObj.des,ele);
@@ -209,12 +211,14 @@ $(document).ready(function() {
     });
 
 
-	function caseList(reason, page_num, region,callback) {
+	function caseList(reason, page_num,  province,city,region,callback) {
 		var param = {
 			'reason': reason,
 			"page_count": 12,
 			"page_num": page_num,
-			"region": region
+            'province':province,
+            'city': city,
+            'region':region
 		};
 		$.ajax({
 			dataType: 'json',
