@@ -30,13 +30,13 @@
 <script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <script>
     $('#header').load('common/header.html',function () {
-        var fromPage = $.cookie('fromPage');
-        if(fromPage && fromPage=='propery'){
-            $('.path a').eq(0).attr('href','propery.html?page=agents');
-            $('.mainNav li').removeClass('active').eq(2).addClass('active');
-            return;
-        }
-        $('.mainNav li').removeClass('active').eq(1).addClass('active');
+//      var fromPage = $.cookie('fromPage');
+//      if(fromPage && fromPage=='propery'){
+//          $('.path a').eq(0).attr('href','propery.html?page=agents');
+//          $('.mainNav li').removeClass('active').eq(2).addClass('active');
+//          return;
+//      }
+        $('.mainNav li').removeClass('active').eq(2).addClass('active');
     });
     $("#footer").load('common/footer.html');
 </script>

@@ -37,11 +37,13 @@ $(document).ready(function() {
 		if(res.code == 0 && res.data.data.length > 0) {
 			parNode.empty();
 			//遍历数组进行添加
+			var nameNode = `<div class='eachContent'><h3><span>${getPer}</span>`;
+			parNode.append(nameNode);
 			for(var i = 0; i < 3; i++) {
 				var obj = res.data.data[i];
 				console.log(obj)
-				var addNode = `<div class='eachContent'><h3><span>${getPer}</span>
-					<span>　　<i class="LowTitle">${obj.dev_name}</i> </span></h3>
+				var addNode = `<div class='eachContent'><h3><span></span>
+					<span><i class="LowTitle">${obj.dev_name}</i> </span></h3>
                     <p class="com">
                         <span><i class="LowTitle">专利类型:</i> ${obj.patent_type}</span>
                         <br/>
