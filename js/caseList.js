@@ -222,7 +222,7 @@ $(document).ready(function() {
 		};
 		$.ajax({
 			dataType: 'json',
-			url: 'http://47.92.38.167:8889/query/case/case_list',
+			url: 'http://47.97.197.176:8888/query/case/case_list',
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(res) {

@@ -48,18 +48,19 @@ $(document).ready(function() {
             <a href="agentsDetail.html?per=${cp_name}"  class="contant">
                 <p class="name"><span class="pull-left">${cp_name}</span><i>${data.gender}</i><i>专业: ${data.major}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
-                <p class="info text-strong">
-                    <span>证书编号：<i>${data.certNo}</i></span>
-                    <span>authNo：<i>${data.authNo}</i></span>
-                </p>
+              
             </a>
             <a class="details btn" href="agentsDetail.html?per=${cp_name}">查看详情</a>
         </li>`
+//		  <p class="info text-strong">
+//                  <span>证书编号：<i>${data.certNo}</i></span>
+//                  <span>authNo：<i>${data.authNo}</i></span>
+//        </p>
 		ulNote.append(liNode);
 	};
 
 	function agentsList(cookieMess, callback) {
-		var tempUrl = 'http://47.92.38.167:8889/query/patent/agent_company';
+		var tempUrl = 'http://47.97.197.176:8888/query/patent/agent_company';
 		var param = {
 			'name': cookieMess.com
 		};
@@ -67,7 +68,7 @@ $(document).ready(function() {
 			param = {
 				'name': cookieMess.per
 			};
-			tempUrl = 'http://47.92.38.167:8889/query/patent/agent_by_name';
+			tempUrl = 'http://47.97.197.176:8888/query/patent/agent_by_name';
 		}
 		$.ajax({
 			dataType: 'json',

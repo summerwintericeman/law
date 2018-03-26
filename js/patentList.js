@@ -57,7 +57,7 @@ $(document).ready(function() {
         };
         $.ajax({
             dataType: 'json',
-            url: 'http://47.92.38.167:8889/query/patent/agent_company',
+            url: 'http://47.97.197.176:8888/query/patent/agent_company',
             type: 'post',
             data: JSON.stringify(param),
             success: function(res) {

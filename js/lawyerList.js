@@ -69,7 +69,7 @@ $(document).ready(function() {
 		console.log(param);
 		$.ajax({
 			dataType: 'json',
-			url: 'http://47.92.38.167:8889/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.92.38.167:8889
+			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888
 			type: 'post',
 			data: param,
 			success: function(res) {
@@ -128,7 +128,7 @@ $(document).ready(function() {
 		};
 		$.ajax({
 			dataType: 'json',
-			url: 'http://47.92.38.167:8889/query/lawyer/lawyer_match', //http://47.92.38.167:9091
+			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_match', //http://47.92.38.167:9091
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(res) {
@@ -184,7 +184,6 @@ $(document).ready(function() {
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
-                    <span>学历：<i>${newObj.degree}</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
@@ -196,7 +195,6 @@ $(document).ready(function() {
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
-                    <span>学历：<i>${newObj.degree}</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>

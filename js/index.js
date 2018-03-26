@@ -55,7 +55,7 @@ function caseFoud(caseDes, callback) {
     });
     $.ajax({
         dataType: 'json',
-        url: 'http://47.92.38.167:8889/feature_query/case_type', // http://47.92.38.167:8888/  http://47.92.38.167:8889
+        url: 'http://47.97.197.176:8888/feature_query/case_type', // http://47.92.38.167:8888/  http://47.97.197.176:8888
         type: 'post',
         data: Data,
         success: function(res) {

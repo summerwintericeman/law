@@ -121,7 +121,7 @@ $(document).ready(function() {
             });
             $.ajax({
                 dataType: 'json',
-                url: 'http://47.92.38.167:8889/cpquery/doc_url',
+                url: 'http://47.97.197.176:8888/cpquery/doc_url',
                 type: 'post',
                 asasync: false,
                 data: obj,
