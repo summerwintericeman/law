@@ -84,7 +84,7 @@ $(document).ready(function() {
 
             </a>
             <a class="details btn" href="${newObj.source_url}" target="_blank">查看详情</a>
-        </li>`;
+        </li>`
         ulNote.append(liNode);
     };
 //创建翻页节点

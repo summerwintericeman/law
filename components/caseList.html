@@ -47,19 +47,13 @@
 <script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <script>
     $('#header').load('common/header.html',function () {
-        function getUrlParam(name, pare) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-            var r = window.location.search.substr(1).match(reg); //匹配目标参数
-            if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
-            return null; //返回参数值
-        };
-        var page = getUrlParam('fromPage');
-        if(page && page=='property'){
-            $('.mainWrap .path a').eq(0).html('查案件').attr('href','propery.html?page=case');
+        var fromPage = $.cookie('fromPage');
+        if(fromPage && fromPage=='propery'){
+            $('.path a').eq(0).attr('href','propery.html?page=case');
             $('.mainNav li').removeClass('active').eq(2).addClass('active');
-        }else{
-            $('.mainNav li').removeClass('active').eq(1).addClass('active');
+            return;
         }
+        $('.mainNav li').removeClass('active').eq(1).addClass('active');
     });
     $("#footer").load('common/footer.html');
 </script>
