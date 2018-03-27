@@ -184,6 +184,7 @@ $(document).ready(function() {
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>学历：<i>${newObj.degree}</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
@@ -195,6 +196,7 @@ $(document).ready(function() {
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>学历：<i>${newObj.degree}</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>

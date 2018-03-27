@@ -51,7 +51,7 @@
 #lawyerDetail .lawyerMsg p>i{
 
 }
-#lawyerDetail .content .caseType>p>i{
+#lawyerDetail .content .caseType>p i{
     display: inline-block;
     float: left;
     width: 3px;

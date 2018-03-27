@@ -113,9 +113,17 @@ $(document).ready(function() {
     var newWinUrl = '';//新窗口url
    patentBtn.on('click',function(){
         var patentNum = $('#patent textarea').val();
-
         //cpquery/doc_url
         if(patentNum){
+            //验证专利号是否正确
+            var reg1 = /^(CN)*[1-9]\d{3}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{4}\.[0-9]$/,
+                reg2 = /^[1-9]\d{3}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{4}[0-9]$/;
+            if(!(reg1.test(patentNum) || reg2.test(patentNum))){
+                //验证错误
+                errorModal('专利号输入有误，请重新填写！');
+                return;
+            }
+
             var obj = JSON.stringify({
                 patent_no:patentNum
             });

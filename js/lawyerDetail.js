@@ -15,14 +15,14 @@ $(function() {
 	var resizeChart = true;
 
 	//图表重绘
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		myChart1.resize();
-		myChart0.resize();
-	});
-	window.onresize = function() {
-		myChart1.resize();
-		myChart0.resize();
-	}
+//	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+//		myChart1.resize();
+//		myChart0.resize();
+//	});
+//	window.onresize = function() {
+//		myChart1.resize();
+//		myChart0.resize();
+//	}
 
 	//请求律师详情
 	var param = JSON.stringify({
@@ -30,7 +30,6 @@ $(function() {
 		lawyer_name: name,
 		lawyer_location: _loction
 	});
-	console.log(param);
 	$.ajax({
 		dataType: 'json',
 		url: 'http://47.97.197.176:8888/query/lawyer/lawyer_info', // /query/lawyer/lawyer_info  /static_query/lawyer_infohttp://47.92.38.167:8888/  http://47.97.197.176:8888
@@ -41,155 +40,101 @@ $(function() {
 			//只取最多的显示三个
 			console.log(res.data.detail);
 			var maxIndex = 0;
-
-			for(var i = 1; i < res.data.detail.length; i++) {
-				if(res.data.detail[maxIndex].count < res.data.detail[i].count) {
+			
+			for(var i = 1; i < res.data.detail.length; i++){
+				if(res.data.detail[maxIndex].count < res.data.detail[i].count){
 					maxIndex = i;
 				}
 			}
-			var maxCountReason = res.data.detail[maxIndex].reason2;
-
+			var maxCount = res.data.detail[maxIndex].count;
+			
+			
 			if(res.code == 0) {
 
 				var node1 = `
-    								<div class="clearfix msgWrap">
-									<div class="pull-left userMsg">
-										<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
-										</div>
-										<div class="pull-left">
-									<h3><span>${name}　　</span><span>事务所：${_loction || '--'}</span></h3>
-									<div class="lawyerMsg clearfix">
-									<p><span>执业证号</span><i>${res.data.license_no || '--'}</i></p>
-									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
-									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
-									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>收录案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
-									</div>
-									</div>
-									</div>
-   									 <div class="caseType">
-							        <p>
-							        <i></i>
-							        <span class="text-strong font-16 " id = 'dowell'>擅长领域:</span>
-							        </p>
-							         <p>
-							        <i></i>
-							        <span class="text-strong font-16">类似案例:</span>
-							        <ul class="node2List"></ul>
-							        </p>
-							        </div>`;
+    <div class="clearfix msgWrap">
+					<div class="pull-left userMsg">
+						<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
+					</div>
+					<div class="pull-left">
+						<h3><span>${name}　　</span><span>事务所：${_loction || '--'}</span></h3>
+						<div class="lawyerMsg clearfix">
+							<p><span>执业证号</span><i>${res.data.license_no || '--'}</i></p>
+							<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
+							<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
+							<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
+							<p><span>收录案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
+						</div>
+					</div>
+				</div>
+    <div class="caseType">
+        <p>
+        <i></i>
+        <span class="text-strong font-16">擅长领域:${res.data.detail[maxIndex].reason2}</span>
+        </p>
+        </div>`;
 				parentNode.append(node1);
-				console.log(res.data.detail);
-				var reasonList = [],
-					nameList = [];
+
 				$.each(res.data.detail, function(idx, ele) {
-					var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
-					$('#dowell').append(nodeDoWell);
-					//需要数量和具体的案由
-					reasonList.push({
-						"name": ele.reason2,
-						"value": ele.count
+					var node2 = `     <dl>
+        <dt>
+        <i class="glyphicon glyphicon-hand-right"></i>${ele.reason2}
+        <span class="pull-right">
+        <span>代理案件数：${ele.count}</span>
+    <span>胜诉率：<i class="font-16">${ele.suc_rate}</i></span>
+        <span>部分胜率：<i class="font-16">${ele.part_suc_rate}</i></span>
+        </span>
+        </dt>
+        </dl>`;
+        			if(idx < 3){
+        				$('.caseType').append(node2);
+        			}
+					
+
+					$.each(ele.doc, function(i, e) {
+						var node3 = `<dd><a>${e.title}</a></dd>`;
+						$('.caseType dl:last-child').append(node3);
 					});
-					nameList.push(ele.reason2);
-				});
-				//console.log(reasonList);
-				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
-					if(idx < 3) {
-						var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
-						$('.node2List').append(node2);
-					}
+
+					nameArr.push(ele.reason2);
+					suc_rateArr.push(ele.suc_rate);
+					part_suc_rateArr.push(ele.part_suc_rate);
+
 				});
 
 				//绘制图表
-				myChart0 = echarts.init(document.getElementById('rateChart0'));
-				var option = {
-					tooltip: {
-						trigger: 'item',
-						formatter: "{a} <br/>{b}: {c} ({d}%)"
-					},
-					legend: {
-						orient: 'vertical',
-						x: 'left',
-						data: nameList
-					},
-					toolbox: {
-						show: true,
-						orient: 'vertical',
-						right: 40,
-						top: 'top',
-						feature: {
-							saveAsImage: {
-								show: true
-							}
-						}
-					},
-					series: [{
-						name: '',
-						type: 'pie',
-						radius: ['50%', '70%'],
-						avoidLabelOverlap: false,
-						label: {
-							normal: {
-								show: false,
-								position: 'center'
-							},
-							emphasis: {
-								show: true,
-								textStyle: {
-									fontSize: '12',
-									fontWeight: 'bold'
-								}
-							}
-						},
-						labelLine: {
-							normal: {
-								show: false
-							}
-						},
-						data: reasonList
-					}]
-				};
-				myChart0.setOption(option);
-				//绘制第二个图表
-				myChart1 = echarts.init(document.getElementById('rateChart1'));
-
+				//myChart0 = echarts.init(document.getElementById('rateChart0'));
+				var barwidth = 40;
 				var labelOption = {
 					normal: {
 						show: true,
-						position: "insideBottom",
+						align: 'center',
+						verticalAlign: 'middle',
+						position: 'insideBottom',
 						distance: 15,
-						align: "left",
-						verticalAlign: "middle",
-						rotate: 90,
-						formatter: '{c}  {name|{a}}',
-						fontSize: 16,
-						rich: {
-							name: {
-								textBorderColor: '#fff'
-							}
-						}
 					}
 				};
-				var option1 = {
-					color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+				var option = {
+					title: {
+						x: 'center',
+						text: '律师案件胜诉率图表',
+						subtext: '不包含部分胜诉',
+					},
 					tooltip: {
 						trigger: 'axis',
 						axisPointer: {
 							type: 'shadow'
 						}
 					},
-					legend: {
-						data: ['Forest', 'Steppe', 'Desert', 'Wetland']
-					},
 					toolbox: {
 						show: true,
 						orient: 'vertical',
-						right: 40,
-						top: "top",
+						left: 'right',
+						top: 'center',
 						feature: {
-							saveAsImage: {
-								show: true
-							}
+							//							saveAsImage: {
+							//								show: true
+							//							}
 						}
 					},
 					calculable: true,
@@ -198,39 +143,29 @@ $(function() {
 						axisTick: {
 							show: false
 						},
-						data: ['2012', '2013', '2014', '2015', '2016']
+						data: nameArr
 					}],
 					yAxis: [{
 						type: 'value'
 					}],
 					series: [{
-							name: 'Forest',
 							type: 'bar',
-							barGap: 0,
+							name: '胜诉率',
+							barWidth: barwidth,
 							label: labelOption,
-							data: [320, 332, 301, 334, 390]
+							data: suc_rateArr
 						},
 						{
-							name: 'Steppe',
 							type: 'bar',
+							name: '部分胜诉率',
+							barWidth: barwidth,
 							label: labelOption,
-							data: [220, 182, 191, 234, 290]
-						},
-						{
-							name: 'Desert',
-							type: 'bar',
-							label: labelOption,
-							data: [150, 232, 201, 154, 190]
-						},
-						{
-							name: 'Wetland',
-							type: 'bar',
-							label: labelOption,
-							data: [98, 77, 101, 99, 40]
+							data: part_suc_rateArr
 						}
 					]
-				};
-				myChart1.setOption(option1);
+
+				}
+				//myChart0.setOption(option);
 
 			} else {
 				errorModal(res.msg);
@@ -243,32 +178,139 @@ $(function() {
 		}
 	});
 
-	//	function judge_rate(resKey, callback) {
-	//		var parm = {
-	//			'reason': resKey
-	//		}
-	//		$.ajax({
-	//			dataType: 'json',
-	//			url: 'http://47.97.197.176:8888/static_query/judge_rate', // http://47.92.38.167:8888/  http://47.97.197.176:8888
-	//			type: 'post',
-	//			data: param,
-	//			success: function(res) {
-	//				//console.log(res);
-	//				if(res.code == 0) {
-	//					if(callback) {
-	//						callback(res);
-	//					}
-	//
-	//				} else {
-	//					errorModal(res.msg);
-	//				}
-	//
-	//			},
-	//			error: function() {
-	//				errorModal('请求律师胜诉率失败！');
-	//				console.error('/static_query/judge_rate', arguments);
-	//			}
-	//		});
-	//	};
+	//图表
+	(function() {
+		//myChart1 = echarts.init(document.getElementById('rateChart1'));
+
+		judge_rate(resKey, function(res) {
+			// 指定图表的配置项和数据
+			var labelOption = {
+				normal: {
+					show: true,
+					align: 'center',
+					verticalAlign: 'middle',
+					position: 'insideBottom',
+					distance: 15,
+				}
+			};
+			var option = {
+				title: {
+					x: 'center',
+					text: '律师总体案件胜诉率图表',
+					subtext: '包含部分胜诉',
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						//						saveAsImage: {
+						//							show: true
+						//						}
+					}
+				},
+				calculable: true,
+				grid: {
+					borderWidth: 0,
+					y: 80,
+					y2: 60
+				},
+				xAxis: [{
+					type: 'category',
+					show: true,
+					data: ['胜诉率', '败诉率', '部分胜诉率']
+				}, ],
+				yAxis: [{
+					type: 'value',
+					show: true
+				}],
+				series: [{
+					name: '统计',
+					type: 'bar',
+					barWidth: 40,
+					label: labelOption,
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								// build a color map as your need.
+								var colorList = [
+									'#B5C334', '#C1232B', '#FCCE10'
+								];
+								return colorList[params.dataIndex]
+							},
+							//							label: {
+							//								show: true,
+							//								position: 'top',
+							//								formatter: '{b}\n{c}'
+							//							}
+						}
+					},
+					data: [(res.data[0].value) / 100, (res.data[1].value) / 100, (res.data[2].value) / 100],
+					markPoint: {
+						tooltip: {
+							trigger: 'item',
+							backgroundColor: 'rgba(0,0,0,1)',
+							//backgroundColor: 'rgba(0,0,0,0)',
+
+						},
+						data: [{
+								xAxis: 0,
+								y: 350,
+								name: '胜诉率',
+								symbolSize: 0
+
+							},
+							{
+								xAxis: 1,
+								y: 350,
+								name: '败诉',
+								symbolSize: 0
+
+							},
+							{
+								xAxis: 2,
+								y: 350,
+								name: '部分胜诉',
+								symbolSize: 0
+
+							},
+						]
+					}
+				}]
+			};
+			// 使用刚指定的配置项和数据显示图表。
+			//myChart1.setOption(option);
+		});
+
+	})();
+
+	function judge_rate(resKey, callback) {
+		var parm = {
+			'reason': resKey
+		}
+		$.ajax({
+			dataType: 'json',
+			url: 'http://47.97.197.176:8888/static_query/judge_rate', // http://47.92.38.167:8888/  http://47.97.197.176:8888
+			type: 'post',
+			data: param,
+			success: function(res) {
+				//console.log(res);
+				if(res.code == 0) {
+					if(callback) {
+						callback(res);
+					}
+
+				} else {
+					errorModal(res.msg);
+				}
+
+			},
+			error: function() {
+				errorModal('请求律师胜诉率失败！');
+				console.error('/static_query/judge_rate', arguments);
+			}
+		});
+	};
 
 });
