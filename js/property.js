@@ -22,7 +22,8 @@ $(document).ready(function() {
 
     var lawyerBtn = $('#lawyer .searchBtn'),
         caseBtn = $('#case .searchBtn'),
-        agentsBtn = $('#agents .searchBtn'),
+        agentsPerBtn = $('#agents .agentsTop .searchBtn'),
+        agentsComBtn = $('#agents .agentsBottom .searchBtn'),
        patentBtn = $('#patent .searchBtn');
 
     //找律师
@@ -92,20 +93,41 @@ $(document).ready(function() {
 
 
     //查代理人
-    agentsBtn.on('click',function () {
-        var agents = $('#agents .name').val(),
-            agencies = $('#agents .agency').val();
+    //通过代理人名称查找
+    agentsPerBtn.on('click',function () {
+        var agents = $('#agents .name').val();
         var obj = JSON.stringify({
             per:agents,//代理人名称
-            com:agencies//代理机构名称
+            com:''//代理机构名称
         });
         $.cookie('agentsList','',{ expires: -1 ,path:'/'});
-        if(agents || agencies){
+        if(agents){
             $.cookie('agents',obj,{path:'/'});
             window.location.href = 'agentsList.html';
         }else{
-            $('#agents .errorTip').html('　*请输入代理人名称或代理机构名称');
+            $('#agents .agentsTop .errorTip').html('　*请输入代理人名称');
         }
+    });
+    $('#agents .agentsTop input').focus(function(){
+        $('#agents .agentsTop .errorTip').html('');
+    });
+    //通过代理机构名称查找
+    agentsComBtn.on('click',function () {
+        var  agencies = $('#agents .agency').val();
+        var obj = JSON.stringify({
+            per:'',//代理人名称
+            com:agencies//代理机构名称
+        });
+        $.cookie('agentsList','',{ expires: -1 ,path:'/'});
+        if(agencies){
+            $.cookie('agents',obj,{path:'/'});
+            window.location.href = 'agentsList.html';
+        }else{
+            $('#agents .agentsBottom .errorTip').html('　*请输入代理人代理机构名称');
+        }
+    });
+    $('#agents .agentsBottom input').focus(function(){
+        $('#agents .agentsBottom .errorTip').html('');
     });
 
 
@@ -151,7 +173,7 @@ $(document).ready(function() {
 
 
         }else{
-            $('#agencies .errorTip').html('　*请输入专利描述');
+            $('#patent .errorTip').html('　*请输入专利描述');
         }
 
 
@@ -172,8 +194,9 @@ $(document).ready(function() {
 
 
 
-    $('tab-pane .caseDescription,tab-pane .name,tab-pane .corporation,tab-pane .agency,tab-pane .property').focus(function() {
+    $('tab-pane .caseDescription,tab-pane .name,tab-pane .corporation,#patent textarea').focus(function() {
         $('span.errorTip').html('');
     });
+
 
 });
