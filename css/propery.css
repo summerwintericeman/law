@@ -54,12 +54,28 @@
 #property .searchBtn:hover{
     background:#40548a;
 }
-/*.peopleMain #lawyer .labelBox{*/
-/*margin: .15rem 0;*/
-/*}*/
-/*.peopleMain #lawyer .searchBtn{*/
-/*margin-top: .5rem;*/
-/*}*/
+#property #agents .agentsTop>i,#property #agents .agentsBottom>i{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    color: red;
+}
+#property #agents .agentsTop .errorTip,#property #agents .agentsBottom .errorTip{
+    margin-top: 10px;
+}
+#property #agents .agentsTop>button,#property #agents .agentsBottom>button{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+#property #agents .agentsBottom{
+    margin-top: 100px;
+}
+
+
+
+
+
+
 /*地区插件样式*/
 .city-picker-span{
     border: .01rem solid #ccc;
@@ -95,4 +111,6 @@
     background:#5068a9 ;
     color:#fff!important;
 }
+
+
 

@@ -28,10 +28,6 @@
 					<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
 				</label>
 				<br/>
-				<!--<label class="labelBox">
-					<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称或名称关键字">
-				</label>
-				<br/>-->
 				<div class="labelBox text-left">
 					<i>选择地区</i>
 					<div id="cityPicker">
@@ -59,16 +55,25 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane fade" id="agents" aria-labelledby="agencyPeople-tab">
-				<p style="line-height: 53px;color: red;">*通过输入人名搜索代理人或者输入机构搜索该机构的所有代理人</p>
-				<label class="labelBox">
-					<i>代理人名称　　</i><input type="text" class="type name" placeholder="请输入代理人名称">
-				</label>
-				<br>
-				<label class="labelBox">
-					<i>代理机构名称　</i><input type="text" class="type agency" placeholder="请输入代理机构名称">
-				</label>
-				<span class="errorTip"></span>
-				<button type="button" class="btn btn-primary searchBtn">搜索</button>
+				<div class="agentsTop">
+					<i>*根据代理人名称查询</i>
+					<label class="labelBox agents">
+						<i>代理人名称　　</i><input type="text" class="type name" placeholder="请输入代理人名称">
+					</label>
+					<br>
+					<span class="errorTip"></span>
+					<button type="button" class="btn btn-primary searchBtn">搜索</button>
+				</div>
+				<div class="agentsBottom">
+					<i>*根据代理机构名称查询</i>
+					<label class="labelBox agents">
+						<i>代理机构名称　</i><input type="text" class="type agency" placeholder="请输入代理机构名称">
+					</label>
+					<br>
+					<span class="errorTip"></span>
+					<button type="button" class="btn btn-primary searchBtn">搜索</button>
+				</div>
+
 			</div>
 
 			<div role="tabpanel" class="tab-pane fade" id="patent" aria-labelledby="patent-tab">

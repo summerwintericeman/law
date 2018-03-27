@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a33361f-d516-4f2a-84d3-6822c05006e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/caseDetail.html" afterPath="$PROJECT_DIR$/components/caseDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/caseList.html" afterPath="$PROJECT_DIR$/components/caseList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/people.html" afterPath="$PROJECT_DIR$/components/people.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/propery.html" afterPath="$PROJECT_DIR$/components/propery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/register.html" afterPath="$PROJECT_DIR$/components/register.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/propery.css" afterPath="$PROJECT_DIR$/css/propery.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/property.js" afterPath="$PROJECT_DIR$/js/property.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,28 +36,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="property.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/property.js">
+      <file leaf-file-name="propery.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/propery.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="103" column="46" lean-forward="true" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+            <state relative-caret-position="376">
+              <caret line="81" column="29" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="propery.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/propery.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="agentsList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/agentsList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-745">
+              <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
               <folding>
-                <element signature="e#3294#4665#0" expanded="false" />
-                <element signature="e#4698#4997#0" expanded="false" />
+                <marker date="1521989272839" expanded="true" signature="885:1309" ph="..." />
+                <marker date="1521989272839" expanded="true" signature="958:1211" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="agentsList.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/agentsList.js">
+      <file leaf-file-name="property.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/property.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="849">
-              <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+            <state relative-caret-position="361">
+              <caret line="129" column="32" lean-forward="false" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
               <folding>
-                <element signature="e#660#1511#0" expanded="false" />
-                <marker date="1521989272839" expanded="true" signature="885:1309" ph="..." />
-                <marker date="1521989272839" expanded="true" signature="958:1211" ph="..." />
+                <element signature="e#4061#5430#0" expanded="false" />
+                <element signature="e#5463#5762#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,6 +112,7 @@
       <find>judge_rate</find>
       <find>district</find>
       <find>city</find>
+      <find>property</find>
     </findStrings>
     <replaceStrings>
       <replace>caseListBoby</replace>
@@ -123,7 +141,6 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/components/agents.html" />
         <option value="$PROJECT_DIR$/js/index.js" />
-        <option value="$PROJECT_DIR$/css/propery.css" />
         <option value="$PROJECT_DIR$/components/agenciesList.html" />
         <option value="$PROJECT_DIR$/css/agentsList.css" />
         <option value="$PROJECT_DIR$/components/agentsList.html" />
@@ -139,12 +156,13 @@
         <option value="$PROJECT_DIR$/css/lawyerDetail.css" />
         <option value="$PROJECT_DIR$/components/lawyerDetail.html" />
         <option value="$PROJECT_DIR$/js/lawyerDetail.js" />
-        <option value="$PROJECT_DIR$/js/property.js" />
         <option value="$PROJECT_DIR$/components/register.html" />
-        <option value="$PROJECT_DIR$/components/propery.html" />
         <option value="$PROJECT_DIR$/components/people.html" />
         <option value="$PROJECT_DIR$/components/caseList.html" />
         <option value="$PROJECT_DIR$/components/caseDetail.html" />
+        <option value="$PROJECT_DIR$/components/propery.html" />
+        <option value="$PROJECT_DIR$/js/property.js" />
+        <option value="$PROJECT_DIR$/css/propery.css" />
       </list>
     </option>
   </component>
@@ -161,10 +179,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="700" />
-    <option name="y" value="185" />
-    <option name="width" value="1602" />
-    <option name="height" value="742" />
+    <option name="x" value="401" />
+    <option name="y" value="39" />
+    <option name="width" value="1515" />
+    <option name="height" value="905" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -374,33 +392,33 @@
       <workItem from="1521722932884" duration="6516000" />
       <workItem from="1521811623487" duration="7072000" />
       <workItem from="1521893856292" duration="10631000" />
-      <workItem from="1522156250848" duration="2344000" />
+      <workItem from="1522156250848" duration="5348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91571000" />
+    <option name="totallyTimeSpent" value="94575000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="700" y="185" width="1602" height="742" extended-state="0" />
+    <frame x="401" y="39" width="1515" height="905" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19570707" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1750167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -524,13 +542,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery-1.12.3.js" />
-    <entry file="file://$PROJECT_DIR$/css/propery.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/lawyerList.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -724,14 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/propery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-996">
-          <caret line="53" column="115" lean-forward="false" selection-start-line="53" selection-start-column="111" selection-end-line="53" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/people.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -796,26 +799,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/property.js">
+    <entry file="file://$PROJECT_DIR$/js/agentsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="103" column="46" lean-forward="true" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+        <state relative-caret-position="-745">
+          <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
           <folding>
-            <element signature="e#3294#4665#0" expanded="false" />
-            <element signature="e#4698#4997#0" expanded="false" />
+            <marker date="1521989272839" expanded="true" signature="885:1309" ph="..." />
+            <marker date="1521989272839" expanded="true" signature="958:1211" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/agentsList.js">
+    <entry file="file://$PROJECT_DIR$/components/propery.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        <state relative-caret-position="376">
+          <caret line="81" column="29" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/property.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="129" column="32" lean-forward="false" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
           <folding>
-            <element signature="e#660#1511#0" expanded="false" />
-            <marker date="1521989272839" expanded="true" signature="885:1309" ph="..." />
-            <marker date="1521989272839" expanded="true" signature="958:1211" ph="..." />
+            <element signature="e#4061#5430#0" expanded="false" />
+            <element signature="e#5463#5762#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/propery.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
