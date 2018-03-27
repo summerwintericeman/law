@@ -1,10 +1,147 @@
-
+<!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />-->
+		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
+		<title>专宝贝</title>
+		<style type="text/css">
+			#dowellMain {	
+				min-height: 850px;
+				padding: 50px;
+			}
+			#dowellDetail .paragraph{
+				padding: 20px;
+			}
+			#dowellDetail .paragraph>h3{
+				margin-bottom: 15px;
+				color: #4077b2;
+			}
+			#dowellDetail .paragraph>p{
+				font-size: 14px;
+				line-height: 30px;
+			}
+			#dowellMain .title{
+				margin-top: 35px;
+				text-align: center;
+				font-weight: 900;
+				color: #4077b2;
+				font-size: 30px;
+			}
+		</style>
 	</head>
-	<body>
-		*****
+
+	<body id="dowellDetail">
+		<div id="header"></div>
+		<div id="dowellMain">
+
+		</div>
+
+		<div id="footer"></div>
 	</body>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script>
+		$('#header').load('common/header.html', function() {
+			function getUrlParam(name, pare) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+				var r = window.location.search.substr(1).match(reg); //匹配目标参数
+				if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
+				return null; //返回参数值
+			};
+			var page = getUrlParam('fromPage');
+			if(page && page == 'property') {
+				$('.mainWrap .path a').eq(0).html('知识产权律师').attr('href', 'propery.html');
+				$('.mainNav li').removeClass('active').eq(2).addClass('active');
+			} else {
+				$('.mainNav li').removeClass('active').eq(1).addClass('active');
+			}
+		});
+		$("#footer").load('common/footer.html');
+	</script>
+	<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			//请求案件详情
+			var wenshu_id = getUrlParam('wenshu', true),
+				reason = getUrlParam('reason', true);
+			console.log(wenshu_id);
+			console.log(reason);
+			var param = JSON.stringify({
+				"wenshu_id": wenshu_id,
+				"reason": {
+					"reason_2": reason
+				}
+			})
+			if(wenshu_id && reason) {
+				$.ajax({
+					dataType: 'json',
+					url: 'http://47.97.197.176:8888/query/case/case_doc',
+					type: 'post',
+					data: param,
+					success: function(res) {
+						if(res.code == 0) {
+							console.log(res.data);
+							var titleList = ["基本信息", "审理经过", "原告诉称",
+								"被告辩称", "本院查明", "本院认为", "裁判结果",
+								"审判人员", "审判日期", "书记员"
+							];
+							var detailNodeHead = `<h3 class="title">${res.data.title}</h3>`;
+							$("#dowellMain").append(detailNodeHead);
+							$.each(res.data, function(key, ele) {
+								var temp = "";
+								if(key != "title") {
+									if(key == "judge_result"){
+										temp = "裁判结果"
+										console.log("裁判结果")
+									} else if(key == "court_clerk"){
+										temp = "书记员"
+										console.log("书记员")
+									} else if(key == "judge_times"){
+										temp = "审判日期"
+										console.log("审判日期")
+									} else if(key == "court_point"){
+										temp = "本院认为"
+										console.log("本院认为")
+									} else if(key == "court_verification"){
+										temp = "本院查明"
+										console.log("本院查明")
+									} else if(key == "defendant_point"){
+										temp = "被告辩称"
+										console.log("被告辩称")
+									} else if(key == "plaintiff_point"){
+										temp = "原告诉称"
+										console.log("原告诉称")
+									} else if(key == "trail_flow"){
+										temp = "审理经过"
+										console.log("审理经过")
+									} else if(key == "judge_person"){
+										temp = "审判人员"
+										console.log("审判人员")
+									}
+									
+
+									var Node = `<div class="paragraph">
+													<h3>${temp}</h3>
+													<p>${ele}</p>
+											    </div>`;
+									$("#dowellMain").append(Node);
+								}
+							});
+						}
+					},
+					error: function() {
+						errorModal('请求律师详情失败！');
+						console.error('/query/case/case_doc', arguments);
+					}
+				})
+			}
+		})
+	</script>
+
 </html>

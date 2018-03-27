@@ -39,7 +39,7 @@ $(function() {
 		success: function(res) {
 			//console.log(res);
 			//只取最多的显示三个
-			console.log(res.data.detail);
+			//console.log(res.data.detail);
 			var maxIndex = 0;
 
 			for(var i = 1; i < res.data.detail.length; i++) {
@@ -81,16 +81,24 @@ $(function() {
 				parentNode.append(node1);
 				console.log(res.data.detail);
 				var reasonList = [],
-					nameList = [];
+					nameList = [],
+					sucessRate = [],
+					partRate = [];
+
 				$.each(res.data.detail, function(idx, ele) {
-					var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
-					$('#dowell').append(nodeDoWell);
-					//需要数量和具体的案由
-					reasonList.push({
-						"name": ele.reason2,
-						"value": ele.count
-					});
-					nameList.push(ele.reason2);
+					if(idx < 6) {
+						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
+						$('#dowell').append(nodeDoWell);
+						//需要数量和具体的案由
+						reasonList.push({
+							"name": ele.reason2,
+							"value": ele.count
+						});
+						nameList.push(ele.reason2);
+						sucessRate.push(ele.suc_rate);
+						partRate.push(ele.part_suc_rate);
+					}
+
 				});
 				//console.log(reasonList);
 				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
@@ -171,7 +179,7 @@ $(function() {
 					}
 				};
 				var option1 = {
-					color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+					color: ['#4cabce', '#e5323e','#003366', '#006699'],
 					tooltip: {
 						trigger: 'axis',
 						axisPointer: {
@@ -179,7 +187,7 @@ $(function() {
 						}
 					},
 					legend: {
-						data: ['Forest', 'Steppe', 'Desert', 'Wetland']
+						data: ['胜诉率', '部分胜诉率']
 					},
 					toolbox: {
 						show: true,
@@ -198,35 +206,26 @@ $(function() {
 						axisTick: {
 							show: false
 						},
-						data: ['2012', '2013', '2014', '2015', '2016']
+						data: nameList
 					}],
 					yAxis: [{
 						type: 'value'
 					}],
 					series: [{
-							name: 'Forest',
+							name: '胜诉率',
 							type: 'bar',
-							barGap: 0,
+							barWidth:40,
+							barGap: 1,
 							label: labelOption,
-							data: [320, 332, 301, 334, 390]
+							data: sucessRate
 						},
 						{
-							name: 'Steppe',
+							name: '部分胜诉率',
 							type: 'bar',
+							barWidth:40,
+							barGap: 1,
 							label: labelOption,
-							data: [220, 182, 191, 234, 290]
-						},
-						{
-							name: 'Desert',
-							type: 'bar',
-							label: labelOption,
-							data: [150, 232, 201, 154, 190]
-						},
-						{
-							name: 'Wetland',
-							type: 'bar',
-							label: labelOption,
-							data: [98, 77, 101, 99, 40]
+							data: partRate
 						}
 					]
 				};
