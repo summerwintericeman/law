@@ -47,7 +47,11 @@ $(function() {
 					maxIndex = i;
 				}
 			}
-			var maxCountReason = res.data.detail[maxIndex].reason2;
+			var maxCountReason = "";
+			if(res.data.detail[0]){
+				maxCountReason = res.data.detail[maxIndex].reason2;
+			}
+			
 
 			if(res.code == 0) {
 

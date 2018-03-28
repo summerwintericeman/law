@@ -18,7 +18,7 @@ $(document).ready(function() {
 	}
 
 	var getCookie = $.cookie('searchCase');
-
+	var sendReason = null;
 	if(getCookie){
 		var cookieMess = JSON.parse(getCookie),
 			des = cookieMess.des,
@@ -27,6 +27,8 @@ $(document).ready(function() {
             region = cookieMess.region || '';
         caseListCookie.reasonObj = cookieMess;
 		caseFoud(des, function(res) {
+			console.log(res)
+			sendReason = res.second_reason;
             caseListCookie.reasonObj.des = res;
 			var curPage = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
 			caseList(res, curPage,  province,city,region,function(pkg){
@@ -73,8 +75,9 @@ $(document).ready(function() {
             judgement_date:data.judgement_date || '',
             source_url:data.source_url || ''
         }
+        
         var liNode = `<li>
-            <a href="${newObj.source_url}"  target="_blank"  class="contant">
+            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"  target="_blank"  class="contant">
                 <p class="title text-strong">${newObj.title}</p>
                 <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
                 <p class="info">
@@ -220,6 +223,7 @@ $(document).ready(function() {
             'city': city,
             'region':region
 		};
+		console.log(param);
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/case/case_list',
