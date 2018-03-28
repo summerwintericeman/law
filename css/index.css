@@ -54,6 +54,7 @@ a {
 
 a:hover {
 	text-decoration: none;
+	color: blue;
 }
 
 i {
