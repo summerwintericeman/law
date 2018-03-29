@@ -4,6 +4,7 @@
 $(function() {
 	var name = getUrlParam('lawyer_name', true),
 		_loction = getUrlParam('lawyer_location', true);
+	var fromPage = getUrlParam('fromPage');
 	var resKey = $.cookie('all');
 	resKey = JSON.parse(resKey);
 	resKey = resKey.reasonObj.res;
@@ -103,7 +104,12 @@ $(function() {
 				//console.log(reasonList);
 				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
 					if(idx < 3) {
-						var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
+						if(fromPage){
+                            var node2 = `<li><a href='./dowellDetail.html?fromPage=property&wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
+						}else{
+                            var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
+						}
+
 						$('.node2List').append(node2);
 					}
 				});
