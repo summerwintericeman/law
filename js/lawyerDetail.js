@@ -107,7 +107,11 @@ $(function() {
 				//console.log(reasonList);
 				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
 					if(idx < 3) {
+						var page = getUrlParam('fromPage');		
 						var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
+						if(page && page == 'property') {
+							node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
+						}
 						$('.node2List').append(node2);
 					}
 				});

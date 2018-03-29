@@ -77,7 +77,7 @@ $(document).ready(function() {
         }
         
         var liNode = `<li>
-            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"  target="_blank"  class="contant">
+            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"    class="contant">
                 <p class="title text-strong">${newObj.title}</p>
                 <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
                 <p class="info">
@@ -86,8 +86,23 @@ $(document).ready(function() {
                 </p>
 
             </a>
-            <a class="details btn" href="${newObj.source_url}" target="_blank">查看详情</a>
-        </li>`
+            <a class="details btn" href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"    class="contant">查看详情</a>
+        </li>`;
+        var page = getUrlParam('fromPage');	
+        if(page && page == 'property') {
+        	liNode = `<li>
+            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}&fromPage=property"    class="contant">
+                <p class="title text-strong">${newObj.title}</p>
+                <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
+                <p class="info">
+                    <span>案件编号：${newObj.case_num}</span>
+                    <span>审判日期：${newObj.judgement_date}</span>
+                </p>
+
+            </a>
+            <a class="details btn" href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}&fromPage=property"    class="contant">查看详情</a>
+        </li>`;
+        }
         ulNote.append(liNode);
     };
 //创建翻页节点

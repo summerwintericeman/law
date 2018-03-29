@@ -68,6 +68,7 @@
 			var page = getUrlParam('fromPage');
 			if(page && page == 'property') {
 				$('.mainWrap .path a').eq(0).html('知识产权律师').attr('href', 'propery.html');
+				$('.mainWrap .path a').eq(1).attr('href', 'lawyerList.html?fromPage=property');
 				$('.mainNav li').removeClass('active').eq(2).addClass('active');
 			} else {
 				$('.mainNav li').removeClass('active').eq(1).addClass('active');
