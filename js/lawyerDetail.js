@@ -4,6 +4,7 @@
 $(function() {
 	var name = getUrlParam('lawyer_name', true),
 		_loction = getUrlParam('lawyer_location', true);
+	var fromPage = getUrlParam('fromPage');
 	var resKey = $.cookie('all');
 	resKey = JSON.parse(resKey);
 	resKey = resKey.reasonObj.res;
@@ -112,6 +113,7 @@ $(function() {
 						if(page && page == 'property') {
 							node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
 						}
+
 						$('.node2List').append(node2);
 					}
 				});

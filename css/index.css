@@ -62,7 +62,7 @@ i {
 }
 
 .mouseHand {
-	cursor: default;
+	cursor: pointer;
 }
 
 input {
