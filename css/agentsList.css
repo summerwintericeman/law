@@ -46,6 +46,11 @@
 }
 #agentsList .mainWrap>ul li p.name i:last-child{
     border: none;
+    padding-left: 70px;
+    color: red;
+}
+#agentsList .mainWrap>ul li p.name i:nth-child(3){
+    border: none;
     padding-left: 90px;
     color: #f0ad4e;
 }

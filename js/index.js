@@ -63,6 +63,7 @@ function caseFoud(caseDes, callback) {
                 var reason = res.data[0].reason,
                     num = "reason_" + res.data[0].sub_reason_class;
                 var obj = {};
+                obj["second_reason"] = res.data[0].second_reason;
                 obj[num] = reason;
 
                 if(callback) {

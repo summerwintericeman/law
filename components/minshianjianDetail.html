@@ -10,38 +10,38 @@
 		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
 		<title>专宝贝</title>
 		<style type="text/css">
-			#dowellMain {	
+			#minshianjianmain {	
 				min-height: 850px;
 				padding: 50px;
 			}
-			#dowellDetail .paragraph{
+			#minshianjian .paragraph{
 				padding: 20px;
 			}
-			#dowellDetail .paragraph>h3{
+			#minshianjian .paragraph>h3{
 				margin-bottom: 15px;
 				color: #4077b2;
 			}
-			#dowellDetail .paragraph>p{
+			#minshianjian .paragraph>p{
 				font-size: 14px;
 				line-height: 30px;
 			}
-			#dowellMain .title{
+			#minshianjianmain .title{
 				margin-top: 35px;
 				text-align: center;
 				font-weight: 900;
 				color: #4077b2;
 				font-size: 30px;
 			}
-			#dowellDetail p{
+			#minshianjian p{
 				text-indent: 2em; 
 			}
 			
 		</style>
 	</head>
 
-	<body id="dowellDetail">
+	<body id="minshianjian">
 		<div id="header"></div>
-		<div id="dowellMain">
+		<div id="minshianjianmain">
 
 		</div>
 
@@ -59,6 +59,7 @@
 			};
 			var page = getUrlParam('fromPage');
 			if(page && page == 'property') {
+				$('.mainWrap .path a').eq(0).html('知识产权律师').attr('href', 'propery.html');
 				$('.mainNav li').removeClass('active').eq(2).addClass('active');
 			} else {
 				$('.mainNav li').removeClass('active').eq(1).addClass('active');
@@ -95,7 +96,7 @@
 								"审判人员", "审判日期", "书记员"
 							];
 							var detailNodeHead = `<h3 class="title">${res.data.title}</h3>`;
-							$("#dowellMain").append(detailNodeHead);
+							$("#minshianjianmain").append(detailNodeHead);
 							$.each(res.data, function(key, ele) {
 								var temp = "";
 								if(key != "title") {
@@ -133,7 +134,7 @@
 													<h3>${temp}</h3>
 													<p>${ele}</p>
 											    </div>`;
-									$("#dowellMain").append(Node);
+									$("#minshianjianmain").append(Node);
 								}
 							});
 						}
