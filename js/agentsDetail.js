@@ -6,7 +6,7 @@ $(document).ready(function() {
 	//var getCom = getUrlParam('com',true) || '';
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
-    agentMsg = agentMsg?JSON.parse(agentMsg):'';
+	agentMsg = agentMsg ? JSON.parse(agentMsg) : '';
 	var _href = window.location.href;
 	if(_href.indexOf('&com') > -1) {
 		$('.path').find('a').eq(1).hide().next('i').hide();
@@ -26,6 +26,7 @@ $(document).ready(function() {
 			success: function(res) {
 				console.log(res);
 				showlist(res);
+				draw();
 			},
 			error: function() {
 				errorModal('查询代理人详情失败!');
@@ -34,11 +35,9 @@ $(document).ready(function() {
 		});
 	};
 
-
-
 	//添加基本信息节点
-	(function(){
-        var node1 = `<div class="clearfix msgWrap">
+	(function() {
+		var node1 = `<div class="clearfix msgWrap">
 						<div class="pull-left userMsg">
 							<img src="../img/default-big.jpg" onerror="this.src='../img/default-big.jpg'">
 							</div>
@@ -62,20 +61,45 @@ $(document).ready(function() {
 						<ul class="node2List"></ul>
 						</p>
 						</div>`;
-        parNode.append(node1);
+		parNode.append(node1);
 
-        agentsDetail(function(res) {
-            if(res.code == 0 && res.data.data.length > 0) {
-            	//专利条数
-               $('.msgWrap p.zhuanliNum i').html(res.data.count);
-               //擅长领域
+		agentsDetail(function(res) {
+			if(res.code == 0 && res.data.data.length > 0) {
+				//专利条数
+				$('.msgWrap p.zhuanliNum i').html(res.data.count);
+				//擅长领域
 				var dowellHtml = $('#dowell').html();
-                $('#dowell').html(dowellHtml + '此处暂无数据');
+				//擅长领域的添加
+				var reasonList = [{//临时伪造数据
+						"name": "专利1",
+						"value": 1
+					},
+					{
+						"name": "专利2",
+						"value": 2
+					},
+					{
+						"name": "专利3",
+						"value": 3
+					}
+				];
+				$.each(reasonList, function(idx, ele) {
+					if(idx < 6) {
+						var nodeDoWell = `　　<span>${ele.name}<i style="color:red;">　(${ele.value})</i></span>`;
+						$('#dowell').append(nodeDoWell);
+						//需要数量和具体的案由
+						
+						
+						//后续画图的数据也需要早这里处理好
+						
+					}
 
-                //遍历数组进行添加
-                for(var i = 0; i < 3; i++) {
-                    var obj = res.data.data[i];
-                    var addNode = `<li class='eachContent'><h3><span></span>
+				});
+
+				//遍历数组进行添加
+				for(var i = 0; i < 1; i++) {
+					var obj = res.data.data[i];
+					var addNode = `<li class='eachContent'><h3><span></span>
 					<span><i class="LowTitle text-strong">${obj.dev_name}</i> </span></h3>
                     <p class="com">
                         <span><i class="LowTitle text-strong">专利类型:</i> ${obj.patent_type}</span>
@@ -84,43 +108,112 @@ $(document).ready(function() {
                         <br/>
                     <span><i class="LowTitle text-strong">专利号/日期:</i> ${obj.patent_no} / ${obj.public_date}</span>
                     </p> </li>`;
-                    $('ul.node2List').append(addNode);
-                }
+					$('ul.node2List').append(addNode);
+				}
 
+			} else {
+				errorModal(res.msg);
+				console.error('查询代理人详情失败:', res);
+			}
 
-
-            } else {
-                errorModal(res.msg);
-                console.error('查询代理人详情失败:', res);
-            }
-
-        });
-
-
-
+		});
 
 	})();
+	//绘制图表
+	var draw = function() {
+		var myChart0 = echarts.init(document.getElementById('rateChart0'));
+		var nameList = ["专利1", "专利2", "专利3"];
+		var reasonList = [{
+				"name": "专利1",
+				"value": 1
+			},
+			{
+				"name": "专利2",
+				"value": 2
+			},
+			{
+				"name": "专利3",
+				"value": 3
+			}
+		];
+		var option = {
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				x: 'left',
+				data: nameList
+			},
+			toolbox: {
+				show: true,
+				orient: 'vertical',
+				right: 40,
+				top: 'top',
+				feature: {
+					saveAsImage: {
+						show: true
+					}
+				}
+			},
+			series: [{
+				name: '',
+				type: 'pie',
+				radius: ['50%', '70%'],
+				avoidLabelOverlap: false,
+				label: {
+					normal: {
+						show: false,
+						position: 'center'
+					},
+					emphasis: {
+						show: true,
+						textStyle: {
+							fontSize: '12',
+							fontWeight: 'bold'
+						}
+					}
+				},
+				labelLine: {
+					normal: {
+						show: false
+					}
+				},
+				data: reasonList
+			}]
+		};
+		myChart0.setOption(option);
+	}
+		
+		
+	//获取更多的专利信息的跳转
+	$("#getMoreMess").on("click",function(){
+		var userLogin = $.cookie("userMess");
+		console.log(userLogin);
+		if(userLogin && (userLogin.email || userLogin.account)){
+			//cookie存在并且其中的一个email或者account有值存在表示已经登录
+			//跳转到详细的页面
+			
+			
+		}else{
+			console.log("aaa")
+			$('#choiceMore').modal('show');
+			$('#choiceMore').css({
+				"margin-top":"200px"
+			})
+			//alert("如需查看更多，请您先登录")
+			
+		}
 
-	//添加案件列表子节点
-	//	function createPage(data) {
-	//		debugger;
-	//		$.each(data, function(key, val) {
-	//			if(!val) {
-	//				val = '';
-	//			}
-	//		});
-	//		var liNode = `<li>
-	//          <a href="agentsDetail.html?per=${cookieMess.per}&com=${cookieMess.com}"  class="contant">
-	//              <p class="name"><span class="pull-left">${data.cp_name}</span><i>${data.gender}</i><i>${data.major}</i></p>
-	//              <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${cookieMess.com}</p>
-	//              <p class="info text-strong">
-	//                  <span>certNo：<i>${data.certNo}</i></span>
-	//                  <span>authNo：<i>${data.authNo}</i></span>
-	//              </p>
-	//          </a>
-	//          <a class="details btn" href="lawyerDetail.html?id=0">查看详情</a>
-	//      </li>`
-	//
-	//	};
-
+		
+	});
+	
+	//模态框选择登录
+	$("#choiceLogin").on("click",function(){
+		window.location.href = "./login.html";
+	});
+		
+	
+	
 });

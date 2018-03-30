@@ -1,78 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css" />
-    <link rel="stylesheet" href="../plugin/cityPicker/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    <link rel="stylesheet" type="text/css" href="../css/agentsDetail.css" />
-    <!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">-->
-	<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
-    <title>专宝贝</title>
-</head>
-<body id="agentsDetail">
-<div id="header"></div>
-<div class="mainWrap">
-    <div class="path">
-        <a href="propery.html?page=agents">找代理人</a><i>&gt;</i>
-        <a href="agentsList.html">代理人列表</a><i>&gt;</i>
-        <a class="active">代理人信息</a>
-    </div>
-    <div class="content">
 
-    </div>
-    <p class="more text-center"><button class="btn mouseHand">查看更多</button></p>
-    <div class="chartWrap clearfix">
-        <!--<h4 class="chartTitle font-16 text-strong">胜诉率</h4>-->
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../plugin/cityPicker/css/city-picker.css" />
+		<link rel="stylesheet" href="../plugin/cityPicker/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../css/agentsDetail.css" />
+		<!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">-->
+		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
+		<title>专宝贝</title>
+	</head>
 
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">分类数据</a>
-            </li>
-            <!--<li role="presentation">-->
-                <!--<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">律师胜诉率</a>-->
-            <!--</li>-->
-        </ul>
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="home">
-                <div class="allMap">
-                    <div id="rateChart0" style="width:100%;height:350px;"></div>
-                </div>
-            </div>
-            <!--<div role="tabpanel" class="tab-pane" id="profile">-->
-                <!--<div class="messMap">-->
-                    <!--<div id="rateChart1" style="width: 100%;height:350px;"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
+	<body id="agentsDetail">
+		<div id="header"></div>
+		<div class="mainWrap">
+			<div class="path">
+				<a href="propery.html?page=agents">找代理人</a><i>&gt;</i>
+				<a href="agentsList.html">代理人列表</a><i>&gt;</i>
+				<a class="active">代理人信息</a>
+			</div>
+			<div class="content">
 
-    </div>
+			</div>
+			<p class="more text-center"><button class="btn mouseHand" id="getMoreMess">查看更多专利请点击</button></p>
+			<div class="chartWrap clearfix">
 
-</div>
-<div id="footer"></div>
-</body>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.cookie.js"></script>
-<script>
-    $('#header').load('common/header.html',function () {
-//      var fromPage = $.cookie('fromPage');
-//      if(fromPage && fromPage=='propery'){
-//          $('.path a').eq(0).attr('href','propery.html?page=agents');
-//          $('.mainNav li').removeClass('active').eq(2).addClass('active');
-//          return;
-//      }
-        $('.mainNav li').removeClass('active').eq(2).addClass('active');
-    });
-    $("#footer").load('common/footer.html');
-</script>
-<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
-<script src="../plugin/cityPicker/js/city-picker.js"></script>
-<script type="text/javascript" src="../js/index.js"></script>
-<script type="text/javascript" src="../js/agentsDetail.js"></script>
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">代理人擅长专利图表</a>
+					</li>
 
+				</ul>
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="allMap">
+							<div id="rateChart0" style="width:100%;height:350px;"></div>
+						</div>
+					</div>
 
+				</div>
+
+			</div>
+
+		</div>
+		<!--模态框-->
+		<div class="modal fade" tabindex="-1" role="dialog" id="choiceMore">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<p>尊敬的用户，如想获取更多信息请先登录</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">留在本页</button>
+						<button type="button" class="btn btn-primary" id="choiceLogin">　登　录　</button>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+
+		
+		<div id="footer"></div>
+	</body>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script>
+		$('#header').load('common/header.html', function() {
+			//      var fromPage = $.cookie('fromPage');
+			//      if(fromPage && fromPage=='propery'){
+			//          $('.path a').eq(0).attr('href','propery.html?page=agents');
+			//          $('.mainNav li').removeClass('active').eq(2).addClass('active');
+			//          return;
+			//      }
+			$('.mainNav li').removeClass('active').eq(2).addClass('active');
+		});
+		$("#footer").load('common/footer.html');
+	</script>
+	<script type="text/javascript" src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="../plugin/cityPicker/js/city-picker.data.js"></script>
+	<script src="../plugin/cityPicker/js/city-picker.js"></script>
+	<script src="../plugin/echarts.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/agentsDetail.js"></script>
 
 </html>
