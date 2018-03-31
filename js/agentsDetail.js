@@ -191,8 +191,6 @@ $(document).ready(function() {
 	$("#getMoreMess").on("click",function(){
 		var userLogin = $.cookie("userMess");
 		console.log(userLogin);
-		console.log(userLogin.email);
-		console.log(userLogin.account);
 		if(userLogin){
 			userLogin = JSON.parse(userLogin);
 		}
