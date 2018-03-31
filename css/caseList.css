@@ -1,7 +1,8 @@
 #caseListBody .mainWrap{
     margin-top: .42rem;
     background: #fff;
-    padding: .25rem 10%;
+    padding: .25rem 10% 100px 10%;
+    position: relative;
 }
 #caseListBody .mainWrap .path{
     padding-bottom: 20px;
