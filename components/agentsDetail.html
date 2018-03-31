@@ -27,7 +27,6 @@
 			</div>
 			<p class="more text-center"><button class="btn mouseHand" id="getMoreMess">查看更多专利请点击</button></p>
 			<div class="chartWrap clearfix">
-
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">代理人擅长专利图表</a>
@@ -74,12 +73,6 @@
 	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 	<script>
 		$('#header').load('common/header.html', function() {
-			//      var fromPage = $.cookie('fromPage');
-			//      if(fromPage && fromPage=='propery'){
-			//          $('.path a').eq(0).attr('href','propery.html?page=agents');
-			//          $('.mainNav li').removeClass('active').eq(2).addClass('active');
-			//          return;
-			//      }
 			$('.mainNav li').removeClass('active').eq(2).addClass('active');
 		});
 		$("#footer").load('common/footer.html');

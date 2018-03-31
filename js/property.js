@@ -139,8 +139,8 @@ $(document).ready(function() {
         //cpquery/doc_url
         if(patentNum){
             //验证专利号是否正确
-            var reg1 = /^(CN)*[1-9]\d{3}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{4}\.[0-9]$/,
-                reg2 = /^[1-9]\d{3}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{4}[0-9]$/;
+            var reg1 = /^(CN){0,1}\d{12}\.[0-9]$/,
+                reg2 = /^\d{13}$/;
             if(!(reg1.test(patentNum) || reg2.test(patentNum))){
                 //验证错误
                 errorModal('专利号输入有误，请重新填写！');

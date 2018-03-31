@@ -191,11 +191,15 @@ $(document).ready(function() {
 	$("#getMoreMess").on("click",function(){
 		var userLogin = $.cookie("userMess");
 		console.log(userLogin);
+		console.log(userLogin.email);
+		console.log(userLogin.account);
+		if(userLogin){
+			userLogin = JSON.parse(userLogin);
+		}
 		if(userLogin && (userLogin.email || userLogin.account)){
 			//cookie存在并且其中的一个email或者account有值存在表示已经登录
 			//跳转到详细的页面
-			
-			
+			window.location.href = "./zhuanLiList.html?per=" + getPer;	
 		}else{
 			console.log("aaa")
 			$('#choiceMore').modal('show');
