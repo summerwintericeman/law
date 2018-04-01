@@ -197,7 +197,7 @@ $(function() {
 						}
 					},
 					legend: {
-						data: ['胜诉率', '部分胜诉率']
+						data: ['全部胜诉率', '部分胜诉率']
 					},
 					toolbox: {
 						show: true,
@@ -222,7 +222,7 @@ $(function() {
 						type: 'value'
 					}],
 					series: [{
-							name: '胜诉率',
+							name: '全部胜诉率',
 							type: 'bar',
 							barWidth:40,
 							barGap: 1,

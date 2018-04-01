@@ -150,6 +150,7 @@ $(document).ready(function() {
             var obj = JSON.stringify({
                 patent_no:patentNum
             });
+            console.log(obj);
             $.ajax({
                 dataType: 'json',
                 url: 'http://47.97.197.176:8888/cpquery/doc_url',

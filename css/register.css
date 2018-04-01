@@ -11,6 +11,9 @@ body {
 	font-weight: 900;
 	padding: 0 0.15rem;
 }
+.top_nav .compony_logo>a:hover {
+	color: blue;
+}
 .registerMess {
 	line-height: 42px;
 	font-size: 20px;

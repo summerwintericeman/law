@@ -50,6 +50,7 @@ dd {
 a {
 	color: #303030;
 	text-decoration: none;
+	cursor: pointer !important;
 }
 
 a:hover {
