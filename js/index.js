@@ -49,13 +49,25 @@ function errorModal(tip, callback) {
     });
 };
 
-function caseFoud(caseDes, callback) {
+function caseFoud(knowledge, caseDes, callback) {
+	// http://47.92.38.167:8888/  http://47.97.197.176:8888
+	var URL = 'http://47.97.197.176:8888/feature_query/case_type';
+	//知识产权的接口和需要的参数需要根据情况修改
     var Data = JSON.stringify({
         "text": caseDes
     });
+    if(knowledge == 1){
+    	//表示是知识产权 修改传递数据和url路径
+    	Data = JSON.stringify({
+        "text": caseDes,
+        "reason2": "知识产权与竞争纠纷"
+    	});
+    	URL = 'http://47.97.197.176:8888/feature_query/case_type_reason2';
+    }
+    
     $.ajax({
         dataType: 'json',
-        url: 'http://47.97.197.176:8888/feature_query/case_type', // http://47.92.38.167:8888/  http://47.97.197.176:8888
+        url: URL, 
         type: 'post',
         data: Data,
         success: function(res) {

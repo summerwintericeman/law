@@ -34,9 +34,13 @@ $(document).ready(function() {
 	};
 
 	function getPreMessage(name, des, province,city,region, page_num) {
+		var knowledgeNum = 0;
+		if(fromPage && fromPage=='property'){
+			knowledgeNum = 1;
+		}
 		if(name) {
 			if(des){
-				caseFoud(des, function(res) {
+				caseFoud(knowledgeNum, des, function(res) {
 					all.reasonObj.res = res;
                     //lawyerList(res, city, page_num);
 					lawyerMatch(res, name, page_num);
@@ -47,7 +51,7 @@ $(document).ready(function() {
 			}
 			
 		} else {
-			caseFoud(des, function(res) {
+			caseFoud(knowledgeNum , des, function(res) {
 				all.reasonObj.res = res;
 				lawyerList(res, province,city,region, page_num);
 			});

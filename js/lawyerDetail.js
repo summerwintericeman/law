@@ -86,27 +86,31 @@ $(function() {
 				console.log(res.data.detail);
 				var reasonList = [],
 					nameList = [],
+					nameList1 = [],
 					sucessRate = [],
 					failRate = [],
 					partRate = [];
 
 				$.each(res.data.detail, function(idx, ele) {
-					if(idx < 4) {
+					
 						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
 						$('#dowell').append(nodeDoWell);
-						//需要数量和具体的案由
+						//第一个图表需要的数据 需要全部数量的案由
 						reasonList.push({
 							"name": ele.reason2,
 							"value": ele.count
 						});
 						nameList.push(ele.reason2);
+					//第二图需要的数据 只需要一部分不是全部	
+					if(idx < 2) {
+						nameList1.push(ele.reason2);
 						sucessRate.push(ele.suc_rate);
 						failRate.push(( 1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2));
 						partRate.push(ele.part_suc_rate);
 					}
 
 				});
-				//console.log(reasonList);
+				//类似案例的选择
 				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
 					if(idx < 3) {
 						var page = getUrlParam('fromPage');
@@ -172,11 +176,15 @@ $(function() {
 					},
 					xAxis: [{
 						type: 'category',
-						data: nameList
+						data: nameList1
 					}],
 					yAxis: [{
-						type: 'value'
-					}],
+						type: 'value',
+						axisLabel: {
+                		formatter: '{value} %'
+           				}
+					}
+					],
 					series: [{
 							name: '败诉',
 							type: 'bar',
@@ -199,114 +207,14 @@ $(function() {
 						}
 					]
 				};
-
-//				var labelOption = {
-//					normal: {
-//						show: true,
-//						position: "insideBottom",
-//						distance: 15,
-//						align: "left",
-//						verticalAlign: "middle",
-//						rotate: 90,
-//						formatter: '{c}  {name|{a}}',
-//						fontSize: 16,
-//						rich: {
-//							name: {
-//								textBorderColor: '#fff'
-//							}
-//						}
-//					}
-//				};
-//				var option1 = {
-//					color: ['#4cabce', '#e5323e', '#003366', '#006699'],
-//					tooltip: {
-//						trigger: 'axis',
-//						axisPointer: {
-//							type: 'shadow'
-//						}
-//					},
-//					legend: {
-//						data: ['全部胜诉率', '部分胜诉率']
-//					},
-//					toolbox: {
-//						show: true,
-//						orient: 'vertical',
-//						right: 40,
-//						top: "top",
-//						feature: {
-//							saveAsImage: {
-//								show: true
-//							}
-//						}
-//					},
-//					calculable: true,
-//					xAxis: [{
-//						type: 'category',
-//						axisTick: {
-//							show: false
-//						},
-//						data: nameList
-//					}],
-//					yAxis: [{
-//						type: 'value'
-//					}],
-//					series: [{
-//							name: '全部胜诉率',
-//							type: 'bar',
-//							barWidth: 40,
-//							barGap: 1,
-//							label: labelOption,
-//							data: sucessRate
-//						},
-//						{
-//							name: '部分胜诉率',
-//							type: 'bar',
-//							barWidth: 40,
-//							barGap: 1,
-//							label: labelOption,
-//							data: partRate
-//						}
-//					]
-//				};
 				myChart1.setOption(option1);
-
 			} else {
 				errorModal(res.msg);
 			}
-
 		},
 		error: function() {
 			errorModal('请求律师详情失败！');
 			console.error('/query/lawyer/lawyer_info', arguments);
 		}
 	});
-
-	//	function judge_rate(resKey, callback) {
-	//		var parm = {
-	//			'reason': resKey
-	//		}
-	//		$.ajax({
-	//			dataType: 'json',
-	//			url: 'http://47.97.197.176:8888/static_query/judge_rate', // http://47.92.38.167:8888/  http://47.97.197.176:8888
-	//			type: 'post',
-	//			data: param,
-	//			success: function(res) {
-	//				//console.log(res);
-	//				if(res.code == 0) {
-	//					if(callback) {
-	//						callback(res);
-	//					}
-	//
-	//				} else {
-	//					errorModal(res.msg);
-	//				}
-	//
-	//			},
-	//			error: function() {
-	//				errorModal('请求律师胜诉率失败！');
-	//				console.error('/static_query/judge_rate', arguments);
-	//			}
-	//		});
-	//	};
-
 });

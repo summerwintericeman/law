@@ -160,6 +160,16 @@
 													<h3>${allList[i].name}</h3>
 													<p>${allList[i].mess}</p>
 											</div>`;
+								if(allList[i].name1 == "party_info"){
+									var temp =  allList[i].mess;
+									//标签并没有闭合
+									temp = temp.replace(/\n/g, '<br/><p>');
+									console.log(temp);
+									Node = `<div class="paragraph">
+													<h3>${allList[i].name}</h3>
+													<p>${temp}</p>
+											</div>`;
+								}
 								$("#dowellMain").append(Node);
 							}
 						}
