@@ -49,10 +49,9 @@ $(function() {
 				}
 			}
 			var maxCountReason = "";
-			if(res.data.detail[0]){
+			if(res.data.detail[0]) {
 				maxCountReason = res.data.detail[maxIndex].reason2;
 			}
-			
 
 			if(res.code == 0) {
 
@@ -88,10 +87,11 @@ $(function() {
 				var reasonList = [],
 					nameList = [],
 					sucessRate = [],
+					failRate = [],
 					partRate = [];
 
 				$.each(res.data.detail, function(idx, ele) {
-					if(idx < 6) {
+					if(idx < 4) {
 						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
 						$('#dowell').append(nodeDoWell);
 						//需要数量和具体的案由
@@ -101,6 +101,7 @@ $(function() {
 						});
 						nameList.push(ele.reason2);
 						sucessRate.push(ele.suc_rate);
+						failRate.push(( 1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2));
 						partRate.push(ele.part_suc_rate);
 					}
 
@@ -108,7 +109,7 @@ $(function() {
 				//console.log(reasonList);
 				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
 					if(idx < 3) {
-						var page = getUrlParam('fromPage');		
+						var page = getUrlParam('fromPage');
 						var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
 						if(page && page == 'property') {
 							node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
@@ -121,124 +122,152 @@ $(function() {
 				//绘制图表
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
+					title: {
+						text: '律师擅长案由分类',
+						subtext: '擅长案由百分比',
+						x: 'center'
+					},
 					tooltip: {
 						trigger: 'item',
-						formatter: "{a} <br/>{b}: {c} ({d}%)"
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
 					},
 					legend: {
 						orient: 'vertical',
 						x: 'left',
 						data: nameList
 					},
-					toolbox: {
-						show: true,
-						orient: 'vertical',
-						right: 40,
-						top: 'top',
-						feature: {
-							saveAsImage: {
-								show: true
-							}
-						}
-					},
 					series: [{
-						name: '',
+						name: '访问来源',
 						type: 'pie',
-						radius: ['50%', '70%'],
-						avoidLabelOverlap: false,
-						label: {
-							normal: {
-								show: false,
-								position: 'center'
-							},
-							emphasis: {
-								show: true,
-								textStyle: {
-									fontSize: '12',
-									fontWeight: 'bold'
-								}
-							}
-						},
+						radius: '55%',
+						center: ['50%', '70%'],
 						labelLine: {
 							normal: {
-								show: false
+								show: true
 							}
 						},
-						data: reasonList
+						data: reasonList,
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						}
 					}]
 				};
+
 				myChart0.setOption(option);
 				//绘制第二个图表
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
-
-				var labelOption = {
-					normal: {
-						show: true,
-						position: "insideBottom",
-						distance: 15,
-						align: "left",
-						verticalAlign: "middle",
-						rotate: 90,
-						formatter: '{c}  {name|{a}}',
-						fontSize: 16,
-						rich: {
-							name: {
-								textBorderColor: '#fff'
-							}
-						}
-					}
-				};
 				var option1 = {
-					color: ['#4cabce', '#e5323e','#003366', '#006699'],
 					tooltip: {
 						trigger: 'axis',
-						axisPointer: {
-							type: 'shadow'
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
 						}
 					},
 					legend: {
-						data: ['全部胜诉率', '部分胜诉率']
+						data: ['败诉', '全部胜诉', '部分胜诉']
 					},
-					toolbox: {
-						show: true,
-						orient: 'vertical',
-						right: 40,
-						top: "top",
-						feature: {
-							saveAsImage: {
-								show: true
-							}
-						}
-					},
-					calculable: true,
 					xAxis: [{
 						type: 'category',
-						axisTick: {
-							show: false
-						},
 						data: nameList
 					}],
 					yAxis: [{
 						type: 'value'
 					}],
 					series: [{
-							name: '全部胜诉率',
+							name: '败诉',
 							type: 'bar',
-							barWidth:40,
-							barGap: 1,
-							label: labelOption,
+							barWidth: 40,
+							data: failRate
+						},
+						{
+							name: '全部胜诉',
+							type: 'bar',
+							stack: '胜诉',
+							barWidth: 40,
 							data: sucessRate
 						},
 						{
-							name: '部分胜诉率',
+							name: '部分胜诉',
 							type: 'bar',
-							barWidth:40,
-							barGap: 1,
-							label: labelOption,
+							stack: '胜诉',
+							barWidth: 40,
 							data: partRate
 						}
 					]
 				};
+
+//				var labelOption = {
+//					normal: {
+//						show: true,
+//						position: "insideBottom",
+//						distance: 15,
+//						align: "left",
+//						verticalAlign: "middle",
+//						rotate: 90,
+//						formatter: '{c}  {name|{a}}',
+//						fontSize: 16,
+//						rich: {
+//							name: {
+//								textBorderColor: '#fff'
+//							}
+//						}
+//					}
+//				};
+//				var option1 = {
+//					color: ['#4cabce', '#e5323e', '#003366', '#006699'],
+//					tooltip: {
+//						trigger: 'axis',
+//						axisPointer: {
+//							type: 'shadow'
+//						}
+//					},
+//					legend: {
+//						data: ['全部胜诉率', '部分胜诉率']
+//					},
+//					toolbox: {
+//						show: true,
+//						orient: 'vertical',
+//						right: 40,
+//						top: "top",
+//						feature: {
+//							saveAsImage: {
+//								show: true
+//							}
+//						}
+//					},
+//					calculable: true,
+//					xAxis: [{
+//						type: 'category',
+//						axisTick: {
+//							show: false
+//						},
+//						data: nameList
+//					}],
+//					yAxis: [{
+//						type: 'value'
+//					}],
+//					series: [{
+//							name: '全部胜诉率',
+//							type: 'bar',
+//							barWidth: 40,
+//							barGap: 1,
+//							label: labelOption,
+//							data: sucessRate
+//						},
+//						{
+//							name: '部分胜诉率',
+//							type: 'bar',
+//							barWidth: 40,
+//							barGap: 1,
+//							label: labelOption,
+//							data: partRate
+//						}
+//					]
+//				};
 				myChart1.setOption(option1);
 
 			} else {

@@ -145,9 +145,10 @@ position: relative;
  
 #lawyerDetail .chartWrap .messMap{
     padding:20px;
-    /*width: 50%;*/
 }
 #lawyerDetail .chartWrap .allMap{
     padding:20px;
-    /*width: 50%;*/
+}
+#profile{
+	width: 85%;
 }

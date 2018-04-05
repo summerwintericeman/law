@@ -135,7 +135,7 @@ $(document).ready(function() {
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
-                    <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
@@ -146,7 +146,7 @@ $(document).ready(function() {
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
-                    <span>代理案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
             </a>
             <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
