@@ -91,52 +91,84 @@
 					success: function(res) {
 						if(res.code == 0) {
 							console.log(res.data);
-							var titleList = ["基本信息", "审理经过", "原告诉称",
-								"被告辩称", "本院查明", "本院认为", "裁判结果",
-								"审判人员", "审判日期", "书记员"
+							var allList = [{
+									"name": "基本信息",
+									"name1": "party_info",
+									"mess": ''
+								},
+								{
+									"name": "审理经过",
+									"name1": "trail_flow",
+									"mess": ''
+								},
+								{
+									"name": "原告诉称",
+									"name1": "plaintiff_point",
+									"mess": ''
+								},
+								{
+									"name": "被告辩称",
+									"name1": "defendant_point",
+									"mess": ''
+								},
+								{
+									"name": "本院查明",
+									"name1": "court_verification",
+									"mess": ''
+								},
+								{
+									"name": "本院认为",
+									"name1": "court_point",
+									"mess": ''
+								},
+								{
+									"name": "裁判结果",
+									"name1": "judge_result",
+									"mess": ''
+								},
+								{
+									"name": "审判人员",
+									"name1": "judge_person",
+									"mess": ''
+								},
+								{
+									"name": "审判日期",
+									"name1": "judge_times",
+									"mess": ''
+								},
+								{
+									"name": "书记员",
+									"name1": "court_clerk",
+									"mess": ''
+								}
 							];
 							var detailNodeHead = `<h3 class="title">${res.data.title}</h3>`;
-							$("#minshianjianmain").append(detailNodeHead);
-							$.each(res.data, function(key, ele) {
-								var temp = "";
-								if(key != "title") {
-									if(key == "judge_result"){
-										temp = "裁判结果";
-									
-									} else if(key == "court_clerk"){
-										temp = "书记员";
-						
-									} else if(key == "judge_times"){
-										temp = "审判日期";
-				
-									} else if(key == "court_point"){
-										temp = "本院认为";
-										
-									} else if(key == "court_verification"){
-										temp = "本院查明";
-										
-									} else if(key == "defendant_point"){
-										temp = "被告辩称";
-										
-									} else if(key == "plaintiff_point"){
-										temp = "原告诉称";
-										
-									} else if(key == "trail_flow"){
-										temp = "审理经过";
-						
-									} else if(key == "judge_person"){
-										temp = "审判人员";
-							
-									}
-									
+							$("#dowellMain").append(detailNodeHead);
 
-									var Node = `<div class="paragraph">
-													<h3>${temp}</h3>
-													<p>${ele}</p>
-											    </div>`;
-									$("#minshianjianmain").append(Node);
+							$.each(res.data, function(key, ele) {
+								for(var i = 0; i < allList.length; i++) {
+									if(key == allList[i].name1) {
+										allList[i].mess = ele;
+									}
 								}
 							});
+							for(var i = 0; i < allList.length; i++) {
+								var Node = `<div class="paragraph">
+													<h3>${allList[i].name}</h3>
+													<p>${allList[i].mess}</p>
+											</div>`;
+								if(allList[i].name1 == "party_info"){
+									var temp =  allList[i].mess;
+									//标签并没有闭合
+									temp = temp.replace(/\n/g, '<br/><p>');
+									console.log(temp);
+									Node = `<div class="paragraph">
+													<h3>${allList[i].name}</h3>
+													<p>${temp}</p>
+											</div>`;
+								}
+								$("#minshianjianmain").append(Node);
+							}
 						}
 					},
 					error: function() {

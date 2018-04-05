@@ -70,6 +70,8 @@ $(document).ready(function() {
 			'page_num': page_num
 		});
 		console.log(param);
+		console.log(obj);
+		$("#listExplain").html(obj.second_reason + '案件律师代理情况');
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888
@@ -81,7 +83,7 @@ $(document).ready(function() {
 						callback(res);
 						return;
 					}
-					console.log(res.max_page_num);
+					console.log(res);
 					//获得总页数
 					all.listTotal = res.max_page_num;
 					var tempCoo = JSON.stringify(all);

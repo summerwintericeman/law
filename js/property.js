@@ -70,8 +70,8 @@ $(document).ready(function() {
 
     //查案件
     caseBtn.on('click', function() {
-        var lawyerInputVal = lawyerInput.val().replace(/\s+/g,'');
-        if(lawyerInputVal.length<15){
+        var caseInputVal = caseInput.val().replace(/\s+/g,'');
+        if(caseInputVal.length<15){
             //效字符少于15
             $('#selectResModal').modal({
                 backdrop:'static',

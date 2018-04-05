@@ -110,3 +110,20 @@
 	-ms-user-select:none;
 	user-select:none;
 }
+#listExplain{
+	line-height: 30px;
+	margin: 5px auto;
+	min-height: 30px;
+	width: 7rem;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 900;
+	color:#b5b5b5;
+    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+}
+#listExplain {  
+	
+}
+#listExplain:hover {
+    box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
+}
