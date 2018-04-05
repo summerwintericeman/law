@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
     var name = getUrlParam('per',true);
+    var com = getUrlParam('com',true);
     var ulNode = $('ul.node2List');
     var isFirstLoad = true;
     var aNode = $('.path a').eq(2);
@@ -19,6 +20,7 @@ $(document).ready(function() {
     function agentsDetail() {
         var param = {
             'name': name,
+            agency:com,
             "page_num": getCurIdx,
             "page_count": 12,
         };

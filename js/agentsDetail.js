@@ -6,7 +6,7 @@ $(document).ready(function() {
 	//var getCom = getUrlParam('com',true) || '';
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
-	agentMsg = agentMsg ? JSON.parse(agentMsg) : '';
+    agentMsg = JSON.parse(agentMsg);
 	var _href = window.location.href;
 	if(_href.indexOf('&com') > -1) {
 		$('.path').find('a').eq(1).hide().next('i').hide();
@@ -14,9 +14,10 @@ $(document).ready(function() {
 
 	function agentsDetail(showlist) {
 		var param = {
-			'name': getPer,
-			"page_num": 1,
-			"page_count": 12,
+			name: getPer,
+			agency:agentMsg.cp_name,
+			page_num: 1,
+			page_count: 12
 		};
 		$.ajax({
 			dataType: 'json',
@@ -197,7 +198,7 @@ $(document).ready(function() {
 		if(userLogin && (userLogin.email || userLogin.account)){
 			//cookie存在并且其中的一个email或者account有值存在表示已经登录
 			//跳转到详细的页面
-			window.location.href = "./zhuanLiList.html?per=" + getPer;	
+			window.location.href = "./zhuanLiList.html?per=" + getPer + '&com=' + agentMsg.cp_name;
 		}else{
 			console.log("aaa")
 			$('#choiceMore').modal('show');

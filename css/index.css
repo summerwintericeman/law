@@ -447,3 +447,75 @@ textarea{
     font-size: 14px;
  	color: red;
 }
+/*****************************选择案由模态框*************************************/
+#selectResModal .modal-dialog{
+	top: 50%;
+	margin-top: -175px;
+}
+#selectResModal .modal-dialog .modal-content{
+
+}
+#selectResModal .modal-dialog .modal-content .modal-header{
+	font-weight: bold;
+	font-size: 16px;
+}
+#selectResModal .modal-dialog .modal-content .modal-header button{
+	padding: 0 10px;
+}
+#selectResModal .modal-dialog .modal-content .modal-header button:focus{
+	outline: none;
+}
+#selectResModal .modal-dialog .modal-content .modal-header button span:focus{
+	outline: none;
+}
+#selectResModal .modal-dialog .modal-content .modal-body{
+
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow{
+	height:200px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow p{
+line-height: 25px;
+color: #ccc;
+padding:10px 0;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow>span{
+font-size: 16px;
+font-weight: bold;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown{
+display: inline-block;
+margin-left: 25px;
+width:400px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown button{
+background: #fff;
+border: 1px solid #ccc;
+padding: 10px 0;
+width: 100%;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown button>span{
+float: right;
+margin-top: 7px;
+margin-right: 10px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul {
+width:100%;
+padding:10px 0;
+max-height: 300px;
+overflow-y: auto;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul>li{
+height: 26px;
+line-height: 26px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+padding:0 10px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul>li:hover{
+background: #7daee8;
+}
+#selectResModal .modal-dialog .modal-content .modal-footer{
+
+}

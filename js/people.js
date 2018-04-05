@@ -2,7 +2,8 @@
  * Created by sphwjj on 2018/2/28.
  */
 $(document).ready(function() {
-
+	var lawyerInput = $('#lawyer textarea'),
+        caseInput = $('#case textarea');
 
 	//判断当前显示找律师 还是显示查案件
 	(function() {
@@ -17,6 +18,14 @@ $(document).ready(function() {
 
 	//找律师
 	lawyerBtn.on('click', function() {
+		var lawyerInputVal = lawyerInput.val().replace(/\s+/g,'');
+		if(lawyerInputVal.length<15){
+            //效字符少于15
+			$('#selectResModal').modal({
+                backdrop:'static',
+			});
+			return;
+		}
 		var caseDescription = $('#lawyer .caseDescription').val(),
 			name = $('#lawyer .name').val(),
 			cityNode = $('#cityPicker .title span'),
@@ -58,6 +67,13 @@ $(document).ready(function() {
 
 	//查案件
 	caseBtn.on('click', function() {
+        var caseInputVal = caseInput.val().replace(/\s+/g,'');//全局替换空格
+        if(caseInputVal.length<15){//效字符少于15
+            $('#selectResModal').modal({
+                backdrop:'static',
+            });
+            return;
+        }
 		var caseDescription = $('#case .caseDescription').val(),
 			cityNode = $('#cityPicker .title span'),
             province = '',city = '',region = '';
@@ -94,7 +110,21 @@ $(document).ready(function() {
 		$('#case .errorTip').html('');
 	});
 
-	
+
+	//模态框显示    请求案由
+    $('#selectResModal').on('show.bs.modal',function(e){
+        console.log('在这里请求案由');
+    });
+//点击确定按钮关闭模态框
+    $('#selectResModal .ok').on('click', function () {
+        $('#selectResModal').modal('hide');
+        console.log('模态框关闭');
+    });
+
+
+
+
+
 
 	//保存cookie
 	$.cookie('fromPage','people',{path:'/'});

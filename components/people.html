@@ -35,11 +35,6 @@
 							<i>案件描述 <a>(必填项，建议输入30字以上)</a></i><br/>
 							<textarea style="font-weight:100 ; font-size: 13px;" placeholder="请输入案情描述，请尽量清楚的描述案件事实，--例如：＊和乙方发生交通事故，但乙方肇事后逃逸。＊发布得著作未经允许被他人使用，并利用该作品牟取利益等。" class="caseDescription"></textarea>
 						</label>
-						<br/>
-						<!--<label class="labelBox">
-							<i>律师名称</i><input type="text" class="type name" placeholder="请输入律师名称或名称关键字">
-						</label>
-						<br/>-->
 						<div class="labelBox text-left">
 							<i>所在城市</i>
 							<div id="cityPicker">
@@ -62,7 +57,6 @@
 							<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
 							<textarea placeholder="这里将进行模糊匹配，比如您输入“卡车事故”，会搜索到包含“挂货车”，“牵引车”等要素的案件"  class="caseDescription"></textarea>
 						</label>
-						<br/>
 						<div class="labelBox text-left">
 							<i>地区选择</i><br/>
 							<div id="cityPicker1">
@@ -85,6 +79,43 @@
 			<div id="footer"></div>
 
 		</div>
+
+
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="selectResModal">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						选择案由
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="shrotShowL shrotShow">
+							<span>选择案由</span>
+							<div role="presentation" class="dropdown lawyerDropdown">
+								<button id="lLabel" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									请选择案由
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="lLabel">
+									<li>案由1</li>
+									<li>案由2</li>
+									<li>案由3</li>
+									<li>案由4</li>
+									<li>案由5</li>
+									<li>案由6</li>
+								</ul>
+							</div>
+							<p>*案件描述过短，为更精准匹配请选择案由</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary ok">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</body>
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>

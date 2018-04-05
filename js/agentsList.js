@@ -31,7 +31,7 @@ $(document).ready(function() {
 		$('.liWrap li>a').on('click',function(){
             //保存cookie   传递代理人信息
 				var data = $(this).parent('li').attr('data');
-            	$.cookie('agentBaseMsg',JSON.stringify(data),{path:'/'});
+            	$.cookie('agentBaseMsg',data,{path:'/'});
 		});
 
 	});
