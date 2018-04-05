@@ -1,154 +1,208 @@
-#lawyerDetail .mainWrap{
-    margin-top: .42rem;
-    background: #fff;
-    padding: .25rem 10%;
+#lawyerDetail .mainWrap {
+	margin-top: .42rem;
+	background: #fff;
+	padding: .25rem 10%;
 }
-#lawyerDetail .mainWrap .path{
-    padding-bottom: 20px;
-}
-#lawyerDetail .mainWrap .path a.active{
-    color: #5068a9;
-}
-#lawyerDetail .mainWrap .path i{
-    padding: 0 5px;
-}
-#lawyerDetail .content{
-    min-height: 300px;
-}
-#lawyerDetail .content h3{
-    height:40px;
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-#lawyerDetail .content h3 span:nth-child(2){
-    font-size: 14px;
-    font-weight: normal;
-}
-#lawyerDetail .msgWrap{
-    margin-bottom: 30px;
-}
-#lawyerDetail .userMsg{
-    width:150px;
-    height:150px;
-    margin-right: 60px;
-}
-#lawyerDetail .userMsg img{
-    width:100%;
-    height:100%;
-}
-#lawyerDetail .lawyerMsg{
-    width: 550px;
-}
-#lawyerDetail .lawyerMsg p{
-    float: left;
-    width: 50%;
-    line-height: 30px;
-}
-#lawyerDetail .lawyerMsg p>span{
-    padding-right: 15px;
-    font-weight: bold;
-}
-#lawyerDetail .lawyerMsg p>i{
 
+#lawyerDetail .mainWrap .path {
+	padding-bottom: 20px;
 }
-#lawyerDetail .content .caseType>p>i{
-    display: inline-block;
-    float: left;
-    width: 3px;
-    height: 15px;
-    background: #5068a9;
-    margin: 5px 6px 0 0;
-}
-#lawyerDetail .content .caseType dl{
-    margin: 30px 0;
-}
-#lawyerDetail .content .caseType dl dt{
-    height: 30px;
-    line-height: 30px;
-    border-bottom: 1px dashed #ccc;
-    margin-bottom:10px;
-}
-#lawyerDetail .content .caseType dl dt>i{
-    color: #e83591bf;
-    margin-right: 10px;
-}
-#lawyerDetail .content .caseType dl dt span{
-    font-weight: normal;
-}
-#lawyerDetail .content .caseType dl dt span>span+span{
-    padding:0 15px;
-}
-#lawyerDetail .content .caseType dl dt span>span+span>i{
-    color: #be0707;
 
+#lawyerDetail .mainWrap .path a.active {
+	color: #5068a9;
 }
-#lawyerDetail .content .caseType dl dd{
-position: relative;
+
+#lawyerDetail .mainWrap .path i {
+	padding: 0 5px;
 }
-#lawyerDetail .content .caseType dl dd:before{
-    display: block;
-    content: '';
-    height:5px;
-    width:5px;
-    background: #ccc;
-    position: absolute;
-    top: 6px;
-    border-radius: 2px;
+
+#lawyerDetail .content {
+	min-height: 300px;
 }
-#lawyerDetail .content .caseType dl dd>a{
-    display: block;
-    margin: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+#lawyerDetail .content h3 {
+	height: 40px;
+	font-size: 30px;
+	margin-bottom: 10px;
 }
-#lawyerDetail .chartWrap{
-    margin: 60px 0;
+
+#lawyerDetail .content h3 span:nth-child(2) {
+	font-size: 14px;
+	font-weight: normal;
 }
-#lawyerDetail .chartTitle{
-    position: relative;
-    padding-left: 8px;
+
+#lawyerDetail .msgWrap {
+	margin-bottom: 30px;
 }
-#lawyerDetail .chartTitle:before{
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 15px;
-    background: #5068a9;
-    left: 0px;
-    top: 2px;
+
+#lawyerDetail .userMsg {
+	width: 150px;
+	height: 150px;
+	margin-right: 60px;
 }
+
+#lawyerDetail .userMsg img {
+	width: 100%;
+	height: 100%;
+}
+
+#lawyerDetail .lawyerMsg {
+	width: 550px;
+}
+
+#lawyerDetail .lawyerMsg p {
+	float: left;
+	width: 50%;
+	line-height: 30px;
+}
+
+#lawyerDetail .lawyerMsg p>span {
+	padding-right: 15px;
+	font-weight: bold;
+}
+
+#lawyerDetail .lawyerMsg p>i {}
+
+#lawyerDetail .content .caseType>p>i {
+	display: inline-block;
+	float: left;
+	width: 3px;
+	height: 15px;
+	background: #5068a9;
+	margin: 5px 6px 0 0;
+}
+
+#lawyerDetail .content .caseType dl {
+	margin: 30px 0;
+}
+
+#lawyerDetail .content .caseType dl dt {
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px dashed #ccc;
+	margin-bottom: 10px;
+}
+
+#lawyerDetail .content .caseType dl dt>i {
+	color: #e83591bf;
+	margin-right: 10px;
+}
+
+#lawyerDetail .content .caseType dl dt span {
+	font-weight: normal;
+}
+
+#lawyerDetail .content .caseType dl dt span>span+span {
+	padding: 0 15px;
+}
+
+#lawyerDetail .content .caseType dl dt span>span+span>i {
+	color: #be0707;
+}
+
+#lawyerDetail .content .caseType dl dd {
+	position: relative;
+}
+
+#lawyerDetail .content .caseType dl dd:before {
+	display: block;
+	content: '';
+	height: 5px;
+	width: 5px;
+	background: #ccc;
+	position: absolute;
+	top: 6px;
+	border-radius: 2px;
+}
+
+#lawyerDetail .content .caseType dl dd>a {
+	display: block;
+	margin: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#lawyerDetail .chartWrap {
+	margin: 60px 0;
+}
+
+#lawyerDetail .chartTitle {
+	position: relative;
+	padding-left: 8px;
+}
+
+#lawyerDetail .chartTitle:before {
+	content: '';
+	position: absolute;
+	width: 3px;
+	height: 15px;
+	background: #5068a9;
+	left: 0px;
+	top: 2px;
+}
+
 #lawyerDetail .chartWrap {
 	display: block;
 }
-#lawyerDetail .chartWrap ul{
+
+#lawyerDetail .chartWrap ul {
 	border-bottom: .01rem solid #5068a9;
 }
-#lawyerDetail .chartWrap ul>li a{
-    margin-right: 2px;
-    line-height: 1.42857143;
-    border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
-}
-#lawyerDetail .chartWrap ul>li a:hover{
-    background: #5068a9;
-    color: #fff!important;
-}
-#lawyerDetail .chartWrap ul>li.active>a,
-#lawyerDetail .chartWrap ul>li.active>a:focus, 
-#lawyerDetail .chartWrap ul>li.active>a:hover{
-    color: #5068a9;
-    border: .01rem solid #5068a9;
-    border-bottom-color: transparent;
- }
 
- 
-#lawyerDetail .chartWrap .messMap{
-    padding:20px;
+#lawyerDetail .chartWrap ul>li a {
+	margin-right: 2px;
+	line-height: 1.42857143;
+	border: 1px solid transparent;
+	border-radius: 4px 4px 0 0;
 }
-#lawyerDetail .chartWrap .allMap{
-    padding:20px;
+
+#lawyerDetail .chartWrap ul>li a:hover {
+	background: #5068a9;
+	color: #fff!important;
 }
-#profile{
-	width: 85%;
+
+#lawyerDetail .chartWrap ul>li.active>a,
+#lawyerDetail .chartWrap ul>li.active>a:focus,
+#lawyerDetail .chartWrap ul>li.active>a:hover {
+	color: #5068a9;
+	border: .01rem solid #5068a9;
+	border-bottom-color: transparent;
+}
+
+#profile .explainMess {
+	height: 100%;
+	float: left;
+	width: 22%;
+	min-width: 100px;
+	padding: 65px 0;
+}
+#profile .explainMess>p {
+	line-height: 30px;
+	font-size: 16px;
+	font-weight: 600;
+}
+#profile .explainMess>p>i {
+	color: red;
+}
+#profile .messMap {
+	float: left;
+	min-width: 600px;
+	width: 78%;
+}
+
+#profile .allMap {
+	
+}
+
+#profile {
+	height: 390px;
+	padding: 20px;
+	width: 100%;
+}
+
+#home {
+	height: 390px;
+	padding: 20px;
+	width: 100%;
 }

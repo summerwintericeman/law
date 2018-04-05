@@ -26,7 +26,11 @@ $(document).ready(function() {
             city = cookieMess.city || '',
             region = cookieMess.region || '';
         caseListCookie.reasonObj = cookieMess;
-		caseFoud(des, function(res) {
+        var knowledgeNum = 0;
+        if(fromPage && fromPage=='property'){
+        	knowledgeNum = 1;
+        }
+		caseFoud(knowledgeNum, des, function(res) {
 			console.log(res)
 			sendReason = res.second_reason;
             caseListCookie.reasonObj.des = res;
