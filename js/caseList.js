@@ -2,6 +2,7 @@
  * Created by sphwjj on 2018/3/10.
  */
 $(document).ready(function() {
+    var fromPage = getUrlParam('fromPage');
 	//读取cookie
 	var ulNote = $('#caseListBody .liWrap');
 	var pagerUl = $('#caseListBody .pagination');
@@ -30,21 +31,17 @@ $(document).ready(function() {
         if(fromPage && fromPage=='property'){
         	knowledgeNum = 1;
         }
-		caseFoud(knowledgeNum, des, function(res) {
-			console.log(res)
-			sendReason = res.second_reason;
-            caseListCookie.reasonObj.des = res;
-			var curPage = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
-			caseList(res, curPage,function(pkg){
+        if(cookieMess.res){
+            caseList(cookieMess.res, curPage,function(pkg){
 
-				$.each(pkg.data,function(idx,ele){
-					createLawList(res,ele);
-				});
-				creatPage(pkg.max_page_num, curPage);
-				//保存cookie
+                $.each(pkg.data,function(idx,ele){
+                    createLawList(res,ele);
+                });
+                creatPage(pkg.max_page_num, curPage);
+                //保存cookie
                 caseListCookie.listTotal = pkg.max_page_num;
                 $.cookie('caseList',JSON.stringify(caseListCookie),{path:'/'});
-               //分页
+                //分页
                 if(isFirstLoad){
                     $('.pagerWrap').pagination({
                         pageCount:pkg.max_page_num,
@@ -63,8 +60,45 @@ $(document).ready(function() {
 
 
 
-			});
-		});
+            });
+        }else{
+            caseFoud(knowledgeNum, des, function(res) {
+                console.log(res)
+                sendReason = res.second_reason;
+                caseListCookie.reasonObj.des = res;
+                var curPage = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
+                caseList(res, curPage,function(pkg){
+
+                    $.each(pkg.data,function(idx,ele){
+                        createLawList(res,ele);
+                    });
+                    creatPage(pkg.max_page_num, curPage);
+                    //保存cookie
+                    caseListCookie.listTotal = pkg.max_page_num;
+                    $.cookie('caseList',JSON.stringify(caseListCookie),{path:'/'});
+                    //分页
+                    if(isFirstLoad){
+                        $('.pagerWrap').pagination({
+                            pageCount:pkg.max_page_num,
+                            totalData:12 * pkg.max_page_num,
+                            showData:12,
+                            current:curPage,
+                            mode:'fixed',
+                            isHide:true,
+                            callback:function(api){
+                                pagerGo(api);
+                            }
+                        });
+
+                        isFirstLoad = false;
+                    }
+
+
+
+                });
+            });
+        }
+
 	};
 
 //添加案件列表子节点

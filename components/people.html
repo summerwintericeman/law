@@ -36,7 +36,7 @@
 							<textarea style="font-weight:100 ; font-size: 13px;" placeholder="请输入案情描述，请尽量清楚的描述案件事实，--例如：＊和乙方发生交通事故，但乙方肇事后逃逸。＊发布得著作未经允许被他人使用，并利用该作品牟取利益等。" class="caseDescription"></textarea>
 						</label>
 						<div class="labelBox text-left">
-							<i>所在城市</i>
+							<i>选择地区</i>
 							<div id="cityPicker">
 								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city">
 							</div>
@@ -58,7 +58,7 @@
 							<textarea placeholder="这里将进行模糊匹配，比如您输入“卡车事故”，会搜索到包含“挂货车”，“牵引车”等要素的案件"  class="caseDescription"></textarea>
 						</label>
 						<div class="labelBox text-left">
-							<i>地区选择</i><br/>
+							<i>选择地区</i><br/>
 							<div id="cityPicker1">
 								<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city">
 							</div>
@@ -92,12 +92,12 @@
 						<div class="shrotShowL shrotShow">
 							<span>选择案由</span>
 							<div role="presentation" class="dropdown lawyerDropdown">
-								<button id="lLabel" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									请选择案由
+								<button id="Label" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i>请选择案由</i>
 									<span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu" aria-labelledby="lLabel">
-									<li>案由1</li>
+								<ul class="dropdown-menu" aria-labelledby="Label">
+									<li>{"second_reason":"物权纠纷","reason_3":"物权保护纠纷"}</li>
 									<li>案由2</li>
 									<li>案由3</li>
 									<li>案由4</li>
@@ -106,6 +106,7 @@
 								</ul>
 							</div>
 							<p>*案件描述过短，为更精准匹配请选择案由</p>
+							<span class="errorTip">*请选择案由</span>
 						</div>
 					</div>
 					<div class="modal-footer">

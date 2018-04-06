@@ -14,6 +14,7 @@ $(document).ready(function() {
 	if(tempCookie) {
 		all = JSON.parse(tempCookie);
 	}
+    var cookieM;
 
 	function cookieMess() {
 		var num = all.listnum==-1?1:parseInt(all.listnum);
@@ -21,7 +22,7 @@ $(document).ready(function() {
 		if(!cookie) {
 			return;
 		} else {
-			var cookieM = JSON.parse(cookie),
+			cookieM = JSON.parse(cookie),
 				name = cookieM.name || '',
 				des = cookieM.des || '',
                 province = cookieM.province || '',
@@ -51,10 +52,15 @@ $(document).ready(function() {
 			}
 			
 		} else {
-			caseFoud(knowledgeNum , des, function(res) {
-				all.reasonObj.res = res;
-				lawyerList(res, province,city,region, page_num);
-			});
+			if(cookieM.res){
+                lawyerList(cookieM.res, province,city,region, page_num);
+			}else{
+                caseFoud(knowledgeNum , des, function(res) {
+                    all.reasonObj.res = res;
+                    lawyerList(res, province,city,region, page_num);
+                });
+			}
+
 		}
 
 	}
