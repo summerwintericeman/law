@@ -76,6 +76,8 @@ $(document).ready(function() {
 			'page_num': page_num
 		});
 		console.log(param);
+		console.log(obj);
+		$("#listExplain").html(obj.second_reason + '案件律师代理情况');
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888
@@ -87,7 +89,7 @@ $(document).ready(function() {
 						callback(res);
 						return;
 					}
-					console.log(res.max_page_num);
+					console.log(res);
 					//获得总页数
 					all.listTotal = res.max_page_num;
 					var tempCoo = JSON.stringify(all);
@@ -141,25 +143,25 @@ $(document).ready(function() {
 			degree:obj.degree ||''
 		};
 		var noteNew = `<li class="lipad mouseHand">
-            <a href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}"  class="contant">
+            <a href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}"  class="contant">
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
             </a>
-            <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
+            <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}">查看详情</a>
         </li>`;
 		if(fromPage && fromPage=='property'){
             noteNew = `<li class="lipad mouseHand">
-            <a href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}"  class="contant">
+            <a href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}"  class="contant">
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
                     <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
             </a>
-            <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}">查看详情</a>
+            <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}">查看详情</a>
         </li>`;
 		}
 		ulNote.append(noteNew);

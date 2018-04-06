@@ -30,6 +30,7 @@ $(document).ready(function() {
             type: 'post',
             data: JSON.stringify(param),
             success: function(res) {
+            	console.log(res);
                 if(res.code==0){
                 	ulNode.empty();
                     creatNode(res.data.data);
@@ -63,7 +64,7 @@ $(document).ready(function() {
     //创建节点
     function creatNode(data){
         $.each(data,function(i,ele){
-            var node=`<li class="eachContent">
+            var node=`<li class="eachContent" ZLnum='${ele.patent_no}'>
                     <h3>
                         <span><i class="LowTitle text-strong">${ele.dev_name}</i> </span></h3>
                     <p class="com">
@@ -86,7 +87,38 @@ $(document).ready(function() {
         agentsDetail();
 
     };
-
+	//查专利的跳转
+	ulNode.on("click",'li',function(){
+		//根据专利号进行跳转
+		 var patentNum = $(this).eq(0).attr('ZLnum');
+		 console.log($(this).eq(0).attr('ZLnum'));
+		 var obj = JSON.stringify({
+                patent_no:patentNum
+            });
+            console.log(obj)
+		   $.ajax({
+                dataType: 'json',
+                url: 'http://47.97.197.176:8888/cpquery/doc_url',
+                type: 'post',
+                asasync: false,
+                data: obj,
+                success: function(res) {
+                    console.log(res);
+                    if(res.code==0){
+   						window.open(res.data);
+                    }else{
+                        errorModal(res.msg);
+                        console.error('查询专利失败:',res);
+                    }
+                },
+                error: function() {
+                    errorModal('查询专利失败!');
+                    console.error('agent_company：', arguments);
+                }
+            });
+		
+		
+	})
 
 
 

@@ -61,7 +61,26 @@ $(document).ready(function() {
 
     //查案件
     caseBtn.on('click', function() {
-        var caseDescription = $('#case .caseDescription').val();
+        var caseInputVal = caseInput.val().replace(/\s+/g,'');
+        if(caseInputVal.length<15){
+            //效字符少于15
+            $('#selectResModal').modal({
+                backdrop:'static',
+            });
+            return;
+        }
+        var caseDescription = $('#case .caseDescription').val(),
+            cityNode = $('#cityPicker .title span'),
+            province = '',city = '',region = '';
+        if(cityNode[0]) {
+            province = cityNode.eq(0).html();
+        };
+        if(cityNode[1]) {
+            city = cityNode.eq(1).html();
+        };
+        if(cityNode[2]){
+            region = cityNode.eq(2).html();
+        };
         if(!caseDescription) {
             $('#case .errorTip').html('　*请输入案件描述');
         } else {
