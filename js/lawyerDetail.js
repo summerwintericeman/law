@@ -5,6 +5,7 @@ $(function() {
 	var name = getUrlParam('lawyer_name', true),
 		_loction = getUrlParam('lawyer_location', true);
 	var fromPage = getUrlParam('fromPage');
+	var caseNum = getUrlParam('caseNum');
 	var resKey = $.cookie('all');
 	resKey = JSON.parse(resKey);
 	resKey = resKey.reasonObj.res;
@@ -67,7 +68,8 @@ $(function() {
 									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
 									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
 									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>收录案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
+									<p><span>收录全部案件数量</span><i>${caseNum|| '--'}起</i></p>
+									<p><span>收录一审判决案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
 									</div>
 									</div>
 									</div>
@@ -92,34 +94,42 @@ $(function() {
 					partRate = [];
 
 				$.each(res.data.detail, function(idx, ele) {
-					
+					//擅长领域需要的数据只需要最多三种
+					if(idx < 3) {
 						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
 						$('#dowell').append(nodeDoWell);
-						//第一个图表需要的数据 需要全部数量的案由
-						reasonList.push({
-							"name": ele.reason2,
-							"value": ele.count
-						});
-						nameList.push(ele.reason2);
+						//类似案例的选择---类似案例选择只选择展示的擅长领域中的每一种显示一个
+						var page = getUrlParam('fromPage');
+						var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[0].wenshu_id}&reason=${maxCountReason}'>　　　　　${res.data.detail[idx].doc[0].title}</a></li>`;
+						if(page && page == 'property') {
+							node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[0].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${res.data.detail[idx].doc[0].title}</a></li>`;
+						}
+						$('.node2List').append(node2);
+						//						$.each(res.data.detail[idx].doc, function(index, ele) {
+						//							if(index < 1) {
+						//								var page = getUrlParam('fromPage');
+						//								var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
+						//								if(page && page == 'property') {
+						//									node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
+						//								}
+						//
+						//								$('.node2List').append(node2);
+						//							}
+						//						});
+
+					}
+					//第一个图表需要的数据 需要全部数量的案由
+					reasonList.push({
+						"name": ele.reason2,
+						"value": ele.count
+					});
+					nameList.push(ele.reason2);
 					//第二图需要的数据 只需要一部分不是全部	
 					if(idx < 2) {
 						nameList1.push(ele.reason2);
 						sucessRate.push(ele.suc_rate);
-						failRate.push(( 1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2));
+						failRate.push((1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2));
 						partRate.push(ele.part_suc_rate);
-					}
-
-				});
-				//类似案例的选择
-				$.each(res.data.detail[maxIndex].doc, function(idx, ele) {
-					if(idx < 3) {
-						var page = getUrlParam('fromPage');
-						var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
-						if(page && page == 'property') {
-							node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
-						}
-
-						$('.node2List').append(node2);
 					}
 				});
 
@@ -181,10 +191,9 @@ $(function() {
 					yAxis: [{
 						type: 'value',
 						axisLabel: {
-                		formatter: '{value} %'
-           				}
-					}
-					],
+							formatter: '{value} %'
+						}
+					}],
 					series: [{
 							name: '败诉',
 							type: 'bar',
