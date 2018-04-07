@@ -151,7 +151,7 @@ $(function() {
 						data: nameList
 					},
 					series: [{
-						name: '访问来源',
+						name: '',
 						type: 'pie',
 						radius: '55%',
 						center: ['50%', '70%'],
@@ -191,7 +191,7 @@ $(function() {
 					yAxis: [{
 						type: 'value',
 						axisLabel: {
-							formatter: '{value} %'
+							formatter: '{value}'
 						}
 					}],
 					series: [{
