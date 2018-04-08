@@ -137,8 +137,8 @@ $(function() {
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
-						text: '律师擅长案由分类',
-						subtext: '擅长案由百分比',
+						text: '代理案件中不同案由的占比',
+						subtext: '',
 						x: 'center'
 					},
 					tooltip: {
