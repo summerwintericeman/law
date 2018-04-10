@@ -151,46 +151,83 @@ $(document).ready(function() {
 						console.log(res.data);
 						allFloor = res.data;
 						//获取第一层的数据
-						for(var i = 0; i < allFloor.length; i++) {
-							firstFloor.push({
-								"floor": 1,
-								'name': allFloor[i].name,
-								"index": i
-							})
-							//第二层的循环获取
-							for(var j = 0; j < allFloor[i].sub.length; j++) {
-								var num = i + "" + j;
-								secondFloor.push({
-									"floor": 2,
-									"name": allFloor[i].sub[j].name,
-									"index": num
-								})
-								//第三层循环的获取
-								for(var k = 0; k < allFloor[i].sub[j].sub.length; k++) {
-									var thirdNum = i + "" + j + k;
-									thirdFloor.push({
-										"floor": 3,
-										"name": allFloor[i].sub[j].sub[k].name,
-										"index": thirdNum
-									})
-									for(var h = 0; h < allFloor[i].sub[j].sub[k].sub.length; h++) {
-										var forthNum = i + "" + j + k + h;
-										forthFloor.push({
-											"floor": 4,
-											"name": allFloor[i].sub[j].sub[k].sub[h],
-											"index": forthNum
-										})
-									}
+						//						for(var i = 0; i < allFloor.length; i++) {
+						//							//添加第一层的span和li
+						//							var tempFloor1 = `<li>
+						//												  <span>${allFloor[i].name}</span>
+						//												  <ul class="floor2">
+						//											  </li>`;
+						//							$(".floor1").append(tempFloor1);
+						//							//第二层的循环获取
+						//							for(var j = 0; j < allFloor[i].sub.length; j++) {
+						//								//添加第二层的span和li
+						//								var tempFloor2 = `<li>
+						//												  <span>${allFloor[i].sub[j].name}</span>
+						//												  <ul class="floor3">
+						//											  </li>`;
+						//								$(".floor2").eq(i).append(tempFloor2);
+						//								//第三层循环的获取
+						//								for(var k = 0; k < allFloor[i].sub[j].sub.length; k++) {
+						//									//添加第三层的span和li
+						//									var tempFloor3 = `<li>
+						//												  <span>${allFloor[i].sub[j].sub[k].name}</span>
+						//												  <ul class="floor4">
+						//											  </li>`;
+						//									$(".floor2").eq(i).find(".floor3").eq(j).append(tempFloor3);
+						//									for(var h = 0; h < allFloor[i].sub[j].sub[k].sub.length; h++) {
+						//										//添加第四层的span和li
+						//										var tempFloor4 = `<li>
+						//												  <span>${allFloor[i].sub[j].sub[k].sub[h]}</span>										
+						//											  </li>`;
+						//										$(".floor2").eq(i).find(".floor3").eq(j).find(".floor4").eq(k).append(tempFloor4);
+						//									}
+						//								}
+						//
+						//							}
+						//
+						//						}
+						//用$each进行操作
+						$.each(allFloor, function(i, ele) {
+							var tempFloor1 = `<li>
+												  <span>${ele.name}</span>
+												  <ul class="floor2">
+											  </li>`;
+							$(".floor1").append(tempFloor1);
+							$.each(ele.sub, function(j, ele2) {
+								var tempFloor2 = `<li>
+												  <span>${ele2.name}</span>
+												  <ul class="floor3">
+											  </li>`;
+								if(ele2.sub.length < 1) {
+									tempFloor2 = `<li>
+												  <span>${ele2.name}</span>
+											  </li>`;
 								}
-
-							}
-
-						}
-
-						console.log(firstFloor);
-						console.log(secondFloor);
-						console.log(thirdFloor);
-						console.log(forthFloor);
+								var nodeFloor2 = $(".floor2").eq(i);
+								nodeFloor2.append(tempFloor2);
+								$.each(ele2.sub, function(k, ele3) {
+									var tempFloor3 = `<li>
+												  <span>${ele3.name}</span>
+												  <ul class="floor4">
+											  </li>`;
+									if(ele3.sub.length < 1) {
+										tempFloor3 = `<li>
+												  <span>${ele3.name}</span>
+											  </li>`;
+									}
+									var nodeFloor3 = nodeFloor2.find(".floor3").eq(j);
+									nodeFloor3.append(tempFloor3);
+									$.each(ele3.sub, function(h, ele4) {
+										console.log(ele4)
+											var tempFloor4 = `<li>
+												  <span>${ele4}</span>										
+											  </li>`;
+										var nodeFloor4 = nodeFloor3.find(".floor4").eq(k);
+											nodeFloor4.append(tempFloor4);
+									})
+								})
+							})
+						})
 
 					} else {
 						errorModal(res.msg);
