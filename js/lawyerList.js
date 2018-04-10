@@ -77,7 +77,19 @@ $(document).ready(function() {
 		});
 		console.log(param);
 		console.log(obj);
-		$("#listExplain").html(obj.second_reason + '案件律师代理情况');
+		var caseType = '';
+		if(obj.second_reason){
+            caseType = obj.second_reason
+		}else{
+			if(obj.reason_2){
+                caseType = obj.reason_2;
+			}else if(obj.reason_3){
+                caseType = obj.reason_3;
+			}else if(obj.reason_4){
+                caseType = obj.reason_4;
+			}
+		}
+        $("#listExplain").html(caseType + '案件律师代理情况');
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888

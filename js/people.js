@@ -5,6 +5,7 @@ $(document).ready(function() {
 	var lawyerInput = $('#lawyer textarea'),
 		caseInput = $('#case textarea');
 	var searchType = 'lawyer';
+	var resNum;
 
 	//判断当前显示找律师 还是显示查案件
 	(function() {
@@ -127,12 +128,7 @@ $(document).ready(function() {
 	var forthFloor = [];
 	$('#selectResModal').on('shown.bs.modal', function(e) {
 		var resNode = $('#selectResModal #Label>i');
-		var liNode = $('#selectResModal ul>li');
-		liNode.on('click', function() {
-			var selectHtml = $(this).html();
-			resNode.html(selectHtml);
-		});
-		console.log('在这里请求案由');
+		var liNode;
 
 		//请求获得案由选项的列表
 		var param = {
@@ -150,84 +146,71 @@ $(document).ready(function() {
 						console.log('请求成功')
 						console.log(res.data);
 						allFloor = res.data;
-						//获取第一层的数据
-						//						for(var i = 0; i < allFloor.length; i++) {
-						//							//添加第一层的span和li
-						//							var tempFloor1 = `<li>
-						//												  <span>${allFloor[i].name}</span>
-						//												  <ul class="floor2">
-						//											  </li>`;
-						//							$(".floor1").append(tempFloor1);
-						//							//第二层的循环获取
-						//							for(var j = 0; j < allFloor[i].sub.length; j++) {
-						//								//添加第二层的span和li
-						//								var tempFloor2 = `<li>
-						//												  <span>${allFloor[i].sub[j].name}</span>
-						//												  <ul class="floor3">
-						//											  </li>`;
-						//								$(".floor2").eq(i).append(tempFloor2);
-						//								//第三层循环的获取
-						//								for(var k = 0; k < allFloor[i].sub[j].sub.length; k++) {
-						//									//添加第三层的span和li
-						//									var tempFloor3 = `<li>
-						//												  <span>${allFloor[i].sub[j].sub[k].name}</span>
-						//												  <ul class="floor4">
-						//											  </li>`;
-						//									$(".floor2").eq(i).find(".floor3").eq(j).append(tempFloor3);
-						//									for(var h = 0; h < allFloor[i].sub[j].sub[k].sub.length; h++) {
-						//										//添加第四层的span和li
-						//										var tempFloor4 = `<li>
-						//												  <span>${allFloor[i].sub[j].sub[k].sub[h]}</span>										
-						//											  </li>`;
-						//										$(".floor2").eq(i).find(".floor3").eq(j).find(".floor4").eq(k).append(tempFloor4);
-						//									}
-						//								}
-						//
-						//							}
-						//
-						//						}
-						//用$each进行操作
 						$.each(allFloor, function(i, ele) {
-							var tempFloor1 = `<li>
+							var tempFloor1 = `<li reason="reason_1">
 												  <span>${ele.name}</span>
-												  <ul class="floor2">
+												  <ul class="floor2 f${i}"></ul>
 											  </li>`;
 							$(".floor1").append(tempFloor1);
-							$.each(ele.sub, function(j, ele2) {
-								var tempFloor2 = `<li>
-												  <span>${ele2.name}</span>
-												  <ul class="floor3">
-											  </li>`;
-								if(ele2.sub.length < 1) {
-									tempFloor2 = `<li>
+							if(ele.sub && ele.sub.length>0){
+                                $.each(ele.sub, function(i2, ele2) {
+                                    var tempFloor2 = `<li reason="reason_2">
 												  <span>${ele2.name}</span>
 											  </li>`;
-								}
-								var nodeFloor2 = $(".floor2").eq(i);
-								nodeFloor2.append(tempFloor2);
-								$.each(ele2.sub, function(k, ele3) {
-									var tempFloor3 = `<li>
-												  <span>${ele3.name}</span>
-												  <ul class="floor4">
+                                    var nodeFloor2 = $(".floor2.f"+ i);
+                                    if(ele2.sub && ele2.sub.length > 0) {
+                                        tempFloor2 = `<li  reason="reason_2">
+												  <span>${ele2.name}</span>
+												  <ul class="floor3 f${i2}"></ul>
 											  </li>`;
-									if(ele3.sub.length < 1) {
-										tempFloor3 = `<li>
+                                        nodeFloor2.append(tempFloor2);
+                                        $.each(ele2.sub, function(i3, ele3) {
+                                            var tempFloor3 = `<li reason="reason_3">
 												  <span>${ele3.name}</span>
 											  </li>`;
-									}
-									var nodeFloor3 = nodeFloor2.find(".floor3").eq(j);
-									nodeFloor3.append(tempFloor3);
-									$.each(ele3.sub, function(h, ele4) {
-										console.log(ele4)
-											var tempFloor4 = `<li>
+                                            var nodeFloor3 = nodeFloor2.find(".floor3.f" + i2);
+                                            if(ele3.sub && ele3.sub.length >0) {
+                                                tempFloor3 = `<li  reason="reason_3">
+												  <span>${ele3.name}</span>
+												  <ul class="floor4 f${i3}">
+											  </li>`;
+                                                nodeFloor3.append(tempFloor3);
+                                                $.each(ele3.sub, function(i4, ele4) {
+                                                    var tempFloor4 = `<li class="clickNode" reason="reason_4">
 												  <span>${ele4}</span>										
 											  </li>`;
-										var nodeFloor4 = nodeFloor3.find(".floor4").eq(k);
-											nodeFloor4.append(tempFloor4);
-									})
-								})
-							})
-						})
+                                                    var nodeFloor4 = nodeFloor3.find(".floor4.f" + i3);
+                                                    nodeFloor4.append(tempFloor4);
+                                                })
+
+                                            }else{
+                                                tempFloor3 = `<li class="clickNode"  reason="reason_3">
+												  <span>${ele3.name}</span>
+											  </li>`;
+                                                nodeFloor3.append(tempFloor3);
+                                            }
+
+                                        });
+
+                                    }else{
+                                        tempFloor2 = `<li class="clickNode"  reason="reason_2">
+												  <span>${ele2.name}</span>
+											  </li>`;
+                                        nodeFloor2.append(tempFloor2);
+                                    }
+
+                                })
+                            }
+
+						});
+
+						//添加点击选中事件
+                        liNode = $('#selectResModal ul>li.clickNode');
+                        liNode.on('click', function() {
+                            var selectHtml = $(this).html();
+                            resNum = $(this).attr('reason');
+                            resNode.html(selectHtml);
+                        });
 
 					} else {
 						errorModal(res.msg);
@@ -242,7 +225,9 @@ $(document).ready(function() {
 	});
 	//点击确定按钮关闭模态框
 	$('#selectResModal .ok').on('click', function() {
-		var resVal = $('#selectResModal #Label>i').html();
+		var resVal = $('#selectResModal #Label>i>span').html();
+		var resObj = {};
+		resObj[resNum] = resVal;
 		if(resVal == '请选择案由') {
 			$('#selectResModal span.errorTip').show();
 			return;
@@ -254,7 +239,7 @@ $(document).ready(function() {
 			var caseDescription = $('#lawyer .caseDescription').val();
 			var template = JSON.stringify({
 				des: caseDescription,
-				res: JSON.parse(resVal),
+				res: resObj,
 				province: cityMsg.province,
 				city: cityMsg.city,
 				region: cityMsg.region
