@@ -447,13 +447,10 @@ textarea{
     font-size: 14px;
  	color: red;
 }
-/*****************************选择案由模态框*************************************/
+/*****************************选择案由模态框       四级菜单*************************************/
 #selectResModal .modal-dialog{
-	top: 50%;
-	margin-top: -175px;
-}
-#selectResModal .modal-dialog .modal-content{
-
+	/*top: 50%;
+	margin-top: -175px;*/
 }
 #selectResModal .modal-dialog .modal-content .modal-header{
 	font-weight: bold;
@@ -491,7 +488,7 @@ font-weight: bold;
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown{
 display: inline-block;
 margin-left: 25px;
-width:400px;
+width:300px;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown button{
 background: #fff;
@@ -507,8 +504,7 @@ margin-right: 10px;
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul {
 width:100%;
 padding:10px 0;
-max-height: 300px;
-overflow-y: auto;
+/*overflow-y: auto;*/
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul::-webkit-scrollbar {
 	width: .10rem;
@@ -527,14 +523,55 @@ overflow-y: auto;
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul>li{
 height: 26px;
 line-height: 26px;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
 padding:0 10px;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown ul>li:hover{
 background: #7daee8;
 }
-#selectResModal .modal-dialog .modal-content .modal-footer{
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor2,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor3,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor4{
+	position: absolute;
+	display:none;
+	width: auto;
+	background: #fff;
+    left: calc(100% + 1px );
+    top: -10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.4);
+    border-radius: 2px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1 ul {
+	display: none;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1 li{
+	position: relative;
+	height: 30px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1 span {
+	height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1>li:hover>.floor2,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1>li .floor2>li:hover>.floor3,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1>li .floor2>li .floor3>li:hover>.floor4,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown #floor1>li .floor2>li .floor3>li .floor4>li:hover>.floor5{
+	display: block;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor2{
+	z-index: 20;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor3{
+	width: 520px;
+	z-index: 30;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor4{
+	z-index: 40;
+	width: 300px;
+}
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor3>li,
+#selectResModal .modal-dialog .modal-content .modal-body .shrotShow div.dropdown .floor4>li{
+	float: left;
 }
