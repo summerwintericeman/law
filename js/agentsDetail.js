@@ -6,7 +6,12 @@ $(document).ready(function() {
 	//var getCom = getUrlParam('com',true) || '';
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
-    agentMsg = JSON.parse(agentMsg);
+	agentMsg = JSON.parse(agentMsg);
+	var mapData = agentMsg.statistic_info,
+		mapDataArr = [],
+		nameList = [];
+	console.log(mapData);
+	console.log(mapDataArr);
 	var _href = window.location.href;
 	if(_href.indexOf('&com') > -1) {
 		$('.path').find('a').eq(1).hide().next('i').hide();
@@ -15,7 +20,7 @@ $(document).ready(function() {
 	function agentsDetail(showlist) {
 		var param = {
 			name: getPer,
-			agency:agentMsg.cp_name,
+			agency: agentMsg.cp_name,
 			page_num: 1,
 			page_count: 12
 		};
@@ -31,7 +36,7 @@ $(document).ready(function() {
 			},
 			error: function() {
 				errorModal('查询代理人详情失败!');
-				console.error('agent_by_name：', arguments);
+				console.error('patent_by_agname：', arguments);
 			}
 		});
 	};
@@ -71,30 +76,14 @@ $(document).ready(function() {
 				//擅长领域
 				var dowellHtml = $('#dowell').html();
 				//擅长领域的添加
-				var reasonList = [{//临时伪造数据
-						"name": "专利1",
-						"value": 1
-					},
-					{
-						"name": "专利2",
-						"value": 2
-					},
-					{
-						"name": "专利3",
-						"value": 3
-					}
-				];
-				$.each(reasonList, function(idx, ele) {
-					if(idx < 6) {
-						var nodeDoWell = `　　<span>${ele.name}<i style="color:red;">　(${ele.value})</i></span>`;
+				$.each(mapData, function(idx, ele) {
+						mapDataArr.push({
+							"name": idx,
+							"value": ele
+						})
+						nameList.push(idx)
+						var nodeDoWell = `　　<span>${idx}<i style="color:red;">　(${ele})</i></span>`;
 						$('#dowell').append(nodeDoWell);
-						//需要数量和具体的案由
-						
-						
-						//后续画图的数据也需要早这里处理好
-						
-					}
-
 				});
 
 				//遍历数组进行添加
@@ -123,20 +112,6 @@ $(document).ready(function() {
 	//绘制图表
 	var draw = function() {
 		var myChart0 = echarts.init(document.getElementById('rateChart0'));
-		var nameList = ["专利1", "专利2", "专利3"];
-		var reasonList = [{
-				"name": "专利1",
-				"value": 1
-			},
-			{
-				"name": "专利2",
-				"value": 2
-			},
-			{
-				"name": "专利3",
-				"value": 3
-			}
-		];
 		var option = {
 			tooltip: {
 				trigger: 'item',
@@ -181,42 +156,38 @@ $(document).ready(function() {
 						show: false
 					}
 				},
-				data: reasonList
+				data: mapDataArr
 			}]
 		};
 		myChart0.setOption(option);
 	}
-		
-		
+
 	//获取更多的专利信息的跳转
-	$("#getMoreMess").on("click",function(){
+	$("#getMoreMess").on("click", function() {
 		var userLogin = $.cookie("userMess");
 		console.log(userLogin);
-		if(userLogin){
+		if(userLogin) {
 			userLogin = JSON.parse(userLogin);
 		}
-		if(userLogin && (userLogin.email || userLogin.account)){
+		if(userLogin && (userLogin.email || userLogin.account)) {
 			//cookie存在并且其中的一个email或者account有值存在表示已经登录
 			//跳转到详细的页面
 			window.location.href = "./zhuanLiList.html?per=" + getPer + '&com=' + agentMsg.cp_name;
-		}else{
+		} else {
 			console.log("aaa")
 			$('#choiceMore').modal('show');
 			$('#choiceMore').css({
-				"margin-top":"200px"
+				"margin-top": "200px"
 			})
 			//alert("如需查看更多，请您先登录")
-			
+
 		}
 
-		
 	});
-	
+
 	//模态框选择登录
-	$("#choiceLogin").on("click",function(){
+	$("#choiceLogin").on("click", function() {
 		window.location.href = "./login.html";
 	});
-		
-	
-	
+
 });

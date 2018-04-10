@@ -49,14 +49,14 @@ $(document).ready(function() {
                     }
                 }else{
                     errorModal('查询代理人列表失败!');
-                    console.error('agent_by_name：', res);
+                    console.error('patent_by_agname：', res);
                 }
 
 
             },
             error: function() {
                 errorModal('查询代理人列表失败!');
-                console.error('agent_by_name：', arguments);
+                console.error('patent_by_agname：', arguments);
             }
         });
     };
