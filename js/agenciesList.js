@@ -73,7 +73,7 @@ $(document).ready(function() {
             },
             error: function() {
                 errorModal('查询代理人列表失败!');
-                console.error('agent_by_name：', arguments);
+                console.error('agent_company：', arguments);
             }
         });
     };
