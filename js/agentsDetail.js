@@ -59,7 +59,7 @@ $(document).ready(function() {
 						 <div class="caseType">
 						<p>
 						<i></i>
-						<span class="text-strong font-16 " id = 'dowell'>擅长领域:</span>
+						<span class="text-strong font-16 " id = 'dowell'>代理专利类型分布:</span>
 						</p>
 						 <p>
 						<i></i>
@@ -77,6 +77,12 @@ $(document).ready(function() {
 				var dowellHtml = $('#dowell').html();
 				//擅长领域的添加
 				$.each(mapData, function(idx, ele) {
+					//发明专利、
+					//实用新型专利、
+					//外观设计专利、
+					//进入中国国家阶段的PCT发明专利申请、
+					//进入中国国家阶段的PCT实用新型专利申请
+					if(idx == "发明专利申请" || idx == "外观设计专利申请" || idx == "实用新型专利申请" || idx == "进入中国国家阶段的PCT发明专利申请" || idx == "进入中国国家阶段的PCT实用新型专利申请") {
 						mapDataArr.push({
 							"name": idx,
 							"value": ele
@@ -84,6 +90,7 @@ $(document).ready(function() {
 						nameList.push(idx)
 						var nodeDoWell = `　　<span>${idx}<i style="color:red;">　(${ele})</i></span>`;
 						$('#dowell').append(nodeDoWell);
+					}
 				});
 
 				//遍历数组进行添加
@@ -113,52 +120,87 @@ $(document).ready(function() {
 	var draw = function() {
 		var myChart0 = echarts.init(document.getElementById('rateChart0'));
 		var option = {
+			title: {
+				text: '',
+				subtext: '',
+				x: 'center'
+			},
 			tooltip: {
 				trigger: 'item',
-				formatter: "{a} <br/>{b}: {c} ({d}%)"
+				formatter: "{a} <br/>{b} : {c} ({d}%)"
 			},
 			legend: {
 				orient: 'vertical',
 				x: 'left',
 				data: nameList
 			},
-			toolbox: {
-				show: true,
-				orient: 'vertical',
-				right: 40,
-				top: 'top',
-				feature: {
-					saveAsImage: {
-						show: true
-					}
-				}
-			},
 			series: [{
 				name: '',
 				type: 'pie',
-				radius: ['50%', '70%'],
-				avoidLabelOverlap: false,
-				label: {
-					normal: {
-						show: false,
-						position: 'center'
-					},
-					emphasis: {
-						show: true,
-						textStyle: {
-							fontSize: '12',
-							fontWeight: 'bold'
-						}
-					}
-				},
+				radius: '55%',
+				center: ['50%', '70%'],
 				labelLine: {
 					normal: {
-						show: false
+						show: true
 					}
 				},
-				data: mapDataArr
+				data: mapDataArr,
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 10,
+						shadowOffsetX: 0,
+						shadowColor: 'rgba(0, 0, 0, 0.5)'
+					}
+				}
 			}]
 		};
+		//		var option = {
+		//			tooltip: {
+		//				trigger: 'item',
+		//				formatter: "{a} <br/>{b}: {c} ({d}%)"
+		//			},
+		//			legend: {
+		//				orient: 'vertical',
+		//				x: 'left',
+		//				data: nameList
+		//			},
+		//			toolbox: {
+		//				show: true,
+		//				orient: 'vertical',
+		//				right: 40,
+		//				top: 'top',
+		//				feature: {
+		//					saveAsImage: {
+		//						show: true
+		//					}
+		//				}
+		//			},
+		//			series: [{
+		//				name: '',
+		//				type: 'pie',
+		//				radius: ['50%', '70%'],
+		//				avoidLabelOverlap: false,
+		//				label: {
+		//					normal: {
+		//						show: false,
+		//						position: 'center'
+		//					},
+		//					emphasis: {
+		//						show: true,
+		//						textStyle: {
+		//							fontSize: '12',
+		//							fontWeight: 'bold'
+		//						}
+		//					}
+		//				},
+		//				labelLine: {
+		//					normal: {
+		//						show: false
+		//					}
+		//				},
+		//				data: mapDataArr
+		//			}]
+		//		};
 		myChart0.setOption(option);
 	}
 
