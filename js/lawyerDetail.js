@@ -133,7 +133,7 @@ $(function() {
 					}
 				});
 
-				//绘制图表
+				//绘制图表 案由图表
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
@@ -172,7 +172,7 @@ $(function() {
 				};
 
 				myChart0.setOption(option);
-				//绘制第二个图表
+				//绘制第二个图表律师胜诉
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
 				var option1 = {
 					tooltip: {
