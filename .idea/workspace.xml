@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a33361f-d516-4f2a-84d3-6822c05006e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/caseList.html" afterPath="$PROJECT_DIR$/components/caseList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/lawyerList.html" afterPath="$PROJECT_DIR$/components/lawyerList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/minshianjianDetail.html" afterPath="$PROJECT_DIR$/components/minshianjianDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/people.html" afterPath="$PROJECT_DIR$/components/people.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/propery.html" afterPath="$PROJECT_DIR$/components/propery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/people.css" afterPath="$PROJECT_DIR$/css/people.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/propery.css" afterPath="$PROJECT_DIR$/css/propery.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/agentsList.js" afterPath="$PROJECT_DIR$/js/agentsList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/caseList.js" afterPath="$PROJECT_DIR$/js/caseList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/index.js" afterPath="$PROJECT_DIR$/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/agentsDetail.html" afterPath="$PROJECT_DIR$/components/agentsDetail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/agentsDetail.js" afterPath="$PROJECT_DIR$/js/agentsDetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/lawyerDetail.js" afterPath="$PROJECT_DIR$/js/lawyerDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/people.js" afterPath="$PROJECT_DIR$/js/people.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/property.js" afterPath="$PROJECT_DIR$/js/property.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zhuanLiList.js" afterPath="$PROJECT_DIR$/js/zhuanLiList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -61,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3116">
-              <caret line="235" column="53" lean-forward="false" selection-start-line="235" selection-start-column="53" selection-end-line="235" selection-end-column="53" />
+            <state relative-caret-position="65">
+              <caret line="113" column="33" lean-forward="true" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
               <folding>
                 <element signature="n#!!block;n#loginCheck#0" expanded="false" />
                 <marker date="1523800626307" expanded="true" signature="1091:1127" ph="..." />
@@ -79,6 +65,24 @@
                 <marker date="1523800626307" expanded="true" signature="7394:7458" ph="..." />
                 <marker date="1523800626307" expanded="true" signature="7854:7913" ph="..." />
                 <marker date="1523800626307" expanded="true" signature="8225:8284" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lawyerDetail.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/lawyerDetail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+              <folding>
+                <marker date="1523800915728" expanded="true" signature="1219:1901" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="1260:1363" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="1397:1885" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="1516:1869" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="1937:2312" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="1956:2076" ph="..." />
+                <marker date="1523800915728" expanded="true" signature="2096:2243" ph="..." />
               </folding>
             </state>
           </provider>
@@ -258,7 +262,6 @@
         <option value="$PROJECT_DIR$/css/people.css" />
         <option value="$PROJECT_DIR$/css/propery.css" />
         <option value="$PROJECT_DIR$/components/minshianjianDetail.html" />
-        <option value="$PROJECT_DIR$/js/lawyerDetail.js" />
         <option value="$PROJECT_DIR$/js/agentsList.js" />
         <option value="$PROJECT_DIR$/js/zhuanLiList.js" />
         <option value="$PROJECT_DIR$/components/people.html" />
@@ -271,6 +274,7 @@
         <option value="$PROJECT_DIR$/components/lawyerList.html" />
         <option value="$PROJECT_DIR$/components/caseList.html" />
         <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/js/lawyerDetail.js" />
       </list>
     </option>
   </component>
@@ -287,9 +291,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="248" />
-    <option name="width" value="1662" />
-    <option name="height" value="989" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -479,18 +484,18 @@
       <workItem from="1522933046189" duration="5663000" />
       <workItem from="1523004914790" duration="301000" />
       <workItem from="1523366417810" duration="5935000" />
-      <workItem from="1523762188399" duration="20813000" />
+      <workItem from="1523762188399" duration="21109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163858000" />
+    <option name="totallyTimeSpent" value="164154000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="248" y="0" width="1662" height="989" extended-state="1" />
+    <frame x="-11" y="-11" width="1942" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19085366" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16302083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -801,22 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/lawyerDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-643">
-          <caret line="70" column="51" lean-forward="false" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
-          <folding>
-            <marker date="1523765670828" expanded="true" signature="1507:2268" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="1548:1651" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="1685:2252" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="1804:2236" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="2304:2633" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="2323:2443" ph="..." />
-            <marker date="1523765670828" expanded="true" signature="2463:2564" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/zhuanLiList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
@@ -960,8 +949,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3116">
-          <caret line="235" column="53" lean-forward="false" selection-start-line="235" selection-start-column="53" selection-end-line="235" selection-end-column="53" />
+        <state relative-caret-position="65">
+          <caret line="113" column="33" lean-forward="true" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
           <folding>
             <element signature="n#!!block;n#loginCheck#0" expanded="false" />
             <marker date="1523800626307" expanded="true" signature="1091:1127" ph="..." />
@@ -975,6 +964,22 @@
             <marker date="1523800626307" expanded="true" signature="7394:7458" ph="..." />
             <marker date="1523800626307" expanded="true" signature="7854:7913" ph="..." />
             <marker date="1523800626307" expanded="true" signature="8225:8284" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lawyerDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <marker date="1523800915728" expanded="true" signature="1219:1901" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="1260:1363" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="1397:1885" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="1516:1869" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="1937:2312" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="1956:2076" ph="..." />
+            <marker date="1523800915728" expanded="true" signature="2096:2243" ph="..." />
           </folding>
         </state>
       </provider>

@@ -39,23 +39,10 @@ $(function() {
 		type: 'post',
 		data: param,
 		success: function(res) {
-			//console.log(res);
-			//只取最多的显示三个
-			//console.log(res.data.detail);
-			var maxIndex = 0;
-
-			for(var i = 1; i < res.data.detail.length; i++) {
-				if(res.data.detail[maxIndex].count < res.data.detail[i].count) {
-					maxIndex = i;
-				}
-			}
-			var maxCountReason = "";
-			if(res.data.detail[0]) {
-				maxCountReason = res.data.detail[maxIndex].reason2;
-			}
-
+			console.log(res);
+			console.log(res.data.detail);
+			console.log(resKey);
 			if(res.code == 0) {
-
 				var node1 = `
     								<div class="clearfix msgWrap">
 									<div class="pull-left userMsg">
@@ -69,7 +56,6 @@ $(function() {
 									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
 									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
 									<p><span>代理案件总数</span><i>${caseNum|| '--'}起</i></p>
-									<p><span>收录一审判决案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
 									</div>
 									</div>
 									</div>
@@ -80,59 +66,86 @@ $(function() {
 							        </p>
 							         <p>
 							        <i></i>
-							        <span class="text-strong font-16">类似案例:</span>
+							        <span class="text-strong font-16">代理类似案例（收录一审判决案件数量):${res.data.judge_count || '--'}起</span>
 							        <ul class="node2List"></ul>
 							        </p>
 							        </div>`;
 				parentNode.append(node1);
-				console.log(res.data.detail);
+				//console.log(res.data.detail);
 				var reasonList = [],
 					nameList = [],
-					nameList1 = [],
-					sucessRate = [],
-					failRate = [],
-					partRate = [];
-
+					rateList = [],
+					nameList1 = [];
+				//推荐案由的确定
+				var maxIndex = 0;
+				var maxCountReason = "";
 				$.each(res.data.detail, function(idx, ele) {
-					//擅长领域需要的数据只需要最多三种
-					if(idx < 3) {
-						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
-						$('#dowell').append(nodeDoWell);
-						//类似案例的选择---类似案例选择只选择展示的擅长领域中的每一种显示一个
-						var page = getUrlParam('fromPage');
-						var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[0].wenshu_id}&reason=${maxCountReason}'>　　　　　${res.data.detail[idx].doc[0].title}</a></li>`;
-						if(page && page == 'property') {
-							node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[0].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${res.data.detail[idx].doc[0].title}</a></li>`;
-						}
-						$('.node2List').append(node2);
-						//						$.each(res.data.detail[idx].doc, function(index, ele) {
-						//							if(index < 1) {
-						//								var page = getUrlParam('fromPage');
-						//								var node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}'>　　　　　${ele.title}</a></li>`;
-						//								if(page && page == 'property') {
-						//									node2 = `<li><a href='./dowellDetail.html?wenshu=${ele.wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${ele.title}</a></li>`;
-						//								}
-						//
-						//								$('.node2List').append(node2);
-						//							}
-						//						});
-
-					}
 					//第一个图表需要的数据 需要全部数量的案由
 					reasonList.push({
 						"name": ele.reason2,
 						"value": ele.count
 					});
 					nameList.push(ele.reason2);
-					//第二图需要的数据 只需要一部分不是全部	
-					if(idx < 2) {
-						nameList1.push(ele.reason2);
-						sucessRate.push(ele.suc_rate);
-						failRate.push((1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2));
-						partRate.push(ele.part_suc_rate);
-					}
+					//第二个图表需要的数据 需要全部数量的案由
+					//通过案由的匹配来选择搜索的案由是否是根据字段查出来的案由
+					//推荐的信息的选择也是选择查出来的案由
+					//确定主要的显示信息
+					$.each(resKey, function(idx1, ele1) {
+						if(ele.reason2 == ele1 && idx1 != "second_reason") {
+							//表示匹配到那个需要的主要案由了
+							console.log(ele1);
+							console.log(idx);
+							maxIndex = idx;
+							maxCountReason = res.data.detail[idx].reason2;
+							//擅长领域需要的数据
+							var choiceDoWell = `　　<span>${res.data.detail[maxIndex].reason2}<i>(${res.data.detail[maxIndex].count})</i></span>`;
+							if(maxIndex >= 3) { //前三个不存在推荐案由
+								$('#dowell').append(choiceDoWell);
+							}
+							//第二图需要的数据 只需要一部分不是全部
+							nameList1 = ["胜诉", "败诉", "部分胜诉"];
+							rateList = [{
+									"name": "胜诉",
+									"value": ele.suc_rate
+								},
+								{
+									"name": "败诉",
+									"value": (1 - (ele.suc_rate + ele.part_suc_rate)).toFixed(2)
+								},
+								{
+									"name": "部分胜诉",
+									"value": ele.part_suc_rate
+								}
+							];
+							//类似案例的选择---类似案例选择只选择推荐案由中的案例
+							var page = getUrlParam('fromPage');
+							for(var i = 0; i < res.data.detail[idx].doc.length; i++) {
+								if(i < 3) { //最多添加三个
+									var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}'>　　　　　${res.data.detail[idx].doc[i].title}</a></li>`;
+									if(page && page == 'property') {
+										node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${res.data.detail[idx].doc[i].title}</a></li>`;
+									}
+									$('.node2List').append(node2);
+								}
+							}
+						}
+					})
 				});
-
+				//获得擅长领域的函数
+				var getDoWellFn = function() {
+					$.each(res.data.detail, function(idx, ele) {
+						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
+						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
+						var tempIdx = 3;
+						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
+							tempIdx = 2;
+						}
+						if(idx < tempIdx) {
+							$('#dowell').append(nodeDoWell);
+						}
+					})
+				}
+				getDoWellFn();
 				//绘制图表 案由图表
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
@@ -175,46 +188,39 @@ $(function() {
 				//绘制第二个图表律师胜诉
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
 				var option1 = {
+					title: {
+						text: '推荐案由胜诉情况',
+						subtext: '',
+						x: 'center'
+					},
 					tooltip: {
-						trigger: 'axis',
-						axisPointer: { // 坐标轴指示器，坐标轴触发有效
-							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-						}
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {d}%"
 					},
 					legend: {
-						data: ['败诉', '全部胜诉', '部分胜诉']
-					},
-					xAxis: [{
-						type: 'category',
+						orient: 'vertical',
+						x: 'left',
 						data: nameList1
-					}],
-					yAxis: [{
-						type: 'value',
-						axisLabel: {
-							formatter: '{value}'
-						}
-					}],
+					},
 					series: [{
-							name: '败诉',
-							type: 'bar',
-							barWidth: 40,
-							data: failRate
+						name: '',
+						type: 'pie',
+						radius: '55%',
+						center: ['50%', '70%'],
+						labelLine: {
+							normal: {
+								show: true
+							}
 						},
-						{
-							name: '全部胜诉',
-							type: 'bar',
-							stack: '胜诉',
-							barWidth: 40,
-							data: sucessRate
-						},
-						{
-							name: '部分胜诉',
-							type: 'bar',
-							stack: '胜诉',
-							barWidth: 40,
-							data: partRate
+						data: rateList,
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
 						}
-					]
+					}]
 				};
 				myChart1.setOption(option1);
 			} else {
