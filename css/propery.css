@@ -31,12 +31,14 @@
     display: block;
     width:96%;
     height:2rem;
+
 }
 #property .labelBox textarea{
     resize: none;
     width:100%;
     height:1.2rem;
     line-height: 0.21rem;
+    overflow-x: hidden;
 }
 #property .errorTip{
     display: block;

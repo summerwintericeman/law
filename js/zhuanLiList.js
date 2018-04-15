@@ -105,7 +105,9 @@ $(document).ready(function() {
                 success: function(res) {
                     console.log(res);
                     if(res.code==0){
-   						window.open(res.data);
+                        errorModal('即将进入中国及多国专利审查信息查询',function(){
+                            window.open(res.data);
+                        },true);
                     }else{
                         errorModal(res.msg);
                         console.error('查询专利失败:',res);

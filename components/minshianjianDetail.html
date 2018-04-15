@@ -32,16 +32,27 @@
 				color: #4077b2;
 				font-size: 30px;
 			}
-			#minshianjian p{
+			#minshianjian #minshianjianmain p{
 				text-indent: 2em; 
 			}
-			
+			#minshianjian .baseMsg>h3{
+				padding:20px 0;
+			}
+			#minshianjian .baseMsg>.caseType{
+				text-align: right;
+				display: inline-block;
+				width: 190px;
+			}
 		</style>
 	</head>
 
 	<body id="minshianjian">
 		<div id="header"></div>
 		<div id="minshianjianmain">
+			<div class="baseMsg text-center">
+				<h3 class="text-center">邵阳市中级人民法院</h3>
+				<span class="caseType">民事案件</span><span class="caseNum pull-right">（2016）湘05民终1460号</span>
+			</div>
 
 		</div>
 
@@ -91,8 +102,12 @@
 					success: function(res) {
 						if(res.code == 0) {
 							console.log(res.data);
+							//添加基本信息
+
+							//$('#minshianjianmain').append();
+
 							var allList = [{
-									"name": "基本信息",
+									"name": "当事人信息",
 									"name1": "party_info",
 									"mess": ''
 								},

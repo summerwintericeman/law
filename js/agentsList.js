@@ -56,10 +56,12 @@ $(document).ready(function() {
             }
         });
         paramData = JSON.stringify(paramData);
-
+        if(!data.patent_data){
+            data.patent_data = {};
+		}
         var liNode = `<li data='${paramData}'>
-            <a href="agentsDetail.html?per=${cp_name}"  class="contant">
-                <p class="name"><span class="pull-left">${cp_name}</span><i>${data.gender}</i><i>专业: ${data.major}</i><i>检索条数: ${data.patent_data.count}</i></p>
+            <a href="agentsDetail.html?per=${cp_name || '--'}"  class="contant">
+                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>检索条数: ${data.patent_data.count || '--'}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
 
             </a>

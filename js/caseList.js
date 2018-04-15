@@ -31,13 +31,13 @@ $(document).ready(function() {
         if(fromPage && fromPage=='property'){
         	knowledgeNum = 1;
         }
+        var curPageNum = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
         if(cookieMess.res){
-            caseList(cookieMess.res, curPage,function(pkg){
-
+            caseList(cookieMess.res, curPageNum,function(pkg){
                 $.each(pkg.data,function(idx,ele){
-                    createLawList(res,ele);
+                    createLawList(cookieMess.res,ele);
                 });
-                creatPage(pkg.max_page_num, curPage);
+                creatPage(pkg.max_page_num, curPageNum);
                 //保存cookie
                 caseListCookie.listTotal = pkg.max_page_num;
                 $.cookie('caseList',JSON.stringify(caseListCookie),{path:'/'});
@@ -47,7 +47,7 @@ $(document).ready(function() {
                         pageCount:pkg.max_page_num,
                         totalData:12 * pkg.max_page_num,
                         showData:12,
-                        current:curPage,
+                        current:curPageNum,
                         mode:'fixed',
                         isHide:true,
                         callback:function(api){
@@ -63,16 +63,15 @@ $(document).ready(function() {
             });
         }else{
             caseFoud(knowledgeNum, des, function(res) {
-                console.log(res)
+                console.log(res);
                 sendReason = res.second_reason;
                 caseListCookie.reasonObj.des = res;
-                var curPage = (caseListCookie.listnum==-1 || !caseListCookie.listnum)?1:parseInt(caseListCookie.listnum);
-                caseList(res, curPage,function(pkg){
+                caseList(res, curPageNum,function(pkg){
 
                     $.each(pkg.data,function(idx,ele){
                         createLawList(res,ele);
                     });
-                    creatPage(pkg.max_page_num, curPage);
+                    creatPage(pkg.max_page_num, curPageNum);
                     //保存cookie
                     caseListCookie.listTotal = pkg.max_page_num;
                     $.cookie('caseList',JSON.stringify(caseListCookie),{path:'/'});
@@ -82,7 +81,7 @@ $(document).ready(function() {
                             pageCount:pkg.max_page_num,
                             totalData:12 * pkg.max_page_num,
                             showData:12,
-                            current:curPage,
+                            current:curPageNum,
                             mode:'fixed',
                             isHide:true,
                             callback:function(api){
@@ -164,110 +163,6 @@ $(document).ready(function() {
             liNote.before(noteNew);
         }
     };
-//点击翻页事件
-//     $(".pagination").on("click", ".changePage", function(event) {
-//         if(event.currentTarget.className.indexOf('disabled')>-1){
-//             return;
-//         }
-//
-//         var text = event.target.innerHTML,page_num,index,PreActive;//index点击li的下标(0开始)、PreActive点击的时候active的li的下标
-//         var pageNode = pagerUl.find('.pageNum');
-//         var allCur = JSON.parse($.cookie('caseList'));
-//         for(var i = 0;i < 5; i++){
-//             if(pageNode.eq(i).hasClass('active')){
-//                 PreActive = i;
-//             }
-//         }
-//
-//         //判断是否点击上一页、下一页
-//         if(text.indexOf('&gt;&gt;')>-1 ){
-//             page_num = parseInt(allCur.listnum) + 1;
-//             if(PreActive==4){
-//                 for(var i=0; i<5;i++){
-//                     var val1 = parseInt(pageNode.eq(i).find('a').html()) + 1 ;
-//                     pageNode.eq(i).find('a').html(val1);
-//                 }
-//                 pageNode.removeClass('active');
-//                 pageNode.eq(4).addClass('active');
-//             }else{
-//                 pageNode.removeClass('active');
-//                 pageNode.eq(PreActive + 1).addClass('active');
-//             }
-//
-//         }else if(text.indexOf('&lt;&lt;')>-1 ){
-//             page_num = parseInt(allCur.listnum) - 1;
-//             if(PreActive==0){
-//                 for(var i=0; i<5;i++){
-//                     var val1 = parseInt(pageNode.eq(i).find('a').html()) - 1 ;
-//                     pageNode.eq(i).find('a').html(val1);
-//                 }
-//                 pageNode.removeClass('active');
-//                 pageNode.eq(0).addClass('active');
-//             }else{
-//                 pageNode.removeClass('active');
-//                 pageNode.eq(PreActive - 1).addClass('active');
-//             }
-//
-//         }else{
-//             index = $(this).index()-1;
-//             page_num = parseInt(text);
-//             if(page_num == allCur.listnum){//页数相同，不用发起请求
-//                 return
-//             }
-//             pageNode.removeClass('active');
-//             if(index==4){
-//                 if(page_num == allCur.listTotal){
-//                     pageNode.eq(4).addClass('active');
-//                 }else{
-//                     for(var i=0; i<5;i++){
-//                         var val1 = parseInt(pageNode.eq(i).find('a').html()) + 1 ;
-//                         pageNode.eq(i).find('a').html(val1);
-//                     }
-//                     pageNode.eq(3).addClass('active');
-//                 }
-//             }else if(index==0){
-//                 if(page_num==1){
-//                     pageNode.eq(0).addClass('active');
-//                 }else{
-//                     for(var i=0; i<5;i++){
-//                         var val2 = parseInt(pageNode.eq(i).find('a').html()) - 1 ;
-//                         pageNode.eq(i).find('a').html(val2);
-//                     }
-//                     pageNode.eq(1).addClass('active');
-//                 }
-//             }else{
-//                 pageNode.eq(index).addClass('active');
-//             }
-//         }
-//
-//         var newPageNode = pagerUl.find('.pageNum');
-//         if(newPageNode.eq(4).find('a').html() == allCur.listTotal){
-//             newPageNode.eq(4).next('li').addClass('disabled');
-//         }else{
-//             newPageNode.eq(4).next('li').removeClass('disabled');
-//         }
-//         if(newPageNode.eq(0).find('a').html() == '1'){
-//             newPageNode.eq(0).prev('li').addClass('disabled');
-//         }else{
-//             newPageNode.eq(0).prev('li').removeClass('disabled');
-//         }
-//
-//
-//         //获得页数
-//         caseListCookie.listnum = page_num;
-//         caseListCookie.firstPageNum = newPageNode.eq(0).find('a').html();
-//         var tempCoo = JSON.stringify(caseListCookie);
-//         $.cookie('caseList', tempCoo,{path:'/'});
-//         //通过caseListCookie 来进行参数的给予
-//         caseList(caseListCookie.reasonObj.des, page_num, province,city,region,function(pkg){
-//             ulNote.empty();
-//             $.each(pkg.data,function(idx,ele){
-//                 createLawList(caseListCookie.reasonObj.des,ele);
-//             });
-//         });
-//
-//
-//     });
 
     function pagerGo(api){
         var curIdx = api.getCurrent();
@@ -277,12 +172,22 @@ $(document).ready(function() {
         var tempCoo = JSON.stringify(caseListCookie);
         $.cookie('caseList', tempCoo,{path:'/'});
         //通过caseListCookie 来进行参数的给予
-        caseList(caseListCookie.reasonObj.des, curIdx,function(pkg){
-            ulNote.empty();
-            $.each(pkg.data,function(idx,ele){
-                createLawList(caseListCookie.reasonObj.des,ele);
+        if(caseListCookie.reasonObj.res){
+            caseList(caseListCookie.reasonObj.res, curIdx,function(pkg){
+                ulNote.empty();
+                $.each(pkg.data,function(idx,ele){
+                    createLawList(caseListCookie.reasonObj.res,ele);
+                });
             });
-        });
+        }else{
+            caseList(caseListCookie.reasonObj.des, curIdx,function(pkg){
+                ulNote.empty();
+                $.each(pkg.data,function(idx,ele){
+                    createLawList(caseListCookie.reasonObj.des,ele);
+                });
+            });
+        }
+
 
     };
 

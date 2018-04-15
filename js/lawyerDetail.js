@@ -68,7 +68,7 @@ $(function() {
 									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
 									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
 									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>收录全部案件数量</span><i>${caseNum|| '--'}起</i></p>
+									<p><span>代理案件总数</span><i>${caseNum|| '--'}起</i></p>
 									<p><span>收录一审判决案件数量</span><i>${res.data.judge_count || '--'}起</i></p>
 									</div>
 									</div>
