@@ -137,23 +137,22 @@ function loginCheck() {
     }
 };
 
-//判断能否正确匹配案由
-function isMatchRes(){
-
-}
 
 //模态框显示    请求案由
 (function(){
     var allFloor = null;
-    var firstFloor = [];
-    var secondFloor = [];
-    var thirdFloor = [];
-    var forthFloor = [];
+    // var firstFloor = [];
+    // var secondFloor = [];
+    // var thirdFloor = [];
+    // var forthFloor = [];
+    var firstFloor,secondFloor,thirdFloor,forthFloor;
+    var idx1,idx2,idx3,idx4;
+
     var resNum = '';
     $('#selectResModal').on('shown.bs.modal', function(e) {
         var resNode = $('#selectResModal .valSpan i');
-        var liNode;
-
+        var liClickNode;
+        var ul2 = $('.floorWrap .res2'),ul3 = $('.floorWrap .res3'),ul4 = $('.floorWrap .res4');
         //请求获得案由选项的列表
         var param = {
 
@@ -172,69 +171,63 @@ function isMatchRes(){
                         allFloor = res.data;
                         $.each(allFloor, function(i, ele) {
                             var tempFloor1 = `<li reason="reason_1">
-												  <span>${ele.name}</span>
-												  <ul class="floor2 f${i}"></ul>
-											  </li>`;
+                        					    <span>${i+1}. ${ele.name}</span>
+                        				        </li>`;
                             $(".floor1").append(tempFloor1);
-                            if(ele.sub && ele.sub.length>0){
-                                $.each(ele.sub, function(i2, ele2) {
-                                    var tempFloor2 = `<li reason="reason_2">
-												  <span>${ele2.name}</span>
-											  </li>`;
-                                    var nodeFloor2 = $(".floor2.f"+ i);
-                                    if(ele2.sub && ele2.sub.length > 0) {
-                                        tempFloor2 = `<li  reason="reason_2">
-												  <span>${ele2.name}</span>
-												  <ul class="floor3 f${i2}"></ul>
-											  </li>`;
-                                        nodeFloor2.append(tempFloor2);
-                                        $.each(ele2.sub, function(i3, ele3) {
-                                            var tempFloor3 = `<li reason="reason_3">
-												  <span>${ele3.name}</span>
-											  </li>`;
-                                            var nodeFloor3 = nodeFloor2.find(".floor3.f" + i2);
-                                            if(ele3.sub && ele3.sub.length >0) {
-                                                tempFloor3 = `<li  reason="reason_3">
-												  <span>${ele3.name}</span>
-												  <ul class="floor4 f${i3}">
-											  </li>`;
-                                                nodeFloor3.append(tempFloor3);
-                                                $.each(ele3.sub, function(i4, ele4) {
-                                                    var tempFloor4 = `<li class="clickNode" reason="reason_4">
-												  <span>${ele4}</span>										
-											  </li>`;
-                                                    var nodeFloor4 = nodeFloor3.find(".floor4.f" + i3);
-                                                    nodeFloor4.append(tempFloor4);
-                                                })
+                        });
+                        $('li[reason="reason_1"]').on('mouseenter',function(){
+                            ul2.empty();ul3.empty();ul4.empty();
+                            idx1 = $(this).index();
+                            secondFloor = allFloor[idx1].sub;
+                            $.each(secondFloor,function(i2,e2){
+                                var liNode = `<li reason="reason_2">
+                        					    <span>${i2+1}. ${e2.name}</span>
+                        				        </li>`;
 
-                                            }else{
-                                                tempFloor3 = `<li class="clickNode"  reason="reason_3">
-												  <span>${ele3.name}</span>
-											  </li>`;
-                                                nodeFloor3.append(tempFloor3);
-                                            }
+                                ul2.append(liNode);
+                            });
+                            $('li[reason="reason_2"]').on('mouseenter',function(){
+                                ul3.empty();ul4.empty();
+                                idx2 = $(this).index();
+                                thirdFloor = allFloor[idx1].sub[idx2].sub;
+                                if(thirdFloor.length==0){
+                                    $(this).addClass('clickNode');
+                                }
+                                $.each(thirdFloor,function(i3,e3){
+                                    var liNode = `<li reason="reason_3">
+                        					    <span>${i3+1}. ${e3.name}</span>
+                        				        </li>`;
 
-                                        });
-
-                                    }else{
-                                        tempFloor2 = `<li class="clickNode"  reason="reason_2">
-												  <span>${ele2.name}</span>
-											  </li>`;
-                                        nodeFloor2.append(tempFloor2);
+                                    ul3.append(liNode);
+                                });
+                                $('li[reason="reason_3"]').on('mouseenter',function(){
+                                    ul4.empty();
+                                    idx3 = $(this).index();
+                                    forthFloor = allFloor[idx1].sub[idx2].sub[idx3].sub;
+                                    if(forthFloor.length==0){
+                                        $(this).addClass('clickNode');
                                     }
+                                    $.each(forthFloor,function(i4,e4){
+                                        var liNode = `<li reason="reason_4" class="clickNode">
+                        					    <span>${i4+1}. ${e4}</span>
+                        				        </li>`;
+                                        ul4.append(liNode);
+                                    });
 
-                                })
-                            }
+                                });
+
+                            });
 
                         });
 
                         //添加点击选中事件
-                        liNode = $('#selectResModal ul>li.clickNode');
-                        liNode.on('click', function() {
+                        $('body').on('click','#selectResModal ul>li.clickNode', function() {
                             var selectHtml = $(this).find('span').html();
+                            selectHtml = selectHtml.substring(3,selectHtml.length);
                             resNum = $(this).attr('reason');
                             resNode.html(selectHtml);
                             var secRes = $(this).parents('li[reason="reason_1"]').find('span').html();
+
                             $('#selectResModal .valSpan span').html(secRes);
                         });
 

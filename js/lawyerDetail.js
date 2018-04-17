@@ -5,7 +5,7 @@ $(function() {
 	var name = getUrlParam('lawyer_name', true),
 		_loction = getUrlParam('lawyer_location', true);
 	var fromPage = getUrlParam('fromPage');
-	var caseNum = getUrlParam('caseNum');
+	//var caseNum = getUrlParam('caseNum');
 	var resKey = $.cookie('all');
 	resKey = JSON.parse(resKey);
 	resKey = resKey.reasonObj.res;
@@ -18,12 +18,21 @@ $(function() {
 
 	//图表重绘
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		myChart1.resize();
-		myChart0.resize();
+		if(myChart1){
+            myChart1.resize();
+		}
+		if(myChart0){
+            myChart0.resize();
+		}
+
 	});
 	window.onresize = function() {
-		myChart1.resize();
-		myChart0.resize();
+        if(myChart1){
+            myChart1.resize();
+        }
+        if(myChart0){
+            myChart0.resize();
+        }
 	}
 
 	//请求律师详情
@@ -55,7 +64,7 @@ $(function() {
 									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
 									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
 									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>代理案件总数</span><i>${caseNum|| '--'}起</i></p>
+									<p><span>代理案件总数</span><i>${res.data.total_count|| '--'}起</i></p>
 									</div>
 									</div>
 									</div>
@@ -98,7 +107,7 @@ $(function() {
 							maxIndex = idx;
 							maxCountReason = res.data.detail[idx].reason2;
 							//擅长领域需要的数据
-							var choiceDoWell = `　　<span>${res.data.detail[maxIndex].reason2}<i>(${res.data.detail[maxIndex].count})</i></span>`;
+							var choiceDoWell = `　　<span>${res.data.detail[maxIndex].reason2 || res.data.detail[maxIndex].reason3 || res.data.detail[maxIndex].reason4 || '--'}<i>(${res.data.detail[maxIndex].count})</i></span>`;
 							if(maxIndex >= 3) { //前三个不存在推荐案由
 								$('#dowell').append(choiceDoWell);
 							}
@@ -135,7 +144,7 @@ $(function() {
 				var getDoWellFn = function() {
 					$.each(res.data.detail, function(idx, ele) {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
-						var nodeDoWell = `　　<span>${ele.reason2}<i>(${ele.count})</i></span>`;
+						var nodeDoWell = `　　<span>${ele.reason2 || ele.reason3 || ele.reason4 || '--'}<i>(${ele.count})</i></span>`;
 						var tempIdx = 3;
 						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
 							tempIdx = 2;
