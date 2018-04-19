@@ -28,50 +28,62 @@ $(document).ready(function() {
 			});
 		}
 
-		$('.liWrap li>a').on('click',function(){
-            //保存cookie   传递代理人信息
-				var data = $(this).parent('li').attr('data');
-            	$.cookie('agentBaseMsg',data,{path:'/'});
+		$('.liWrap li>a').on('click', function() {
+			//保存cookie   传递代理人信息
+			var data = $(this).parent('li').attr('data');
+			$.cookie('agentBaseMsg', data, {
+				path: '/'
+			});
 		});
 
 	});
 
 	//添加案件列表子节点
-	function createLawList(data ,name) {
+	function createLawList(data, name) {
 		$.each(data, function(key, val) {
 			if(!val) {
 				val = '';
 			}
 		});
 		var cp_name = data.cp_name,
-		    Location = cookieMess.com;
-		if(name){
+			Location = cookieMess.com;
+		if(name) {
 			cp_name = name;
 			Location = data.cp_name;
 		}
-        var paramData = {};
-        $.each(data,function(key,val){
-            if(key != 'patent_data'){
-                paramData[key] = val;
-            }
-        });
-        paramData = JSON.stringify(paramData);
-        if(!data.patent_data){
-            data.patent_data = {};
+		var paramData = {};
+		$.each(data, function(key, val) {
+			if(key != 'patent_data') {
+				paramData[key] = val;
+			}
+		});
+		paramData = JSON.stringify(paramData);
+		if(!data.patent_data) {
+			data.patent_data = {};
 		}
-        var liNode = `<li data='${paramData}'>
-            <a href="agentsDetail.html?per=${cp_name || '--'}"  class="contant">
+		var liNode = `<li data='${paramData}'>
+            <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
                 <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>检索条数: ${data.patent_data.count || '--'}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
 
             </a>
             <a class="details btn" href="agentsDetail.html?per=${cp_name}">查看详情</a>
         </li>`;
+		if(!data.patent_data.count) {
+			//没有条数的时候是不显示的 理论上别的都有这个应该也有
+			liNode = `<li data='${paramData}'>
+            <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
+                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i></i></p>
+                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
 
-//		  <p class="info text-strong">
-//                  <span>证书编号：<i>${data.certNo}</i></span>
-//                  <span>authNo：<i>${data.authNo}</i></span>
-//        </p>
+            </a>
+            <a class="details btn" href="agentsDetail.html?per=${cp_name}&com=${Location || '--'}">查看详情</a>
+        </li>`;
+		}
+		//		  <p class="info text-strong">
+		//                  <span>证书编号：<i>${data.certNo}</i></span>
+		//                  <span>authNo：<i>${data.authNo}</i></span>
+		//        </p>
 		ulNote.append(liNode);
 	};
 
@@ -108,7 +120,5 @@ $(document).ready(function() {
 			}
 		});
 	};
-
-
 
 });

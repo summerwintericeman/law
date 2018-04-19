@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 	var getPer = getUrlParam('per', true) || '';
+	var com = getUrlParam('com', true) || '';
 	//var getCom = getUrlParam('com',true) || '';
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
@@ -20,7 +21,7 @@ $(document).ready(function() {
 	function agentsDetail(showlist) {
 		var param = {
 			name: getPer,
-			agency: agentMsg.cp_name,
+			agency: com,
 			page_num: 1,
 			page_count: 12
 		};

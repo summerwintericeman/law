@@ -88,26 +88,35 @@ $(function() {
 				//推荐案由的确定
 				var maxIndex = 0;
 				var maxCountReason = "";
+				var reasonNum = "reason2";
+				$.each(res.data.detail[0], function(idx, ele) {
+					if(idx == "reason3" || idx == "reason4" || idx =="reason5"){
+						reasonNum = idx;
+					}
+				})
 				$.each(res.data.detail, function(idx, ele) {
 					//第一个图表需要的数据 需要全部数量的案由
+					//因为返回的案由不确定是什么级别的案由 需要做处理
+					
+					
 					reasonList.push({
-						"name": ele.reason2,
+						"name": ele[reasonNum],
 						"value": ele.count
 					});
-					nameList.push(ele.reason2);
+					nameList.push(ele[reasonNum]);
 					//第二个图表需要的数据 需要全部数量的案由
 					//通过案由的匹配来选择搜索的案由是否是根据字段查出来的案由
 					//推荐的信息的选择也是选择查出来的案由
 					//确定主要的显示信息
 					$.each(resKey, function(idx1, ele1) {
-						if(ele.reason2 == ele1 && idx1 != "second_reason") {
+						if(ele[reasonNum] == ele1 && idx1 != "second_reason") {
 							//表示匹配到那个需要的主要案由了
 							console.log(ele1);
 							console.log(idx);
 							maxIndex = idx;
-							maxCountReason = res.data.detail[idx].reason2;
+							maxCountReason = res.data.detail[idx][reasonNum];
 							//擅长领域需要的数据
-							var choiceDoWell = `　　<span>${res.data.detail[maxIndex].reason2 || res.data.detail[maxIndex].reason3 || res.data.detail[maxIndex].reason4 || '--'}<i>(${res.data.detail[maxIndex].count})</i></span>`;
+							var choiceDoWell = `　　<span>${res.data.detail[maxIndex][reasonNum] || '--'}<i>(${res.data.detail[maxIndex].count})</i></span>`;
 							if(maxIndex >= 3) { //前三个不存在推荐案由
 								$('#dowell').append(choiceDoWell);
 							}
@@ -144,7 +153,7 @@ $(function() {
 				var getDoWellFn = function() {
 					$.each(res.data.detail, function(idx, ele) {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
-						var nodeDoWell = `　　<span>${ele.reason2 || ele.reason3 || ele.reason4 || '--'}<i>(${ele.count})</i></span>`;
+						var nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(${ele.count})</i></span>`;
 						var tempIdx = 3;
 						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
 							tempIdx = 2;
