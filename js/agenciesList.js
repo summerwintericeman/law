@@ -68,11 +68,11 @@ $(document).ready(function() {
                     }
                 }else{
                     errorModal(res.msg);
-                    console.error('查询代理人列表失败:',res);
+                    console.error('查询列表失败:',res);
                 }
             },
             error: function() {
-                errorModal('查询代理人列表失败!');
+                errorModal('查询列表失败!');
                 console.error('agent_company：', arguments);
             }
         });

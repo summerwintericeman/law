@@ -10,35 +10,42 @@
 		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
 		<title>知法易</title>
 		<style type="text/css">
-			#minshianjianmain {	
+			#minshianjianmain {
 				min-height: 850px;
 				padding: 50px;
 			}
-			#minshianjian .paragraph{
+			
+			#minshianjian .paragraph {
 				padding: 20px;
 			}
-			#minshianjian .paragraph>h3{
+			
+			#minshianjian .paragraph>h3 {
 				margin-bottom: 15px;
 				color: #4077b2;
 			}
-			#minshianjian .paragraph>p{
+			
+			#minshianjian .paragraph>p {
 				font-size: 14px;
 				line-height: 30px;
 			}
-			#minshianjianmain .title{
+			
+			#minshianjianmain .title {
 				margin-top: 35px;
 				text-align: center;
 				font-weight: 900;
 				color: #4077b2;
 				font-size: 30px;
 			}
-			#minshianjian #minshianjianmain p{
-				text-indent: 2em; 
+			
+			#minshianjian #minshianjianmain p {
+				text-indent: 2em;
 			}
-			#minshianjian .baseMsg>h3{
-				padding:20px 0;
+			
+			#minshianjian .baseMsg>h3 {
+				padding: 20px 0;
 			}
-			#minshianjian .baseMsg>.caseType{
+			
+			#minshianjian .baseMsg>.caseType {
 				text-align: right;
 				display: inline-block;
 				width: 190px;
@@ -49,10 +56,10 @@
 	<body id="minshianjian">
 		<div id="header"></div>
 		<div id="minshianjianmain">
-			<div class="baseMsg text-center">
+			<!--<div class="baseMsg text-center">
 				<h3 class="text-center">邵阳市中级人民法院</h3>
 				<span class="caseType">民事案件</span><span class="caseNum pull-right">（2016）湘05民终1460号</span>
-			</div>
+			</div>-->
 
 		</div>
 
@@ -107,6 +114,11 @@
 							//$('#minshianjianmain').append();
 
 							var allList = [{
+									"name": "courtAll",
+									"name1": "courtAll",
+									"mess": []
+								},
+								{
 									"name": "当事人信息",
 									"name1": "party_info",
 									"mess": ''
@@ -158,9 +170,14 @@
 								}
 							];
 							var detailNodeHead = `<h3 class="title">${res.data.title}</h3>`;
-							$("#dowellMain").append(detailNodeHead);
-
+							$("#minshianjianmain").append(detailNodeHead);
+							var courtAll = {};
 							$.each(res.data, function(key, ele) {
+								//如果是法院和案件和编号则需要和在一起处理
+								if(key == "case_num" || key == "court" || key == "case_type1" || key == "case_type2" || key == "case_type3") {
+									courtAll[key] = ele;
+									allList[0].mess = courtAll;
+								}
 								for(var i = 0; i < allList.length; i++) {
 									if(key == allList[i].name1) {
 										allList[i].mess = ele;
@@ -172,8 +189,14 @@
 													<h3>${allList[i].name}</h3>
 													<p>${allList[i].mess}</p>
 											</div>`;
-								if(allList[i].name1 == "party_info"){
-									var temp =  allList[i].mess;
+								if(allList[i].name1 == "courtAll") {
+									Node = `<div class="baseMsg text-center">
+												<h3 class="text-center">${allList[i].mess.court}</h3>
+												<span class="caseType">${allList[i].mess.case_type1}</span><span class="caseNum pull-right">${allList[i].mess.case_num}</span>
+											</div>`;
+								}
+								if(allList[i].name1 == "party_info") {
+									var temp = allList[i].mess;
 									//标签并没有闭合
 									temp = temp.replace(/\n/g, '<br/><p>');
 									console.log(temp);
@@ -187,7 +210,7 @@
 						}
 					},
 					error: function() {
-						errorModal('请求律师详情失败！');
+						errorModal('请求详情失败！');
 						console.error('/query/case/case_doc', arguments);
 					}
 				})

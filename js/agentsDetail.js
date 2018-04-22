@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
 	agentMsg = JSON.parse(agentMsg);
+	console.log(agentMsg);
 	var mapData = agentMsg.statistic_info,
 		mapDataArr = [],
 		nameList = [];
@@ -36,7 +37,7 @@ $(document).ready(function() {
 				draw();
 			},
 			error: function() {
-				errorModal('查询代理人详情失败!');
+				errorModal('查询详情失败!');
 				console.error('patent_by_agname：', arguments);
 			}
 		});
@@ -155,53 +156,6 @@ $(document).ready(function() {
 				}
 			}]
 		};
-		//		var option = {
-		//			tooltip: {
-		//				trigger: 'item',
-		//				formatter: "{a} <br/>{b}: {c} ({d}%)"
-		//			},
-		//			legend: {
-		//				orient: 'vertical',
-		//				x: 'left',
-		//				data: nameList
-		//			},
-		//			toolbox: {
-		//				show: true,
-		//				orient: 'vertical',
-		//				right: 40,
-		//				top: 'top',
-		//				feature: {
-		//					saveAsImage: {
-		//						show: true
-		//					}
-		//				}
-		//			},
-		//			series: [{
-		//				name: '',
-		//				type: 'pie',
-		//				radius: ['50%', '70%'],
-		//				avoidLabelOverlap: false,
-		//				label: {
-		//					normal: {
-		//						show: false,
-		//						position: 'center'
-		//					},
-		//					emphasis: {
-		//						show: true,
-		//						textStyle: {
-		//							fontSize: '12',
-		//							fontWeight: 'bold'
-		//						}
-		//					}
-		//				},
-		//				labelLine: {
-		//					normal: {
-		//						show: false
-		//					}
-		//				},
-		//				data: mapDataArr
-		//			}]
-		//		};
 		myChart0.setOption(option);
 	}
 
