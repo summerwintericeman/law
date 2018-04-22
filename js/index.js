@@ -170,9 +170,10 @@ function loginCheck() {
 	$('#selectResModal').on('shown.bs.modal', function(e) {
 		var resNode = $('#selectResModal .valSpan i');
 		var liClickNode;
-		var ul2 = $('.floorWrap .res2'),
-			ul3 = $('.floorWrap .res3'),
-			ul4 = $('.floorWrap .res4');
+		var ul1 = $('#selectResModal .floorWrap .floor1'),
+			ul2 = $('#selectResModal .floorWrap .res2'),
+			ul3 = $('#selectResModal .floorWrap .res3'),
+			ul4 = $('#selectResModal .floorWrap .res4');
 		//请求获得案由选项的列表
 		var param = {
 
@@ -209,6 +210,7 @@ function loginCheck() {
 								ul2.append(liNode);
 							});
 							$('li[reason="reason_2"]').on('mouseenter', function() {
+                                //清空下级数据
 								ul3.empty();
 								ul4.empty();
 								idx2 = $(this).index();
@@ -224,6 +226,7 @@ function loginCheck() {
 									ul3.append(liNode);
 								});
 								$('li[reason="reason_3"]').on('mouseenter', function() {
+
 									ul4.empty();
 									idx3 = $(this).index();
 									forthFloor = allFloor[idx1].sub[idx2].sub[idx3].sub;
@@ -243,13 +246,52 @@ function loginCheck() {
 
 						});
 
+						//hover下一级时保留上一级的hover效果
+                        ul1.on('mouseenter',function(){
+                            $(this).find('li')
+                                .removeClass('active')
+                                .on('mouseleave',function(){
+                                    $(this).removeClass('active');
+                                });
+						});
+                        ul1.on('mouseleave',function(){
+                            $(this).find('li').off('mouseleave');
+                        });
+                        ul2.on('mouseenter',function(){
+                            ul1.find('li').eq(idx1).addClass('active');
+                            $(this).find('li')
+								.removeClass('active')
+								.on('mouseleave',function(){
+                            	$(this).removeClass('active');
+							});
+						});
+                        ul2.on('mouseleave',function(){
+                            $(this).find('li').off('mouseleave');
+                        });
+                        ul3.on('mouseenter',function(){
+                            ul2.find('li').eq(idx2).addClass('active');
+                            $(this).find('li')
+                                .removeClass('active')
+                                .on('mouseleave',function(){
+                                    $(this).removeClass('active');
+                                });
+                        });
+                        ul3.on('mouseleave',function(){
+                            $(this).find('li').off('mouseleave');
+                        });
+                        ul4.on('mouseenter',function(){
+                            ul3.find('li').eq(idx3).addClass('active');
+                        });
+
+
 						//添加点击选中事件
-						$('body').on('click', '#selectResModal ul>li.clickNode', function() {
+						$('body').on('click', '#selectResModal ul.clickUl>li', function() {
 							var selectHtml = $(this).find('span').html();
 							selectHtml = selectHtml.substring(3, selectHtml.length);
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
-							var secRes = $(this).parents('li[reason="reason_1"]').find('span').html();
+                            var secRes = ul1.find('li').eq(idx1).find('span').html();
+                            secRes = secRes.substring(3, secRes.length);
 
 							$('#selectResModal .valSpan span').html(secRes);
 						});
