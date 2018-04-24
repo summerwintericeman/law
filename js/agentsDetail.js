@@ -29,6 +29,7 @@ $(document).ready(function() {
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/patent/patent_by_agname',
+			//url: 'http://47.97.197.176:8888/static_query/patent_by_agname',
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(res) {
