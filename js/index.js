@@ -203,13 +203,13 @@ function loginCheck() {
 							idx1 = $(this).index();
 							secondFloor = allFloor[idx1].sub;
 							$.each(secondFloor, function(i2, e2) {
-								var liNode = `<li reason="reason_2">
+								var liNode = `<li reason="reason_3">
                         					    <span>${i2+1}. ${e2.name}</span>
                         				        </li>`;
 
 								ul2.append(liNode);
 							});
-							$('li[reason="reason_2"]').on('mouseenter', function() {
+							$('li[reason="reason_3"]').on('mouseenter', function() {
                                 //清空下级数据
 								ul3.empty();
 								ul4.empty();
@@ -219,13 +219,13 @@ function loginCheck() {
 									$(this).addClass('clickNode');
 								}
 								$.each(thirdFloor, function(i3, e3) {
-									var liNode = `<li reason="reason_3">
+									var liNode = `<li reason="reason_4">
                         					    <span>${i3+1}. ${e3.name}</span>
                         				        </li>`;
 
 									ul3.append(liNode);
 								});
-								$('li[reason="reason_3"]').on('mouseenter', function() {
+								$('li[reason="reason_4"]').on('mouseenter', function() {
 
 									ul4.empty();
 									idx3 = $(this).index();
@@ -234,7 +234,7 @@ function loginCheck() {
 										$(this).addClass('clickNode');
 									}
 									$.each(forthFloor, function(i4, e4) {
-										var liNode = `<li reason="reason_4" class="clickNode">
+										var liNode = `<li reason="reason_5" class="clickNode">
                         					    <span>${i4+1}. ${e4}</span>
                         				        </li>`;
 										ul4.append(liNode);
@@ -286,13 +286,13 @@ function loginCheck() {
 
 						//添加点击选中事件
 						$('body').on('click', '#selectResModal ul.clickUl>li', function() {
-							var selectHtml = $(this).find('span').html();
+							var selectHtml = $(this).find('span').html().trim();
 							selectHtml = selectHtml.substring(3, selectHtml.length);
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
                             var secRes = ul1.find('li').eq(idx1).find('span').html();
                             secRes = secRes.substring(3, secRes.length);
-
+							secRes = secRes.trim();
 							$('#selectResModal .valSpan span').html(secRes);
 						});
 

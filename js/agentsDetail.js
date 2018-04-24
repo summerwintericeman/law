@@ -9,7 +9,7 @@ $(document).ready(function() {
 	var agentMsg = $.cookie('agentBaseMsg');
 	agentMsg = JSON.parse(agentMsg);
 	console.log(agentMsg);
-	var mapData = agentMsg.statistic_info,
+	var mapData = agentMsg.statistic_info,//需要在请求数据后进行填充
 		mapDataArr = [],
 		nameList = [];
 	console.log(mapData);
@@ -33,6 +33,7 @@ $(document).ready(function() {
 			data: JSON.stringify(param),
 			success: function(res) {
 				console.log(res);
+				mapData = agentMsg.statistic_info,//把请求获得的数据放在这里
 				showlist(res);
 				draw();
 			},

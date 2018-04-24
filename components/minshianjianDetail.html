@@ -93,13 +93,14 @@
 			var wenshu_id = getUrlParam('wenshu', true),
 				reason = getUrlParam('reason', true);
 			console.log(wenshu_id);
-			console.log(reason);
+			
 			var param = JSON.stringify({
 				"wenshu_id": wenshu_id,
 				"reason": {
 					"reason_2": reason
 				}
 			})
+			console.log(param);
 			if(wenshu_id && reason) {
 				$.ajax({
 					dataType: 'json',
@@ -107,6 +108,7 @@
 					type: 'post',
 					data: param,
 					success: function(res) {
+						console.log(res);
 						if(res.code == 0) {
 							console.log(res.data);
 							//添加基本信息
