@@ -9,7 +9,8 @@ $(document).ready(function() {
 	var agentMsg = $.cookie('agentBaseMsg');
 	agentMsg = JSON.parse(agentMsg);
 	console.log(agentMsg);
-	var mapData = agentMsg.statistic_info,//需要在请求数据后进行填充
+	//var mapData = agentMsg.statistic_info,//需要在请求数据后进行填充
+	var mapData = null,
 		mapDataArr = [],
 		nameList = [];
 	console.log(mapData);
@@ -33,10 +34,16 @@ $(document).ready(function() {
 			type: 'post',
 			data: JSON.stringify(param),
 			success: function(res) {
-				console.log(res);
-				mapData = agentMsg.statistic_info,//把请求获得的数据放在这里
-				showlist(res);
-				draw();
+				if(res.code == 0) {
+					console.log(res);
+					if(res.data.statistic_info) {
+						mapData = res.data.statistic_info; //把请求获得的数据放在这里
+					}
+					showlist(res);
+					draw();
+				}else{
+					errorModal('查询详情失败!');
+				}
 			},
 			error: function() {
 				errorModal('查询详情失败!');
