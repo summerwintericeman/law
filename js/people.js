@@ -20,7 +20,8 @@ $(document).ready(function() {
 
 	//找律师
 	lawyerBtn.on('click', function() {
-		var cityMsg = getCity();
+		var cityNode = $('#cityPicker .title span');
+		var cityMsg = getCity(cityNode);
 		var caseDescription = $('#lawyer .caseDescription').val();
 
 		if(!caseDescription && !name) {
@@ -60,8 +61,8 @@ $(document).ready(function() {
 
 	//查案件
 	caseBtn.on('click', function() {
-
-		var cityMsg = getCity();
+		var cityNode = $('#cityPicker1 .title span');
+		var cityMsg = getCity(cityNode);
 		var caseDescription = $('#case .caseDescription').val();
 
 		if(!caseDescription) {
@@ -100,8 +101,7 @@ $(document).ready(function() {
 	});
 
 	//获取城市字段
-	function getCity() {
-		var cityNode = $('#cityPicker .title span'),
+	function getCity(cityNode) {
 			obj = {
 				province: '',
 				city: '',

@@ -41,7 +41,7 @@ $(document).ready(function() {
 					}
 					showlist(res);
 					draw();
-				}else{
+				} else {
 					errorModal('查询详情失败!');
 				}
 			},
@@ -87,6 +87,7 @@ $(document).ready(function() {
 				//擅长领域
 				var dowellHtml = $('#dowell').html();
 				//擅长领域的添加
+				console.log(mapData);
 				$.each(mapData, function(idx, ele) {
 					//发明专利、
 					//实用新型专利、
@@ -94,13 +95,15 @@ $(document).ready(function() {
 					//进入中国国家阶段的PCT发明专利申请、
 					//进入中国国家阶段的PCT实用新型专利申请
 					if(idx == "发明专利申请" || idx == "外观设计专利申请" || idx == "实用新型专利申请" || idx == "进入中国国家阶段的PCT发明专利申请" || idx == "进入中国国家阶段的PCT实用新型专利申请") {
-						mapDataArr.push({
-							"name": idx,
-							"value": ele
-						})
-						nameList.push(idx)
-						var nodeDoWell = `　　<span>${idx}<i style="color:red;">　(${ele})</i></span>`;
-						$('#dowell').append(nodeDoWell);
+						if(ele != 0) {
+							mapDataArr.push({
+								"name": idx,
+								"value": ele
+							})
+							nameList.push(idx)
+							var nodeDoWell = `　　<span>${idx}<i style="color:red;">　(${ele})</i></span>`;
+							$('#dowell').append(nodeDoWell);
+						}
 					}
 				});
 

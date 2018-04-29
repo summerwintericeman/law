@@ -44,7 +44,8 @@ $(document).ready(function() {
             //     searchType = 'lawyer';
             //     return;
             // }
-            var cityMsg = getCity();
+            var cityNode = $('#cityPicker .title span');
+            var cityMsg = getCity(cityNode);
             var template = JSON.stringify({
                 des: caseDescription,
                 province:cityMsg.province,
@@ -84,7 +85,8 @@ $(document).ready(function() {
             //     searchType = 'case';
             //     return;
             // }
-            var cityMsg = getCity();
+            var cityNode = $('#cityPicker1 .title span');
+            var cityMsg = getCity(cityNode);
 
             var template = JSON.stringify({
                 des: caseDescription,
@@ -203,8 +205,7 @@ $(document).ready(function() {
     };
 
     //获取城市字段
-    function getCity(){
-        var cityNode = $('#cityPicker .title span'),
+    function getCity(cityNode){
             obj = {
                 province:'',
                 city:'',
