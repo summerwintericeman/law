@@ -71,9 +71,9 @@ function caseFoud(knowledge, caseDes, callback) {
 	var caseDesVal = caseDes.replace(/\s+/g, ''),
 		is15 = false,
 		isMatch = false; //对于小于十五个情况是否有匹配到合适的案由
-	if(caseDesVal.length >= 15) {
+	if(caseDesVal.length > 15) {
 		//效字符大于15默认是不大于十五个
-		console.log("字数小于十五字");
+		console.log("字数大于十五字");
 		is15 = true;
 	}
 	$.ajax({
@@ -111,14 +111,20 @@ function caseFoud(knowledge, caseDes, callback) {
 							num = "reason_" + e.sub_reason_class;
 							obj["second_reason"] = e.second_reason;
 							obj[num] = reason;
+							//从这个score是1的案由这里开始选
 							if(callback) {
 								callback(obj);
 							}
 							isMatch = true;
+//							window.reasonObj = e;
+							$('#selectResModal').modal({
+								backdrop: 'static',
+								show: true
+							});
 						}
 					});
 					if(!isMatch) {
-						//表示没有匹配的需要模态框来进行选择
+						//表示没有等于1的匹配的需要模态框来进行选择
 						$('#selectResModal').modal({
 							backdrop: 'static',
 							show: true
@@ -134,7 +140,6 @@ function caseFoud(knowledge, caseDes, callback) {
 						callback(obj);
 					}
 				}
-
 			} else {
 				errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);
 			}
@@ -190,6 +195,30 @@ function loginCheck() {
 						console.log('请求成功')
 						console.log(res.data);
 						allFloor = res.data;
+						
+//						if(window.reasonObj){
+//							//案由匹配率为1
+//							$.each(allFloor, function(i, ele) {
+//								if(ele.name == window.reasonObj.second_reason){//匹配率为1的案由在此二级案由下
+//									$.each(ele.sub,function(i3,ele3){
+//										if(ele3.name == window.reasonObj.third_reason){//匹配率为1的案由  三级案由
+//											$.each(ele3.sub,function(i4,ele4){
+//												if(ele4.name == window.reasonObj.res)//匹配率为1的案由  四级案由
+//											});
+//											
+//											
+//											
+//											return false;
+//										}
+//									});
+//									return false;//终端遍历
+//								}
+//								
+//							});
+//							
+//						}
+						
+						
 						$.each(allFloor, function(i, ele) {
 							var tempFloor1 = `<li reason="reason_1">
                         					    <span>${i+1}. ${ele.name}</span>
