@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     //找律师
     lawyerBtn.on('click', function() {
-        var caseDescription = $('#lawyer .caseDescription').val();
+        var caseDescription = $('#lawyer .caseDescription').val().trim();
         if(!caseDescription) {
             $('#lawyer .errorTip').html('*请输入案件描述');
         } else {
@@ -70,7 +70,7 @@ $(document).ready(function() {
         //     });
         //     return;
         // }
-        var caseDescription = $('#case .caseDescription').val(),
+        var caseDescription = $('#case .caseDescription').val().trim(),
             cityNode = $('#cityPicker .title span'),
             province = '',city = '',region = '';
         if(!caseDescription) {
@@ -106,7 +106,7 @@ $(document).ready(function() {
     //查代理人
     //通过代理人名称查找
     agentsPerBtn.on('click',function () {
-        var agents = $('#agents .name').val();
+        var agents = $('#agents .name').val().trim();
         var obj = JSON.stringify({
             per:agents,//代理人名称
             com:''//代理机构名称
@@ -124,7 +124,7 @@ $(document).ready(function() {
     });
     //通过代理机构名称查找
     agentsComBtn.on('click',function () {
-        var  agencies = $('#agents .agency').val();
+        var  agencies = $('#agents .agency').val().trim();
         var obj = JSON.stringify({
             per:'',//代理人名称
             com:agencies//代理机构名称
@@ -145,7 +145,7 @@ $(document).ready(function() {
     //查专利
     var newWinUrl = '';//新窗口url
    patentBtn.on('click',function(){
-        var patentNum = $('#patent textarea').val();
+        var patentNum = $('#patent textarea').val().trim();
 
         //cpquery/doc_url
         if(patentNum){

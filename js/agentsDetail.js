@@ -180,6 +180,7 @@ $(document).ready(function() {
 		}
 		if(userLogin && (userLogin.email || userLogin.account)) {
 			//cookie存在并且其中的一个email或者account有值存在表示已经登录
+			
 			//跳转到详细的页面
 			window.location.href = "./zhuanLiList.html?per=" + getPer + '&com=' + agentMsg.cp_name;
 		} else {
@@ -196,6 +197,9 @@ $(document).ready(function() {
 
 	//模态框选择登录
 	$("#choiceLogin").on("click", function() {
+		//保存当前页面地址
+			var pageUrl = window.location.href;
+			$.cookie('toLoginPre',pageUrl,{path:'/'});
 		window.location.href = "./login.html";
 	});
 

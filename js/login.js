@@ -39,7 +39,16 @@ $(function() {
                             "account": account
                         })
                         $.cookie("userMess", userMess,{path:"/"});
-                        window.location.href = "../index.html";
+                        //获取cookie   判断是否需要回到特定界面
+                        var getUrl = $.cookie('toLoginPre');
+                        if(getUrl){
+                        	$.cookie('toLoginPre','',{ expires: -1 ,path:'/'});
+                        	 window.location.href = getUrl;
+                        }else{
+                        	 window.location.href = "../index.html";
+                        }
+                        
+                       
                     } else {
                         errorModal(res.msg);
                     }

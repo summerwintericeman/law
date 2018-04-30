@@ -64,7 +64,7 @@ $(function() {
 									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
 									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
 									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>代理案件总数</span><i>${res.data.total_count|| '--'}起</i></p>
+									<p><span>收录案件总数</span><i>${res.data.total_count|| '--'}起</i></p>
 									</div>
 									</div>
 									</div>
@@ -121,9 +121,9 @@ $(function() {
 								$('#dowell').append(choiceDoWell);
 							}
 							//第二图需要的数据 只需要一部分不是全部
-							nameList1 = ["胜诉", "败诉", "部分胜诉"];
+							nameList1 = ["全部胜诉", "败诉", "部分胜诉"];
 							rateList = [{
-									"name": "胜诉",
+									"name": "全部胜诉",
 									"value": ele.suc_rate
 								},
 								{

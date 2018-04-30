@@ -22,7 +22,7 @@ $(document).ready(function() {
 	lawyerBtn.on('click', function() {
 		var cityNode = $('#cityPicker .title span');
 		var cityMsg = getCity(cityNode);
-		var caseDescription = $('#lawyer .caseDescription').val();
+		var caseDescription = $('#lawyer .caseDescription').val().trim();
 
 		if(!caseDescription && !name) {
 			$('#lawyer .errorTip').html('*请输入案件描述');
@@ -63,7 +63,7 @@ $(document).ready(function() {
 	caseBtn.on('click', function() {
 		var cityNode = $('#cityPicker1 .title span');
 		var cityMsg = getCity(cityNode);
-		var caseDescription = $('#case .caseDescription').val();
+		var caseDescription = $('#case .caseDescription').val().trim();
 
 		if(!caseDescription) {
 			$('#case .errorTip').html('　*请输入案件描述');

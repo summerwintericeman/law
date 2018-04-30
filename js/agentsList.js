@@ -63,7 +63,7 @@ $(document).ready(function() {
 		}
 		var liNode = `<li data='${paramData}'>
             <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
-                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>检索条数: ${data.patent_data.count || '--'}</i></p>
+                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>收录专利数量: ${data.patent_data.count || '--'}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
 
             </a>

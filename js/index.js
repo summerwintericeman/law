@@ -229,6 +229,7 @@ function loginCheck() {
 							ul2.empty();
 							ul3.empty();
 							ul4.empty();
+							$(this).addClass('active').siblings('li').removeClass('active');
 							idx1 = $(this).index();
 							secondFloor = allFloor[idx1].sub;
 							$.each(secondFloor, function(i2, e2) {
@@ -242,6 +243,7 @@ function loginCheck() {
                                 //清空下级数据
 								ul3.empty();
 								ul4.empty();
+								$(this).addClass('active').siblings('li').removeClass('active');
 								idx2 = $(this).index();
 								thirdFloor = allFloor[idx1].sub[idx2].sub;
 								if(thirdFloor.length == 0) {
@@ -257,6 +259,7 @@ function loginCheck() {
 								$('li[reason="reason_4"]').on('mouseenter', function() {
 
 									ul4.empty();
+									$(this).addClass('active').siblings('li').removeClass('active');
 									idx3 = $(this).index();
 									forthFloor = allFloor[idx1].sub[idx2].sub[idx3].sub;
 									if(forthFloor.length == 0) {
@@ -268,6 +271,10 @@ function loginCheck() {
                         				        </li>`;
 										ul4.append(liNode);
 									});
+									
+									$('li[reason="reason_5"]').on('mouseenter', function() {
+										$(this).addClass('active').siblings('li').removeClass('active');
+									});
 
 								});
 
@@ -276,45 +283,52 @@ function loginCheck() {
 						});
 
 						//hover下一级时保留上一级的hover效果
-                        ul1.on('mouseenter',function(){
-                            $(this).find('li')
-                                .removeClass('active')
-                                .on('mouseleave',function(){
-                                    $(this).removeClass('active');
-                                });
-						});
-                        ul1.on('mouseleave',function(){
-                            $(this).find('li').off('mouseleave');
-                        });
-                        ul2.on('mouseenter',function(){
-                            ul1.find('li').eq(idx1).addClass('active');
-                            $(this).find('li')
-								.removeClass('active')
-								.on('mouseleave',function(){
-                            	$(this).removeClass('active');
-							});
-						});
-                        ul2.on('mouseleave',function(){
-                            $(this).find('li').off('mouseleave');
-                        });
-                        ul3.on('mouseenter',function(){
-                            ul2.find('li').eq(idx2).addClass('active');
-                            $(this).find('li')
-                                .removeClass('active')
-                                .on('mouseleave',function(){
-                                    $(this).removeClass('active');
-                                });
-                        });
-                        ul3.on('mouseleave',function(){
-                            $(this).find('li').off('mouseleave');
-                        });
-                        ul4.on('mouseenter',function(){
-                            ul3.find('li').eq(idx3).addClass('active');
-                        });
+//                      ul1.on('mouseenter',function(){
+//                      	ul2.empty();
+//							ul3.empty();
+//							ul4.empty();
+//                          $(this).find('li')
+//                              .removeClass('active')
+//                              .on('mouseleave',function(){
+//                                  $(this).removeClass('active');
+//                              });
+//						});
+//                      ul1.on('mouseleave',function(){
+//                          $(this).find('li').off('mouseleave');
+//                      });
+//                      ul2.on('mouseenter',function(){
+//							ul3.empty();
+//							ul4.empty();
+//                          ul1.find('li').eq(idx1).addClass('active');
+//                          $(this).find('li')
+//								.removeClass('active')
+//								.on('mouseleave',function(){
+//                          	$(this).removeClass('active');
+//							});
+//						});
+//                      ul2.on('mouseleave',function(){
+//                          $(this).find('li').off('mouseleave');
+//                      });
+//                      ul3.on('mouseenter',function(){
+//							ul4.empty();
+//                          ul2.find('li').eq(idx2).addClass('active');
+//                          $(this).find('li')
+//                              .removeClass('active')
+//                              .on('mouseleave',function(){
+//                                  $(this).removeClass('active');
+//                              });
+//                      });
+//                      ul3.on('mouseleave',function(){
+//                          $(this).find('li').off('mouseleave');
+//                      });
+//                      ul4.on('mouseenter',function(){
+//                          ul3.find('li').eq(idx3).addClass('active');
+//                      });
 
 
 						//添加点击选中事件
 						$('body').on('click', '#selectResModal ul.clickUl>li', function() {
+							$(this).css('background','#7daee8').siblings('li').css('background','transparent');
 							var selectHtml = $(this).find('span').html().trim();
 							selectHtml = selectHtml.substring(3, selectHtml.length);
 							resNum = $(this).attr('reason');
