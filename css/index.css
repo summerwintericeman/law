@@ -260,7 +260,12 @@ body::-webkit-scrollbar-thumb:hover {
 .top_nav .user {
 	width: 2.0rem;
 }
-
+.top_nav #loginedUser,
+.top_nav #loginedMess,
+.top_nav #loginId,
+.top_nav #registerId{
+	display: none;
+}
 .circle {
 	height: 400px;
 	width: 100%;

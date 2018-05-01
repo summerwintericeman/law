@@ -1,18 +1,27 @@
 $(document).ready(function() {
-	var temp = $.cookie("userMess");
-	//	console.log(temp)
-	//	if(!temp) {
-	////		errorModal("请先登录");
-	////		console.log(window.location.href)
-	////		var str = window.location.href;
-	////		var strRE = str.split("index.html");
-	////		console.log(str)
-	////		console.log(strRE)
-	////		var a = strRE[0] + "components/login.html";
-	////		console.log(a)
-	////		window.open(a);
-	//	}
 
+	var loginEdFn = function() {
+		var userMess = $.cookie("userMess");
+		if(userMess) {
+			var temp  = JSON.parse(userMess);
+			console.log(temp);
+			$("#loginedUser").css({
+				"display": "block",
+			});
+			$("#loginedMess").css({
+				"display": "block",
+			});
+			$("#loginedMess").html(temp.account)
+		}else{
+			$("#loginId").css({
+				"display": "block",
+			});
+			$("#registerId").css({
+				"display": "block",
+			});
+		}
+	}
+	loginEdFn();
 	//轮播图
 	$(".area").hover(function() {
 
@@ -23,6 +32,22 @@ $(document).ready(function() {
 			$(this).find(".qq").hide(100);
 
 		});
+	//给登陆和注册绑定事件
+	$("#loginId").on("click", function() {
+		//保存当前页面地址
+		var pageUrl = window.location.href;
+		$.cookie('toLoginPre', pageUrl, {
+			path: '/'
+		});
+	});
+	$("#registerId").on("click", function() {
+		//保存当前页面地址
+		var pageUrl = window.location.href;
+		$.cookie('toLoginPre', pageUrl, {
+			path: '/'
+		});
+	});
+
 });
 
 //获取url地址栏参数
@@ -70,10 +95,10 @@ function caseFoud(knowledge, caseDes, callback) {
 	});
 	var caseDesVal = caseDes.replace(/\s+/g, ''),
 		is15 = false,
-		isMatch = false; //对于小于十五个情况是否有匹配到合适的案由
-	if(caseDesVal.length > 15) {
-		//效字符大于15默认是不大于十五个
-		console.log("字数大于十五字");
+		isMatch = false; //对于小于三十个情况是否有匹配到合适的案由
+	if(caseDesVal.length > 30) {
+		//效字符大于15默认是不大于三十个
+		console.log("字数大于三十字");
 		is15 = true;
 	}
 	$.ajax({
@@ -103,12 +128,12 @@ function caseFoud(knowledge, caseDes, callback) {
 
 				}
 				if(!is15) {
-					//小于十五个字的情况需要根据是否有返回来进行判断是否展示选择框
+					//小于三十个字的情况需要根据是否有返回来进行判断是否展示选择框
 					$.each(res.data, function(i, e) {
 						if(e.rank_score == 1) { //表示匹配到为概率1的数据了，可以用这个案由数据进行下一步的搜索了
 							//找到匹配到的案由的
 							reason = e.reason,
-							num = "reason_" + e.sub_reason_class;
+								num = "reason_" + e.sub_reason_class;
 							obj["second_reason"] = e.second_reason;
 							obj[num] = reason;
 							//从这个score是1的案由这里开始选
@@ -116,11 +141,6 @@ function caseFoud(knowledge, caseDes, callback) {
 								callback(obj);
 							}
 							isMatch = true;
-//							window.reasonObj = e;
-							$('#selectResModal').modal({
-								backdrop: 'static',
-								show: true
-							});
 						}
 					});
 					if(!isMatch) {
@@ -131,7 +151,7 @@ function caseFoud(knowledge, caseDes, callback) {
 						});
 					}
 				} else {
-					//大于十五个字的直接用返回的第一个案由进行搜索
+					//大于三十个字的直接用返回的第一个案由进行搜索
 					reason = res.data[0].reason;
 					num = "reason_" + res.data[0].sub_reason_class;
 					obj["second_reason"] = res.data[0].second_reason;
@@ -141,7 +161,12 @@ function caseFoud(knowledge, caseDes, callback) {
 					}
 				}
 			} else {
-				errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);
+				//根据字段匹配失败 但是还是要用户选择
+				$('#selectResModal').modal({
+					backdrop: 'static',
+					show: true
+				});
+				//errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);
 			}
 		},
 		error: function() {
@@ -150,16 +175,15 @@ function caseFoud(knowledge, caseDes, callback) {
 	});
 };
 //跳转登录的函数
-function loginCheck() {
-	var temp = $.cookie("userMess");
-	console.log(temp)
-	if(temp) {
-		window.location.href = "../index.html"
-	} else {
-		errorModal("请先登录");
-		//window.location.href = "./login.html"
-	}
-};
+//function loginCheck() {
+//	var temp = $.cookie("userMess");
+//	console.log(temp)
+//	if(temp) {
+//		window.location.href = "../index.html"
+//	} else {
+//		errorModal("请先登录");
+//	}
+//};
 
 //模态框显示    请求案由
 (function() {
@@ -195,30 +219,29 @@ function loginCheck() {
 						console.log('请求成功')
 						console.log(res.data);
 						allFloor = res.data;
-						
-//						if(window.reasonObj){
-//							//案由匹配率为1
-//							$.each(allFloor, function(i, ele) {
-//								if(ele.name == window.reasonObj.second_reason){//匹配率为1的案由在此二级案由下
-//									$.each(ele.sub,function(i3,ele3){
-//										if(ele3.name == window.reasonObj.third_reason){//匹配率为1的案由  三级案由
-//											$.each(ele3.sub,function(i4,ele4){
-//												if(ele4.name == window.reasonObj.res)//匹配率为1的案由  四级案由
-//											});
-//											
-//											
-//											
-//											return false;
-//										}
-//									});
-//									return false;//终端遍历
-//								}
-//								
-//							});
-//							
-//						}
-						
-						
+
+						//						if(window.reasonObj){
+						//							//案由匹配率为1
+						//							$.each(allFloor, function(i, ele) {
+						//								if(ele.name == window.reasonObj.second_reason){//匹配率为1的案由在此二级案由下
+						//									$.each(ele.sub,function(i3,ele3){
+						//										if(ele3.name == window.reasonObj.third_reason){//匹配率为1的案由  三级案由
+						//											$.each(ele3.sub,function(i4,ele4){
+						//												if(ele4.name == window.reasonObj.res)//匹配率为1的案由  四级案由
+						//											});
+						//											
+						//											
+						//											
+						//											return false;
+						//										}
+						//									});
+						//									return false;//终端遍历
+						//								}
+						//								
+						//							});
+						//							
+						//						}
+
 						$.each(allFloor, function(i, ele) {
 							var tempFloor1 = `<li reason="reason_1">
                         					    <span>${i+1}. ${ele.name}</span>
@@ -240,7 +263,7 @@ function loginCheck() {
 								ul2.append(liNode);
 							});
 							$('li[reason="reason_3"]').on('mouseenter', function() {
-                                //清空下级数据
+								//清空下级数据
 								ul3.empty();
 								ul4.empty();
 								$(this).addClass('active').siblings('li').removeClass('active');
@@ -271,7 +294,7 @@ function loginCheck() {
                         				        </li>`;
 										ul4.append(liNode);
 									});
-									
+
 									$('li[reason="reason_5"]').on('mouseenter', function() {
 										$(this).addClass('active').siblings('li').removeClass('active');
 									});
@@ -281,60 +304,15 @@ function loginCheck() {
 							});
 
 						});
-
-						//hover下一级时保留上一级的hover效果
-//                      ul1.on('mouseenter',function(){
-//                      	ul2.empty();
-//							ul3.empty();
-//							ul4.empty();
-//                          $(this).find('li')
-//                              .removeClass('active')
-//                              .on('mouseleave',function(){
-//                                  $(this).removeClass('active');
-//                              });
-//						});
-//                      ul1.on('mouseleave',function(){
-//                          $(this).find('li').off('mouseleave');
-//                      });
-//                      ul2.on('mouseenter',function(){
-//							ul3.empty();
-//							ul4.empty();
-//                          ul1.find('li').eq(idx1).addClass('active');
-//                          $(this).find('li')
-//								.removeClass('active')
-//								.on('mouseleave',function(){
-//                          	$(this).removeClass('active');
-//							});
-//						});
-//                      ul2.on('mouseleave',function(){
-//                          $(this).find('li').off('mouseleave');
-//                      });
-//                      ul3.on('mouseenter',function(){
-//							ul4.empty();
-//                          ul2.find('li').eq(idx2).addClass('active');
-//                          $(this).find('li')
-//                              .removeClass('active')
-//                              .on('mouseleave',function(){
-//                                  $(this).removeClass('active');
-//                              });
-//                      });
-//                      ul3.on('mouseleave',function(){
-//                          $(this).find('li').off('mouseleave');
-//                      });
-//                      ul4.on('mouseenter',function(){
-//                          ul3.find('li').eq(idx3).addClass('active');
-//                      });
-
-
 						//添加点击选中事件
 						$('body').on('click', '#selectResModal ul.clickUl>li', function() {
-							$(this).css('background','#7daee8').siblings('li').css('background','transparent');
+							$(this).css('background', '#7daee8').siblings('li').css('background', 'transparent');
 							var selectHtml = $(this).find('span').html().trim();
 							selectHtml = selectHtml.substring(3, selectHtml.length);
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
-                            var secRes = ul1.find('li').eq(idx1).find('span').html();
-                            secRes = secRes.substring(3, secRes.length);
+							var secRes = ul1.find('li').eq(idx1).find('span').html();
+							secRes = secRes.substring(3, secRes.length);
 							secRes = secRes.trim();
 							$('#selectResModal .valSpan span').html(secRes);
 						});

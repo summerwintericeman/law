@@ -34,6 +34,7 @@ $(function() {
                 data: param,
                 success: function(res) {
                     if(res.code == 0) {
+                    	//表示登陆成功
                         var userMess = JSON.stringify({
                             "email": email,
                             "account": account
@@ -46,9 +47,7 @@ $(function() {
                         	 window.location.href = getUrl;
                         }else{
                         	 window.location.href = "../index.html";
-                        }
-                        
-                       
+                        }       
                     } else {
                         errorModal(res.msg);
                     }
