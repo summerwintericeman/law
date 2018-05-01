@@ -194,13 +194,18 @@ $(document).ready(function() {
 	};
 
 	function caseList(reason, page_num, callback) {
+		var tempLocation = null;
+		tempLocation = city;
+		if(province == "北京" || province == "上海" || province == "天津" || province == "重庆") {
+			tempLocation = province + "市";
+		}
 		var param = {
 			'reason': reason,
 			"page_count": 12,
 			"page_num": page_num,
-			'province': province,
-			'city': city,
-			'region': region
+			//'province': province,
+			//'city': city,
+			'region': tempLocation
 		};
 		console.log(param);
 		$.ajax({
@@ -215,7 +220,7 @@ $(document).ready(function() {
 						callback(res);
 					}
 				} else {
-					errorModal(res.msg);
+					errorModal("查询失败，建议选择较高级的案由进行搜索!");
 					console.error('查询案件列表失败:', res);
 				}
 			},

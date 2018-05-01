@@ -13,8 +13,8 @@ $(document).ready(function() {
 	var mapData = null,
 		mapDataArr = [],
 		nameList = [];
-	console.log(mapData);
-	console.log(mapDataArr);
+	//console.log(mapData);
+	//console.log(mapDataArr);
 	var _href = window.location.href;
 	if(_href.indexOf('&com') > -1) {
 		$('.path').find('a').eq(1).hide().next('i').hide();
