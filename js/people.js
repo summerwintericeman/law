@@ -19,82 +19,28 @@ $(document).ready(function() {
 		caseBtn = $('#case .searchBtn');
 
 	//找律师
-	lawyerBtn.on('click', function() {
-		var cityNode = $('#cityPicker .title span');
-		var cityMsg = getCity(cityNode);
-		var caseDescription = $('#lawyer .caseDescription').val().trim();
-
-		if(!caseDescription && !name) {
-			$('#lawyer .errorTip').html('*请输入案件描述');
-		} else {
-			// var lawyerInputVal = lawyerInput.val().replace(/\s+/g, '');
-			// if(lawyerInputVal.length < 15) {
-			// 	//效字符少于15
-			// 	$('#selectResModal').modal({
-			// 		backdrop: 'static',
-			// 	});
-			// 	searchType = 'lawyer';
-			// 	return;
-			// }
-
-			var template = JSON.stringify({
-				des: caseDescription,
-				province: cityMsg.province,
-				city: cityMsg.city,
-				region: cityMsg.region
-			});
-
-			$.cookie('searchLawyer', template, {
-				path: '/'
-			}); //找律师存储cookie
-			$.cookie('all', '', {
-				expires: -1,
-				path: '/'
-			});
-			window.location.href = 'lawyerList.html';
-		};
-	});
+	lawyerBtn.on('click', lawyerGo);
+	//回车搜索
+    lawyerInput.keyup(function(e){
+        var keyCode = e.which;
+        if(keyCode == 13){
+            lawyerGo();
+        }
+    });
 
 	$('#lawyer .caseDescription,#lawyer .name').focus(function() {
 		$('#lawyer .errorTip').html('');
 	});
 
 	//查案件
-	caseBtn.on('click', function() {
-		var cityNode = $('#cityPicker1 .title span');
-		var cityMsg = getCity(cityNode);
-		var caseDescription = $('#case .caseDescription').val().trim();
-
-		if(!caseDescription) {
-			$('#case .errorTip').html('　*请输入案件描述');
-		} else {
-			// var caseInputVal = caseInput.val().replace(/\s+/g, ''); //全局替换空格
-			// if(caseInputVal.length < 15) { //效字符少于15
-			// 	$('#selectResModal').modal({
-			// 		backdrop: 'static',
-			// 	});
-			// 	searchType = 'case';
-			// 	return;
-			// }
-
-			var template = JSON.stringify({
-				des: caseDescription,
-				province: cityMsg.province,
-				city: cityMsg.city,
-				region: cityMsg.region
-			});
-
-			$.cookie('searchCase', template, {
-				path: '/'
-			}); //找律师存储cookie
-			$.cookie('caseList', '', {
-				expires: -1,
-				path: '/'
-			});
-			window.location.href = 'caseList.html';
-
-		}
-	});
+	caseBtn.on('click', caseGo);
+    //回车搜索
+    caseInput.keyup(function(e){
+        var keyCode = e.which;
+        if(keyCode == 13){
+            caseGo();
+        }
+    });
 
 	$('#case .caseDescription,#case .name,#case .corporation').focus(function() {
 		$('#case .errorTip').html('');
@@ -118,6 +64,80 @@ $(document).ready(function() {
 		};
 
 		return obj;
+	};
+
+	//找律师
+	function lawyerGo(){
+        var cityNode = $('#cityPicker .title span');
+        var cityMsg = getCity(cityNode);
+        var caseDescription = $('#lawyer .caseDescription').val().trim();
+
+        if(!caseDescription && !name) {
+            $('#lawyer .errorTip').html('*请输入案件描述');
+        } else {
+            // var lawyerInputVal = lawyerInput.val().replace(/\s+/g, '');
+            // if(lawyerInputVal.length < 15) {
+            // 	//效字符少于15
+            // 	$('#selectResModal').modal({
+            // 		backdrop: 'static',
+            // 	});
+            // 	searchType = 'lawyer';
+            // 	return;
+            // }
+
+            var template = JSON.stringify({
+                des: caseDescription,
+                province: cityMsg.province,
+                city: cityMsg.city,
+                region: cityMsg.region
+            });
+
+            $.cookie('searchLawyer', template, {
+                path: '/'
+            }); //找律师存储cookie
+            $.cookie('all', '', {
+                expires: -1,
+                path: '/'
+            });
+            window.location.href = 'lawyerList.html';
+        };
+	};
+
+	//查案件
+	function caseGo(){
+        var cityNode = $('#cityPicker1 .title span');
+        var cityMsg = getCity(cityNode);
+        var caseDescription = $('#case .caseDescription').val().trim();
+
+        if(!caseDescription) {
+            $('#case .errorTip').html('　*请输入案件描述');
+        } else {
+            // var caseInputVal = caseInput.val().replace(/\s+/g, ''); //全局替换空格
+            // if(caseInputVal.length < 15) { //效字符少于15
+            // 	$('#selectResModal').modal({
+            // 		backdrop: 'static',
+            // 	});
+            // 	searchType = 'case';
+            // 	return;
+            // }
+
+            var template = JSON.stringify({
+                des: caseDescription,
+                province: cityMsg.province,
+                city: cityMsg.city,
+                region: cityMsg.region
+            });
+
+            $.cookie('searchCase', template, {
+                path: '/'
+            }); //找律师存储cookie
+            $.cookie('caseList', '', {
+                expires: -1,
+                path: '/'
+            });
+            window.location.href = 'caseList.html';
+
+        }
 	};
 
 
