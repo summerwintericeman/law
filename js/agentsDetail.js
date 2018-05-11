@@ -88,20 +88,20 @@ $(document).ready(function() {
 				var dowellHtml = $('#dowell').html();
 				//擅长领域的添加
 				console.log(mapData);
-				$.each(mapData, function(idx, ele) {
+				$.each(mapData.total, function(key, val) {
 					//发明专利、
 					//实用新型专利、
 					//外观设计专利、
 					//进入中国国家阶段的PCT发明专利申请、
 					//进入中国国家阶段的PCT实用新型专利申请
-					if(idx == "发明专利申请" || idx == "外观设计专利申请" || idx == "实用新型专利申请" || idx == "进入中国国家阶段的PCT发明专利申请" || idx == "进入中国国家阶段的PCT实用新型专利申请") {
-						if(ele != 0) {
+					if(key == "发明专利申请" || key == "外观设计专利申请" || key == "实用新型专利申请" || key == "进入中国国家阶段的PCT发明专利申请" || key == "进入中国国家阶段的PCT实用新型专利申请") {
+						if(val != 0) {
 							mapDataArr.push({
-								"name": idx,
-								"value": ele
+								"name": key,
+								"value": val
 							})
-							nameList.push(idx)
-							var nodeDoWell = `　　<span>${idx}<i style="color:red;">　(${ele})</i></span>`;
+							nameList.push(key)
+							var nodeDoWell = `　　<span>${key}<i style="color:red;">　(${val})</i></span>`;
 							$('#dowell').append(nodeDoWell);
 						}
 					}

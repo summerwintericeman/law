@@ -54,7 +54,7 @@
 }
 
 
-#caseListBody .mainWrap>ul li a.details{
+#caseListBody .mainWrap>ul li span.details{
     position: absolute;
     bottom: 10px;
     right: 50px;
@@ -62,10 +62,10 @@
     color: #fff;
     width: 110px;
 }
-#caseListBody .mainWrap>ul li a.details:hover{
+#caseListBody .mainWrap>ul li span.details:hover{
     background: #40599b;
 }
-#caseListBody .mainWrap>ul li a.details:focus{
+#caseListBody .mainWrap>ul li span.details:focus{
     outline: none;
 }
 

@@ -65,9 +65,9 @@ $(document).ready(function() {
             <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
                 <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>收录专利数量: ${data.patent_data.count || '--'}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
-
+				<span class="details btn">查看详情</span>
             </a>
-            <a class="details btn" href="agentsDetail.html?per=${cp_name}">查看详情</a>
+            
         </li>`;
 		if(!data.patent_data.count) {
 			//没有条数的时候是不显示的 理论上别的都有这个应该也有
@@ -75,9 +75,9 @@ $(document).ready(function() {
             <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
                 <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i></i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
-
+				<span class="details btn">查看详情</span>
             </a>
-            <a class="details btn" href="agentsDetail.html?per=${cp_name}&com=${Location || '--'}">查看详情</a>
+            
         </li>`;
 		}
 		//		  <p class="info text-strong">

@@ -43,9 +43,9 @@ $(document).ready(function() {
                     <span>案件编号：${newObj.case_num}</span>
                     <span>审判日期：${newObj.judgement_date}</span>
                 </p>
-
+                <span class="details btn">查看详情</span>
             </a>
-            <a class="details btn" href="${newObj.source_url}" target="_blank">查看详情</a>
+            
         </li>`
         ulNote.append(liNode);
     };

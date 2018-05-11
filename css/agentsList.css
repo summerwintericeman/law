@@ -123,17 +123,18 @@
     background-color: #fff;
     line-height: 14px;
 }
-#agentsList .mainWrap>ul li a.details{
+#agentsList .mainWrap>ul li span.details{
     position: absolute;
     bottom: 20px;
     right: 50px;
     background: #5068a9;
     color: #fff;
     width: 110px;
+    cursor: pointer;
 }
-#agentsList .mainWrap>ul li a.details:hover{
+#agentsList .mainWrap>ul li span.details:hover{
     background: #40599b;
 }
-#agentsList .mainWrap>ul li a.details:focus{
+#agentsList .mainWrap>ul li span.details:focus{
     outline: none;
 }

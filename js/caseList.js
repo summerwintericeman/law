@@ -125,9 +125,10 @@ $(document).ready(function() {
                     <span>案件编号：${newObj.case_num}</span>
                     <span>审判日期：${newObj.judgement_date}</span>
                 </p>
+                <span class="details btn contant">查看详情</>
 
             </a>
-            <a class="details btn" href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"    class="contant">查看详情</a>
+            
         </li>`;
 		var page = getUrlParam('fromPage');
 		if(page && page == 'property') {
@@ -139,9 +140,9 @@ $(document).ready(function() {
                     <span>案件编号：${newObj.case_num}</span>
                     <span>审判日期：${newObj.judgement_date}</span>
                 </p>
-
+				<span class="details btn contant">查看详情</span>
             </a>
-            <a class="details btn" href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}&fromPage=property"    class="contant">查看详情</a>
+            
         </li>`;
 		}
 		ulNote.append(liNode);

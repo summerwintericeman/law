@@ -83,7 +83,7 @@
 	color: #858585;
 }
 
-#lawyerListBody .mainWrap ul li a.details {
+#lawyerListBody .mainWrap ul li span.details {
 	position: absolute;
 	bottom: 10px;
 	right: 50px;
@@ -92,11 +92,11 @@
 	width: 110px;
 }
 
-#lawyerListBody .mainWrap ul li a.details:hover {
+#lawyerListBody .mainWrap ul li span.details:hover {
 	background: #40599b;
 }
 
-#lawyerListBody .mainWrap ul li a.details:focus {
+#lawyerListBody .mainWrap ul li span.details:focus {
 	outline: none;
 }
 

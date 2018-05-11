@@ -22,8 +22,8 @@ $(document).ready(function() {
 		if(!cookie) {
 			return;
 		} else {
-			cookieM = JSON.parse(cookie),
-				name = cookieM.name || '',
+			cookieM = JSON.parse(cookie);
+			var	name = cookieM.name || '',
 				des = cookieM.des || '',
 				province = cookieM.province || '',
 				city = cookieM.city || '',
@@ -167,8 +167,9 @@ $(document).ready(function() {
                 <p class="info">
                     <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
+                <span class="details btn contant">查看详情</span>
             </a>
-            <a class="details btn" href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}">查看详情</a>
+            
         </li>`;
 		if(fromPage && fromPage == 'property') {
 			noteNew = `<li class="lipad mouseHand">
@@ -178,8 +179,9 @@ $(document).ready(function() {
                 <p class="info">
                     <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
+                <span class="details btn contant">查看详情</span>
             </a>
-            <a class="details btn" href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}">查看详情</a>
+            
         </li>`;
 		}
 		ulNote.append(noteNew);
