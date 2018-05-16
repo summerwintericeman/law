@@ -94,7 +94,7 @@ $(document).ready(function() {
 			caseType = obj.second_reason;
 		}
 
-		$("#listExplain").html(caseType + '案件律师代理情况');
+		$("#listExplain").html("类似案例：" + caseType );
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888
@@ -165,7 +165,7 @@ $(document).ready(function() {
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
-                    <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>类似案例一审案件代理数量：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
                 <span class="details btn contant">查看详情</span>
             </a>
@@ -177,7 +177,7 @@ $(document).ready(function() {
                 <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
                 <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
                 <p class="info">
-                    <span>代理一审判决案件：<i>${newObj.num}</i> <i>起</i></span>
+                    <span>类似案例一审案件代理数量：<i>${newObj.num}</i> <i>起</i></span>
                 </p>
                 <span class="details btn contant">查看详情</span>
             </a>

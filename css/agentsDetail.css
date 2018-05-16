@@ -21,7 +21,7 @@
 	margin-bottom: 10px;
 }
 
-#agentsDetail .content h3 span:nth-child(2){
+#agentsDetail .content h3 span{
 	font-size: 14px;
 	font-weight: normal;
 }
@@ -70,7 +70,7 @@
 #agentsDetail .content .caseType h3{
 	position: relative;
 }
-#agentsDetail .content .caseType h3 span:nth-child(1){
+/*#agentsDetail .content .caseType h3 span:nth-child(1){
 	position: absolute;
 	background: #277ce1;
 	/* display: block; */
@@ -78,7 +78,7 @@
 	border-radius: 3px;
 	top: 18px;
 	left: -10px;
-}
+}*/
 #agentsDetail  p.more{
 	padding-top: 30px;
 }

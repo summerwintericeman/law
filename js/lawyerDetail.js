@@ -75,7 +75,7 @@ $(function() {
 							        </p>
 							         <p>
 							        <i></i>
-							        <span class="text-strong font-16">代理类似案例（收录一审判决案件数量):${res.data.judge_count || '--'}起</span>
+							        <span class="text-strong font-16">代理类似案例(类似案例一审判决案件)数量:${res.data.judge_count || '--'}起</span>
 							        <ul class="node2List"></ul>
 							        </p>
 							        </div>`;
@@ -116,7 +116,7 @@ $(function() {
 							maxIndex = idx;
 							maxCountReason = res.data.detail[idx][reasonNum];
 							//擅长领域需要的数据
-							var choiceDoWell = `　　<span>${res.data.detail[maxIndex][reasonNum] || '--'}<i>(${res.data.detail[maxIndex].count})</i></span>`;
+							var choiceDoWell = `　　<span>${res.data.detail[maxIndex][reasonNum] || '--'}<i>(类似)(${res.data.detail[maxIndex].count})</i></span>`;
 							if(maxIndex >= 3) { //前三个不存在推荐案由
 								$('#dowell').append(choiceDoWell);
 							}
@@ -153,7 +153,7 @@ $(function() {
 				var getDoWellFn = function() {
 					$.each(res.data.detail, function(idx, ele) {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
-						var nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(${ele.count})</i></span>`;
+						var nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(类似)(${ele.count})</i></span>`;
 						var tempIdx = 3;
 						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
 							tempIdx = 2;
@@ -168,7 +168,7 @@ $(function() {
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
-						text: '代理案件中不同案由的占比',
+						text: '所有代理案件不同案由类型占比',
 						subtext: '',
 						x: 'center'
 					},
@@ -207,7 +207,7 @@ $(function() {
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
 				var option1 = {
 					title: {
-						text: '推荐案由胜诉情况',
+						text: '类似案件代理结果',
 						subtext: '',
 						x: 'center'
 					},

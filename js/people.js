@@ -73,7 +73,7 @@ $(document).ready(function() {
         var caseDescription = $('#lawyer .caseDescription').val().trim();
 
         if(!caseDescription && !name) {
-            $('#lawyer .errorTip').html('*请输入案件描述');
+            $('#lawyer .errorTip').html('*请输入案情描述');
         } else {
             // var lawyerInputVal = lawyerInput.val().replace(/\s+/g, '');
             // if(lawyerInputVal.length < 15) {
@@ -110,7 +110,7 @@ $(document).ready(function() {
         var caseDescription = $('#case .caseDescription').val().trim();
 
         if(!caseDescription) {
-            $('#case .errorTip').html('　*请输入案件描述');
+            $('#case .errorTip').html('　*请输入案情描述');
         } else {
             // var caseInputVal = caseInput.val().replace(/\s+/g, ''); //全局替换空格
             // if(caseInputVal.length < 15) { //效字符少于15

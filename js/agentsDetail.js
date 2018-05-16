@@ -12,7 +12,10 @@ $(document).ready(function() {
 	//var mapData = agentMsg.statistic_info,//需要在请求数据后进行填充
 	var mapData = null,
 		mapDataArr = [],
-		nameList = [];
+		nameList = [],
+		drillMapArr = [],
+		drilldownArr = [],
+		zhuanliTotalNum = 0;
 	//console.log(mapData);
 	//console.log(mapDataArr);
 	var _href = window.location.href;
@@ -63,7 +66,7 @@ $(document).ready(function() {
 						<div class="lawyerMsg clearfix">
 						<p><span>执业证号</span><i>${agentMsg.certNo || '--'}</i></p>
 						<p><span>性别</span><i>${agentMsg.gender || '--'}</i></p>
-						<p class="zhuanliNum"><span>专利条数</span><i></i></p>
+						<p class="zhuanliNum"><span>代理总数</span><i></i></p>
 						</div>
 						</div>
 						</div>
@@ -74,7 +77,7 @@ $(document).ready(function() {
 						</p>
 						 <p>
 						<i></i>
-						<span class="text-strong font-16">专利展示:</span>
+						<span class="text-strong font-16">代理专利详情:</span>
 						<ul class="node2List"></ul>
 						</p>
 						</div>`;
@@ -94,24 +97,45 @@ $(document).ready(function() {
 					//外观设计专利、
 					//进入中国国家阶段的PCT发明专利申请、
 					//进入中国国家阶段的PCT实用新型专利申请
+					//drilldownArr
 					if(key == "发明专利申请" || key == "外观设计专利申请" || key == "实用新型专利申请" || key == "进入中国国家阶段的PCT发明专利申请" || key == "进入中国国家阶段的PCT实用新型专利申请") {
 						if(val != 0) {
+							zhuanliTotalNum += val;
 							mapDataArr.push({
-								"name": key,
-								"value": val
+								name: key,
+								y: val,
+								drilldown:key
 							})
-							nameList.push(key)
+							drillMapArr.push([
+								key,
+								val
+							]);
+							nameList.push(key);
 							var nodeDoWell = `　　<span>${key}<i style="color:red;">　(${val})</i></span>`;
 							$('#dowell').append(nodeDoWell);
 						}
 					}
 				});
+				
+				$.each(drillMapArr,function(i,e){
+					var arr = [];
+					$.each(mapData[e[0]],function(key,val){
+						arr.push([key,val]);
+					});
+					drilldownArr.push({
+						type:'column',
+						id:e[0],
+						data:arr,
+						name:e[0]
+					});
+				});
+				console.log(drilldownArr);
 
 				//遍历数组进行添加
 				for(var i = 0; i < 1; i++) {
 					var obj = res.data.data[i];
-					var addNode = `<li class='eachContent'><h3><span></span>
-					<span><i class="LowTitle text-strong">${obj.dev_name}</i> </span></h3>
+					var addNode = `<li class='eachContent'><h3>
+					<span>1. <i class="LowTitle text-strong">${obj.dev_name}</i> </span></h3>
                     <p class="com">
                         <span><i class="LowTitle text-strong">专利类型:</i> ${obj.patent_type}</span>
                         <br/>
@@ -132,43 +156,151 @@ $(document).ready(function() {
 	})();
 	//绘制图表
 	var draw = function() {
-		var myChart0 = echarts.init(document.getElementById('rateChart0'));
-		var option = {
-			title: {
-				text: '',
-				subtext: '',
-				x: 'center'
-			},
-			tooltip: {
-				trigger: 'item',
-				formatter: "{a} <br/>{b} : {c} ({d}%)"
+		$('#rateChart0').highcharts({
+			chart: {
+	            plotBackgroundColor: null,
+	            plotBorderWidth: null,
+	            plotShadow: false
+        	},
+        	credits: {
+						enabled: false
 			},
 			legend: {
-				orient: 'vertical',
-				x: 'left',
-				data: nameList
+				layout: 'vertical',
+				backgroundColor: '#FFFFFF',
+				align: 'left',
+				verticalAlign: 'top',
+				useHTML:true,
+				labelFormat: '<span style="{color}">{name} </span>'
 			},
-			series: [{
-				name: '',
-				type: 'pie',
-				radius: '55%',
-				center: ['50%', '70%'],
-				labelLine: {
-					normal: {
-						show: true
-					}
+        	title:{
+        		text:''
+        	},
+        	lang:{
+        		drillUpText:"返回 {series.name}"
+        	},
+//      	tooltip: {
+//      		headerFormat: '',
+//	            pointFormat: '<span><b>{point.name}</b>: {point.y}({point.percentage:.0f})%</span>',
+//	        },
+	        plotOptions: {
+	        	series: {
+	            	dataLabels: {
+	                    enabled: true,
+	                    format: '<b>{point.name}</b>',
+	                    style: {
+	                        color: 'black'
+	                    }
+	               },
+				    events: {
+				        legendItemClick: function(e) {
+				            return false; // 直接 return false 即可禁用图例点击事件
+				        }
+				    },
+				    tooltip: {
+		        		headerFormat: '',
+			            pointFormat: '<span><b>{point.name}</b>: {point.y}</span>',
+			      },
+			    },
+	            pie: {
+	                allowPointSelect: true,
+	                cursor: 'pointer',
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '<b>{point.name}</b>',
+	                    style: {
+	                        color: 'black'
+	                    }
+	                },
+	                showInLegend:true,
+	                states: {
+	                    hover: {
+	                        enabled: false
+	                    }  
+	                },
+	                slicedOffset: 20,         // 突出间距
+	                point: {                  // 每个扇区是数据点对象，所以事件应该写在 point 下面
+	                    events: {
+	                        // 鼠标滑过是，突出当前扇区
+	                        mouseOver: function() {
+	                            this.slice();
+	                        },
+	                        // 鼠标移出时，收回突出显示
+	                        mouseOut: function() {
+	                            this.slice();
+	                        },
+	                        // 默认是点击突出，这里屏蔽掉
+	                        click: function() {
+	                            return false;
+	                        },
+	                        legendItemClick: function(e) {
+				                return false; // 直接 return false 即可禁用图例点击事件
+				            }
+	                    }
+	                },
+	                tooltip: {
+		        		headerFormat: '',
+			            pointFormat: '<span><b>{point.name}</b>: {point.y}({point.percentage:.0f})%</span>',
+			        }
+	                 
+	            }
+	            
+	        },
+	        series: [{
+	            type: 'pie',
+	            colorByPoint: true,
+	            data:mapDataArr
+            }],
+            drilldown: {
+			    series: drilldownArr,
+			    activeAxisLabelStyle: {
+						textDecoration: 'none',
+						fontStyle: 'italic'
 				},
-				data: mapDataArr,
-				itemStyle: {
-					emphasis: {
-						shadowBlur: 10,
-						shadowOffsetX: 0,
-						shadowColor: 'rgba(0, 0, 0, 0.5)'
-					}
+				activeDataLabelStyle: {
+						textDecoration: 'none',
+						fontStyle: 'italic'
 				}
-			}]
-		};
-		myChart0.setOption(option);
+			}
+            
+		});
+//		var myChart0 = echarts.init(document.getElementById('rateChart0'));
+//		var option = {
+//			title: {
+//				text: '',
+//				subtext: '',
+//				x: 'center'
+//			},
+//			tooltip: {
+//				trigger: 'item',
+//				formatter: "{a} <br/>{b} : {c} ({d}%)"
+//			},
+//			legend: {
+//				orient: 'vertical',
+//				x: 'left',
+//				data: nameList
+//			},
+//			series: [{
+//				name: '',
+//				type: 'pie',
+//				radius: '55%',
+//				center: ['50%', '70%'],
+//				labelLine: {
+//					normal: {
+//						show: true
+//					}
+//				},
+//				data: mapDataArr,
+//				itemStyle: {
+//					emphasis: {
+//						shadowBlur: 10,
+//						shadowOffsetX: 0,
+//						shadowColor: 'rgba(0, 0, 0, 0.5)'
+//					}
+//				}
+//			}]
+//		};
+//		myChart0.setOption(option);
 	}
 
 	//获取更多的专利信息的跳转
@@ -182,7 +314,7 @@ $(document).ready(function() {
 			//cookie存在并且其中的一个email或者account有值存在表示已经登录
 			
 			//跳转到详细的页面
-			window.location.href = "./zhuanLiList.html?per=" + getPer + '&com=' + agentMsg.cp_name;
+			window.location.href = "./zhuanLiList.html?per=" + getPer + '&com=' + com;
 		} else {
 			console.log("aaa")
 			$('#choiceMore').modal('show');

@@ -16,20 +16,20 @@
 	<div id="header"></div>
 	<div class="mainWrap">
 		<ul id="searchTabs" class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">知识产权律师</a></li>
-			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">知识产权案件</a></li>
-			<li role="presentation" class="agents"><a href="#agents" id="agents-tab" role="tab" data-toggle="tab" aria-controls="agents" aria-expanded="false">代理人</a></li>
+			<li role="presentation" class="active lawyer"><a href="#lawyer" id="lawyer-tab" role="tab" data-toggle="tab" aria-controls="lawyer" aria-expanded="true">找律师</a></li>
+			<li role="presentation" class="case"><a href="#case" role="tab" id="case-tab" data-toggle="tab" aria-controls="case" aria-expanded="false">查案例</a></li>
+			<li role="presentation" class="agents"><a href="#agents" id="agents-tab" role="tab" data-toggle="tab" aria-controls="agents" aria-expanded="false">找代理人</a></li>
 			<li role="presentation" class="patent"><a href="#patent" role="tab" id="patent-tab" data-toggle="tab" aria-controls="patent" aria-expanded="false">查专利</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div role="tabpanel" class="tab-pane fade active in search" id="lawyer" aria-labelledby="lawyer-tab">
 				<label class="labelBox textarea">
-					<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
+					<i>案情描述<a>(必填项，建议输入30字以上)</a></i><br/>
 					<textarea placeholder="请输入案情描述" class="caseDescription"></textarea>
 				</label>
 				<br/>
 				<div class="labelBox text-left">
-					<i>选择地区</i>
+					<i>地区</i>
 					<div id="cityPicker">
 						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
 					</div>
@@ -40,12 +40,12 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="case" aria-labelledby="case-tab">
 				<label class="labelBox textarea">
-					<i>案件描述<a>(必填项，建议输入30字以上)</a></i><br/>
+					<i>案情描述<a>(必填项，建议输入30字以上)</a></i><br/>
 					<textarea placeholder="请输入案情描述"  class="caseDescription"></textarea>
 				</label>
 				<br/>
 				<div class="labelBox text-left">
-					<i>选择地区</i><br/>
+					<i>地区</i><br/>
 					<div id="cityPicker1">
 						<input readonly type="text" data-toggle="city-picker" placeholder="请选择省/市" data-level="city" >
 					</div>
@@ -78,7 +78,7 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="patent" aria-labelledby="patent-tab">
 				<label class="labelBox textarea">
-					<i>专利号查询<a>(必填项，请输入专利号)</a></i><br/>
+					<i>查专利<a>(必填项，请输入专利号)</a></i><br/>
 					<textarea placeholder="请输入专利号"  class="patent"></textarea>
 				</label>
 				<span class="errorTip"></span>

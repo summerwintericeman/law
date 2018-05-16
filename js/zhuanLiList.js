@@ -13,6 +13,9 @@ $(document).ready(function() {
     }
 
     aNode.attr('href',aNode.attr('href') + name);
+    if(com){
+    	aNode.attr('href',aNode.attr('href') + '&com=' + com);
+    }
 
     agentsDetail();
 

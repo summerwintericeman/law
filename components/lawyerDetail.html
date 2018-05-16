@@ -19,8 +19,8 @@
 		<div class="mainWrap">
 			<div class="path">
 				<a href="people.html">找律师</a><i>&gt;</i>
-				<a href="lawyerList.html">律师列表</a><i>&gt;</i>
-				<a class="active">律师信息</a>
+				<a href="lawyerList.html">推荐律师</a><i>&gt;</i>
+				<a class="active">律师详情</a>
 			</div>
 			<div class="content">
 
@@ -30,10 +30,10 @@
 
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
-						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">案由胜诉</a>
+						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">案由分布情况</a>
 					</li>
 					<li role="presentation">
-						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">律师胜诉</a>
+						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">代理案件结果</a>
 					</li>
 				</ul>
 				<div class="tab-content">
@@ -71,7 +71,7 @@
 			};
 			var page = getUrlParam('fromPage');
 			if(page && page == 'property') {
-				$('.mainWrap .path a').eq(0).html('知识产权律师').attr('href', 'propery.html');
+				$('.mainWrap .path a').eq(0).html('找律师').attr('href', 'propery.html');
 				$('.mainWrap .path a').eq(1).attr('href', 'lawyerList.html?fromPage=property');
 				$('.mainNav li').removeClass('active').eq(2).addClass('active');
 			} else {

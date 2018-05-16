@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/lawyerList.css" />
 		<!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">-->
 	<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
-		<title>律师列表</title>
+		<title>推荐律师</title>
 	</head>
 
 	<body id="lawyerListBody">
@@ -21,7 +21,7 @@
 		<div class="mainWrap">
 			<div class="path">
 				<a href="people.html">找律师</a><i>&gt;</i>
-				<a class="active">律师列表</a>
+				<a class="active">推荐律师</a>
 			</div>
 			<div id="listExplain">
 				<p>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="shrotShowL shrotShow">
-							<p>*案件描述未能精准匹配案由，请在此选择案由</p>
+							<p>*案情描述未能精准匹配案由，请在此选择案由</p>
 							<span class="valSpan text-strong">案由：
 								<i style="color:red"></i>
 								<span style="display: none"></span>
@@ -93,7 +93,7 @@
             };
 		    var page = getUrlParam('fromPage');
 		    if(page && page=='property'){
-		        $('.mainWrap .path a').eq(0).html('知识产权律师').attr('href','propery.html');
+		        $('.mainWrap .path a').eq(0).html('找律师').attr('href','propery.html');
                 $('.mainNav li').removeClass('active').eq(2).addClass('active');
 			}else{
                 $('.mainNav li').removeClass('active').eq(1).addClass('active');

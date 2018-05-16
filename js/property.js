@@ -126,7 +126,7 @@ $(document).ready(function() {
     function lawyerGo(){
         var caseDescription = $('#lawyer .caseDescription').val().trim();
         if(!caseDescription) {
-            $('#lawyer .errorTip').html('*请输入案件描述');
+            $('#lawyer .errorTip').html('*请输入案情描述');
         } else {
             // var lawyerInputVal = lawyerInput.val().replace(/\s+/g,'');
             // if(lawyerInputVal.length<15){
@@ -166,7 +166,7 @@ $(document).ready(function() {
             cityNode = $('#cityPicker .title span'),
             province = '',city = '',region = '';
         if(!caseDescription) {
-            $('#case .errorTip').html('　*请输入案件描述');
+            $('#case .errorTip').html('　*请输入案情描述');
         } else {
             // var caseInputVal = caseInput.val().replace(/\s+/g,'');
             // if(caseInputVal.length<15){
