@@ -160,7 +160,18 @@ $(document).ready(function() {
 			chart: {
 	            plotBackgroundColor: null,
 	            plotBorderWidth: null,
-	            plotShadow: false
+	            plotShadow: false,
+	            events:{
+	            	drillup:function(){
+						this.yAxis[0].update({visible: false});
+						this.xAxis[0].update({visible: false});
+					},
+					drilldown:function(e){
+						this.yAxis[0].update({visible: true});
+						this.xAxis[0].update({visible: true});
+					}
+	            }
+				
         	},
         	credits: {
 						enabled: false
@@ -177,17 +188,21 @@ $(document).ready(function() {
         		text:''
         	},
         	lang:{
-        		drillUpText:"返回 {series.name}"
+        		drillUpText:"返回"
         	},
-//      	tooltip: {
-//      		headerFormat: '',
-//	            pointFormat: '<span><b>{point.name}</b>: {point.y}({point.percentage:.0f})%</span>',
-//	        },
+			yAxis:{
+					title:{
+						text:'数量'
+					}
+			},
+			xAxis: {
+					type: 'category'
+			},
 	        plotOptions: {
-	        	series: {
+	        	column: {
 	            	dataLabels: {
 	                    enabled: true,
-	                    format: '<b>{point.name}</b>',
+	                    format: '<b>{point.y}</b>',
 	                    style: {
 	                        color: 'black'
 	                    }
@@ -240,7 +255,7 @@ $(document).ready(function() {
 	                },
 	                tooltip: {
 		        		headerFormat: '',
-			            pointFormat: '<span><b>{point.name}</b>: {point.y}({point.percentage:.0f})%</span>',
+			            pointFormat: '<span><b>{point.name}</b>: {point.y} ({point.percentage:.0f}%)</span>',
 			        }
 	                 
 	            }
@@ -252,6 +267,13 @@ $(document).ready(function() {
 	            data:mapDataArr
             }],
             drilldown: {
+            	drillUpButton: {
+						relativeTo: 'spacingBox',
+						position: {
+								y: -10,
+								x: 5
+						}
+				},
 			    series: drilldownArr,
 			    activeAxisLabelStyle: {
 						textDecoration: 'none',
