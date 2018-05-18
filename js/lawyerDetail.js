@@ -97,8 +97,6 @@ $(function() {
 				$.each(res.data.detail, function(idx, ele) {
 					//第一个图表需要的数据 需要全部数量的案由
 					//因为返回的案由不确定是什么级别的案由 需要做处理
-					
-					
 					reasonList.push({
 						"name": ele[reasonNum],
 						"value": ele.count

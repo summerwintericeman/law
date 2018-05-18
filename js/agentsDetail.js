@@ -98,7 +98,7 @@ $(document).ready(function() {
 					//进入中国国家阶段的PCT发明专利申请、
 					//进入中国国家阶段的PCT实用新型专利申请
 					//drilldownArr
-					if(key == "发明专利申请" || key == "外观设计专利申请" || key == "实用新型专利申请" || key == "进入中国国家阶段的PCT发明专利申请" || key == "进入中国国家阶段的PCT实用新型专利申请") {
+					if(key == "发明专利申请" || key == "外观设计专利" || key == "实用新型专利" || key == "进入中国国家阶段的PCT发明专利" || key == "进入中国国家阶段的PCT实用新型专利") {
 						if(val != 0) {
 							zhuanliTotalNum += val;
 							mapDataArr.push({
