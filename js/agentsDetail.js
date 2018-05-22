@@ -16,12 +16,13 @@ $(document).ready(function() {
 		drillMapArr = [],
 		drilldownArr = [],
 		zhuanliTotalNum = 0;
+	var sortKey = [];//排序
 	//console.log(mapData);
 	//console.log(mapDataArr);
-	var _href = window.location.href;
-	if(_href.indexOf('&com') > -1) {
-		$('.path').find('a').eq(1).hide().next('i').hide();
-	}
+//	var _href = window.location.href;
+//	if(_href.indexOf('&com') > -1) {
+//		$('.path').find('a').eq(1).hide().next('i').hide();
+//	}
 
 	function agentsDetail(showlist) {
 		var param = {
@@ -62,7 +63,7 @@ $(document).ready(function() {
 							<img src="../img/default-big.jpg" onerror="this.src='../img/default-big.jpg'">
 							</div>
 							<div class="pull-left">
-						<h3><span>${getPer}　　</span><span>事务所：${agentMsg.cp_name || '--'}</span></h3>
+						<h3><span>${getPer}　　</span><span>事务所：${com || '--'}</span></h3>
 						<div class="lawyerMsg clearfix">
 						<p><span>执业证号</span><i>${agentMsg.certNo || '--'}</i></p>
 						<p><span>性别</span><i>${agentMsg.gender || '--'}</i></p>
@@ -98,9 +99,28 @@ $(document).ready(function() {
 					//进入中国国家阶段的PCT发明专利申请、
 					//进入中国国家阶段的PCT实用新型专利申请
 					//drilldownArr
-					if(key == "发明专利申请" || key == "外观设计专利" || key == "实用新型专利" || key == "进入中国国家阶段的PCT发明专利" || key == "进入中国国家阶段的PCT实用新型专利") {
-						if(val != 0) {
-							zhuanliTotalNum += val;
+					switch(key){
+						case '发明专利':
+							sortKey[0]=[key,val] ;break;
+						case '实用新型专利':
+							sortKey[1]=[key,val];break;
+						case '外观设计专利':
+							sortKey[2]=[key,val];break;
+						case '进入中国国家阶段的PCT发明专利':
+							sortKey[3]=[key,val];break;
+						case '进入中国国家阶段的PCT实用新型专利':
+							sortKey[4]=[key,val];break;
+					};
+
+				});
+				
+				$.each(sortKey,function(i,e){
+					if(e == undefined){
+						return true;
+					}
+					var key = e[0],val = e[1];
+					if(val != 0){
+						zhuanliTotalNum += val;
 							mapDataArr.push({
 								name: key,
 								y: val,
@@ -113,8 +133,8 @@ $(document).ready(function() {
 							nameList.push(key);
 							var nodeDoWell = `　　<span>${key}<i style="color:red;">　(${val})</i></span>`;
 							$('#dowell').append(nodeDoWell);
-						}
 					}
+					
 				});
 				
 				$.each(drillMapArr,function(i,e){
@@ -156,6 +176,7 @@ $(document).ready(function() {
 	})();
 	//绘制图表
 	var draw = function() {
+		var tipNode = $('p.tipText');
 		$('#rateChart0').highcharts({
 			chart: {
 	            plotBackgroundColor: null,
@@ -165,10 +186,12 @@ $(document).ready(function() {
 	            	drillup:function(){
 						this.yAxis[0].update({visible: false});
 						this.xAxis[0].update({visible: false});
+						tipNode.show();
 					},
 					drilldown:function(e){
 						this.yAxis[0].update({visible: true});
 						this.xAxis[0].update({visible: true});
+						tipNode.hide();
 					}
 	            }
 				
@@ -202,7 +225,24 @@ $(document).ready(function() {
 	        	column: {
 	            	dataLabels: {
 	                    enabled: true,
-	                    format: '<b>{point.y}</b>',
+//	                    format: '<b>{point.y}({point.percentage:.0f}%)</b>',
+	                    formatter:function(){
+	                    	var total = 0 ;
+	                    	if(this.percentage == undefined){
+	                    		$.each(this.series.data,function(i,e){
+		                    		total += e.y;
+		                    	});
+		                    	this.total = total;
+		                    	if(this.y>0){
+		                    		this.percentage = parseFloat(((this.y/this.total)* 100).toFixed(2)) ;
+		                    	}else{
+		                    		this.percentage = 0;
+		                    	}
+		                    	
+	                    	}
+	                    	
+	                    	return this.y + '(' + this.percentage + '%)';
+	                    },
 	                    style: {
 	                        color: 'black'
 	                    }
@@ -214,7 +254,23 @@ $(document).ready(function() {
 				    },
 				    tooltip: {
 		        		headerFormat: '',
-			            pointFormat: '<span><b>{point.name}</b>: {point.y}</span>',
+//			            pointFormat: '<span><b>{point.name}</b>: {point.y}</span>',
+			            pointFormatter:function(){
+			            	var total = 0 ;
+	                    	if(this.percentage == undefined){
+	                    		$.each(this.series.data,function(i,e){
+		                    		total += e.y;
+		                    	});
+		                    	this.total = total;
+		                    	if(this.y>0){
+		                    		this.percentage = parseFloat(((this.y/this.total)* 100).toFixed(2)) ;
+		                    	}else{
+		                    		this.percentage = 0;
+		                    	}
+		                    	
+	                    	}
+			            	return this.name + ':' + this.y + '(' + this.percentage + '%)';
+			            }
 			      },
 			    },
 	            pie: {

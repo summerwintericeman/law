@@ -138,5 +138,13 @@
 }
 #agentsDetail .chartWrap .allMap{
 	padding:20px;
+	position: relative;
 	/*width: 50%;*/
+}
+
+#agentsDetail .chartWrap .allMap>p.tipText{
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    top: 210px;	
 }
