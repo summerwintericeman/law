@@ -219,7 +219,16 @@ $(document).ready(function() {
 					}
 			},
 			xAxis: {
-					type: 'category'
+					type: 'category',
+					labels:{
+                        formatter:function(){
+                            if(this.value.indexOf('申请阶段')> -1){
+                                return '<span style="color:#f99800">' + this.value + '</span>';
+							}else if(this.value.indexOf('授权阶段')> -1){
+                                return '<span style="color:#08c2ef">' + this.value + '</span>';
+							}
+						}
+					}
 			},
 	        plotOptions: {
 	        	column: {
@@ -271,7 +280,7 @@ $(document).ready(function() {
 	                    	}
 			            	return this.name + ':' + this.y + '(' + this.percentage + '%)';
 			            }
-			      },
+			      }
 			    },
 	            pie: {
 	                allowPointSelect: true,

@@ -151,12 +151,18 @@ $(function() {
 				var getDoWellFn = function() {
 					$.each(res.data.detail, function(idx, ele) {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
-						var nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(类似)(${ele.count})</i></span>`;
+						var nodeDoWell = '';
+						if(ele[reasonNum] == maxCountReason){
+							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(类似)(${ele.count})</i></span>`;
+						}else{
+							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(${ele.count})</i></span>`;
+						}
 						var tempIdx = 3;
 						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
 							tempIdx = 2;
 						}
 						if(idx < tempIdx) {
+							
 							$('#dowell').append(nodeDoWell);
 						}
 					})
