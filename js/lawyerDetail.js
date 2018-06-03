@@ -172,7 +172,7 @@ $(function() {
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
-						text: '所有代理案件不同案由类型占比',
+						text: '案由分布情况',
 						subtext: '',
 						x: 'center'
 					},

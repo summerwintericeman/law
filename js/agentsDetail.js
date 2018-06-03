@@ -7,6 +7,7 @@ $(document).ready(function() {
 	//var getCom = getUrlParam('com',true) || '';
 	var parNode = $('.content');
 	var agentMsg = $.cookie('agentBaseMsg');
+	var timer;//定时器
 	agentMsg = JSON.parse(agentMsg);
 	console.log(agentMsg);
 	//var mapData = agentMsg.statistic_info,//需要在请求数据后进行填充
@@ -136,12 +137,24 @@ $(document).ready(function() {
 					}
 					
 				});
-				
+
+
 				$.each(drillMapArr,function(i,e){
-					var arr = [];
+					var arr = [];var wxIndex = [];//无效数据下标
 					$.each(mapData[e[0]],function(key,val){
 						arr.push([key,val]);
+                        if(key.indexOf('无效')>-1){
+                            wxIndex.push(arr.length-1);
+                        }
 					});
+                    //合并授权阶段两个无效字段数据
+					if(wxIndex.length>1){
+                        var maxIdx = Math.max(wxIndex[0],wxIndex[1]);
+                        var minIdx = Math.min(wxIndex[0],wxIndex[1]);
+                        arr[minIdx][1] = arr[minIdx][1] + arr[maxIdx][1];
+                        arr.splice(maxIdx,1);
+					}
+
 					drilldownArr.push({
 						type:'column',
 						id:e[0],
@@ -149,6 +162,9 @@ $(document).ready(function() {
 						name:e[0]
 					});
 				});
+
+
+
 				console.log(drilldownArr);
 
 				//遍历数组进行添加
@@ -187,11 +203,40 @@ $(document).ready(function() {
 						this.yAxis[0].update({visible: false});
 						this.xAxis[0].update({visible: false});
 						tipNode.show();
+                        $('.allMap .tipBox').hide();
+						if(timer){
+                            window.clearTimeout(timer);
+						};
+
 					},
 					drilldown:function(e){
 						this.yAxis[0].update({visible: true});
 						this.xAxis[0].update({visible: true});
 						tipNode.hide();
+
+						var data = e.seriesOptions.data;
+                        var senqNum = 0,souqNum = 0;
+						$.each(data,function(i,e){
+							if(e[0].indexOf('申请阶段')>-1){
+                                senqNum++;
+							}else if(e[0].indexOf('授权阶段')> -1){
+                                souqNum++;
+							}
+
+						});
+
+                        //设置分段框
+						timer = setTimeout(function(){
+                            window.clearTimeout(timer);
+							//highcharts-plot-background
+                            var width = $('.highcharts-plot-background').css('width');
+                            var tipBox = $('.allMap .tipBox');
+                            tipBox.css('width',width);
+                            tipBox.find('span:eq(0)').css('width',100 * senqNum/(senqNum+souqNum) + '%');
+                            tipBox.find('span:eq(1)').css('width',100 * souqNum/(senqNum+souqNum) + '%');
+                            tipBox.show();
+						},500);
+
 					}
 	            }
 				
@@ -222,10 +267,12 @@ $(document).ready(function() {
 					type: 'category',
 					labels:{
                         formatter:function(){
+                        	var idx = this.value.indexOf('_');
+                        	var val = this.value.substr(idx+1,this.value.length);
                             if(this.value.indexOf('申请阶段')> -1){
-                                return '<span style="color:#f99800">' + this.value + '</span>';
+                                return '<span style="color:#f99800">' + val + '</span>';
 							}else if(this.value.indexOf('授权阶段')> -1){
-                                return '<span style="color:#08c2ef">' + this.value + '</span>';
+                                return '<span style="color:#08c2ef">' + val + '</span>';
 							}
 						}
 					}
@@ -388,6 +435,23 @@ $(document).ready(function() {
 //			}]
 //		};
 //		myChart0.setOption(option);
+	}
+
+	var resizeTimer;
+    window.onresize = function(){
+    	if(resizeTimer){
+    		window.clearTimeout(resizeTimer);
+		}
+		resizeTimer = setTimeout(function(){
+		var width = $('.highcharts-plot-background').css('width');
+		var tipBox = $('.allMap .tipBox');
+		if(tipBox.css('display') == 'none'){
+			return;
+		}
+		tipBox.css('width',width);
+
+		},150);
+
 	}
 
 	//获取更多的专利信息的跳转

@@ -308,7 +308,8 @@ function caseFoud(knowledge, caseDes, callback) {
 						$('body').on('click', '#selectResModal ul.clickUl>li', function() {
 							$(this).css('background', '#7daee8').siblings('li').css('background', 'transparent');
 							var selectHtml = $(this).find('span').html().trim();
-							selectHtml = selectHtml.substring(3, selectHtml.length);
+							var idx = selectHtml.indexOf('. ');
+							selectHtml = selectHtml.substring(idx+1, selectHtml.length).trim();
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
 							var secRes = ul1.find('li').eq(idx1).find('span').html();
