@@ -151,19 +151,23 @@
 	float: right;
 	width: 100%;
 	height: 30px;
-	border:1px solid red;
+	/*border:1px solid red;*/
 	text-align: center;
 	margin-right: 10px;
 	display: none;
+	
 }
+
 #agentsDetail .chartWrap .allMap .tipBox>span{
 	display: inline-block;
 	height: 100%;
 	line-height: 30px;
-	color: #08c2ef;
+	background-color: #08c2ef;
+	color:white;
 }
 #agentsDetail .chartWrap .allMap .tipBox>span:nth-child(1){
-	border-right:1px solid red;
-	color:#f99800;
+	/*border-right:1px solid red;*/
+	background-color: #f99800;
+	color:white;
 }
 
