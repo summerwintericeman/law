@@ -4,16 +4,16 @@
     padding: .25rem 10%;
 }
 #caseDetail .mainWrap .path{
-    padding-bottom: 20px;
+    padding-bottom: 0.2rem;
 }
 #caseDetail .mainWrap .path a.active{
     color: #5068a9;
 }
 #caseDetail .mainWrap .path i{
-    padding: 0 5px;
+    padding: 0 0.05rem;
 }
 #caseDetail .mainWrap .content>div>p{
-    text-indent: 25px;
-    font-size: 16px;
-    line-height: 30px;
+    text-indent: 0.25rem;
+    font-size: 0.16rem;
+    line-height: 0.3rem;
 }

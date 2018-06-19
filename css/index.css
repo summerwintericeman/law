@@ -114,7 +114,6 @@ body {
 	font-family: 'Arial', 'Helvetica', 'Times New Roman', 'PingFang SC', 'Microsoft YaHei', 'SimSun', 'Helvetica Neue', 'STHeitiSC-Light', 'sans-serif';
 	font-size: 0.14rem;
 	cursor: default;
-	min-width: 1000px;
 	overflow: auto;
 }
 
@@ -123,7 +122,7 @@ p {
 }
 
 .mainWrap {
-	min-height: 814px;
+	min-height: 8.14rem;
 }
 
 .button {
@@ -145,11 +144,11 @@ a:focus {
 }
 
 .font-16 {
-	font-size: 16px;
+	font-size: 0.16rem;
 }
 
 .font-18 {
-	font-size: 18px;
+	font-size: 0.18rem;
 }
 
 .text-strong {
@@ -195,7 +194,7 @@ body::-webkit-scrollbar-thumb:hover {
 	position: fixed;
 	width: 100%;
 	top: 0;
-	z-index: 10;
+	z-index: 9999999;
 }
 
 .top_nav {
@@ -204,7 +203,6 @@ body::-webkit-scrollbar-thumb:hover {
 	width: 100%;
 	background-color: #7083B9;
 	color: #fff;
-	min-width: 9.6rem;
 }
 
 .top_nav:hover {
@@ -214,7 +212,8 @@ body::-webkit-scrollbar-thumb:hover {
 .top_nav .compony_logo {
 	display: block;
 	height: 0.42rem;
-	width: 1.9rem;
+	width: 1.8rem;
+	padding: 0 .15rem;
 }
 
 .top_nav .compony_logo img {
@@ -231,6 +230,7 @@ body::-webkit-scrollbar-thumb:hover {
 	padding: 0 0.15rem;
 }
 
+
 .top_nav .mainNav {
 	border-bottom: none!important;
 }
@@ -241,20 +241,56 @@ body::-webkit-scrollbar-thumb:hover {
 
 .top_nav .nav>li>a {
 	display: inline-block;
-	width: 120px;
+	width: 1.2rem;
 	text-align: center;
 	color: #fff;
 	border: none;
 	border-radius: 0;
 	height: .42rem;
 }
-
 .top_nav .nav>li>a:hover,
 .top_nav .nav>li.active>a {
 	color: #000;
 	background-color: #fff;
 	border: none;
 	border-radius: 0;
+}
+
+.navbar-nav {
+	margin: 0 -0.15rem;
+}
+.top_nav .navbar-right>li>a{
+	width: auto;
+}
+.top_nav .navbar-toggle{
+	border: none;
+	margin-bottom: 0;
+}
+.top_nav .navbar-toggle:hover, .navbar-toggle:focus{
+	border: none;
+}
+.top_nav .navbar-toggle .icon-bar {
+	background-color:#ccc;
+}
+.top_nav .navbar-toggle:hover .icon-bar{
+	background-color:#fff;
+}
+.top_nav .navbar-collapse li>a{
+	width:100%
+}
+@media only screen and (max-width: 768px) {
+	.top_nav {
+		padding: 0 .15rem;
+	}
+	.top_nav .navbar-collapse.collapse.in{
+		background: rgba(0,0,0,.7);
+	}
+	.top_nav .navbar-collapse li:hover>a,
+	.top_nav .navbar-collapse li.active>a,
+	.top_nav .navbar-collapse li>a:focus{
+		background-color: rgba(0,0,0,.4)!important;
+		color: #fff;
+	}
 }
 
 .top_nav .user {
@@ -267,13 +303,14 @@ body::-webkit-scrollbar-thumb:hover {
 	display: none;
 }
 .circle {
-	height: 400px;
+	height: 4rem;
 	width: 100%;
 }
 
+
 @media only screen and (max-width: 1024px) {
 	.circle {
-		height: 300px;
+		height: 3rem;
 	}
 }
 
@@ -311,25 +348,35 @@ body::-webkit-scrollbar-thumb:hover {
 #index .choice {
 	width: 100%;
 	padding: 0 10%;
-	margin-top: 100px;
+	margin-top: 1rem;
 }
 
 #index .choice li {
-	border: 1px solid #ccc;
-	padding: 15px;
+	border: 0.01rem solid #ccc;
+	padding: 0.15rem;
 	position: relative;
 	background: #fff;
-	border-radius: 2px;
+	border-radius: 0.02rem;
 }
 
+@media only screen and (max-width: 750px) {
+	#index .choice{
+		margin-top: 0.5rem;
+	}
+	#index .choice li {
+		float: none!important;
+		margin: 0.1rem auto;
+		width: 2.7rem;
+	}
+}
 #index .choice li:hover {
 	box-shadow: .02rem .02rem .1rem rgba(0, 0, 0, .2), -0.02rem -0.02rem .1rem rgba(0, 0, 0, .2);
 }
 
 #index .choice li p {
 	margin-bottom: 0.15rem;
-	line-height: 30px;
-	height: 90px;
+	line-height: 0.3rem;
+	height: 0.9rem;
 }
 
 #index .choice li p:nth-child(1) {
@@ -337,15 +384,15 @@ body::-webkit-scrollbar-thumb:hover {
 	font-weight: 900;
 	position: absolute;
 	left: 50%;
-	top: -60px;
+	top: -0.6rem;
 	background: #ddd;
-	width: 120px;
-	height: 120px;
-	border-radius: 60px;
-	line-height: 65px;
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 0.6rem;
+	line-height: 0.65rem;
 	z-index: -1;
-	box-shadow: 10px -2px 20px rgba(104, 111, 133, 0.5);
-	margin-left: -60px;
+	box-shadow: 0.1rem -0.02rem 0.2rem rgba(104, 111, 133, 0.5);
+	margin-left: -0.6rem;
 }
 
 #index .choice li p:nth-child(2) {
@@ -406,12 +453,12 @@ body::-webkit-scrollbar-thumb:hover {
 /*模态框样式*/
 
 #errorModal .modal-dialog {
-	width: 450px;
-	/*height: 160px;*/
+	width: 4.5rem;
+	/*height: 1.6rem;*/
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -80px -200px;
+	margin: -0.8rem -2rem;
 }
 
 #errorModal .modal-dialog .modal-content {
@@ -421,47 +468,47 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #errorModal .modal-dialog .modal-content .modal-header {
-	padding: 10px 15px;
+	padding: 0.1rem 0.15rem;
 }
 
 #errorModal .modal-dialog .modal-content .modal-body {
-	font-size: 14px;
-	padding: 20px 15px;
+	font-size: 0.14rem;
+	padding: 0.2rem 0.15rem;
 }
 
 #errorModal .modal-dialog .modal-content .modal-footer {
 	border: none;
-	font-size: 14px;
-	padding: 10px 15px
+	font-size: 0.14rem;
+	padding: 0.1rem 0.15rem
 }
 .tipsStyle{
 	color: #CCCCCC;
-	font-size: 14px;
-	line-height: 28px;
+	font-size: 0.14rem;
+	line-height: 0.28rem;
 }
 textarea{
-	font-size: 13px;
+	font-size: 0.13rem;
 	font-weight: 200;
 }
 .labelBox>i{
     font-size: .16rem;
-    line-height: 20px;
+    line-height: 0.2rem;
     width: 100%;
 }
 .labelBox>i>a{
-    font-size: 14px;
+    font-size: 0.14rem;
  	color: red;
 }
 /*****************************选择案由模态框       四级菜单*************************************/
 #selectResModal .modal-dialog{
-	width: 1232px;
+	width: 12.32rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-header{
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 0.16rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-header button{
-	padding: 0 10px;
+	padding: 0 0.1rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-header button:focus{
 	outline: none;
@@ -472,28 +519,28 @@ textarea{
 #selectResModal .modal-dialog .modal-content .modal-body{
 	/*overflow-y: auto;*/
 	/*padding: 0;*/
-	/*margin: 15px;*/
+	/*margin: 0.15rem;*/
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow{
-	height:390px;
+	height:3.9rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow p{
-line-height: 25px;
+line-height: 0.25rem;
 color: #ccc;
-padding:10px 0;
+padding:0.1rem 0;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow>span.errorTip{
 	color: red;
 	display: none;
-	line-height: 25px;
+	line-height: 0.25rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floorWrap{
-	width: 1200px;
+	width: 12rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floorWrap>ul{
-	width:300px;
-	margin-top: 10px;
-	height: 300px;
+	width:3rem;
+	margin-top: 0.1rem;
+	height: 3rem;
 	overflow: auto;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floorWrap>ul::-webkit-scrollbar {
@@ -513,9 +560,9 @@ padding:10px 0;
 
 
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow  ul>li{
-height: 26px;
-line-height: 26px;
-padding:0 10px;
+height: 0.26rem;
+line-height: 0.26rem;
+padding:0 0.1rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow  ul li>span{
 	white-space: nowrap;
@@ -531,20 +578,20 @@ background: #7daee8;
 	display:none;
 	width: auto;
 	background: #fff;
-    left: calc(100% + 1px );
+    left: calc(100% + 0.01rem );
     top:0;
-    box-shadow: 1px 1px 5px rgba(0,0,0,.4);
-    border-radius: 2px;
+    box-shadow: 0.01rem 0.01rem 0.05rem rgba(0,0,0,.4);
+    border-radius: 0.02rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow  #floor1 ul {
 	display: none;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow  #floor1 li{
 	position: relative;
-	height: 30px;
+	height: 0.3rem;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow  #floor1 span {
-	height: 30px;
+	height: 0.3rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -560,14 +607,20 @@ background: #7daee8;
 	z-index: 20;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floor3{
-	/*width: 520px;*/
+	/*width: 5.2rem;*/
 	z-index: 30;
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floor4{
 	z-index: 40;
-	/*width: 300px;*/
+	/*width: 3rem;*/
 }
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floor3>li,
 #selectResModal .modal-dialog .modal-content .modal-body .shrotShow .floor4>li{
 	/*float: left;*/
+}
+
+@media only screen and (max-width: 420px){
+	#property .mainWrap .nav>li>a{
+		padding:.1rem .05rem;
+	}
 }

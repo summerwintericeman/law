@@ -15,21 +15,21 @@ body {
 	color: blue;
 }
 .registerMess {
-	line-height: 42px;
-	font-size: 20px;
+	line-height: 0.42rem;
+	font-size: 0.2rem;
 }
 
 #register .top_nav {
-	margin-bottom: 40px;
+	margin-bottom: 0.4rem;
 }
 
 .regDeatil {
-	height: 600px;
-	width: 1000px;
-	border: 1px solid #ccc;
+	height: 6rem;
+	width: 10rem;
+	border: 0.01rem solid #ccc;
 	margin: 0 auto;
 	box-sizing: border-box;
-	padding: 65px 100px;
+	padding: 0.65rem 1rem;
 	background-color: #fcfcfc;
 }
 
@@ -41,8 +41,8 @@ body {
 .regDeatil .right {
 	width: 30%;
 	box-sizing: border-box;
-	border-left: 1px solid #ccc;
-	padding: 0 40px;
+	border-left: 0.01rem solid #ccc;
+	padding: 0 0.4rem;
 }
 
 .labelBox {
@@ -51,7 +51,7 @@ body {
 	line-height: .5rem;
 	font-weight: bold;
 	width: 4.5rem;
-	margin-bottom: 10px;
+	margin-bottom: 0.1rem;
 }
 
 .labelBox>i {
@@ -61,7 +61,7 @@ body {
 }
 
 .labelBox>input {
-	width: 340px;
+	width: 3.4rem;
 	height: .4rem;
 	border: .01rem solid #ccc;
 	border-radius: .03rem;
@@ -69,13 +69,13 @@ body {
 }
 
 .labelBox>input:focus {
-	box-shadow: 0 0 5px #5068a9;
+	box-shadow: 0 0 0.05rem #5068a9;
 	border-color: blue;
 }
 
 .regDeatil .right>p {
-	margin-top: 20px;
-	margin-bottom: 30px;
+	margin-top: 0.2rem;
+	margin-bottom: 0.3rem;
 }
 
 .regDeatil .right>p>a {
@@ -83,29 +83,29 @@ body {
 }
 
 #agree {
-	margin-left: 92px;
-	height: 46px;
-	width: 340px;
+	margin-left: 0.92rem;
+	height: 0.46rem;
+	width: 3.4rem;
 	background-color: red;
-	border-radius: 5px;
+	border-radius: 0.05rem;
 	text-align: center;
 	border: none;
-	font-size: 18px;
+	font-size: 0.18rem;
 	color: white;
 	font-weight: 900;
 }
 
 #agree:hover {
-	box-shadow: 0 0 5px #5068a9;
+	box-shadow: 0 0 0.05rem #5068a9;
 }
 
 .agreeDetail {
-	margin-top: 15px;
-	padding-left: 135px;
+	margin-top: 0.15rem;
+	padding-left: 1.35rem;
 }
 
 .agreeDetail>a {
-	margin-top: 20px;
+	margin-top: 0.2rem;
 	color: gray;
 	text-decoration: underline;
 }

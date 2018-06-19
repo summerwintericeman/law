@@ -94,9 +94,9 @@
 		    var page = getUrlParam('fromPage');
 		    if(page && page=='property'){
 		        $('.mainWrap .path a').eq(0).html('找律师').attr('href','propery.html');
-                $('.mainNav li').removeClass('active').eq(2).addClass('active');
+                $('.top_nav .navbar-nav li').removeClass('active').eq(2).addClass('active');
 			}else{
-                $('.mainNav li').removeClass('active').eq(1).addClass('active');
+                $('.top_nav .navbar-nav li').removeClass('active').eq(1).addClass('active');
 			}
 
 		});

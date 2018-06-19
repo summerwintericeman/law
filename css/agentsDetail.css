@@ -4,7 +4,7 @@
 	padding: .25rem 10%;
 }
 #agentsDetail .mainWrap .path {
-	padding-bottom: 20px;
+	padding-bottom: 0.2rem;
 }
 
 #agentsDetail .mainWrap .path a.active {
@@ -12,60 +12,60 @@
 }
 
 #agentsDetail .mainWrap .path i {
-	padding: 0 5px;
+	padding: 0 0.05rem;
 }
 
 #agentsDetail .content h3{
-	height:40px;
-	font-size: 30px;
-	margin-bottom: 10px;
+	height:0.4rem;
+	font-size: 0.3rem;
+	margin-bottom: 0.1rem;
 }
 
 #agentsDetail .content h3 span{
-	font-size: 14px;
+	font-size: 0.14rem;
 	font-weight: normal;
 }
 #agentsDetail .msgWrap{
-	margin-bottom: 30px;
+	margin-bottom: 0.3rem;
 }
 #agentsDetail .userMsg{
-	width:150px;
-	height:150px;
-	margin-right: 60px;
+	width:1.5rem;
+	height:1.5rem;
+	margin-right: 0.6rem;
 }
 #agentsDetail .userMsg img{
 	width:100%;
 	height:100%;
 }
 #agentsDetail .lawyerMsg{
-	width: 550px;
+	width: 5.5rem;
 }
 #agentsDetail .lawyerMsg p{
 	float: left;
 	width: 50%;
-	line-height: 30px;
+	line-height: 0.3rem;
 }
 #agentsDetail .lawyerMsg p>span{
-	padding-right: 15px;
+	padding-right: 0.15rem;
 	font-weight: bold;
 }
 #agentsDetail .content .caseType>p{
-	padding:10px 0;
+	padding:0.1rem 0;
 }
 #agentsDetail .content .caseType>p>i{
 	display: inline-block;
 	float: left;
-	width: 3px;
-	height: 15px;
+	width: 0.03rem;
+	height: 0.15rem;
 	background: #5068a9;
-	margin: 5px 6px 0 0;
+	margin: 0.05rem 0.06rem 0 0;
 }
 #agentsDetail .content .caseType ul li {
-	padding:10px;
-	box-shadow: 0px 1px 1px rgba(0, 0, 0, .1);
+	padding:0.1rem;
+	box-shadow: 0rem 0.01rem 0.01rem rgba(0, 0, 0, .1);
 }
 #agentsDetail .content .caseType ul li>p span{
-	line-height: 28px;
+	line-height: 0.28rem;
 }
 #agentsDetail .content .caseType h3{
 	position: relative;
@@ -74,38 +74,38 @@
 	position: absolute;
 	background: #277ce1;
 	display: block;
-	border: 3px solid #277ce1;
-	border-radius: 3px;
-	top: 18px;
-	left: -10px;
+	border: 0.03rem solid #277ce1;
+	border-radius: 0.03rem;
+	top: 0.18rem;
+	left: -0.1rem;
 }*/
 #agentsDetail  p.more{
-	padding-top: 30px;
+	padding-top: 0.3rem;
 }
 #agentsDetail  p.more button{
 	background: #277ce1;
 	color: #fff;
-	padding:10px 50px;
+	padding:0.1rem 0.5rem;
 	outline: none;
 }
 #agentsDetail  p.more button:hover{
 	background: #216fcb;
 }
 #agentsDetail .chartWrap{
-	margin: 60px 0;
+	margin: 0.6rem 0;
 }
 #agentsDetail .chartTitle{
 	position: relative;
-	padding-left: 8px;
+	padding-left: 0.08rem;
 }
 #agentsDetail .chartTitle:before{
 	content: '';
 	position: absolute;
-	width: 3px;
-	height: 15px;
+	width: 0.03rem;
+	height: 0.15rem;
 	background: #5068a9;
-	left: 0px;
-	top: 2px;
+	left: 0rem;
+	top: 0.02rem;
 }
 #agentsDetail .chartWrap {
 	display: block;
@@ -114,10 +114,10 @@
 	border-bottom: .01rem solid #5068a9;
 }
 #agentsDetail .chartWrap ul>li a{
-	margin-right: 2px;
+	margin-right: 0.02rem;
 	line-height: 1.42857143;
-	border: 1px solid transparent;
-	border-radius: 4px 4px 0 0;
+	border: 0.01rem solid transparent;
+	border-radius: 0.04rem 0.04rem 0 0;
 }
 #agentsDetail .chartWrap ul>li a:hover{
 	background: #5068a9;
@@ -133,41 +133,37 @@
 
 
 #agentsDetail .chartWrap .messMap{
-	padding:20px;
+	padding:0.2rem;
 	/*width: 50%;*/
 }
 #agentsDetail .chartWrap .allMap{
-	padding:20px;
+	padding:0.2rem;
 	position: relative;
 	/*width: 50%;*/
 }
 #agentsDetail .chartWrap .allMap>p.tipText{
     position: absolute;
-    font-size: 12px;
+    font-size: 0.12rem;
     color: red;
-    top: 210px;	
+    top: 2.1rem;	
 }
 #agentsDetail .chartWrap .allMap .tipBox{
 	float: right;
 	width: 100%;
-	height: 30px;
-	/*border:1px solid red;*/
+	height: 0.3rem;
+	border:0.01rem solid red;
 	text-align: center;
-	margin-right: 10px;
+	margin-right: 0.1rem;
 	display: none;
-	
 }
-
 #agentsDetail .chartWrap .allMap .tipBox>span{
 	display: inline-block;
 	height: 100%;
-	line-height: 30px;
-	background-color: #08c2ef;
-	color:white;
+	line-height: 0.3rem;
+	color: #08c2ef;
 }
 #agentsDetail .chartWrap .allMap .tipBox>span:nth-child(1){
-	/*border-right:1px solid red;*/
-	background-color: #f99800;
-	color:white;
+	border-right:0.01rem solid red;
+	color:#f99800;
 }
 

@@ -140,21 +140,20 @@ $(document).ready(function() {
 
 
 				$.each(drillMapArr,function(i,e){
-					var arr = [];
-					//var wxIndex = [];//无效数据下标
+					var arr = [];var wxIndex = [];//无效数据下标
 					$.each(mapData[e[0]],function(key,val){
 						arr.push([key,val]);
-                        // if(key.indexOf('无效')>-1){
-                        //     wxIndex.push(arr.length-1);
-                        // }
+                        if(key.indexOf('无效')>-1){
+                            wxIndex.push(arr.length-1);
+                        }
 					});
                     //合并授权阶段两个无效字段数据
-                    // if(wxIndex.length>1){
-                    //     var maxIdx = Math.max(wxIndex[0],wxIndex[1]);
-                    //     var minIdx = Math.min(wxIndex[0],wxIndex[1]);
-                    //     arr[minIdx][1] = arr[minIdx][1] + arr[maxIdx][1];
-                    //     arr.splice(maxIdx,1);
-                    // }
+					if(wxIndex.length>1){
+                        var maxIdx = Math.max(wxIndex[0],wxIndex[1]);
+                        var minIdx = Math.min(wxIndex[0],wxIndex[1]);
+                        arr[minIdx][1] = arr[minIdx][1] + arr[maxIdx][1];
+                        arr.splice(maxIdx,1);
+					}
 
 					drilldownArr.push({
 						type:'column',

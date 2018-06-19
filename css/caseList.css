@@ -1,33 +1,33 @@
 #caseListBody .mainWrap{
     margin-top: .42rem;
     background: #fff;
-    padding: .25rem 10% 100px 10%;
+    padding: .25rem 10% 1rem 10%;
     position: relative;
 }
 #caseListBody .mainWrap .path{
-    padding-bottom: 20px;
+    padding-bottom: 0.2rem;
 }
 #caseListBody .mainWrap .path a.active{
     color: #5068a9;
 }
 #caseListBody .mainWrap .path i{
-    padding: 0 5px;
+    padding: 0 0.05rem;
 }
 #caseListBody .mainWrap>ul{
     width: 7rem;
 }
 #caseListBody .mainWrap>ul li{
     padding: .1rem .2rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.01rem solid #ccc;
     position: relative;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+    box-shadow: 0rem 0.01rem 0.01rem rgba(0,0,0,.1);
 }
 #caseListBody .mainWrap>ul li:hover{
     box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);
 }
 #caseListBody .mainWrap>ul li p{
     color:#000;
-    font-size: 16px;
+    font-size: 0.16rem;
 
 }
 #caseListBody .mainWrap>ul li p.title{
@@ -38,13 +38,13 @@
     white-space: nowrap;
 }
 #caseListBody .mainWrap>ul li p.court{
-    height: 35px;
-    line-height: 35px;
+    height: 0.35rem;
+    line-height: 0.35rem;
 }
 #caseListBody .mainWrap>ul li p.info span{
     display: inline-block;
-    height: 30px;
-    line-height:30px;
+    height: 0.3rem;
+    line-height:0.3rem;
 }
 #caseListBody .mainWrap>ul li p.info span:nth-child(1){
     display: block;
@@ -56,11 +56,11 @@
 
 #caseListBody .mainWrap>ul li span.details{
     position: absolute;
-    bottom: 10px;
-    right: 50px;
+    bottom: 0.1rem;
+    right: 0.5rem;
     background: #5068a9;
     color: #fff;
-    width: 110px;
+    width: 1.1rem;
 }
 #caseListBody .mainWrap>ul li span.details:hover{
     background: #40599b;

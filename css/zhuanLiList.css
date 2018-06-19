@@ -1,11 +1,11 @@
 #zhuanLiList .mainWrap{
     margin-top: .42rem;
     background: #fff;
-    padding: .25rem 10% 100px 10%;
+    padding: .25rem 10% 1rem 10%;
     position: relative;
 }
 #zhuanLiList .mainWrap .path {
-    padding-bottom: 20px;
+    padding-bottom: 0.2rem;
 }
 
 #zhuanLiList .mainWrap .path a.active {
@@ -13,26 +13,26 @@
 }
 
 #zhuanLiList .mainWrap .path i {
-    padding: 0 5px;
+    padding: 0 0.05rem;
 }
 #zhuanLiList .content  ul li {
-    padding:10px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, .1);
+    padding:0.1rem;
+    box-shadow: 0rem 0.01rem 0.01rem rgba(0, 0, 0, .1);
 }
 #zhuanLiList .content  ul li  h3 span i{
-    font-size: 16px;
-    line-height: 40px;
+    font-size: 0.16rem;
+    line-height: 0.4rem;
     color: #2e6da4;
 }
 #zhuanLiList .content  ul li>p span{
-    line-height: 24px;
+    line-height: 0.24rem;
     display: block;
-    padding: 5px;
+    padding: 0.05rem;
 }
 
 #zhuanLiList .content>ul li{  
-	margin-top: 5px;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+	margin-top: 0.05rem;
+    box-shadow: 0rem 0.01rem 0.01rem rgba(0,0,0,.1);
 }
 #zhuanLiList .content>ul li:hover{
     box-shadow: .02rem .02rem .1rem rgba(0,0,0,.2),  -0.02rem -0.02rem .1rem rgba(0,0,0,.2);

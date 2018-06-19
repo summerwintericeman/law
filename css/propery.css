@@ -15,7 +15,7 @@
     line-height: .5rem;
     position: relative;
     font-weight: bold;
-    width:5rem;
+    width:100%;
 }
 #property .labelBox>input{
     height:.4rem;
@@ -25,7 +25,7 @@
 }
 #property .labelBox>input:focus,#property .labelBox textarea:focus{
     border:.01rem solid #5068a9;
-    box-shadow: 0 0 5px #5068a9;
+    box-shadow: 0 0 0.05rem #5068a9;
 }
 #property .labelBox.textarea{
     display: block;
@@ -59,19 +59,18 @@
 }
 #property #agents .agentsTop>i,#property #agents .agentsBottom>i{
     display: block;
-    height: 50px;
-    line-height: 50px;
+    height: 0.5rem;
+    line-height: 0.5rem;
     color: red;
 }
 #property #agents .agentsTop .errorTip,#property #agents .agentsBottom .errorTip{
-    margin-top: 10px;
+    margin-top: 0.1rem;
 }
 #property #agents .agentsTop>button,#property #agents .agentsBottom>button{
-    margin-top: 20px;
-    margin-left: 200px;
+    margin: 0 auto;
 }
 #property #agents .agentsBottom{
-    margin-top: 100px;
+    margin-top: 1rem;
 }
 
 
@@ -80,6 +79,12 @@
 
 
 /*地区插件样式*/
+#cityPicker,#cityPicker1,#cityPicker2{
+    position: absolute;
+    top: 0;
+    left:1.2rem;
+}
+
 .city-picker-span{
     border: .01rem solid #ccc;
     height: .4rem!important;
@@ -87,6 +92,20 @@
     line-height: .4rem!important;
     padding-left: .1rem;
     border-radius: .03rem;
+}
+
+@media only screen and (max-width: 480px) {
+    #cityPicker,#cityPicker1,#cityPicker2{
+        left: .5rem;
+        right: 0;
+    }
+    .city-picker-span{
+        width:100%!important;
+    }
+    .city-picker-dropdown{
+        width:100%!important;
+        min-width: 1rem;
+    }
 }
 .city-picker-span>.placeholder {
     color: #ccc;
@@ -98,11 +117,7 @@
     border-bottom-color:#5068a9;
 }
 /*地区插件样式*/
-#cityPicker,#cityPicker1,#cityPicker2{
-    position: absolute;
-    top: 0;
-    left:1.2rem;
-}
+
 
 /*bootstarp*/
 #property .mainWrap .nav-tabs>li.active>a,#property .mainWrap  .nav-tabs>li.active>a:focus,#property .mainWrap  .nav-tabs>li.active>a:hover{
