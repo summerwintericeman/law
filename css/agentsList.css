@@ -138,3 +138,33 @@
 #agentsList .mainWrap>ul li span.details:focus{
     outline: none;
 }
+@media only screen and (max-width:420px) {
+	#agentsList .mainWrap {
+		padding: .25rem 2%;
+	}
+	#agentsList .mainWrap>ul {
+		width: 100%;
+	}
+	#agentsList .mainWrap>ul li span.details{
+		display: none;
+	}
+	#agentsList .mainWrap>ul li p.name i:nth-child(3){
+		display: block;
+		padding-left: 0rem;
+		margin-left: 0;
+	}
+	#agentsList .mainWrap>ul li p.name{
+		display: block;
+		height: 1rem;
+		
+	}
+	#agentsList .mainWrap>ul li p.name i:last-child{
+		padding-left: 0rem;
+		margin-left: 0;
+	}
+	#agentsList .mainWrap>ul li p.location{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow:ellipsis;
+	}
+}

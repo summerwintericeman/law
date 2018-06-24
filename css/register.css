@@ -25,14 +25,59 @@ body {
 
 .regDeatil {
 	height: 6rem;
-	width: 10rem;
+	width: 100%;
 	border: 0.01rem solid #ccc;
 	margin: 0 auto;
 	box-sizing: border-box;
-	padding: 0.65rem 1rem;
+	padding: 0.65rem .1rem;
 	background-color: #fcfcfc;
+	max-width: 10rem;
 }
+@media only screen and (max-width: 1000px){
+	.regDeatil{
+		height: auto;
 
+	}
+	.regDeatil>div.left{
+		float: none!important;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 5rem;
+	}
+	.regDeatil>div.left .labelBox>input{
+		width: 65%;
+	}
+	.regDeatil>div.left #agree{
+		width: 60%;
+		margin: 0 auto;
+		display: block;
+	}
+	.regDeatil>div.left .agreeDetail{
+		width: 60%;
+		padding: 0;
+		margin: .1rem auto;
+	}
+	.regDeatil>div.right{
+		float: none!important;
+		margin: 0 auto;
+		border: none;
+		width: 2.8rem;
+		max-width: 5rem;
+		padding:.2rem 0;
+		position: relative;
+		padding-left: 1.05rem;
+	}
+	.regDeatil>div.right>span{
+		position: absolute;
+		top: .45rem;
+		left: .05rem;
+		display: block;
+		height: 1.13rem;
+		line-height: 1.15rem;
+		border-right: .01rem dashed #ccc;
+	}
+
+}
 .regDeatil .left {
 	width: 70%;
 	height: 100%;

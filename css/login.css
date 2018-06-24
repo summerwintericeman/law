@@ -11,13 +11,20 @@
 }
 .lgContain{
 	height: 3.43rem;
-	width: 10rem;
+	max-width: 10rem;
+	width:100%;
 	margin: 0.2rem auto;
 }
 .registerMess {
 
 	line-height: 0.42rem;
 	font-size: 0.2rem;
+}
+@media only screen and (max-width: 360px){
+	.registerMess{
+		font-size: 0.14rem;
+	}
+
 }
 .lgContain>img{
 	margin-left: 0.4rem;
@@ -31,6 +38,18 @@
 .lgDetail>h3{
 	margin-bottom: 0.1rem;
 }
+@media only screen and (max-width: 1000px){
+	.lgContain>img{
+		display: none;
+	}
+	.lgDetail{
+		float: none!important;
+		margin: 0 auto;
+		width: 3.1rem;
+	}
+}
+
+
 .lglabel{
 	padding: 0.03rem 0;
 	height: 0.46rem;

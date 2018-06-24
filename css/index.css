@@ -458,7 +458,13 @@ body::-webkit-scrollbar-thumb:hover {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -0.8rem -2rem;
+	margin: -0.8rem 0 0 -2rem;
+}
+@media only screen and (max-width: 500px){
+	#errorModal .modal-dialog{
+		width: 3.1rem;
+		margin:-0.8rem 0 0 -1.55rem;
+	}
 }
 
 #errorModal .modal-dialog .modal-content {
@@ -501,7 +507,8 @@ textarea{
 }
 /*****************************选择案由模态框       四级菜单*************************************/
 #selectResModal .modal-dialog{
-	width: 12.32rem;
+	/*width: 12.32rem;*/
+	width: 80%;
 }
 #selectResModal .modal-dialog .modal-content .modal-header{
 	font-weight: bold;

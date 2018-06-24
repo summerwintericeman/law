@@ -3,6 +3,7 @@
 	background: #fff;
 	padding: .25rem 10%;
 }
+
 #agentsDetail .mainWrap .path {
 	padding-bottom: 0.2rem;
 }
@@ -15,44 +16,52 @@
 	padding: 0 0.05rem;
 }
 
-#agentsDetail .content h3{
-	height:0.4rem;
+#agentsDetail .content h3 {
+	height: 0.4rem;
 	font-size: 0.3rem;
 	margin-bottom: 0.1rem;
 }
 
-#agentsDetail .content h3 span{
+#agentsDetail .content h3 span {
 	font-size: 0.14rem;
 	font-weight: normal;
 }
-#agentsDetail .msgWrap{
+
+#agentsDetail .msgWrap {
 	margin-bottom: 0.3rem;
 }
-#agentsDetail .userMsg{
-	width:1.5rem;
-	height:1.5rem;
+
+#agentsDetail .userMsg {
+	width: 1.5rem;
+	height: 1.5rem;
 	margin-right: 0.6rem;
 }
-#agentsDetail .userMsg img{
-	width:100%;
-	height:100%;
+
+#agentsDetail .userMsg img {
+	width: 100%;
+	height: 100%;
 }
-#agentsDetail .lawyerMsg{
+
+#agentsDetail .lawyerMsg {
 	width: 5.5rem;
 }
-#agentsDetail .lawyerMsg p{
+
+#agentsDetail .lawyerMsg p {
 	float: left;
 	width: 50%;
 	line-height: 0.3rem;
 }
-#agentsDetail .lawyerMsg p>span{
+
+#agentsDetail .lawyerMsg p>span {
 	padding-right: 0.15rem;
 	font-weight: bold;
 }
-#agentsDetail .content .caseType>p{
-	padding:0.1rem 0;
+
+#agentsDetail .content .caseType>p {
+	padding: 0.1rem 0;
 }
-#agentsDetail .content .caseType>p>i{
+
+#agentsDetail .content .caseType>p>i {
 	display: inline-block;
 	float: left;
 	width: 0.03rem;
@@ -60,16 +69,21 @@
 	background: #5068a9;
 	margin: 0.05rem 0.06rem 0 0;
 }
+
 #agentsDetail .content .caseType ul li {
-	padding:0.1rem;
+	padding: 0.1rem;
 	box-shadow: 0rem 0.01rem 0.01rem rgba(0, 0, 0, .1);
 }
-#agentsDetail .content .caseType ul li>p span{
+
+#agentsDetail .content .caseType ul li>p span {
 	line-height: 0.28rem;
 }
-#agentsDetail .content .caseType h3{
+
+#agentsDetail .content .caseType h3 {
 	position: relative;
 }
+
+
 /*#agentsDetail .content .caseType h3 span:nth-child(1){
 	position: absolute;
 	background: #277ce1;
@@ -79,26 +93,32 @@
 	top: 0.18rem;
 	left: -0.1rem;
 }*/
-#agentsDetail  p.more{
+
+#agentsDetail p.more {
 	padding-top: 0.3rem;
 }
-#agentsDetail  p.more button{
+
+#agentsDetail p.more button {
 	background: #277ce1;
 	color: #fff;
-	padding:0.1rem 0.5rem;
+	padding: 0.1rem 0.5rem;
 	outline: none;
 }
-#agentsDetail  p.more button:hover{
+
+#agentsDetail p.more button:hover {
 	background: #216fcb;
 }
-#agentsDetail .chartWrap{
+
+#agentsDetail .chartWrap {
 	margin: 0.6rem 0;
 }
-#agentsDetail .chartTitle{
+
+#agentsDetail .chartTitle {
 	position: relative;
 	padding-left: 0.08rem;
 }
-#agentsDetail .chartTitle:before{
+
+#agentsDetail .chartTitle:before {
 	content: '';
 	position: absolute;
 	width: 0.03rem;
@@ -107,63 +127,101 @@
 	left: 0rem;
 	top: 0.02rem;
 }
+
 #agentsDetail .chartWrap {
 	display: block;
 }
-#agentsDetail .chartWrap ul{
+
+#agentsDetail .chartWrap ul {
 	border-bottom: .01rem solid #5068a9;
 }
-#agentsDetail .chartWrap ul>li a{
+
+#agentsDetail .chartWrap ul>li a {
 	margin-right: 0.02rem;
 	line-height: 1.42857143;
 	border: 0.01rem solid transparent;
 	border-radius: 0.04rem 0.04rem 0 0;
 }
-#agentsDetail .chartWrap ul>li a:hover{
+
+#agentsDetail .chartWrap ul>li a:hover {
 	background: #5068a9;
 	color: #fff!important;
 }
+
 #agentsDetail .chartWrap ul>li.active>a,
 #agentsDetail .chartWrap ul>li.active>a:focus,
-#agentsDetail .chartWrap ul>li.active>a:hover{
+#agentsDetail .chartWrap ul>li.active>a:hover {
 	color: #5068a9;
 	border: .01rem solid #5068a9;
 	border-bottom-color: transparent;
 }
 
-
-#agentsDetail .chartWrap .messMap{
-	padding:0.2rem;
+#agentsDetail .chartWrap .messMap {
+	padding: 0.2rem;
 	/*width: 50%;*/
 }
-#agentsDetail .chartWrap .allMap{
-	padding:0.2rem;
+
+#agentsDetail .chartWrap .allMap {
+	padding: 0.2rem;
 	position: relative;
 	/*width: 50%;*/
 }
-#agentsDetail .chartWrap .allMap>p.tipText{
-    position: absolute;
-    font-size: 0.12rem;
-    color: red;
-    top: 2.1rem;	
+
+#agentsDetail .chartWrap .allMap>p.tipText {
+	position: absolute;
+	font-size: 0.12rem;
+	color: red;
+	top: 2.1rem;
 }
-#agentsDetail .chartWrap .allMap .tipBox{
+
+#agentsDetail .chartWrap .allMap .tipBox {
 	float: right;
 	width: 100%;
 	height: 0.3rem;
-	border:0.01rem solid red;
+	border: 0.01rem solid red;
 	text-align: center;
 	margin-right: 0.1rem;
 	display: none;
 }
-#agentsDetail .chartWrap .allMap .tipBox>span{
+
+#agentsDetail .chartWrap .allMap .tipBox>span {
 	display: inline-block;
 	height: 100%;
 	line-height: 0.3rem;
 	color: #08c2ef;
 }
-#agentsDetail .chartWrap .allMap .tipBox>span:nth-child(1){
-	border-right:0.01rem solid red;
-	color:#f99800;
+
+#agentsDetail .chartWrap .allMap .tipBox>span:nth-child(1) {
+	border-right: 0.01rem solid red;
+	color: #f99800;
 }
 
+@media only screen and (max-width: 480px) {
+	#agentsDetail .userMsg1 {
+		width: 100%;
+	}
+	#agentsDetail .content h3 {
+		display: flex;
+		flex-direction: column;
+	}
+	#agentsDetail .content h3 span {
+		font-weight: bold;
+		line-height: 0.3rem;
+	}
+	#agentsDetail .lawyerMsg {
+		padding-top: 0.2rem;
+		display: flex;
+		flex-direction: column;
+	}
+	#dowell {
+		display: flex;
+		flex-direction: column;
+		align-content: flex-start;
+	}
+	#agentsDetail .mainWrap {
+		padding: .25rem 2%;
+	}
+	#dowell span {
+		text-indent: 0;
+	}
+}

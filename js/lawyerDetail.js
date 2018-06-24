@@ -57,7 +57,7 @@ $(function() {
 									<div class="pull-left userMsg">
 										<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
 										</div>
-										<div class="pull-left">
+										<div class="pull-left userMsg1">
 									<h3><span>${name}　　</span><span>事务所：${_loction || '--'}</span></h3>
 									<div class="lawyerMsg clearfix">
 									<p><span>执业证号</span><i>${res.data.license_no || '--'}</i></p>
@@ -137,9 +137,9 @@ $(function() {
 							var page = getUrlParam('fromPage');
 							for(var i = 0; i < res.data.detail[idx].doc.length; i++) {
 								if(i < 3) { //最多添加三个
-									var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}'>　　　　　${res.data.detail[idx].doc[i].title}</a></li>`;
+									var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}'>　　${res.data.detail[idx].doc[i].title}</a></li>`;
 									if(page && page == 'property') {
-										node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　　　　${res.data.detail[idx].doc[i].title}</a></li>`;
+										node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　${res.data.detail[idx].doc[i].title}</a></li>`;
 									}
 									$('.node2List').append(node2);
 								}

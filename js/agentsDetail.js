@@ -63,7 +63,7 @@ $(document).ready(function() {
 						<div class="pull-left userMsg">
 							<img src="../img/default-big.jpg" onerror="this.src='../img/default-big.jpg'">
 							</div>
-							<div class="pull-left">
+							<div class="pull-left userMsg1">
 						<h3><span>${getPer}　　</span><span>事务所：${com || '--'}</span></h3>
 						<div class="lawyerMsg clearfix">
 						<p><span>执业证号</span><i>${agentMsg.certNo || '--'}</i></p>
@@ -132,7 +132,7 @@ $(document).ready(function() {
 								val
 							]);
 							nameList.push(key);
-							var nodeDoWell = `　　<span>${key}<i style="color:red;">　(${val})</i></span>`;
+							var nodeDoWell = `<span> ${key}<i style="color:red;"> (${val})</i>　</span>`;
 							$('#dowell').append(nodeDoWell);
 					}
 					
