@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var loginEdFn = function() {
 		var userMess = $.cookie("userMess");
 		if(userMess) {
-			var temp  = JSON.parse(userMess);
+			var temp = JSON.parse(userMess);
 			console.log(temp);
 			$("#loginedUser").css({
 				"display": "block",
@@ -12,7 +12,7 @@ $(document).ready(function() {
 				"display": "block",
 			});
 			$("#loginedMess").html(temp.account)
-		}else{
+		} else {
 			$("#loginId").css({
 				"display": "block",
 			});
@@ -47,6 +47,184 @@ $(document).ready(function() {
 			path: '/'
 		});
 	});
+
+	//封装函数用来根据选择获得数据
+	var getNextFn = function(mess, callback) {
+		console.log(mess + 'hehda')
+		var param = {
+			reason_value: mess
+		}
+		console.log(param);
+		param = JSON.stringify(param);
+		$.ajax({
+			dataType: 'json',
+			url: 'http://47.97.197.176:8888/query/reason/reason_by_value', // http://47.92.38.167:8888/  http://47.97.197.176:8888
+			type: 'post',
+			data: param,
+			success: function(res) {
+				console.log(res)
+				callback(res);
+			}
+		});
+
+	}
+	//查询下一级的函数
+	var callbackNextFloor = function(res) {
+		floor = res.data.reason_class;
+		res = res.data.reason_list;
+		var id = "#phonereason" + floor;
+		if(floor == 3) {
+			floor = "三"
+		} else if(floor == 4) {
+			floor = "四"
+		} else if(floor == 5) {
+			floor = "五"
+		}
+		if(res) {
+			var allNote = '<option value="请选择' + floor + '级案由">请选择' + floor + '级案由</option>';
+			for(var i = 0; i < res.length; i++) {
+				allNote += "<option value=" + res[i] + ">" + res[i] + "</option>";
+			}
+			$(id).html(allNote)
+		}
+	}
+	//给后=手机端的选择列表绑定点击事件
+	var phoneReason2 = '';
+	var phoneReason3 = '';
+	var phoneReason4 = '';
+	var phoneReason5 = '';
+	var listReason3 = [];
+	var listReason4 = [];
+	var listReason5 = [];
+	$("#phonereason2").focus(function(e) {
+		console.log(e)
+		console.log(e.target.value);
+		phoneReason2 = e.target.value;
+	}).click(function(e) {
+		console.log(e.target.value);
+		if(e.target.value != phoneReason2) {
+			phoneReason2 = e.target.value;
+			//请求数据展示下一级的栏目
+			$("#phonereason3").html('<option value="请选择三级案由">请选择三级案由</option>');
+			$("#phonereason4").html('<option value="请选择四级案由">请选择四级案由</option>');
+			$("#phonereason5").html('<option value="请选择五级案由">请选择五级案由</option>');
+			$("#choiced").val("二级案由:" + phoneReason2)
+			getNextFn(phoneReason2, callbackNextFloor);
+		}
+	})
+	$("#phonereason3").focus(function(e) {
+		console.log(e)
+		console.log(e.target.value);
+		phoneReason3 = e.target.value;
+	}).click(function(e) {
+		console.log(e.target.value);
+		if(e.target.value != phoneReason2) {
+			phoneReason3 = e.target.value;
+			$("#phonereason4").html('<option value="请选择四级案由">请选择四级案由</option>');
+			$("#phonereason5").html('<option value="请选择五级案由">请选择五级案由</option>');
+			$("#choiced").val("三级案由:" + phoneReason3)
+			getNextFn(phoneReason3, callbackNextFloor);
+			//请求数据展示下一级的栏目
+		}
+	})
+	$("#phonereason4").focus(function(e) {
+		console.log(e)
+		console.log(e.target.value);
+		phoneReason4 = e.target.value;
+	}).click(function(e) {
+		console.log(e.target.value);
+		if(e.target.value != phoneReason4) {
+			phoneReason4 = e.target.value;
+			$("#phonereason5").html('<option value="请选择五级案由">请选择五级案由</option>');
+			$("#choiced").val("四级案由:" + phoneReason4)
+			getNextFn(phoneReason4, callbackNextFloor);
+			//请求数据展示下一级的栏目
+		}
+	})
+	$("#phonereason5").focus(function(e) {
+		console.log(e)
+		console.log(e.target.value);
+		phoneReason5 = e.target.value;
+	}).click(function(e) {
+		console.log(e.target.value);
+		if(e.target.value != phoneReason5) {
+			phoneReason5 = e.target.value;
+			$("#choiced").val("五级案由:" + phoneReason5)
+			//这是最后一级的案由选择
+		}
+	})
+
+	$("#searchResult").on('click', function() {
+		console.log('确定搜寻结果');
+		//调用查询的函数
+		//$("#selectPhone").hide();
+		//调用接口获得数据或者存储cookie刷新页面
+
+		//	数据整理
+		//获取二级案由
+		var resVal = $('#phonereason2').val();
+		//获取详细的案由
+		var secResAll = $('#choiced').val().split(":");
+		var secRes = secResAll[1];
+		var resNum = "";
+		if(secResAll[0] == "五级案由") {
+			resNum = "reason_5"
+		} else if(secResAll[0] == "四级案由") {
+			resNum = "reason_4"
+		} else if(secResAll[0] == "三级案由") {
+			resNum = "reason_3"
+		} else if(secResAll[0] == "二级案由") {
+			resNum = "reason_2"
+		}
+		console.log(secResAll)
+		console.log(secRes)
+		var resObj = {
+			second_reason: resVal
+		};
+		if(resNum != "reason_2") {
+			resObj[resNum] = secRes;
+		}
+		console.log(resObj)
+		var locHref = location.href;
+		var fromPage = getUrlParam('fromPage');
+
+		if(locHref.indexOf('lawyer') > -1) {
+			//找律师
+			var getMsg = $.cookie('searchLawyer');
+			getMsg = JSON.parse(getMsg);
+			getMsg.res = resObj;
+			$.cookie('searchLawyer', JSON.stringify(getMsg), {
+				path: '/'
+			}); //找律师存储cookie
+			$.cookie('all', '', {
+				expires: -1,
+				path: '/'
+			});
+			if(fromPage) {
+				window.location.href = 'lawyerList.html?fromPage=' + fromPage;
+			} else {
+				window.location.href = 'lawyerList.html';
+			}
+		} else {
+			//查案件
+			var getMsg = $.cookie('searchCase');
+			getMsg = JSON.parse(getMsg);
+			getMsg.res = resObj;
+			$.cookie('searchCase', JSON.stringify(getMsg), {
+				path: '/'
+			}); //找案件存储cookie
+			$.cookie('caseList', '', {
+				expires: -1,
+				path: '/'
+			});
+			if(fromPage) {
+				window.location.href = 'caseList.html?fromPage=' + fromPage;
+			} else {
+				window.location.href = 'caseList.html';
+			}
+		}
+
+	})
 
 });
 
@@ -144,11 +322,20 @@ function caseFoud(knowledge, caseDes, callback) {
 						}
 					});
 					if(!isMatch) {
-						//表示没有等于1的匹配的需要模态框来进行选择
-						$('#selectResModal').modal({
-							backdrop: 'static',
-							show: true
-						});
+						var csWidth = document.body.clientWidth;
+						console.log(csWidth);
+						if(csWidth < 500) {
+							//表示是手机端\
+							$('#selectPhone').show();
+						} else {
+							//表示没有等于1的匹配的需要模态框来进行选择
+							$('#selectResModal').modal({
+								backdrop: 'static',
+								show: true
+							});
+							$('#selectPhone').hide();
+						}
+
 					}
 				} else {
 					//大于三十个字的直接用返回的第一个案由进行搜索
@@ -161,11 +348,20 @@ function caseFoud(knowledge, caseDes, callback) {
 					}
 				}
 			} else {
-				//根据字段匹配失败 但是还是要用户选择
-				$('#selectResModal').modal({
-					backdrop: 'static',
-					show: true
-				});
+				var csWidth = document.body.clientWidth;
+				console.log(csWidth);
+				if(csWidth < 500) {
+					//表示是手机端\
+					$('#selectPhone').show();
+				} else {
+					//根据字段匹配失败 但是还是要用户选择
+					$('#selectResModal').modal({
+						backdrop: 'static',
+						show: true
+					});
+					$('#selectPhone').hide();
+				}
+
 				//errorModal("查询案由失败，错误代码：code=" + res.code + res.msg);
 			}
 		},
@@ -309,7 +505,7 @@ function caseFoud(knowledge, caseDes, callback) {
 							$(this).css('background', '#7daee8').siblings('li').css('background', 'transparent');
 							var selectHtml = $(this).find('span').html().trim();
 							var idx = selectHtml.indexOf('. ');
-							selectHtml = selectHtml.substring(idx+1, selectHtml.length).trim();
+							selectHtml = selectHtml.substring(idx + 1, selectHtml.length).trim();
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
 							var secRes = ul1.find('li').eq(idx1).find('span').html();

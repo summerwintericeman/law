@@ -23,7 +23,7 @@ $(document).ready(function() {
 			return;
 		} else {
 			cookieM = JSON.parse(cookie);
-			var	name = cookieM.name || '',
+			var name = cookieM.name || '',
 				des = cookieM.des || '',
 				province = cookieM.province || '',
 				city = cookieM.city || '',
@@ -94,7 +94,7 @@ $(document).ready(function() {
 			caseType = obj.second_reason;
 		}
 
-		$("#listExplain").html("类似案例：" + caseType );
+		$("#listExplain").html("类似案例：" + caseType);
 		$.ajax({
 			dataType: 'json',
 			url: 'http://47.97.197.176:8888/query/lawyer/lawyer_list', // http://47.92.38.167:8888/  http://47.97.197.176:8888
@@ -230,4 +230,6 @@ $(document).ready(function() {
 	};
 
 	cookieMess();
+
+
 });

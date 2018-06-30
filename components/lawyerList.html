@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<link rel="stylesheet" type="text/css" href="../css/lawyerList.css" />
 		<!--<link rel="icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon">-->
-	<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="../img/fabaobei_favicon.ico" mce_href="../img/fabaobei_favicon.ico" type="image/x-icon" />
 		<title>推荐律师</title>
 	</head>
 
@@ -25,12 +25,12 @@
 			</div>
 			<div id="listExplain">
 				<p>
-					
+
 				</p>
 			</div>
 
 			<ul class="center-block parentUl">
-				
+
 			</ul>
 			<div class="pagerWrap m-style "></div>
 		</div>
@@ -78,25 +78,61 @@
 				</div>
 			</div>
 		</div>
+		<div id="selectPhone">
+			<span>*(必填项)　</span><span>二级案由</span>
 
+			<select id="phonereason2">
+				<option value="请选择二级案由">请选择二级案由</option>
+				<option value="劳动争议、人事争议">劳动争议、人事争议</option>
+				<option value="侵权责任纠纷">侵权责任纠纷</option>
+				<option value="海事海商纠纷">海事海商纠纷</option>
+				<option value="人格权纠纷">人格权纠纷</option>
+				<option value="适用特殊程序案件案由">适用特殊程序案件案由</option>
+				<option value="婚姻家庭、继承纠纷">婚姻家庭、继承纠纷</option>
+				<option value="物权纠纷">物权纠纷</option>
+				<option value="与公司、证券、保险、票据等有关的民事纠纷">与公司、证券、保险、票据等有关的民事纠纷</option>
+				<option value="知识产权与竞争纠纷">知识产权与竞争纠纷</option>
+			</select>
+			<span>(非必填项)　</span><span>三级案由</span>
 
+			<select id="phonereason3">
+				<option value="请选择三级案由">请选择三级案由</option>
+
+			</select>
+			<span>(非必填项)　</span><span>四级案由</span>
+
+			<select id="phonereason4">
+				<option value="请选择四级案由">请选择四级案由</option>
+
+			</select>
+			<span>(非必填项)　</span><span>五级案由</span>
+
+			<select id="phonereason5">
+				<option value="请选择五级案由">请选择五级案由</option>
+
+			</select>
+			<span >你最终选择的案由是：</span><br />
+			<input id="choiced" type="text" placeholder="这里将展示您选择的案由" />
+			<button id="searchResult">确定</button><br />
+			<span>*注意：<br />1.由于您输入的内容较短推荐您用选择案由的办法进行搜索 <br/>2.案由选择请从上往下选择</span>
+		</div>
 	</body>
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script>
 		$('#header').load('common/header.html', function() {
-            function getUrlParam(name, pare) {
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-                var r = window.location.search.substr(1).match(reg); //匹配目标参数
-                if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
-                return null; //返回参数值
-            };
-		    var page = getUrlParam('fromPage');
-		    if(page && page=='property'){
-		        $('.mainWrap .path a').eq(0).html('找律师').attr('href','propery.html');
-                $('.top_nav .navbar-nav li').removeClass('active').eq(2).addClass('active');
-			}else{
-                $('.top_nav .navbar-nav li').removeClass('active').eq(1).addClass('active');
+			function getUrlParam(name, pare) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+				var r = window.location.search.substr(1).match(reg); //匹配目标参数
+				if(r != null) return pare ? decodeURIComponent(r[2]) : unescape(r[2]);
+				return null; //返回参数值
+			};
+			var page = getUrlParam('fromPage');
+			if(page && page == 'property') {
+				$('.mainWrap .path a').eq(0).html('找律师').attr('href', 'propery.html');
+				$('.top_nav .navbar-nav li').removeClass('active').eq(2).addClass('active');
+			} else {
+				$('.top_nav .navbar-nav li').removeClass('active').eq(1).addClass('active');
 			}
 
 		});
