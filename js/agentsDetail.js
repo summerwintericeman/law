@@ -398,43 +398,33 @@ $(document).ready(function() {
 			}
             
 		});
-//		var myChart0 = echarts.init(document.getElementById('rateChart0'));
-//		var option = {
-//			title: {
-//				text: '',
-//				subtext: '',
-//				x: 'center'
-//			},
-//			tooltip: {
-//				trigger: 'item',
-//				formatter: "{a} <br/>{b} : {c} ({d}%)"
-//			},
-//			legend: {
-//				orient: 'vertical',
-//				x: 'left',
-//				data: nameList
-//			},
-//			series: [{
-//				name: '',
-//				type: 'pie',
-//				radius: '55%',
-//				center: ['50%', '70%'],
-//				labelLine: {
-//					normal: {
-//						show: true
-//					}
-//				},
-//				data: mapDataArr,
-//				itemStyle: {
-//					emphasis: {
-//						shadowBlur: 10,
-//						shadowOffsetX: 0,
-//						shadowColor: 'rgba(0, 0, 0, 0.5)'
-//					}
-//				}
-//			}]
-//		};
-//		myChart0.setOption(option);
+
+
+		var chart = $('#rateChart0').highcharts();
+        var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        if(winWidth<1024){
+            chart.legend.update({
+                layout: 'horizontal',
+                backgroundColor: '#FFFFFF',
+                align: 'center',
+                verticalAlign: 'top',
+                itemStyle: {
+                    fontSize: '12px'
+                }
+            });
+            chart.update({
+                plotOptions:{
+                    pie:{
+                        dataLabels:{
+                            enabled:false
+                        }
+                    }
+				}
+
+            })
+		}
+
+
 	}
 
 	var resizeTimer;

@@ -196,6 +196,19 @@
 	color: #f99800;
 }
 
+@media only screen and (max-width: 1024px){
+	#agentsDetail .chartWrap .allMap{
+		padding: .1rem;
+	}
+	#agentsDetail .chartWrap .allMap #rateChart0{
+		height:4.5rem!important;
+	}
+	#agentsDetail .chartWrap .allMap>p.tipText{
+		top:.1rem;
+	}
+}
+
+
 @media only screen and (max-width: 480px) {
 	#agentsDetail .userMsg1 {
 		width: 100%;

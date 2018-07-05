@@ -123,6 +123,7 @@ p {
 
 .mainWrap {
 	min-height: 8.14rem;
+	overflow: hidden;
 }
 
 .button {
@@ -716,9 +717,27 @@ textarea {
 	background-color: #216FCB;
 	border-radius: 0.05rem;
 }
-
 @media only screen and (max-width: 420px) {
 	#property .mainWrap .nav>li>a {
 		padding: .1rem .05rem;
+	}
+	.tab-content {
+		overflow: scroll !important;
+	}
+	/*#rateChart0 {*/
+		/*width: 3.5rem !important;*/
+	/*}*/
+	#rateChart1 {
+		width: 3.5rem !important;
+	}
+	.explainMess {
+		display: none !important;
+	}
+	.mainWrap {
+		min-height: 4.14rem !important;
+	}
+	.messMap{
+		width: 3.5rem !important;
+	     min-width: 3.5rem !important;
 	}
 }

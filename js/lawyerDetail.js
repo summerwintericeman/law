@@ -18,21 +18,21 @@ $(function() {
 
 	//图表重绘
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		if(myChart1){
-            myChart1.resize();
+		if(myChart1) {
+			myChart1.resize();
 		}
-		if(myChart0){
-            myChart0.resize();
+		if(myChart0) {
+			myChart0.resize();
 		}
 
 	});
 	window.onresize = function() {
-        if(myChart1){
-            myChart1.resize();
-        }
-        if(myChart0){
-            myChart0.resize();
-        }
+		if(myChart1) {
+			myChart1.resize();
+		}
+		if(myChart0) {
+			myChart0.resize();
+		}
 	}
 
 	//请求律师详情
@@ -90,7 +90,7 @@ $(function() {
 				var maxCountReason = "";
 				var reasonNum = "reason2";
 				$.each(res.data.detail[0], function(idx, ele) {
-					if(idx == "reason3" || idx == "reason4" || idx =="reason5"){
+					if(idx == "reason3" || idx == "reason4" || idx == "reason5") {
 						reasonNum = idx;
 					}
 				})
@@ -152,9 +152,9 @@ $(function() {
 					$.each(res.data.detail, function(idx, ele) {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
 						var nodeDoWell = '';
-						if(ele[reasonNum] == maxCountReason){
+						if(ele[reasonNum] == maxCountReason) {
 							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(类似)(${ele.count})</i></span>`;
-						}else{
+						} else {
 							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(${ele.count})</i></span>`;
 						}
 						var tempIdx = 3;
@@ -162,13 +162,22 @@ $(function() {
 							tempIdx = 2;
 						}
 						if(idx < tempIdx) {
-							
+
 							$('#dowell').append(nodeDoWell);
 						}
 					})
 				}
 				getDoWellFn();
 				//绘制图表 案由图表
+
+				var echartsWarp = document.getElementById('rateChart0');
+				var resizeWorldMapContainer = function() { //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+					if(window.innerWidth < 400){
+						//echartsWarp.style.width = 200+ "px";
+					    echartsWarp.style.height = 200 + 'px';
+					}
+				};
+				resizeWorldMapContainer(); //设置容器高宽
 				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
@@ -208,6 +217,15 @@ $(function() {
 
 				myChart0.setOption(option);
 				//绘制第二个图表律师胜诉
+				var echartsWarp1 = document.getElementById('rateChart1');
+				var resizeWorldMapContainer1 = function() { 
+					//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+					if(window.innerWidth < 400){
+						echartsWarp1.style.width = 200+ "px";
+					    echartsWarp1.style.height = 200 + 'px';
+					}
+				};
+				resizeWorldMapContainer1(); //设置容器高宽
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
 				var option1 = {
 					title: {

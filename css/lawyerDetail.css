@@ -1,7 +1,7 @@
 #lawyerDetail .mainWrap {
 	margin-top: .42rem;
 	background: #fff;
-	padding: .25rem 10%;
+	padding: .25rem 2%;
 }
 
 #lawyerDetail .mainWrap .path {
@@ -200,6 +200,7 @@
 	height: 3.9rem;
 	padding: 0.2rem;
 	width: 100%;
+	overflow: hidden;
 }
 
 #home {
