@@ -100,7 +100,7 @@ $(document).ready(function() {
 		console.log(e)
 		console.log(e.target.value);
 		phoneReason2 = e.target.value;
-	}).click(function(e) {
+	}).change(function(e) {
 		console.log(e.target.value);
 		if(e.target.value != phoneReason2) {
 			phoneReason2 = e.target.value;
@@ -116,7 +116,7 @@ $(document).ready(function() {
 		console.log(e)
 		console.log(e.target.value);
 		phoneReason3 = e.target.value;
-	}).click(function(e) {
+	}).change(function(e) {
 		console.log(e.target.value);
 		if(e.target.value != phoneReason2) {
 			phoneReason3 = e.target.value;
@@ -131,7 +131,7 @@ $(document).ready(function() {
 		console.log(e)
 		console.log(e.target.value);
 		phoneReason4 = e.target.value;
-	}).click(function(e) {
+	}).change(function(e) {
 		console.log(e.target.value);
 		if(e.target.value != phoneReason4) {
 			phoneReason4 = e.target.value;
@@ -145,7 +145,7 @@ $(document).ready(function() {
 		console.log(e)
 		console.log(e.target.value);
 		phoneReason5 = e.target.value;
-	}).click(function(e) {
+	}).change(function(e) {
 		console.log(e.target.value);
 		if(e.target.value != phoneReason5) {
 			phoneReason5 = e.target.value;

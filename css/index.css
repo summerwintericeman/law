@@ -740,4 +740,22 @@ textarea {
 		width: 3.5rem !important;
 	     min-width: 3.5rem !important;
 	}
+	#carousel-example-generic{
+		display: none;
+	}
+	#index .choice li{
+		
+	}
+	#indexBody{
+		background-image: url(../img/index/legal_adviser.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	#profile .messMap{
+		width: 3.5rem !important;
+	}
+	.city-picker-span{
+		border: .01rem solid #ccc !important;
+	}
 }

@@ -171,19 +171,23 @@ $(function() {
 				//绘制图表 案由图表
 
 				var echartsWarp = document.getElementById('rateChart0');
+				var Position0 = "left";
+				var title0 = "案由分布情况";
 				var resizeWorldMapContainer = function() { //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 					if(window.innerWidth < 400){
 						//echartsWarp.style.width = 200+ "px";
-					    echartsWarp.style.height = 200 + 'px';
+					    echartsWarp.style.height = 300 + 'px';
+					    Position0 = "center";
+					    title0 = "";
 					}
 				};
 				resizeWorldMapContainer(); //设置容器高宽
-				myChart0 = echarts.init(document.getElementById('rateChart0'));
+				myChart0 = echarts.init(document.getElementById('rateChart0'));				
 				var option = {
 					title: {
-						text: '案由分布情况',
+						text: title0,
 						subtext: '',
-						x: 'center'
+						x: "center"
 					},
 					tooltip: {
 						trigger: 'item',
@@ -191,7 +195,7 @@ $(function() {
 					},
 					legend: {
 						orient: 'vertical',
-						x: 'left',
+						x: Position0,
 						data: nameList
 					},
 					series: [{
@@ -217,19 +221,23 @@ $(function() {
 
 				myChart0.setOption(option);
 				//绘制第二个图表律师胜诉
+				var Position1 = "left";
+				var title1 = "类似案件代理结果";
 				var echartsWarp1 = document.getElementById('rateChart1');
 				var resizeWorldMapContainer1 = function() { 
 					//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 					if(window.innerWidth < 400){
-						echartsWarp1.style.width = 200+ "px";
-					    echartsWarp1.style.height = 200 + 'px';
+//						echartsWarp1.style.width = 200+ "px";
+					    echartsWarp1.style.height = 300 + 'px';
+					    Position1 = "center";
+				        title1 = "";
 					}
 				};
 				resizeWorldMapContainer1(); //设置容器高宽
 				myChart1 = echarts.init(document.getElementById('rateChart1'));
 				var option1 = {
 					title: {
-						text: '类似案件代理结果',
+						text: title1,
 						subtext: '',
 						x: 'center'
 					},
@@ -239,7 +247,7 @@ $(function() {
 					},
 					legend: {
 						orient: 'vertical',
-						x: 'left',
+						x: Position1,
 						data: nameList1
 					},
 					series: [{
