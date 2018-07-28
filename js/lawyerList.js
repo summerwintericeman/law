@@ -115,7 +115,6 @@ $(document).ready(function() {
 					});
 					if(listflag) {
 						creatPage(res.max_page_num, page_num);
-
 						$('.pagerWrap').pagination({
 							pageCount: res.max_page_num,
 							totalData: 12 * res.max_page_num,
@@ -127,11 +126,11 @@ $(document).ready(function() {
 								pagerGo(api);
 							}
 						});
-
+						
 						listflag = false;
 					}
 
-					//清空数据重新加载新数据
+					//清空数据重新加载新数据					
 					ulNote.empty();
 					for(var i = 0; i < res.data.length; i++) {
 						createLawList(res.data[i]);
@@ -160,29 +159,9 @@ $(document).ready(function() {
 			num: obj.num || '',
 			degree: obj.degree || ''
 		};
-		var noteNew = `<li class="lipad mouseHand">
-            <a href="lawyerDetail.html?lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}"  class="contant">
-                <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
-                <p class="info">
-                    <span>类似案例一审案件代理数量：<i>${newObj.num}</i> <i>起</i></span>
-                </p>
-                <span class="details btn contant">查看详情</span>
-            </a>
-            
-        </li>`;
+		var noteNew = '<li class="lipad mouseHand"><a href="lawyerDetail.html?lawyer_name=' + newObj.__name + '&lawyer_location=' + newObj.__location + '&caseNum=' + newObj.num + '"class="contant"><p class="name"><span class="pull-left">' + newObj.name + '</span><i>' + newObj.gender + '</i></p><p class="location"><i class="glyphicon glyphicon-map-marker"></i>' + newObj._location + '</p><p class="info"><span>类似案例一审案件代理数量：<i>' + newObj.num + '</i> <i>起</i></span></p><span class="details btn contant">查看详情</span></a></li>';
 		if(fromPage && fromPage == 'property') {
-			noteNew = `<li class="lipad mouseHand">
-            <a href="lawyerDetail.html?fromPage=property&lawyer_name=${newObj.__name}&lawyer_location=${newObj.__location}&caseNum=${newObj.num}"  class="contant">
-                <p class="name"><span class="pull-left">${newObj.name}</span><i>${newObj.gender}</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${newObj._location}</p>
-                <p class="info">
-                    <span>类似案例一审案件代理数量：<i>${newObj.num}</i> <i>起</i></span>
-                </p>
-                <span class="details btn contant">查看详情</span>
-            </a>
-            
-        </li>`;
+			noteNew = '<li class="lipad mouseHand"><a href="lawyerDetail.html?fromPage=property&lawyer_name=' + newObj.__name + '&lawyer_location=' + newObj.__location + '&caseNum=' + newObj.num + '"  class="contant"><p class="name"><span class="pull-left">' + newObj.name + '</span><i>' + newObj.gender + '</i></p><p class="location"><i class="glyphicon glyphicon-map-marker"></i>' + newObj._location + '</p><p class="info"><span>类似案例一审案件代理数量：<i>' + newObj.num + '</i> <i>起</i></span></p><span class="details btn contant">查看详情</span></a></li>';
 		}
 		ulNote.append(noteNew);
 	};
@@ -193,13 +172,9 @@ $(document).ready(function() {
 		for(var i = 1; i <= num; i++) {
 			var noteNew;
 			if(i == page_num) {
-				noteNew = `<li class="changePage active pageNum mouseHand">
-					<a>${i}</a>
-				</li>`;
+				noteNew = '<li class="changePage active pageNum mouseHand"><a>' + i + '</a></li>';
 			} else {
-				noteNew = `<li class="changePage pageNum mouseHand">
-					<a>${i}</a>
-				</li>`;
+				noteNew = '<li class="changePage pageNum mouseHand"><a>' + i + '</a></li>';
 			}
 			liNote.before(noteNew);
 		}
@@ -210,9 +185,11 @@ $(document).ready(function() {
 		//获得页数
 		all.listnum = curIdx;
 		var tempCoo = JSON.stringify(all);
+		console.log("3")
 		$.cookie('all', tempCoo, {
 			path: '/'
 		});
+		console.log("4")
 		//获取对应页数的页面信息
 		//console.log(all);
 		//通过all 来进行参数的给予
@@ -230,6 +207,5 @@ $(document).ready(function() {
 	};
 
 	cookieMess();
-
 
 });

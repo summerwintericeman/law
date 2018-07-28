@@ -59,30 +59,14 @@ $(document).ready(function() {
 
 	//添加基本信息节点
 	(function() {
-		var node1 = `<div class="clearfix msgWrap">
-						<div class="pull-left userMsg">
-							<img src="../img/default-big.jpg" onerror="this.src='../img/default-big.jpg'">
-							</div>
-							<div class="pull-left userMsg1">
-						<h3><span>${getPer}　　</span><span>事务所：${com || '--'}</span></h3>
-						<div class="lawyerMsg clearfix">
-						<p><span>执业证号</span><i>${agentMsg.certNo || '--'}</i></p>
-						<p><span>性别</span><i>${agentMsg.gender || '--'}</i></p>
-						<p class="zhuanliNum"><span>代理总数</span><i></i></p>
-						</div>
-						</div>
-						</div>
-						 <div class="caseType">
-						<p>
-						<i></i>
-						<span class="text-strong font-16 " id = 'dowell'>代理专利类型分布:</span>
-						</p>
-						 <p>
-						<i></i>
-						<span class="text-strong font-16">代理专利详情:</span>
-						<ul class="node2List"></ul>
-						</p>
-						</div>`;
+		var comStr = com || '--';
+		var agentMsgcertNo = agentMsg.certNo || '--';
+		var agentMsggender = agentMsg.gender || '--';
+		var node1 = '<div class="clearfix msgWrap"><div class="pull-left userMsg">';
+		node1 +='<img src="../img/default-big.jpg"onerror="this.src=\'../img/default-big.jpg\'"></div><div class="pull-left userMsg1"><h3><span>' + getPer;
+　		node1 += '</span><span>事务所：'+ comStr + '</span></h3><div class="lawyerMsg clearfix"><p><span>执业证号</span><i>';
+		node1 += agentMsgcertNo + '</i></p><p><span>性别</span><i>' + agentMsggender ;
+		node1 += '</i></p><p class="zhuanliNum"><span>代理总数</span><i></i></p></div></div></div><div class="caseType"><p><i></i><span class="text-strong font-16 " id = "dowell">代理专利类型分布:</span></p><p><i></i><span class="text-strong font-16">代理专利详情:</span><ul class="node2List"></ul></p></div>';
 		parNode.append(node1);
 
 		agentsDetail(function(res) {
@@ -132,7 +116,7 @@ $(document).ready(function() {
 								val
 							]);
 							nameList.push(key);
-							var nodeDoWell = `<span> ${key}<i style="color:red;"> (${val})</i>　</span>`;
+							var nodeDoWell = '<span>' + key + '<i style="color:red;">(' +  val + ')</i>　</span>';
 							$('#dowell').append(nodeDoWell);
 					}
 					
@@ -170,15 +154,9 @@ $(document).ready(function() {
 				//遍历数组进行添加
 				for(var i = 0; i < 1; i++) {
 					var obj = res.data.data[i];
-					var addNode = `<li class='eachContent'><h3>
-					<span>1. <i class="LowTitle text-strong">${obj.dev_name}</i> </span></h3>
-                    <p class="com">
-                        <span><i class="LowTitle text-strong">专利类型:</i> ${obj.patent_type}</span>
-                        <br/>
-                        <span><i class="LowTitle text-strong">专利描述:</i> ${obj.abstract}</span>
-                        <br/>
-                    <span><i class="LowTitle text-strong">专利号/日期:</i> ${obj.patent_no} / ${obj.public_date}</span>
-                    </p> </li>`;
+					var addNode = '<li class="eachContent"><h3><span>1. <i class="LowTitle text-strong">' + obj.dev_name + '</i> </span></h3><p class="com"><span><i class="LowTitle text-strong">专利类型:</i>'; 
+                        addNode += obj.patent_type + '</span><br/><span><i class="LowTitle text-strong">专利描述:</i>' + obj.abstract + '</span><br/><span><i class="LowTitle text-strong">专利号/日期:</i>';
+                        addNode += obj.patent_no +  "/"  + obj.public_date + '</span></p> </li>';
 					$('ul.node2List').append(addNode);
 				}
 

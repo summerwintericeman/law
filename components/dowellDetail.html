@@ -70,7 +70,7 @@
 
 		<div id="footer"></div>
 	</body>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 	<script>
 		$('#header').load('common/header.html', function() {
@@ -168,7 +168,7 @@
 									"mess": ''
 								}
 							];
-							var detailNodeHead = `<h3 class="title">${res.data.title}</h3>`;
+							var detailNodeHead = '<h3 class="title">' + res.data.title + '</h3>';
 							$("#dowellMain").append(detailNodeHead);
 							var courtAll = {};
 							$.each(res.data, function(key, ele) {
@@ -184,25 +184,16 @@
 								}
 							});
 							for(var i = 0; i < allList.length; i++) {
-								var Node = `<div class="paragraph">
-													<h3>${allList[i].name}</h3>
-													<p>${allList[i].mess}</p>
-											</div>`;
+								var Node = '<div class="paragraph"><h3>' +  allList[i].name +  '</h3><p>' + allList[i].mess + '</p></div>';
 								if(allList[i].name1 == "courtAll") {
-									Node = `<div class="baseMsg text-center">
-												<h3 class="text-center">${allList[i].mess.court}</h3>
-												<span class="caseType">${allList[i].mess.case_type1}</span><span class="caseNum pull-right">${allList[i].mess.case_num}</span>
-											</div>`;
+									Node = '<div class="baseMsg text-center"><h3 class="text-center">' + allList[i].mess.court + '</h3><span class="caseType">' +  allList[i].mess.case_type1 + '</span><span class="caseNum pull-right">' + allList[i].mess.case_num + '</span></div>';
 								}
 								if(allList[i].name1 == "party_info") {
 									var temp = allList[i].mess;
 									//标签并没有闭合
 									temp = temp.replace(/\n/g, '<br/><p>');
 									console.log(temp);
-									Node = `<div class="paragraph">
-													<h3>${allList[i].name}</h3>
-													<p>${temp}</p>
-											</div>`;
+									Node = '<div class="paragraph"><h3>' + allList[i].name + '</h3><p>'  +  temp + '</p></div>';
 								}
 								$("#dowellMain").append(Node);
 							}

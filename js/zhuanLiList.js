@@ -67,15 +67,8 @@ $(document).ready(function() {
     //创建节点
     function creatNode(data){
         $.each(data,function(i,ele){
-            var node=`<li class="eachContent" ZLnum='${ele.patent_no}'>
-                    <h3>
-                        <span><i class="LowTitle text-strong">${ele.dev_name}</i> </span></h3>
-                    <p class="com">
-                        <span><i class="LowTitle text-strong">专利类型:</i> ${ele.patent_type}</span>
-                        <span><i class="LowTitle text-strong">专利描述:</i> ${ele.abstract}</span>
-                        <span><i class="LowTitle text-strong">专利号/日期:</i> ${ele.patent_no} / ${ele.public_date}</span>
-                    </p>
-                </li>`;
+            var node= '<li class="eachContent" ZLnum=' + ele.patent_no + '><h3><span><i class="LowTitle text-strong">'+ ele.dev_name + </i> </span></h3><p class="com"><span><i class="LowTitle text-strong">专利类型:</i>'; 
+                node+=  ele.patent_type + '</span><span><i class="LowTitle text-strong">专利描述:</i>' + ele.abstract + '</span><span><i class="LowTitle text-strong">专利号/日期:</i>' +  ele.patent_no + '/' + ele.public_date + '</span></p></li>';
             ulNode.append(node);
         });
 

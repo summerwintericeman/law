@@ -52,33 +52,39 @@ $(function() {
 			console.log(res.data.detail);
 			console.log(resKey);
 			if(res.code == 0) {
-				var node1 = `
-    								<div class="clearfix msgWrap">
-									<div class="pull-left userMsg">
-										<img src="${res.data.pic_url}" onerror="this.src='../img/default-big.jpg'">
-										</div>
-										<div class="pull-left userMsg1">
-									<h3><span>${name}　　</span><span>事务所：${_loction || '--'}</span></h3>
-									<div class="lawyerMsg clearfix">
-									<p><span>执业证号</span><i>${res.data.license_no || '--'}</i></p>
-									<p><span>性别</span><i>${res.data.gender || '--'}</i></p>
-									<p><span>执业年限</span><i>${res.data.license_year || '--'} 年</i></p>
-									<p><span>学历</span><i>${res.data.degree || '--'}</i></p>
-									<p><span>收录案件总数</span><i>${res.data.total_count|| '--'}起</i></p>
-									</div>
-									</div>
-									</div>
-   									 <div class="caseType">
-							        <p>
-							        <i></i>
-							        <span class="text-strong font-16 " id = 'dowell'>擅长领域:</span>
-							        </p>
-							         <p>
-							        <i></i>
-							        <span class="text-strong font-16">代理类似案例(类似案例一审判决案件)数量:${res.data.judge_count || '--'}起</span>
-							        <ul class="node2List"></ul>
-							        </p>
-							        </div>`;
+				var node1 = '<div class="clearfix msgWrap"><div class="pull-left userMsg"><img src=" '
+				node1 += res.data.pic_url + '" onerror="this.src=\'../img/default-big.jpg\'"></div><div class="pull-left userMsg1"><h3><span>'
+				node1 += name + '</span><span>事务所：' + _loction + '</span></h3><div class="lawyerMsg clearfix"><p><span>执业证号</span><i>'
+				node1 += res.data.license_no
+				node1 += '</i></p>'
+				node1 += '<p><span>性别</span><i>'
+				node1 += res.data.gender
+				node1 += '</i></p>'
+				node1 += '<p><span>执业年限</span><i>'
+				node1 += res.data.license_year
+				node1 += '年</i></p>'
+				node1 += '<p><span>学历</span><i>'
+				node1 += res.data.degree
+				node1 += '</i></p>'
+				node1 += '<p><span>收录案件总数</span><i>'
+				node1 += res.data.total_count
+				node1 += '起</i></p>'
+				node1 += '</div>'
+				node1 += '</div>'
+				node1 += '</div>'
+				node1 += '<div class="caseType">'
+				node1 += '<p>'
+				node1 += '<i></i>'
+				node1 += '<span class="text-strong font-16 " id = "dowell">擅长领域:</span>'
+				node1 += '</p>'
+				node1 += '<p>'
+				node1 += '<i></i>'
+				node1 += '<span class="text-strong font-16">代理类似案例(类似案例一审判决案件)数量:'
+				node1 += res.data.judge_count
+				node1 += '起</span>'
+				node1 += '<ul class="node2List"></ul>'
+				node1 += '</p>'
+				node1 += '</div>';
 				parentNode.append(node1);
 				//console.log(res.data.detail);
 				var reasonList = [],
@@ -114,7 +120,7 @@ $(function() {
 							maxIndex = idx;
 							maxCountReason = res.data.detail[idx][reasonNum];
 							//擅长领域需要的数据
-							var choiceDoWell = `　　<span>${res.data.detail[maxIndex][reasonNum] || '--'}<i>(类似)(${res.data.detail[maxIndex].count})</i></span>`;
+							var choiceDoWell = 　　'<span>' + res.data.detail[maxIndex][reasonNum] || '--' + '<i>(类似)(' + res.data.detail[maxIndex].count + ')</i></span>';
 							if(maxIndex >= 3) { //前三个不存在推荐案由
 								$('#dowell').append(choiceDoWell);
 							}
@@ -137,9 +143,9 @@ $(function() {
 							var page = getUrlParam('fromPage');
 							for(var i = 0; i < res.data.detail[idx].doc.length; i++) {
 								if(i < 3) { //最多添加三个
-									var node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}'>　　${res.data.detail[idx].doc[i].title}</a></li>`;
+									var node2 = '<li><a href="./dowellDetail.html?wenshu=' + res.data.detail[idx].doc[i].wenshu_id + '&reason=' + maxCountReason + '>'　　+ res.data.detail[idx].doc[i].title + '</a></li>';
 									if(page && page == 'property') {
-										node2 = `<li><a href='./dowellDetail.html?wenshu=${res.data.detail[idx].doc[i].wenshu_id}&reason=${maxCountReason}&fromPage=property'>　　${res.data.detail[idx].doc[i].title}</a></li>`;
+										node2 = '<li><a href="./dowellDetail.html?wenshu=' + res.data.detail[idx].doc[i].wenshu_id + '&reason=' + maxCountReason + '&fromPage=property>'　　+ res.data.detail[idx].doc[i].title + '</a></li>';
 									}
 									$('.node2List').append(node2);
 								}
@@ -153,9 +159,9 @@ $(function() {
 						//擅长领域需要的数据只需要最多三种  并且至少有一个是推荐案由
 						var nodeDoWell = '';
 						if(ele[reasonNum] == maxCountReason) {
-							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(类似)(${ele.count})</i></span>`;
+							nodeDoWell = '　　<span>' + ele[reasonNum] || '--' + '<i>(类似)(' +  ele.count + ')</i></span>';
 						} else {
-							nodeDoWell = `　　<span>${ele[reasonNum] || '--'}<i>(${ele.count})</i></span>`;
+							nodeDoWell = '　　<span>' + ele[reasonNum] || '--' + '<i>(' + ele.count + ')</i></span>';
 						}
 						var tempIdx = 3;
 						if(maxIndex >= tempIdx) { //前三个不存在推荐案由
@@ -174,15 +180,15 @@ $(function() {
 				var Position0 = "left";
 				var title0 = "案由分布情况";
 				var resizeWorldMapContainer = function() { //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-					if(window.innerWidth < 400){
+					if(window.innerWidth < 400) {
 						//echartsWarp.style.width = 200+ "px";
-					    echartsWarp.style.height = 300 + 'px';
-					    Position0 = "center";
-					    title0 = "";
+						echartsWarp.style.height = 300 + 'px';
+						Position0 = "center";
+						title0 = "";
 					}
 				};
 				resizeWorldMapContainer(); //设置容器高宽
-				myChart0 = echarts.init(document.getElementById('rateChart0'));				
+				myChart0 = echarts.init(document.getElementById('rateChart0'));
 				var option = {
 					title: {
 						text: title0,
@@ -224,13 +230,13 @@ $(function() {
 				var Position1 = "left";
 				var title1 = "类似案件代理结果";
 				var echartsWarp1 = document.getElementById('rateChart1');
-				var resizeWorldMapContainer1 = function() { 
+				var resizeWorldMapContainer1 = function() {
 					//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-					if(window.innerWidth < 400){
-//						echartsWarp1.style.width = 200+ "px";
-					    echartsWarp1.style.height = 300 + 'px';
-					    Position1 = "center";
-				        title1 = "";
+					if(window.innerWidth < 400) {
+						//						echartsWarp1.style.width = 200+ "px";
+						echartsWarp1.style.height = 300 + 'px';
+						Position1 = "center";
+						title1 = "";
 					}
 				};
 				resizeWorldMapContainer1(); //设置容器高宽

@@ -35,18 +35,12 @@ $(document).ready(function() {
             judgement_date:data.judgement_date || '',
             source_url:data.source_url || ''
         }
-        var liNode = `<li>
-            <a href="${newObj.source_url}"  target="_blank"  class="contant">
-                <p class="title text-strong">${newObj.title}</p>
-                <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
-                <p class="info">
-                    <span>案件编号：${newObj.case_num}</span>
-                    <span>审判日期：${newObj.judgement_date}</span>
-                </p>
-                <span class="details btn contant">查看详情</span>
-            </a>
-            
-        </li>`
+        var liNode = '<li><a href="' + newObj.source_url + '"  target="_blank"  class="contant"><p class="title text-strong">' ;
+            liNode+= newObj.title + '</p><p class="court">审判法院：';
+            liNode+= newObj.court + 　'（' ;
+            liNode+= newObj.judicial_procedure + '）</p><p class="info"><span>案件编号：' ;
+            liNode+= newObj.case_num + '</span><span>审判日期：' ;
+            liNode+= newObj.judgement_date + '</span></p><span class="details btn contant">查看详情</span></a> </li>';
         ulNote.append(liNode);
     };
 

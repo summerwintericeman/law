@@ -61,24 +61,14 @@ $(document).ready(function() {
 		if(!data.patent_data) {
 			data.patent_data = {};
 		}
-		var liNode = `<li data='${paramData}'>
-            <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
-                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i>收录专利数量: ${data.patent_data.count || '--'}</i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
-				<span class="details btn">查看详情</span>
-            </a>
-            
-        </li>`;
+		var liNode = '<li data=' + paramData + '><a href="agentsDetail.html?per=' +  cp_name + '&com=' +  Location + '"class="contant"><p class="name"><span class="pull-left">' + cp_name + '</span><i>' + data.gender + '</i><i>专业:';
+		liNode +=  data.major + '</i><i>收录专利数量:' + data.patent_data.count + '</i></p><p class="location"><i class="glyphicon glyphicon-map-marker"></i>' + Location + '</p><span class="details btn">查看详情</span></a></li>';
 		if(!data.patent_data.count) {
 			//没有条数的时候是不显示的 理论上别的都有这个应该也有
-			liNode = `<li data='${paramData}'>
-            <a href="agentsDetail.html?per=${cp_name || '--'}&com=${Location || '--'}"  class="contant">
-                <p class="name"><span class="pull-left">${cp_name || '--'}</span><i>${data.gender || '--'}</i><i>专业: ${data.major || '--'}</i><i></i></p>
-                <p class="location"><i class="glyphicon glyphicon-map-marker"></i>${Location}</p>
-				<span class="details btn">查看详情</span>
-            </a>
-            
-        </li>`;
+			liNode = '<li data=' + paramData + '>';
+			liNode += '<a href="agentsDetail.html?per=' + cp_name + '&com=' +  Location +'"  class="contant">';
+            liNode += '<p class="name"><span class="pull-left">' + cp_name + '</span><i>' +  data.gender + '</i><i>专业:' +  data.major + '</i><i></i></p>';
+            liNode +=  '<p class="location"><i class="glyphicon glyphicon-map-marker"></i>' +  Location + '</p><span class="details btn">查看详情</span></a></li>';
 		}
 		//		  <p class="info text-strong">
 		//                  <span>证书编号：<i>${data.certNo}</i></span>

@@ -117,33 +117,14 @@ $(document).ready(function() {
 			source_url: data.source_url || ''
 		}
 
-		var liNode = `<li>
-            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}"    class="contant">
-                <p class="title text-strong">${newObj.title}</p>
-                <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
-                <p class="info">
-                    <span>案件编号：${newObj.case_num}</span>
-                    <span>审判日期：${newObj.judgement_date}</span>
-                </p>
-                <span class="details btn contant">查看详情</>
-
-            </a>
-            
-        </li>`;
+		var liNode = '<li><a href="./minshianjianDetail.html?wenshu=' + newObj.wenshu_id + '&reason=' + sendReason + '"    class="contant">';
+            liNode += '<p class="title text-strong">' + newObj.title + '</p><p class="court">审判法院：' + newObj.court + "(" + newObj.judicial_procedure + ')' + '</p>';
+            liNode +=  '<p class="info"><span>案件编号：'+  newObj.case_num + '</span><span>审判日期：' +  newObj.judgement_date + '</span></p><span class="details btn contant">查看详情</span></a></li>';
 		var page = getUrlParam('fromPage');
 		if(page && page == 'property') {
-			liNode = `<li>
-            <a href="./minshianjianDetail.html?wenshu=${newObj.wenshu_id}&reason=${sendReason}&fromPage=property"    class="contant">
-                <p class="title text-strong">${newObj.title}</p>
-                <p class="court">审判法院：${newObj.court}　（${newObj.judicial_procedure}）</p>
-                <p class="info">
-                    <span>案件编号：${newObj.case_num}</span>
-                    <span>审判日期：${newObj.judgement_date}</span>
-                </p>
-				<span class="details btn contant">查看详情</span>
-            </a>
-            
-        </li>`;
+			liNode = '<li><a href="./minshianjianDetail.html?wenshu=' + newObj.wenshu_id + '&reason=' + sendReason + '&fromPage=property"    class="contant">';
+            liNode += '<p class="title text-strong">' + newObj.title + '</p><p class="court">审判法院：' + newObj.court + "(" + newObj.judicial_procedure + ')' + '</p>';
+            liNode +=  '<p class="info"><span>案件编号：'+  newObj.case_num + '</span><span>审判日期：' +  newObj.judgement_date + '</span></p><span class="details btn contant">查看详情</span></a></li>';
 		}
 		ulNote.append(liNode);
 	};
@@ -154,13 +135,9 @@ $(document).ready(function() {
 		for(var i = 1; i <= num; i++) {
 			var noteNew;
 			if(i == page_num) {
-				noteNew = `<li class="changePage active pageNum mouseHand">
-					<a>${i}</a>
-				</li>`;
+				noteNew = '<li class="changePage active pageNum mouseHand"><a>'+ i +'</a></li>';
 			} else {
-				noteNew = `<li class="changePage pageNum mouseHand">
-					<a>${i}</a>
-				</li>`;
+				noteNew = '<li class="changePage pageNum mouseHand"><a>' + i + '</a></li>';
 			}
 			liNote.before(noteNew);
 		}

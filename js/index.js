@@ -415,33 +415,10 @@ function caseFoud(knowledge, caseDes, callback) {
 						console.log('请求成功')
 						console.log(res.data);
 						allFloor = res.data;
-
-						//						if(window.reasonObj){
-						//							//案由匹配率为1
-						//							$.each(allFloor, function(i, ele) {
-						//								if(ele.name == window.reasonObj.second_reason){//匹配率为1的案由在此二级案由下
-						//									$.each(ele.sub,function(i3,ele3){
-						//										if(ele3.name == window.reasonObj.third_reason){//匹配率为1的案由  三级案由
-						//											$.each(ele3.sub,function(i4,ele4){
-						//												if(ele4.name == window.reasonObj.res)//匹配率为1的案由  四级案由
-						//											});
-						//											
-						//											
-						//											
-						//											return false;
-						//										}
-						//									});
-						//									return false;//终端遍历
-						//								}
-						//								
-						//							});
-						//							
-						//						}
-
-						$.each(allFloor, function(i, ele) {
-							var tempFloor1 = `<li reason="reason_1">
-                        					    <span>${i+1}. ${ele.name}</span>
-                        				        </li>`;
+						var tempFloor1 = '';
+						$.each(allFloor, function(i, ele) {							
+							var num = i + 1;
+							tempFloor1 =  '<li reason="reason_1"><span>' + num + '.' +  ele.name + '</span></li>';                       				        
 							$(".floor1").append(tempFloor1);
 						});
 						$('li[reason="reason_1"]').on('mouseenter', function() {
@@ -452,10 +429,8 @@ function caseFoud(knowledge, caseDes, callback) {
 							idx1 = $(this).index();
 							secondFloor = allFloor[idx1].sub;
 							$.each(secondFloor, function(i2, e2) {
-								var liNode = `<li reason="reason_3">
-                        					    <span>${i2+1}. ${e2.name}</span>
-                        				        </li>`;
-
+								var num2 = i2+1;
+								var liNode = '<li reason="reason_3"><span>' + num2 + '.' +  e2.name + '</span></li>';
 								ul2.append(liNode);
 							});
 							$('li[reason="reason_3"]').on('mouseenter', function() {
@@ -469,10 +444,8 @@ function caseFoud(knowledge, caseDes, callback) {
 									$(this).addClass('clickNode');
 								}
 								$.each(thirdFloor, function(i3, e3) {
-									var liNode = `<li reason="reason_4">
-                        					    <span>${i3+1}. ${e3.name}</span>
-                        				        </li>`;
-
+									var num3 = i3+1;
+									var liNode = '<li reason="reason_4"><span>' + num3 + '.' +  e3.name + '</span></li>';
 									ul3.append(liNode);
 								});
 								$('li[reason="reason_4"]').on('mouseenter', function() {
@@ -485,9 +458,8 @@ function caseFoud(knowledge, caseDes, callback) {
 										$(this).addClass('clickNode');
 									}
 									$.each(forthFloor, function(i4, e4) {
-										var liNode = `<li reason="reason_5" class="clickNode">
-                        					    <span>${i4+1}. ${e4}</span>
-                        				        </li>`;
+										var num4 = i4+1;
+										var liNode = '<li reason="reason_5"><span>' + num4 + '.' +  e4.name + '</span></li>';
 										ul4.append(liNode);
 									});
 
@@ -509,7 +481,7 @@ function caseFoud(knowledge, caseDes, callback) {
 							resNum = $(this).attr('reason');
 							resNode.html(selectHtml);
 							var secRes = ul1.find('li').eq(idx1).find('span').html();
-							secRes = secRes.substring(3, secRes.length);
+							secRes = secRes.substring(2, secRes.length);
 							secRes = secRes.trim();
 							$('#selectResModal .valSpan span').html(secRes);
 						});
@@ -528,6 +500,7 @@ function caseFoud(knowledge, caseDes, callback) {
 	//点击确定关闭模态框
 	$('#selectResModal .ok').on('click', function() {
 		var resVal = $('#selectResModal .valSpan i').html();
+		    resVal = resVal.split(".")[1];
 		var secRes = $('#selectResModal .valSpan span').html();
 		var resObj = {
 			second_reason: secRes
